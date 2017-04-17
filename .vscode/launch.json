@@ -4,7 +4,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "http://bollore.local:8080",
+            "url": "http://bollore.local",
             "webRoot": "${workspaceRoot}/dist/index.html"
         },
         {

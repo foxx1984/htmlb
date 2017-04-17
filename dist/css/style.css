@@ -2358,6 +2358,40 @@ body {
   min-height: auto;
 }
 /*=====  End of second nav menu  ======*/
+.\--information:after {
+  background: transparent url('../img/information.png') no-repeat 0 0;
+  width: 3.6vw;
+  height: 3.6vw;
+  background-size: 100%;
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: -3.8vw;
+  left: -0.5vw;
+}
+.\--linkPlus {
+  font-family: "Gotham A", "Gotham B";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1.6vw;
+  color: #585857;
+  display: inline-block;
+  padding: 4% 5%;
+  background-color: #ffffff;
+  font-size: 0.85vw;
+  text-decoration: none;
+  position: relative;
+  left: -5%;
+  margin-top: 5%;
+}
+.\--linkPlus:after {
+  width: 100%;
+  background: #585857;
+  height: 1px;
+  display: block;
+  content: '';
+  margin-top: 1px;
+}
 .slider {
   margin-top: 2.1428571428571428571428571428571%;
 }
@@ -2367,6 +2401,7 @@ body {
 }
 .slider__article {
   position: relative;
+  z-index: 100;
 }
 .slider__head {
   position: absolute;
@@ -2383,13 +2418,48 @@ body {
   content: '';
 }
 .slider__title {
-  font-size: 4.8em;
+  font-size: 2.5vw;
   display: inline-block;
   vertical-align: middle;
   font-family: "Gotham A", "Gotham B";
   font-style: normal;
   font-weight: 800;
   color: #ffffff;
+  position: relative;
+}
+.slider__title:after {
+  border: 1px solid #ffffff;
+  position: absolute;
+  bottom: -4%;
+  left: 0;
+  right: 0;
+  display: inline-block;
+  content: '';
+}
+.slider__title2 {
+  color: #ffffff;
+  font-family: "Gotham A", "Gotham B";
+  font-style: normal;
+  font-weight: 700;
+  font-size: .94vw;
+  margin-bottom: 7%;
+  display: inline-block;
+  margin-top: 3%;
+}
+.slider__txt {
+  font-size: 0.75vw;
+  color: #ffffff;
+  line-height: 1vw;
+  font-family: "Gotham A", "Gotham B";
+  font-style: normal;
+  font-weight: 400;
+}
+.slider__push {
+  width: 26.628629%;
+  position: absolute;
+  bottom: 2.2vw;
+  right: 0%;
+  padding-right: 5%;
 }
 .slider__pagination {
   position: absolute;
