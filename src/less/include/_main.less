@@ -1,0 +1,350 @@
+html {
+    font-size: 62.5%;
+    /* 16px * 62.5% = 10px */
+}
+
+body {
+    background-color: @white-3;
+    .ft-gotham-book;
+    color: @grey-1;
+}
+
+.mainContent {
+    max-width: 1680px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.\--linkTelecharger {}
+
+.\--linkPlus {}
+
+.\--linkAll {}
+
+
+/*=============================================
+=            Header            =
+=============================================*/
+
+.padLR {
+    padding-left: 11.5%;
+    padding-right: 11.5%;
+}
+
+.pad2 {
+    padding: 0 2.34375%;
+}
+
+.--linkAll {
+    border: 1px solid @white-3;
+    content: '';
+    .dispI;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    position: absolute;
+}
+
+.menuFooter {
+    &--link {
+        color: @white-3;
+        text-decoration: none;
+        .dispI;
+    }
+    &__span {
+        .dispI;
+        position: relative;
+        &:hover {
+            &:after {
+                
+            }
+        }
+        &:after {
+            .--linkAll;
+        }
+    }
+}
+
+.close {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 0;
+    right: 2%;
+    cursor: pointer;
+    &__left,
+    &__right {
+        cursor: pointer;
+        position: absolute;
+        width: 100%;
+        background-color: @white-3;
+        height: 3px;
+        transform-style: preserve-3d;
+        transform-origin: center center;
+    }
+    &__left {
+        transform: rotate(45deg);
+    }
+    &__right {
+        transform: rotate(-45deg)
+    }
+}
+
+.header {
+    &__top,
+    &__middle {
+        .padLR;
+    }
+    &__middle {
+        &--off {
+            .hidden;
+        }
+        background-color: @blue-9;
+        padding-top: 2.4%;
+        padding-bottom: 4.0%;
+    }
+    &__bottom {
+        &--off {
+            .hidden;
+        }
+    }
+    &__menuFooter {
+        padding: 1.3% 0;
+        background-color: @blue-9;
+        border-top: 1px solid @white-3;
+        font-size: 1.8rem;
+        .txtC;
+        .ft-gotham-black;
+        &--off {
+            .hidden;
+        }
+    }
+    &__bourse {
+        .dispI;
+        vertical-align: middle;
+        font-size: 1.2rem;
+        .icon-chiffre-1 {
+            font-size: 1.4rem;
+            &:before {
+                display: inline-block;
+                vertical-align: bottom;
+            }
+        }
+    }
+    &__menu {}
+    &__search {
+        .dispI;
+        position: relative;
+        left: 12%;
+    }
+    &__infoLeft {
+        .dispI;
+    }
+    &__infoRight {
+        .dispI;
+    }
+    &__langue {
+        .dispI;
+        .txtR;
+        white-space: nowrap;
+    }
+    &__dataBourseEuro {
+        vertical-align: text-bottom;
+        .ft-gotham-bold;
+        font-size: 1.2rem;
+        .dispI;
+    }
+    &__bloc {
+        &--sticky {
+            position: fixed;
+        }
+        height: 0;
+        padding-top: 10.46875%;
+        .posR;
+        >.gridCR {
+            flex-wrap: nowrap;
+            .\--posA;
+        }
+    }
+    &__logo {
+        
+        max-width: 113px;
+        width: 100%;
+    }
+    &__spanL {
+        font-size: 1.2em;
+        text-transform: uppercase;
+        .dispI;
+        position: relative;
+        right: 43%;
+        &:last-child {
+            position: static;
+            right: auto;
+        }
+        a,
+        a:hover {
+            text-decoration: none;
+        }
+        a:hover {
+            color: @blue-9;
+            .ft-gotham-bold;
+        }
+        a {
+            color: @grey-1;
+        }
+        &--on {
+            a {
+                .ft-gotham-bold;
+                color: @blue-9;
+            }
+        }
+    }
+}
+
+.search {
+    &__input {
+        .ft-gotham-book-italic;
+        font-size: 1.2em;
+        outline: none;
+        vertical-align: middle;
+        background: transparent;
+    }
+    &__btn {
+        font-size: 1.9em;
+        vertical-align: middle;
+    }
+}
+
+
+/*=====  End of Header  ======*/
+
+
+/*=============================================
+=           first nav menu             =
+=============================================*/
+
+.menu {
+    &__footer {
+        &--off {
+            .hidden;
+        }
+    }
+    &__li {
+        .ft-gotham-bold;
+        font-size: 1.6em;
+        .txtC;
+        .curP;
+        padding: 1% 1% 0.9% 1%;
+        border-bottom: 10px solid transparent;
+        &:hover,
+        &--on {
+            color: @blue-9;
+            border-bottom: 10px solid @blue-9;
+        }
+    }
+    &__ul {
+        &--off {
+            .hidden;
+        }
+        &--level2 {
+            .hidden;
+            &.menu__ul--on {
+                display: block;
+            }
+        }
+        &--level3 {
+            .hidden;
+            &.menu__ul--on {
+                display: block;
+            }
+        }
+        &--level1 {
+            white-space: nowrap;
+            &>.menu__li {
+                &:last-child {
+                    padding-right: 0;
+                }
+                &:first-child {
+                    padding-left: 0;
+                }
+                .dispI;
+            }
+        }
+    }
+}
+
+
+/*=====  End of first nav menu  ======*/
+
+
+/*=============================================
+=            second nav menu            =
+=============================================*/
+
+.secondMenu {
+    position: relative;
+    .\--topLi {
+        .secondMenu__title {
+            &:before {
+                content: none;
+            }
+        }
+    }
+    &__link {
+        .dispI;
+        width: 100%;
+    }
+    &__item {
+        &--off {
+            .hidden;
+        }
+        &--on {}
+    }
+    &__title {
+        color: @white-3;
+        font-size: 1.6em;
+        width: 100%;
+    }
+    &__li {}
+    &__ul {
+        &--level1 {
+            .secondMenu__li {
+                width: auto;
+                margin-right: 4%;
+            }
+            .secondMenu__title {
+                vertical-align: middle;
+                &:before {
+                    content: '';
+                    .dispI;
+                    height: 100%;
+                    vertical-align: middle;
+                }
+                .ft-gotham-bold;
+                height: 54px;
+                .dispI;
+                border-bottom: 1px solid @white-3;
+            }
+        }
+        &--level2 {
+            .dispI;
+            border-bottom: 1px solid @white-3;
+            padding: 8% 0;
+            width: 100%;
+            .secondMenu__title {
+                line-height: 18px;
+                .ft-gotham-book;
+                padding: 0;
+                border: none;
+                width: 100%;
+                .dispI;
+                height: auto;
+                min-height: auto;
+            }
+        }
+    }
+}
+
+
+/*=====  End of second nav menu  ======*/

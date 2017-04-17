@@ -1,0 +1,10 @@
+{
+  "env": {
+
+    "pathCss": "D:\\WORKSPACE\\htdocs\\alpine\\alp-content\\plugins\\alp-liveshowroom\\css",
+    "pathJs": "D:\\WORKSPACE\\htdocs\\alpine\\alp-content\\plugins\\alp-liveshowroom\\js",
+    "pathAjax": "",
+    "pathHtml": "",
+    "pathImg": "D:\\WORKSPACE\\htdocs\\alpine\\alp-content\\plugins\\alp-liveshowroom\\img"
+  }
+}

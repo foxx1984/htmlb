@@ -1,0 +1,549 @@
+/*! HTML5 Boilerplate v5.3.0 | MIT License | https://html5boilerplate.com/ */
+
+
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+    vertical-align: middle;
+}
+
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+
+/* ==========================================================================
+   Browser Upgrade Prompt
+   ========================================================================== */
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden {
+    display: none;
+}
+
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+}
+
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+    visibility: hidden;
+}
+
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.hideText {
+    text-indent: -99999px;
+    white-space: nowrap;
+    overflow: hidden;
+    .dispI;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.hiddenLS {
+    display: none !important;
+    visibility: hidden;
+}
+
+.alignVerticalFlex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 100%;
+    &\--top {
+        -webkit-box-align: top;
+        -ms-flex-align: top;
+        align-items: top;
+    }
+}
+
+
+/* Float */
+
+.fLeft,
+.left,
+{
+    float: left;
+}
+
+.fRight,
+.right {
+    float: right;
+}
+
+
+/* Clear */
+
+.clear {
+    clear: both;
+}
+
+.cLeft {
+    clear: left;
+}
+
+.cRight {
+    clear: right;
+}
+
+.noWidth {
+    width: auto;
+}
+
+.resp {
+    width: 100%;
+    max-width: 100%;
+    height: auto
+}
+
+
+/* 
+- $TEXT \--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\--\---
+*/
+
+
+/* Text alignements */
+
+.txtC {
+    text-align: center;
+}
+
+.txtL {
+    text-align: left;
+}
+
+.txtR {
+    text-align: right;
+}
+
+.txtJ {
+    text-align: justify;
+}
+
+.ftUpp {
+    text-transform: uppercase;
+}
+
+.txtN {
+    text-decoration: none;
+}
+
+.dispB {
+    display: block;
+}
+
+.dispI {
+    display: inline-block;
+}
+
+.curP {
+    cursor: pointer;
+}
+
+.curPN {
+    pointer-events: none;
+}
+
+.bt {
+    background: 0 0;
+    border-width: 0;
+    cursor: pointer;
+    .dispI;
+    outline: 0;
+    padding: 0;
+    .txtN;
+    transition: .3s ease-out;
+}
+
+[class*=bt-] {
+    background: 0 0;
+    border-width: 0;
+    cursor: pointer;
+    .dispI;
+    outline: 0;
+    padding: 0;
+    .txtN;
+    transition: .3s ease-out;
+}
+
+
+/**
+ *
+ * padding lef right
+ *
+ */
+
+
+/*=============================================
+=            gridCR            =
+=============================================*/
+
+.gridCR {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    &--nowRap {
+        flex-wrap: nowrap;
+    }
+    &&--center {
+        justify-content: center;
+    }
+}
+
+
+
+[class*="gridCR-col"] {
+    display: block;
+}
+
+[class*="gridCR-col-42--desk"] {
+    flex: 0 1 42%;
+    max-width: 42%;
+}
+
+[class*="gridCR-col-25--desk"] {
+    flex: 0 1 25%;
+    max-width: 25%;
+}
+[class*="gridCR-col-20--desk"] {
+    flex: 0 1 20%;
+    max-width: 20%;
+}
+[class*="gridCR-col-68--desk"] {
+    flex: 0 1 68%;
+    max-width: 68%;
+}
+
+[class*="gridCR-col-64--desk"] {
+    flex: 0 1 64%;
+    max-width: 64%;
+}
+
+[class*="gridCR-col-auto"] {
+    flex: 0 1 auto;
+    width: auto;
+}
+
+[class*="gridCR-col-100"] {
+    flex: 0 1 100%;
+    max-width: 100%;
+}
+
+.\--full100 {
+    flex-grow: 2;
+}
+
+.\--gridTop {
+    align-self: flex-start;
+}
+
+.\--VgridTop {
+    align-items: flex-start;
+}
+
+.\--Container {
+    position: relative;
+    /* facultatif : résoud un bug non systématique de blur sur IE */
+    transform-style: preserve-3d;
+}
+
+.\--Vcenter {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.\--VgridCenter {
+    align-items: center;
+}
+
+.\--gridCenter {
+    align-self: center;
+}
+
+.\--gridBottom {
+    align-self: flex-end;
+}
+
+.\--VgridBottom {
+    align-items: flex-end;
+}
+
+
+/*=====  End of gridCR  ======*/
+
+
+/*=============================================
+=            postion            =
+=============================================*/
+
+.\--posA {
+    .posA;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.posR {
+    position: relative;
+}
+
+.posA {
+    position: absolute;
+}
+
+
+/*=====  End of postion  ======*/
+
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 1.25dppx),
+(min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   http://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after,
+    *:first-letter,
+    *:first-line {
+        background: transparent !important;
+        color: #000 !important;
+        /* Black prints faster:
+                                   http://www.sanbeiji.com/archives/953 */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    /*
+     * Don't show links that are fragment identifiers,
+     * or use the `javascript:` pseudo protocol
+     */
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    /*
+     * Printing Tables:
+     * http://css-discuss.incutio.com/wiki/Printing_Tables
+     */
+    thead {
+        display: table-header-group;
+    }
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    img {
+        max-width: 100% !important;
+    }
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

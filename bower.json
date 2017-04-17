@@ -1,0 +1,17 @@
+{
+  "name": "bollore-groupe",
+  "description": "bollore-groupe",
+  "main": "",
+  "authors": [
+    "RC"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

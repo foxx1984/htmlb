@@ -1,0 +1,89 @@
+.slider {
+    margin-top: 2.1428571428571428571428571428571%;
+    &__content {
+        overflow: hidden;
+        position: relative;
+    }
+    &__article{
+        position: relative;
+
+    }
+    &__head{ 
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        .txtC;
+          &:before {
+            vertical-align: middle;
+            .dispI;
+            height: 100%;
+            content: '';
+        }
+    }
+    &__title{
+        font-size: 4.8em;
+      
+       .dispI;
+        vertical-align: middle;
+       .ft-gotham-black;
+       color: @white-3; 
+    }
+    &__pagination {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: transparent;
+        width: 66.7vw;
+        margin-left: 16.7vw;
+    }
+    &__next,
+    &__prev {
+        cursor: pointer;
+        position: absolute;
+        font-size: 1.75vw;
+        color: @blue-9;
+        top: 50%;
+        transform-style: preserve-3d;
+        transform: translateY(-50%);
+    }
+    &__next {
+        &.icon-fleche-1 {
+            right: 1vw;
+        }
+    }
+    &__prev {
+        transform: rotate(-180deg);
+        left: 0.8vw;
+    }
+    &__item {
+        width: 59.5vw;
+        height: auto;
+        display: inline-block;
+        margin-right: 3.4vw;
+    }
+    &__ul {
+        width: 5000px;
+        margin-left: -42.8vw;
+    }
+}
+
+.swipe {
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
+}
+
+.swipe-wrap {
+    overflow: hidden;
+    position: relative;
+}
+
+.swipe-wrap>li {
+    float: left;
+    width: 100%;
+    position: relative;
+}
