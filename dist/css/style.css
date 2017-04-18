@@ -1752,6 +1752,24 @@ textarea {
           flex: 0 1 42%;
   max-width: 42%;
 }
+[class*="gridCR-col-58--desk"] {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 58%;
+          flex: 0 1 58%;
+  max-width: 58%;
+}
+[class*="gridCR-col-33--desk"] {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 33%;
+          flex: 0 1 33%;
+  max-width: 33%;
+}
+[class*="gridCR-col-67--desk"] {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 67%;
+          flex: 0 1 67%;
+  max-width: 67%;
+}
 [class*="gridCR-col-25--desk"] {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 25%;
@@ -1776,17 +1794,29 @@ textarea {
           flex: 0 1 64%;
   max-width: 64%;
 }
+[class*="gridCR-col-37--desk"] {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 37.9%;
+          flex: 0 1 37.9%;
+  max-width: 37.9%;
+}
+[class*="gridCR-col-63--desk"] {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 63%;
+          flex: 0 1 63%;
+  max-width: 63%;
+}
+[class*="gridCR-col-62--desk"] {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 62%;
+          flex: 0 1 62%;
+  max-width: 62%;
+}
 [class*="gridCR-col-auto"] {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 auto;
           flex: 0 1 auto;
   width: auto;
-}
-[class*="gridCR-col-100"] {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 100%;
-          flex: 0 1 100%;
-  max-width: 100%;
 }
 .\--full100 {
   -webkit-box-flex: 2;
@@ -2369,6 +2399,23 @@ body {
   top: -3.8vw;
   left: -0.5vw;
 }
+.\--titleHeadN {
+  font-size: 2.0vw;
+  color: #585857;
+  font-family: "Gotham A", "Gotham B";
+  font-style: normal;
+  font-weight: 800;
+}
+.\--titleHead {
+  font-size: 2.0vw;
+  color: #585857;
+  font-family: "Gotham A", "Gotham B";
+  font-style: normal;
+  font-weight: 800;
+  width: auto;
+  background-color: #ffffff;
+  display: inline-block;
+}
 .\--linkPlus {
   font-family: "Gotham A", "Gotham B";
   font-style: normal;
@@ -2514,6 +2561,92 @@ body {
   float: left;
   width: 100%;
   position: relative;
+}
+/*=============================================
+=            GROUPE            =
+=============================================*/
+.tilteHead {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid #58585a;
+  width: 99%;
+  z-index: -1;
+}
+.groupe__content {
+  padding-top: 14.142857%;
+}
+.groupe__head {
+  margin-bottom: 4%;
+}
+.groupe__txt {
+  font-size: 1.0vw;
+  color: #58585a;
+  line-height: 1.5vw;
+  font-family: "Gotham A", "Gotham B";
+  font-style: normal;
+  font-weight: 400;
+  text-align: right;
+}
+.groupe__title {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+.groupe__title:before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid #58585a;
+  width: 99%;
+  z-index: -1;
+}
+.groupe__tilteTxt {
+  padding-left: 1%;
+  position: absolute;
+  bottom: -0.5vw;
+  right: 0;
+  z-index: 100;
+}
+/*=============================================
+=            CHIFFRE            =
+=============================================*/
+.chiffre__content {
+  padding-top: 3%;
+  padding-left: 12.5%;
+}
+.chiffre__head {
+  margin-bottom: 4%;
+}
+.chiffre__titleTxt {
+  padding-right: 1%;
+  position: absolute;
+  left: 0;
+  bottom: -0.8vw;
+  z-index: 100;
+}
+.chiffre__title {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+.chiffre__title:before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 1px solid #58585a;
+  width: 99%;
+  z-index: -1;
+  width: 100%;
 }
 @media screen and (max-width: 1280px) {
   .header__top {

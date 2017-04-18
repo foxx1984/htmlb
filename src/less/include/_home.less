@@ -11,21 +11,34 @@
         left: -0.5vw;
     }
 }
+.\--titleHeadN {
+    font-size: 2.0vw;
+    color: @grey-1;
+    .ft-gotham-black;
+
+}
+.\--titleHead {
+    font-size: 2.0vw;
+    color: @grey-1;
+    .ft-gotham-black;
+    width:auto;
+    
+    background-color:@white-3;
+    .dispI;
+}
 
 .\--linkPlus {
     &:after {
-    
-    width: 100%;
-    background:@grey-1;
-    height: 1px;
-    display: block;
-    content: '';
-    margin-top: 1px;
+        width: 100%;
+        background: @grey-1;
+        height: 1px;
+        display: block;
+        content: '';
+        margin-top: 1px;
     }
     .ft-gotham-black;
     font-size: 1.6vw;
     .\--titleGrey1;
-   
     .dispI;
     padding: 4% 5%;
     background-color: @white-3;
@@ -154,4 +167,85 @@
     float: left;
     width: 100%;
     position: relative;
+}
+
+
+/*=============================================
+=            GROUPE            =
+=============================================*/
+
+.tilteHead {
+    content: '';
+    .dispI;
+    position: absolute;
+    bottom: 0;
+    left:0;
+    right:0;
+    border: 1px solid @grey-3;
+    width:99%;
+    z-index: -1;
+}
+
+.groupe {
+    &__content {
+      padding-top: 14.142857%;
+    }
+    &__head {
+        margin-bottom: 4%;
+    }
+    &__txt {
+        font-size: 1.0vw;
+        color: @grey-3;
+        line-height: 1.5vw;
+        .ft-gotham-book; 
+        .txtR;
+    }
+    &__title {
+        .dispI;
+        position: relative;
+        width: 100%;
+        &:before {
+            .tilteHead;
+        }
+    }
+    &__tilteTxt {
+      padding-left:1%;
+      position:absolute;
+    bottom:-0.5vw;
+    right:0;
+    z-index:100;
+    }
+}
+
+/*=============================================
+=            CHIFFRE            =
+=============================================*/
+.chiffre {
+    &__content{
+            padding-top: 3%;
+            padding-left:12.5%;
+    }
+    &__head{
+        margin-bottom:4%;
+
+    }
+    &__titleTxt {
+        padding-right: 1%;
+    position: absolute;
+  
+    left: 0;
+    bottom: -0.8vw;
+    z-index: 100;
+    }
+    &__title {
+         .dispI;
+        position: relative;
+        width: 100%;
+        &:before {
+           
+            .tilteHead;
+            width:100%;
+        }
+
+    }
 }
