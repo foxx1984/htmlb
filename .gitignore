@@ -2,3 +2,6 @@
 **/tmp/
 bollore.local.7z
 npm-debug.log
+
+### SVN ###
+.svn/
