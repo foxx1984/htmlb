@@ -39,8 +39,8 @@ class Slider {
 
         let _marginLeft = this.itemsElem.style.marginLeft == undefined ? 0 : this.itemsElem.style.marginLeft;
         let _width = this.itemsElem.offsetWidth + this.itemsElem.style.marginLeft;
-        // _ul.style.marginLeft = `calc(-42.8vw - (${_width}px +  3.4vw))`;
-        this.ulContainer.style.marginLeft = '-42.8vw ';
+        // _ul.style.marginLeft = `calc(-46.5vw - (${_width}px +  3.4vw))`;
+        this.ulContainer.style.marginLeft = '-40.5vw';
         let _newItem = this.getItem('next');
         this.addCurent(_newItem);
         this.addItem(_newItem, 'next');
@@ -65,7 +65,7 @@ class Slider {
     }
     onPrevClick(args) {
 
-       this.ulContainer.style.marginLeft = '-42.8vw ';
+       this.ulContainer.style.marginLeft = '-40.5vw';
         let _newItem = this.getItem('prev');
         this.addCurent(_newItem);
    
@@ -213,6 +213,7 @@ class Bollore {
         _close.addEventListener('click', (arg) => {
 
             this.closeMenu();
+            this.hideHoverMenuItem();
         });
     }
     setOnClickMenuEvent() {

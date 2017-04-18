@@ -15,9 +15,10 @@ body {
     margin: 0 auto;
 }
 
-.\--linkTelecharger {}
-
-.\--linkPlus {}
+a {
+    text-decoration: none;
+    color: @grey-3;
+}
 
 .\--linkAll {}
 
@@ -56,9 +57,7 @@ body {
         .dispI;
         position: relative;
         &:hover {
-            &:after {
-                
-            }
+            &:after {}
         }
         &:after {
             .--linkAll;
@@ -113,7 +112,7 @@ body {
         padding: 1.3% 0;
         background-color: @blue-9;
         border-top: 1px solid @white-3;
-        font-size: 1.8rem;
+        font-size: 1.05vw; //1.8rem;
         .txtC;
         .ft-gotham-black;
         &--off {
@@ -168,9 +167,9 @@ body {
         }
     }
     &__logo {
-        
-        max-width: 113px;
+        max-width: 112px;
         width: 100%;
+      
     }
     &__spanL {
         font-size: 1.2em;
@@ -232,15 +231,15 @@ body {
     }
     &__li {
         .ft-gotham-bold;
-        font-size: 1.6em;
+        font-size: 0.92vw;
         .txtC;
         .curP;
         padding: 1% 1% 0.9% 1%;
-        border-bottom: 10px solid transparent;
+        border-bottom: 0.6vw solid transparent;
         &:hover,
         &--on {
             color: @blue-9;
-            border-bottom: 10px solid @blue-9;
+            border-bottom: 0.6vw solid @blue-9;
         }
     }
     &__ul {
@@ -303,7 +302,7 @@ body {
     }
     &__title {
         color: @white-3;
-        font-size: 1.6em;
+        font-size: 0.93vw;
         width: 100%;
     }
     &__li {}
@@ -312,6 +311,7 @@ body {
             .secondMenu__li {
                 width: auto;
                 margin-right: 4%;
+                margin-bottom: 3%;
             }
             .secondMenu__title {
                 vertical-align: middle;
@@ -322,7 +322,7 @@ body {
                     vertical-align: middle;
                 }
                 .ft-gotham-bold;
-                height: 54px;
+                min-height:2.12vw; //54px;
                 .dispI;
                 border-bottom: 1px solid @white-3;
             }
@@ -333,7 +333,7 @@ body {
             padding: 8% 0;
             width: 100%;
             .secondMenu__title {
-                line-height: 18px;
+                line-height: 1.2vw;
                 .ft-gotham-book;
                 padding: 0;
                 border: none;
