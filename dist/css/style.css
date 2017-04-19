@@ -2313,8 +2313,8 @@ a {
   position: absolute;
 }
 .close {
-  width: 1.4vw;
-  height: 1.4vw;
+  width: 25px;
+  height: 25px;
   position: absolute;
   top: 0;
   right: 2%;
@@ -2576,7 +2576,7 @@ a {
   width: 100%;
 }
 .secondMenu__ul--level2 .secondMenu__title {
-  line-height: 1.2vw;
+  line-height: normal;
   font-family: "Gotham A", "Gotham B";
   font-style: normal;
   font-weight: 400;
