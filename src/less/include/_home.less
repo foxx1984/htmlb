@@ -12,6 +12,10 @@
     }
 }
 
+.\--headGenric {
+    margin-bottom: 8%;
+}
+
 .titleHeadH2 {
     .dispI;
     position: relative;
@@ -28,13 +32,12 @@
         margin-top: 2px;
     }
     .dispI;
-    padding: 1.2% 2.5%;
-    .ft-gotham-black;
-    font-size: 1.15vw;
+    padding: 0.85% 1.7%;
+    .txt-14;
 }
 
 .icon-information {
-    font-size: 3.6vw;
+    .txt-8;
     &:before {
         position: absolute;
         top: -1.4vw;
@@ -50,13 +53,13 @@
 }
 
 .\--titleHead {
-    font-size: 2.2vw;
     color: @grey-1;
-    .ft-gotham-black;
+    .txt-12;
     width: auto;
     background-color: @white-3;
     .dispI;
     z-index: 100;
+    top: 0.6vw;
 }
 
 .\--linkPlus {
@@ -68,12 +71,11 @@
         content: '';
         margin-top: 1px;
     }
-    .ft-gotham-black;
     .\--titleGrey1;
     .dispI;
     padding: 4% 5%;
     background-color: @white-3;
-    font-size: 0.94vw;
+    .txt-10;
     text-decoration: none;
     position: relative;
     left: -5%;
@@ -91,9 +93,8 @@
         z-index: 100;
     }
     &__sTitle {
-        font-size: 1.05vw;
+        .title-2;
         color: @white-3;
-        .ft-gotham-bold;
         margin-bottom: 7%;
         display: inline-block;
         margin-top: 3%;
@@ -113,10 +114,9 @@
         }
     }
     &__title {
-        font-size: 2.75vw;
         .dispI;
         vertical-align: middle;
-        .ft-gotham-black;
+        .title-1;
         color: @white-3;
         position: relative;
         &:after {
@@ -133,18 +133,17 @@
         color: @white-3;
     }
     &__txt {
-        font-size: 0.83vw;
+        .txt-9;
         color: @white-3;
-        line-height: 1.1vw;
-        .ft-gotham-book;
+        line-height: normal;
     }
     &__push {
         .icon-noPicto {
-            font-size: 3.6vw;
+            .txt-8;
             &:before {
                 position: absolute;
                 top: -1.4vw;
-                font-size: 3.6vw;
+                .txt-8;
                 left: -0.5vw;
                 content: "\e920";
                 visibility: hidden;
@@ -189,7 +188,7 @@
     }
     &__next {
         &.icon-fleche-1 {
-            right: 1vw;
+            right: 0.8vw;
         }
     }
     &__prev {
@@ -227,17 +226,6 @@
 
 
 /*=============================================
-=            Container            =
-=============================================*/
-
-.container {
-    &--chiffre {
-        padding-bottom: 1.1%;
-    }
-}
-
-
-/*=============================================
 =            GROUPE            =
 =============================================*/
 
@@ -267,10 +255,9 @@
         margin-bottom: 4%;
     }
     &__txt {
-        font-size: 1.09vw;
+        .txt-13;
         color: @grey-3;
         line-height: 2.1vw;
-        .ft-gotham-book;
         .txtR;
     }
     &__title {
@@ -288,8 +275,9 @@
     &__tilteTxt {
         padding-left: 1%;
         position: absolute;
-        bottom: -0.5vw;
+        bottom: -0.8vw;
         right: 0;
+        top: auto;
         z-index: 100;
     }
 }
@@ -310,19 +298,17 @@
         }
     }
     &__txt {
-        .ft-gotham-book;
-        font-size: 1.15vw;
+        .txt-18;
         color: @grey-3;
-        .dispB;
-        line-height: 1.5vw;
+        .dispB; // line-height: 1.5vw;
+        line-height: normal;
     }
     &__keyFigure {
-        font-size: 4.0vw;
+        .txt-15;
         padding-bottom: 23%;
     }
     &__h3 {
-        .ft-gotham-black;
-        font-size: 5.05vw;
+        .txt-16;
         .dispB;
         padding-bottom: 2%;
     }
@@ -339,6 +325,7 @@
         left: 0;
         bottom: -0.8vw;
         z-index: 100;
+        top: auto;
     }
     &__title {
         .dispI;
@@ -366,7 +353,6 @@
     }
     &__tilteTxt {
         position: relative;
-        top: 0.4vw;
         .dispI;
         padding: 0% 0.5%;
         background-color: @white-1;
@@ -405,6 +391,16 @@
             }
         }
     }
+    &--blue2 {
+        color: @blue-10;
+        .capsule__link {
+            color: @blue-10;
+            border: 1px solid @blue-10;
+            &:after {
+                background-color: @blue-10;
+            }
+        }
+    }
     &__link {
         border: 1px solid @grey-3;
         padding: 2.4% 4.5%;
@@ -424,8 +420,8 @@
     }
     &__titleTxt {
         .dispB;
-        font-size: 1.62vw;
-        .ft-gotham-black;
+        .txt-19;
+        margin-top: 4%;
     }
     &__title {}
 }
@@ -441,11 +437,12 @@
         background: transparent url('../img/img-talents.jpg') no-repeat center top;
         width: 100%;
         height: 26.39vw;
-        padding: 5% 0 5% 23%;
+        padding: 5% 0 5% 22%;
     }
     &__title {
         color: @white-3;
         background: transparent;
+        padding-bottom: 0.2%;
         .dispI;
         border-bottom: 1px solid @white-3;
         margin-bottom: 2.8%;
@@ -461,13 +458,11 @@
                 }
             }
         }
-       
         background-color: @white-3;
         width: 24.5vw;
         height: 4.4vw;
         margin-bottom: 2%;
-        .ft-gotham-book;
-        font-size: 1.05vw;
+        .txt-20;
         &:last-child {
             margin-bottom: 0;
         }
@@ -478,7 +473,7 @@
             right: 0;
             top: 0;
             bottom: 0;
-            font-size: 1.5vw;
+            .txt-21;
             background: @white-2;
             color: @grey-3;
             width: 18%;
@@ -504,5 +499,290 @@
         .dispI;
         .ft-gotham-book;
         padding-left: 6%;
+    }
+}
+
+
+/*=============================================
+=            Actionnaires            =
+=============================================*/
+
+.actionnaires {
+    &__content {
+        padding-top: 2%;
+    }
+    &__titleTxt {
+        position: relative;
+        padding: 0% 0.5%;
+    }
+    &__title {
+        .txtC;
+        .titleHeadH2;
+        &:before {
+            .tilteHead;
+            left: auto;
+            right: auto;
+            width: 100%;
+        }
+    }
+}
+
+
+/**
+ *
+ * cours
+ *
+ */
+
+.cours {
+    width: 24.8vw;
+    padding: 4% 4%;
+    border: 1px solid @blue-7;
+    margin-left: 35%;
+    &__title {
+        color: @blue-7;
+        position: relative;
+        &:before {
+            vertical-align: middle;
+            position: absolute;
+            height: 100%;
+            top: -1vw;
+            left: 0;
+            .txt-22;
+        }
+    }
+    &__footer {
+        color: @blue-7;
+        margin-top: 19%;
+        .txt-24;
+    }
+    &__euros {
+        .dispB;
+    }
+    &__pourcent {
+        .dispB;
+        .txtR;
+    }
+    &__head {
+        .txtR;
+    }
+    &__txt {
+        .txt-23;
+        letter-spacing: 0.18vw;
+        margin-top: 6%;
+        .dispI;
+    }
+    &__titleTxt {
+        letter-spacing: 0.18vw;
+        .txt-19;
+        .dispI;
+        vertical-align: sub;
+        margin-left: 8%;
+    }
+}
+
+
+/**
+ *
+ * msg actionnaires
+ *
+ */
+
+.msg {
+    margin-left: 6.2%;
+    &__tilte {}
+    &__link {
+        background-color: @blue-7;
+        color: @white-3;
+    }
+    &__head {
+        color: @blue-7;
+        .txt-19;
+    }
+    &__tilteTxt {}
+    &__txt {
+        padding-top: 2%;
+        .txt-18;
+        padding-bottom: 3%;
+        line-height: normal;
+    }
+}
+
+
+/*=============================================
+=            actualités documents            =
+=============================================*/
+
+.myItem {
+    &:nth-child(n+2) {
+        padding: 7.5% 0;
+    }
+    padding-bottom:7.5%;
+    border-bottom:1px solid @grey-3;
+    &:last-child {
+        border: none;
+        padding-bottom: 0;
+    }
+}
+
+.padBloc {
+    padding-right: 21%;
+}
+
+.fixBloc {
+    min-height: 22.5vw;
+    max-height: 22.5vw;
+    overflow: hidden;
+}
+.ulMargin {
+  margin-top: 2.8%;
+}
+.footerBloc {
+    margin-top: 12%;
+}
+
+.actuDoc {
+    &--actualite,
+    &--documents,
+    &--publications {
+        .fixBloc;
+    }
+    &--actualite,
+    &--documents {
+        .padBloc;
+        .actuDoc__item {
+            .myItem;
+        }
+        .actuDoc__all {
+            .footerBloc;
+        }
+    }
+    &--documents {
+        .actuDoc__ul {
+          .ulMargin;
+        }
+    }
+    &--publications {
+        .actuDoc__head {
+            margin-bottom: 4%;
+        }
+        .actuDoc__ul {
+           .ulMargin;
+        }
+        .actuDoc__item {
+            margin-bottom: 1.5%;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+        .actuDoc__all {
+            margin-top: 6%;
+        }
+    }
+    &__head {}
+    &__title {}
+    &__sTitle {
+        .txt-1;
+        color: @blue-8;
+    }
+    &__ul {}
+    &__item {}
+    &__all {
+        .txt-11;
+    }
+    &__link {
+        color: @blue-8;
+        .dispI;
+        &:after {
+            .dispB;
+            background-color: @blue-8;
+            height: 1px;
+            width: 100%;
+            content: '';
+            margin-top: 2px;
+        }
+    }
+}
+
+
+/**
+ *
+ * POST
+ *
+ */
+
+.post {
+    &__item {}
+    &__head {}
+    &__date {
+        .txt-1;
+    }
+    &__content {
+        margin: 2.8% 0;
+        .txt-20;
+        line-height: normal;
+    }
+    &__footer {}
+    &__link {
+        .txt-20;
+        color: @blue-8;
+    }
+}
+
+
+/**
+ *
+ * publications
+ *
+ */
+
+.publications {
+    &__ul {}
+    &__item {}
+}
+
+.pub {
+    &__link {}
+    &__img {
+        max-width: 77px;
+        width: 100%;
+        height: auto;
+    }
+    &__image {
+        box-shadow: -1px 5px 22px 3px rgba(163, 163, 163, 0.48);
+    }
+    &__content {
+        margin: 2.8% 0;
+        .txt-20;
+        line-height: normal;
+    }
+    &__date {
+        .txt-1;
+    }
+    &__telecharger {}
+}
+
+
+/*=====  End of actualités documents  ======*/
+
+
+/*=============================================
+=            Container            =
+=============================================*/
+
+.container {
+    &--actuDoc {
+        padding-top: 2.0%;
+        padding-left: 19.5%;
+        padding-bottom: 5.5%;
+    }
+    &--chiffre {
+        padding-bottom: 1.1%;
+    }
+    &--actionnaires {
+        padding-top: 1.1%;
+        overflow: hidden;
+        padding-bottom: 3.5%;
+        border-bottom: 1px solid @grey-3;
     }
 }
