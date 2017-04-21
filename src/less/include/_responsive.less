@@ -1,4 +1,490 @@
-@media screen and (max-width: 1280px) {
+/**
+ *
+ * Tablet & Mobile
+ *
+ */
+
+@media screen and (max-width: @tabletLarge) {
+    .\--linkPlus {
+        padding: 3.4% 3%;
+        background-color: @blue-9;
+        color: @white-3;
+    }
+    .\--linkN {
+        padding: 1.7% 2.0%;
+    }
+    .\--titleHead {
+        padding: 0% 1.5%;
+        bottom: -1.2vw;
+        top: auto;
+    }
+    html {
+        font-size: 0.69vw;
+    }
+    .container {
+        &--actionnaires {
+            padding-top: 3.1%;
+            padding-bottom: 8.5%;
+            border-bottom: none;
+        }
+        &--actuDoc {
+            padding: 0;
+            overflow: hidden;
+        }
+    }
+    .post {
+        &__img {
+            width: 106px;
+        }
+        &__image {}
+        &__item {
+            width: auto;
+        }
+        &__footer {
+            margin-top: 6%;
+        }
+        &__date {}
+        &__content {}
+        &__link {}
+    }
+    .actuDoc {
+        &__footer {
+           
+            .txtC;
+            margin-right: 0;
+        }
+        &__content {
+            padding: 0;
+            padding-bottom: 3.5%;
+            min-height: auto;
+            max-height: none;
+        }
+        &--actualite {
+            .txtC;
+            .actuDoc__item {
+                display: inline-block;
+                width: auto;
+                padding: 0;
+                border: none;
+                vertical-align: top;
+                &:nth-child(n+2) {
+                    padding: 0;
+                }
+                &:first-child {
+                    .post {
+                        padding-right: 10vw;
+                    }
+                }
+            }
+            .actuDoc__all {
+                margin: 0;
+                margin-top: 3.5%;
+            }
+            .actuDoc__ul {
+                display: inline-block;
+                text-align: left;
+            }
+        }
+        &--documents,
+        &--publications {
+            .actuDoc__head {
+                margin-bottom: 12%;
+            }
+            .actuDoc__all {
+                margin-top: 0;
+            }
+            .actuDoc__ul {
+                margin-top: 2vw;
+                min-height: 45.6vw;
+            }
+        }
+        &--documents {
+            .actuDoc__bloc {
+                margin-left: 13.5vw;
+            }
+        }
+        &--publications {
+            .actuDoc__bloc {
+                padding-left: 11%;
+            }
+            .actuDoc__item {
+                margin-bottom: 7.5%;
+            }
+            .actuDoc__title {
+                &:before {
+                    content: none;
+                }
+            }
+            .post__item {
+                margin-left: 5vw;
+            }
+        }
+        &__sTitle {
+            padding: 0;
+        }
+        &__head {
+            .txtC;
+            margin-bottom: 0
+        }
+        &__title {
+            .posR;
+            width: 100vw;
+            &:before {
+                .titleHead;
+                width: 100%;
+            }
+        }
+        &__titleTxt {
+            .posR;
+        }
+        &__ul {
+            margin-top: 7%;
+        }
+        &__item {}
+        &__all {
+            margin: 0;
+            .txtC;
+        }
+        &__link {}
+    }
+    .msg {
+        .txtC;
+        margin-left: 0;
+        padding-top: 4%;
+        &__head {}
+        &__tilte {}
+        &__tilteTxt {}
+        &__txt {}
+        &__footer {}
+    }
+    .cours {
+        margin: 0 auto;
+        width: 100%;
+        padding: 0.5% 4%;
+        border-left: none;
+        border-right: none;
+        &__euros {
+            .txtC;
+        }
+        &__pourcent {
+            .txtC;
+            margin-top: 3vw;
+        }
+        &__head {
+            .txtC;
+        }
+        &__title {
+            margin-bottom: 2%;
+            &:before {
+                .dispB;
+                font-size: 12.9rem;
+                position: static;
+            }
+        }
+        &__titleTxt {
+            .dispB;
+            letter-spacing: 0.5vw;
+            margin-left: 0;
+        }
+        &__txt {
+            margin-top: 0;
+            .dispI;
+            width: 38%;
+            letter-spacing: 0.78vw;
+        }
+        &__footer {
+            letter-spacing: 0.6vw;
+            margin: 3vw 0;
+        }
+    }
+    .actionnaires {
+        &__title {
+            &:before {
+                left: 0;
+                right: 0;
+            }
+        }
+        &__content {
+            padding-top: 6%;
+        }
+    }
+    .talents {
+        &__content {
+            padding: 3% 0 0% 22%;
+            height: 29.39vw;
+            background-size: cover;
+            background-image: url('../img/img-talents-tab.jpg');
+        }
+        &__linkOffres {
+            &:before {
+                line-height: 5.5vw;
+            }
+        }
+        &__title {
+            padding: 0;
+            margin-bottom: 5.8%;
+        }
+        &__titleTxt {
+            font-size: 7.0rem;
+        }
+        &__button {
+            width: 30.9vw;
+            height: 5.59vw;
+            letter-spacing: 0.1vw;
+            &--offres {}
+            &--linkedin {}
+        }
+    }
+    .activites {
+        &__article {
+            padding-top: 3.4%;
+        }
+        &__head {}
+        &__title {}
+        &__tilteTxt {}
+        &__content {
+            padding: 6% 0;
+        }
+    }
+    .capsule {
+        &__item {}
+        &__head {
+            height: 17.9vw;
+            min-height: none;
+            max-height: none;
+        }
+        &__title {}
+        &__titleTxt {}
+        &__footer {}
+        &__link {
+            padding: 4.2% 5%;
+        }
+    }
+    .chiffre {
+        &__keyFigure {
+            .txtC;
+        }
+        &__h3 {}
+        &__txt {}
+        &__content {
+            padding: 0 0% 5%;
+        }
+        &__article {}
+        &__head {
+            .txtC;
+        }
+        &__title {}
+        &__titleTxt {
+            position: relative;
+        }
+        &__bloc {
+            padding: 0 15%;
+        }
+    }
+    .groupe {
+        &__content {
+            padding-top: 1%;
+            padding-bottom: 2%;
+        }
+        &__title {
+            .txtC;
+        }
+        &__tilteTxt {
+            position: relative;
+        }
+        &__txt {
+            .txtC;
+        }
+        &__footer {
+            .txtC;
+        }
+    }
+    .slider {
+        &__link {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            display: inline-block;
+            left: auto;
+            margin: 0;
+            margin-bottom: 4%;
+            &:after {
+                background-color: rgba(255, 255, 255, 0.5);
+            }
+        }
+        &__sTitle {
+            margin-bottom: 2vw;
+            margin-top: 0;
+            color: @blue-9;
+        }
+        &__txt {
+            color: @grey-3;
+        }
+        &__title2,
+        .icon-noPicto {
+            color: @blue-9;
+            .dispI;
+            top: -7.3vw;
+            margin-right: 4.9%;
+            position: relative;
+            &:before {
+                position: static;
+                font-size: 7vw;
+            }
+            &:after {}
+        }
+        &__txt {
+            position: relative;
+            &:before {
+                content: '';
+                .dispI;
+                position: absolute;
+                top: -4vw;
+                bottom: 0;
+                left: 0;
+                width: 1px;
+                background-color: @blue-9;
+            }
+            .dispI;
+            width: 23.9vw;
+            padding: 0 4%;
+        }
+        &__item {
+            margin-right: 5.8vw;
+        }
+        &__ul {
+            margin-left: -41.5vw;
+        }
+        &__pagination {
+            width: 68.999vw;
+            margin-left: 15.8vw;
+        }
+        &__next,
+        &__prev {
+            font-size: 2.75vw;
+            top: 18vw;
+        }
+        &__next {
+            right: 1.4vw;
+        }
+        &__prev {
+            left: 1.4vw;
+        }
+        &__push {
+            height: 20.23vw;
+            overflow: hidden;
+            position: relative;
+            bottom: -0.01vw;
+            z-index: 200;
+            width: 100%;
+            padding-top: 6.5%;
+            padding-right: 0;
+        }
+    }
+    .header {
+        &__top {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        &__middle {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        &__search {
+            .dispB;
+            position: static;
+        }
+        &__logo {
+            max-width: none;
+            .txtC;
+        }
+        &__imgLogoBollore {
+            max-width: 11.75vw;
+        }
+        &__bloc--mobile {
+            .hiddenLS;
+        }
+    }
+    .search {
+        &__form {
+            .txtR;
+        }
+        &__input {
+            display: block;
+        }
+        &__btn {
+            font-size: 4.5rem;
+        }
+    }
+    .header__bloc--tablette,
+    .header__bloc--mobile {
+        margin-bottom: 3vw;
+        margin-top: -2vw;
+        margin-left: 4%;
+        margin-right: 4%;
+    }
+}
+
+
+/**
+ *
+ * Tablette
+ *
+ */
+
+@media screen and (min-width: @mobileLarge) and (max-width: @tabletLarge) {
+    .header {
+        &__bloc--desktop {
+            .hiddenLS;
+        }
+        &__bloc--mobile {
+            .hiddenLS;
+        }
+    }
+}
+
+
+/**
+ *
+ * Mobile
+ *
+ */
+
+@media screen and (max-width: @mobileLarge) {
+    .header {
+        &__top {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        &__middle {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        &__bloc--desktop {
+            .hiddenLS;
+        }
+    }
+}
+
+
+/**
+ *
+ * Desktop
+ *
+ */
+
+@media screen and (min-width: 1025px) {
+    .header {
+        &__bloc--tablette {
+            .hiddenLS;
+        }
+        &__bloc--mobile {
+            .hiddenLS;
+        }
+    }
+}
+
+@media screen and (max-width: @desktopLarge) {
     .header {
         &__top {
             padding-left: 0;
@@ -13,7 +499,4 @@
         flex: 0 1 64%;
         max-width: 64%;
     }
-}
-@media screen and (min-width: 1281px) {
-
 }

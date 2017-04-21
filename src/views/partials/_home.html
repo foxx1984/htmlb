@@ -10,8 +10,8 @@
                             <header class="slider__head">
                                 <h2 class="slider__title">Communication</h2>
                             </header>
-
-                            <img alt="Communication" class="slider__img resp" src="img/img-02.jpg" />
+                            <div class="slider__image">
+                                <img alt="Communication" class="slider__img resp" src="img/img-02.jpg" /></div>
                             <div class="slider__push">
                                 <h3 class="slider__title2 icon-information">
                                     <span class="slider__sTitle"> Havas</span>
@@ -29,8 +29,8 @@
                             <header class="slider__head">
                                 <h2 class="slider__title">Bolloré logisticss</h2>
                             </header>
-
-                            <img alt="Bolloré logistics" class="slider__img resp" src="img/img-01.jpg" />
+                            <div class="slider__image">
+                                <img alt="Bolloré logistics" class="slider__img resp" src="img/img-01.jpg" /></div>
                             <div class="slider__push">
                                 <h3 class="slider__title2 icon-noPicto">
                                     <span class="slider__sTitle"> Havas</span>
@@ -51,8 +51,8 @@
                             <header class="slider__head">
                                 <h2 class="slider__title">Blue solution</h2>
                             </header>
-
-                            <img alt="image 3" class="slider__img resp" src="img/img-03.jpg" />
+                            <div class="slider__image">
+                                <img alt="image 3" class="slider__img resp" src="img/img-03.jpg" /></div>
                             <div class="slider__push">
                                 <h3 class="slider__title2 icon-noPicto">
                                     <span class="slider__sTitle">  Havas</span>
@@ -230,8 +230,8 @@
                             <footer class="cours__footer">
                                 <div class="gridCR">
 
-                                    <div class="gridCR-col-50--desk"><span class="cours__euros">2,992 €</span></div>
-                                    <div class="gridCR-col-50--desk"><span class="cours__pourcent">+0,40 %</span></div>
+                                    <div class="gridCR-col-50--desk gridCR-col-100--tab"><span class="cours__euros">2,992 €</span></div>
+                                    <div class="gridCR-col-50--desk gridCR-col-100--tab"><span class="cours__pourcent">+0,40 %</span></div>
 
                                 </div>
                             </footer>
@@ -261,11 +261,12 @@
     <section class="actuDoc">
         <div class="container--actuDoc">
             <section class="gridCR --VgridTop">
-                <div class="gridCR-col-29--desk gridCR-col-100--tab  gridCR-col-100--mob">
-                    <section class="actuDoc actuDoc--actualite">
+                <div class="gridCR-col-29--desk gridCR-col-100--tab">
+                    <section class="actuDoc__content actuDoc--actualite">
                         <header class="actuDoc__head --headGenric">
-                            <h2 class="actuDoc__title --titleGrey1 --titleHead">Actualités</h2>
+                            <h2 class="actuDoc__title"><span class="actuDoc__titleTxt  --titleGrey1 --titleHead">Actualités</span></h2>
                         </header>
+
                         <ul class="actuDoc__ul">
                             <li class="actuDoc__item">
                                 <div class="post">
@@ -274,7 +275,7 @@
                                             <h3 class="post__date ftUpp">10 octobre 2017</h3>
                                         </header>
                                         <div class="post__content">
-                                           <p> Le groupe Bolloré renforce<br /> sa participation dans Vivendi.</p>
+                                            <p> Le groupe Bolloré renforce<br /> sa participation dans Vivendi.</p>
                                         </div>
                                         <footer class="post__footer">
                                             <a href="actualites.html" class="post__link --link">En savoir plus</a>
@@ -289,7 +290,7 @@
                                             <h3 class="post__date ftUpp">28 septembre 2017</h3>
                                         </header>
                                         <div class="post__content">
-                                            Blue Solution acquiert la start-up <br /> américaine Capacitor Sciences <br /> et renforce son programme R&amp;D.
+                                            Blue Solution acquiert la start-up <br /> américaine Capacitor Sciences <br />                                            et renforce son programme R&amp;D.
                                         </div>
                                         <footer class="post__footer">
                                             <a href="actualites.html" class="post__link --link">En savoir plus</a>
@@ -303,108 +304,118 @@
                         </footer>
                     </section>
                 </div>
-                <div class="gridCR-col-29--desk gridCR-col-100--tab  gridCR-col-100--mob">
-                    <section class="actuDoc actuDoc--documents">
+                <div class="gridCR-col-29--desk gridCR-col-50--tab">
+                    <section class="actuDoc__content actuDoc--documents">
                         <header class="actuDoc__head --headGenric">
-                            <h2 class="actuDoc__title --titleGrey1 --titleHead">Documents</h2>
+                            <h2 class="actuDoc__title"><span class="actuDoc__titleTxt  --titleGrey1 --titleHead">Documents</span></h2>
                         </header>
-                        <h3 class="actuDoc__sTitle --titleGrey1 --titleHead ftUpp">Comuniqués de presse</h3>
-                        <ul class="actuDoc__ul">
-                            <li class="actuDoc__item">
-                                <div class="post">
-                                    <article class="post__item">
-                                        <header class="post__head">
-                                            <h3 class="post__date ftUpp">10 octobre 2017</h3>
-                                        </header>
-                                        <div class="post__content">
-                                            Information financière <br /> du troisième trimestre 2017.
-                                        </div>
-                                        <footer class="post__footer">
-                                            <a href="communiques.pdf" class="post__link --link">Télécharger</a>
-                                        </footer>
-                                    </article>
-                                </div>
-                            </li>
-                            <li class="actuDoc__item">
-                                <div class="post">
-                                    <article class="post__item">
-                                        <header class="post__head">
-                                            <h3 class="post__date ftUpp">12 OCTOBRE 2017</h3>
-                                        </header>
-                                        <div class="post__content">
-                                            Le groupe Bolloré frabchit le seuil <br /> du capital 15% de Vivendi.
-                                        </div>
-                                        <footer class="post__footer">
-                                            <a href="communiques.pdf" class="post__link --link">Télécharger</a>
-                                        </footer>
-                                    </article>
-                                </div>
-                            </li>
-                        </ul>
-                        <footer class="actuDoc__all">
-                            <a href="list-communiques.html" class="actuDoc__link">Tous les communiqués</a>
-                        </footer>
-                    </section>
-                </div>
-                <div class="gridCR-col-40--desk gridCR-col-100--tab  gridCR-col-100--mob">
-                    <section class="actuDoc actuDoc--publications">
-                        <header class="actuDoc__head --headGenric">
-                            <h2 class="actuDoc__title --titleGrey1 --titleHead invisible">Publications</h2>
-                        </header>
-                        <h3 class="actuDoc__sTitle --titleGrey1 --titleHead ftUpp">publications</h3>
-                        <ul class="actuDoc__ul">
-                            <li class="actuDoc__item">
-                                <article class="post">
-                                    <div class="gridCR">
-                                        <div class="gridCR-col-18--desk">
-                                            <div class="post__img">
-                                                <img src="img/pub_0.jpg" class="pub__image" alt="publciation 1">
-                                            </div>
-                                        </div>
-                                        <div class="gridCR-col-50--desk">
-                                            <div class="post__item">
-
-                                                <h3 class="post__date ftUpp --titleGrey1">10 janvier 2017</h3>
-                                                <div class="post__content --titleGrey1">
-                                                    <p>Document de référence 2016.</p>
-                                                </div>
-                                                <footer class="post__footer">
-                                                    <a href="telecharger.html" class="post__link --link">Télécharger</a>
-                                                </footer>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </article>
-                            </li>
-                            <li class="actuDoc__item">
-                                <article class="post">
-                                    <div class="gridCR">
-                                        <div class="gridCR-col-18--desk">
-                                            <div class="post__img">
-                                                <img src="img/pub_0.jpg" class="pub__image" alt="publciation 1">
-                                            </div>
-                                        </div>
-                                        <div class="gridCR-col-50--desk">
+                        <div class="actuDoc__bloc">
+                            <h3 class="actuDoc__sTitle --titleGrey1 --titleHead ftUpp">Comuniqués de presse</h3>
+                            <ul class="actuDoc__ul">
+                                <li class="actuDoc__item">
+                                    <div class="post">
+                                        <article class="post__item">
+                                            <header class="post__head">
+                                                <h3 class="post__date ftUpp">10 octobre 2017</h3>
+                                            </header>
                                             <div class="post__content">
-
-                                                <h3 class="post__date ftUpp --titleGrey1">10 avril 2017</h3>
-                                                <div class="post__content --titleGrey1">
-                                                    <p>Rapport d'activité 2016.</p>
-                                                </div>
-                                                <footer class="post__footer">
-                                                    <a href="telecharger.html" class="post__link --link">Télécharger</a>
-                                                </footer>
+                                                Information financière <br /> du troisième trimestre 2017.
                                             </div>
-                                        </div>
+                                            <footer class="post__footer">
+                                                <a href="communiques.pdf" class="post__link --link">Télécharger</a>
+                                            </footer>
+                                        </article>
                                     </div>
-                                </article>
-                            </li>
-                        </ul>
-                        <footer class="actuDoc__all">
-                            <a href="list-publication.html" class="actuDoc__link">Toutes les publications</a>
-                        </footer>
+                                </li>
+                                <li class="actuDoc__item">
+                                    <div class="post">
+                                        <article class="post__item">
+                                            <header class="post__head">
+                                                <h3 class="post__date ftUpp">12 OCTOBRE 2017</h3>
+                                            </header>
+                                            <div class="post__content">
+                                                Le groupe Bolloré frabchit le seuil <br /> du capital 15% de Vivendi.
+                                            </div>
+                                            <footer class="post__footer">
+                                                <a href="communiques.pdf" class="post__link --link">Télécharger</a>
+                                            </footer>
+                                        </article>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <footer class="actuDoc__all">
+                                <a href="list-communiques.html" class="actuDoc__link">Tous les communiqués</a>
+                            </footer>
+                        </div>
                     </section>
                 </div>
+                <div class="gridCR-col-40--desk gridCR-col-50--tab">
+                    <section class="actuDoc__content actuDoc--publications">
+                        <header class="actuDoc__head --headGenric">
+                            <h2 class="actuDoc__title"><span class="actuDoc__titleTxt --titleGrey1 --titleHead invisible">Publications</span></h2>
+                        </header>
+                        <div class="actuDoc__bloc">
+                            <h3 class="actuDoc__sTitle --titleGrey1 --titleHead ftUpp">publications</h3>
+
+                            <ul class="actuDoc__ul">
+                                <li class="actuDoc__item">
+                                    <article class="post">
+                                        <div class="gridCR">
+                                            <div class="gridCR-col-auto">
+                                                <div class="post__img">
+                                                    <img src="img/pub_0.jpg" class="pub__image resp" alt="publciation 1">
+                                                </div>
+                                            </div>
+                                            <div class="gridCR-col-50--desk">
+                                                <div class="post__item">
+
+                                                    <h3 class="post__date ftUpp --titleGrey1">10 janvier 2017</h3>
+                                                    <div class="post__content --titleGrey1">
+                                                        <p>Document de référence 2016.</p>
+                                                    </div>
+                                                    <footer class="post__footer">
+                                                        <a href="telecharger.html" class="post__link --link">Télécharger</a>
+                                                    </footer>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li class="actuDoc__item">
+                                    <article class="post">
+                                        <div class="gridCR">
+                                            <div class="gridCR-col-auto">
+                                                <div class="post__img">
+                                                    <img src="img/pub_0.jpg" class="pub__image resp" alt="publciation 1">
+                                                </div>
+                                            </div>
+                                            <div class="gridCR-col-50--desk">
+                                                <div class="post__item">
+
+                                                    <h3 class="post__date ftUpp --titleGrey1">10 avril 2017</h3>
+                                                    <div class="post__content --titleGrey1">
+                                                        <p>Rapport d'activité 2016.</p>
+                                                    </div>
+                                                    <footer class="post__footer">
+                                                        <a href="telecharger.html" class="post__link --link">Télécharger</a>
+                                                    </footer>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                            </ul>
+
+                            <footer class="actuDoc__all">
+                                <a href="list-publication.html" class="actuDoc__link">Toutes les publications</a>
+                            </footer>
+                        </div>
+                    </section>
+                </div>
+                <footer class="actuDoc__footer">
+                    <a href="faq.html" class="actuDoc__faqLink"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="actuDoc__faqtxt"> Accédez à notre FAQ</span></a>
+                </footer>
             </section>
         </div>
     </section>

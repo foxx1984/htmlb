@@ -31,16 +31,16 @@ class Slider {
                 elem.before(_cloneFirst);
             }
         }
-      
+
 
     }
     onNextClick(args) {
-       
+
 
         let _marginLeft = this.itemsElem.style.marginLeft == undefined ? 0 : this.itemsElem.style.marginLeft;
         let _width = this.itemsElem.offsetWidth + this.itemsElem.style.marginLeft;
         // _ul.style.marginLeft = `calc(-46.5vw - (${_width}px +  3.4vw))`;
-        this.ulContainer.style.marginLeft = '-40.5vw';
+       // this.ulContainer.style.marginLeft = '-40.5vw';
         let _newItem = this.getItem('next');
         this.addCurent(_newItem);
         this.addItem(_newItem, 'next');
@@ -65,10 +65,10 @@ class Slider {
     }
     onPrevClick(args) {
 
-       this.ulContainer.style.marginLeft = '-40.5vw';
+        //this.ulContainer.style.marginLeft = '-40.5vw';
         let _newItem = this.getItem('prev');
         this.addCurent(_newItem);
-   
+
         this.addItem(_newItem, 'prev');
 
 
@@ -133,6 +133,8 @@ class Bollore {
             this.init();
 
         } catch (e) {
+            console.log(e);
+
 
         }
 
@@ -141,14 +143,166 @@ class Bollore {
 
 
     init() {
-
+        this.mediaTabletLarge = '1024px';
         this.scrollTopDocument = null;
         this._sliderElem = document.querySelector('.slider__content');
         this._slider = null;
         //  this.setOnEventScrollTopMenuSticky();
+        this.setInitDevice();
         this.setSlider();
         this.setOnClickMenuEvent();
         this.setOnClickMenuClose();
+        this.setResize();
+
+    }
+    setResize() {
+        this.setContentMenuResize();
+        this.setBlocSliderFooter();
+    }
+    setBlocSliderFooter() {
+        // if (window.matchMedia("(min-width: 768px) and (max-width: 1024px)").matches)
+        if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
+            let elemPushSlider = document.querySelectorAll('.slider__push');
+            let elemSldierTitle = document.querySelectorAll('.slider__sTitle');
+            if (elemPushSlider != null) {
+                for (let i = 0; i < elemPushSlider.length; i++) {
+                    if (elemPushSlider[i] != null) {
+
+                        let parent = this.closest(elemPushSlider[i], 'article');
+                        if (parent != null) {
+                            parent.insertAdjacentElement('afterend', elemPushSlider[i]);
+                        }
+
+                        //deplacement title
+                        let elemSTitle = elemPushSlider[i].querySelector('.slider__sTitle');
+                        let elemTxt = elemPushSlider[i].querySelector('.slider__txt')
+                        if (elemSTitle != null && elemTxt != null) {
+                            elemTxt.insertAdjacentElement('afterbegin', elemSTitle);
+                        }
+
+                    }
+
+                }
+            }
+
+            //remise bloc par defaut
+        } else {
+
+            let elemSldierImage = document.querySelectorAll('.slider__image');
+            let elemSliderItem = document.querySelectorAll('.slider__item');
+            if (elemSldierImage != null && elemSldierImage.length > 0 && elemSliderItem != null && elemSliderItem.length > 0) {
+                for (let elem in elemSldierImage) {
+                    if (elemSldierImage[elem] != null) {
+
+                        let parent = this.closest(elemSldierImage[elem], 'article');
+                        if (parent != null) {
+                            let elemPushSlider = elemSliderItem[elem].querySelector('.slider__push');
+                            if (elemPushSlider != null) {
+                                elemSldierImage[elem].insertAdjacentElement('afterend', elemPushSlider);
+
+                                let elemSTitle = elemSliderItem[elem].querySelector('.slider__sTitle');
+                                let elemTitle2 = elemSliderItem[elem].querySelector('.slider__title2 ');
+                                if (elemSTitle != null && elemTitle2 != null) {
+                                    elemTitle2.insertAdjacentElement('afterbegin', elemSTitle);
+
+                                }
+                            }
+
+                        }
+
+                    }
+                }
+            }
+
+        }
+
+    }
+    setContentMenuResize() {
+
+        let elemMenuTablet = document.querySelector('.header__bloc--tablette');
+        if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
+
+            if (elemMenuTablet != null) {
+
+
+                let elemHeaderLogo = document.querySelector('.header__bloc--desktop .header__logo');
+                let elemSearch = document.querySelector('.header__bloc--desktop .header__search');
+                let search_input = document.querySelector('.header__bloc--desktop .search__input');
+                if (elemHeaderLogo != null && elemSearch != null && search_input != null) {
+                    let logoHtml = elemHeaderLogo.outerHTML;
+
+                    search_input.classList.add('search__input--off');
+
+                    let searchHtml = elemSearch.outerHTML;
+                    let tplMenu =
+                        `
+                                <div class="gridCR --VgridBottom">
+                            
+                                    <div class="gridCR-col-50">
+                                        <span class="burger icon-burger "></span>
+                                    </div>
+                                    <div class="gridCR-col-50">
+                                    ${logoHtml}
+                                    </div>
+                                    <div class="gridCR-col-50">
+                                        ${searchHtml}
+                                    </div>
+                                </div>
+                            `;
+
+                    elemMenuTablet.innerHTML = tplMenu;
+
+                }
+
+            }
+        } else {
+            if (elemMenuTablet != null) {
+                elemMenuTablet.innerHTML = "";
+            }
+        }
+    }
+    setInitDevice() {
+
+        let Device = {
+            isPaysage: false,
+            isMobile: false,
+            isTablette: false,
+            isDesktop: false,
+            isTouch: false,
+            isIOS: false,
+            isChrome: false,
+            resize: function (_this, arg) {
+                Device.check();
+                _this.setResize();
+
+            },
+            init: function (_this) {
+                window.addEventListener('resize', this.resize.bind(null, _this));
+
+                Device.check();
+            },
+            check: function () {
+
+                Device.isTouch = ('ontouchstart' in window);
+                Device.isPaysage = (window.innerWidth > window.innerHeight);
+                Device.isPortrait = (window.innerWidth < window.innerHeight);
+                Device.isMobile = (window.innerWidth < 768);
+                Device.isTablette = (window.innerWidth >= 768 && window.innerWidth < 940);
+                Device.isDesktop = (window.innerWidth >= 940);
+                Device.isIOS = (navigator.userAgent.indexOf("iPad") != -1) || (navigator.userAgent.indexOf("iPhone") != -1) || (navigator.userAgent.indexOf("iPod") != -1);
+                Device.isChrome = !!window.chrome;
+
+
+                document.querySelector('html').classList.toggle('mobile', Device.isMobile);
+                document.querySelector('html').classList.toggle('tablet', Device.isTablette);
+                document.querySelector('html').classList.toggle('desktop', Device.isDesktop);
+
+
+
+            }
+        }
+
+        Device.init(this);
 
     }
     setSlider() {
@@ -305,7 +459,7 @@ class Bollore {
         const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
 
         while (el) {
-            if (matchesSelector.call(el, selector)) {
+            if (matchesSelector != null && typeof (matchesSelector.call) != undefined && matchesSelector.call(el, selector)) {
                 return el;
             } else {
                 el = el.parentElement;

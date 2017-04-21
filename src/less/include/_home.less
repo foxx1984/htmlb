@@ -187,9 +187,7 @@
         transform: translateY(-50%);
     }
     &__next {
-        &.icon-fleche-1 {
-            right: 0.8vw;
-        }
+        right: 0.8vw;
     }
     &__prev {
         transform: rotate(-180deg);
@@ -229,7 +227,7 @@
 =            GROUPE            =
 =============================================*/
 
-.tilteHead {
+.titleHead {
     content: '';
     .dispI;
     position: absolute;
@@ -257,7 +255,7 @@
     &__txt {
         .txt-13;
         color: @grey-3;
-        line-height: 2.1vw;
+        line-height: normal;
         .txtR;
     }
     &__title {
@@ -265,7 +263,7 @@
         position: relative;
         width: 100%;
         &:before {
-            .tilteHead;
+            .titleHead;
         }
     }
     &__link {
@@ -332,7 +330,7 @@
         position: relative;
         width: 100%;
         &:before {
-            .tilteHead;
+            .titleHead;
             width: 100%;
         }
     }
@@ -361,7 +359,7 @@
         .txtC;
         .titleHeadH2;
         &:before {
-            .tilteHead;
+            .titleHead;
             width: 100%;
         }
     }
@@ -423,7 +421,9 @@
         .txt-19;
         margin-top: 4%;
     }
-    &__title {}
+    &__title {
+        .txt-15;
+    }
 }
 
 
@@ -462,7 +462,7 @@
         width: 24.5vw;
         height: 4.4vw;
         margin-bottom: 2%;
-        .txt-20;
+        .txt-25;
         &:last-child {
             margin-bottom: 0;
         }
@@ -519,7 +519,7 @@
         .txtC;
         .titleHeadH2;
         &:before {
-            .tilteHead;
+            .titleHead;
             left: auto;
             right: auto;
             width: 100%;
@@ -630,23 +630,48 @@
 }
 
 .fixBloc {
-    min-height: 22.5vw;
-    max-height: 22.5vw;
-    overflow: hidden;
+    // min-height: 22.5vw;
+    // max-height: 22.5vw;
+    // overflow: hidden;
 }
+
 .ulMargin {
-  margin-top: 2.8%;
+    margin-top: 2.8%;
 }
+
 .footerBloc {
     margin-top: 12%;
 }
 
 .actuDoc {
-    &--actualite,
-    &--documents,
-    &--publications {
+    &__content {
         .fixBloc;
     }
+    &__footer {
+        width: 100%;
+        .txtR;
+        margin-top: 5%;
+        margin-right: 10vw;
+    }
+    &__faqLink {
+        .dispI;
+        background-color: @blue-4;
+        color: @white-3; //.txt-26;
+        .txt-26;
+        padding: 1.6% 4.05%;
+        .fa-comments-o {
+            .dispI;
+            vertical-align: middle;
+        }
+    }
+    &__faqtxt {
+        color: @white-3;
+        vertical-align: middle;
+        .dispI;
+    }
+    &--actualite,
+    &--documents,
+    &--publications {}
     &--actualite,
     &--documents {
         .padBloc;
@@ -659,7 +684,7 @@
     }
     &--documents {
         .actuDoc__ul {
-          .ulMargin;
+            .ulMargin;
         }
     }
     &--publications {
@@ -667,7 +692,7 @@
             margin-bottom: 4%;
         }
         .actuDoc__ul {
-           .ulMargin;
+            .ulMargin;
         }
         .actuDoc__item {
             margin-bottom: 1.5%;
@@ -678,6 +703,11 @@
         .actuDoc__all {
             margin-top: 6%;
         }
+        .post {
+            &__item {
+                margin-left: 2vw;
+            }
+        }
     }
     &__head {}
     &__title {}
@@ -685,7 +715,9 @@
         .txt-1;
         color: @blue-8;
     }
-    &__ul {}
+    &__ul {
+        min-height: 13vw;
+    }
     &__item {}
     &__all {
         .txt-11;
@@ -744,12 +776,10 @@
 .pub {
     &__link {}
     &__img {
-        max-width: 77px;
-        width: 100%;
-        height: auto;
+        width: 77px;
     }
     &__image {
-        box-shadow: -1px 5px 22px 3px rgba(163, 163, 163, 0.48);
+        box-shadow: 0px 1px 3px 1px rgba(163, 163, 163, 0.48);
     }
     &__content {
         margin: 2.8% 0;
@@ -774,7 +804,7 @@
     &--actuDoc {
         padding-top: 2.0%;
         padding-left: 19.5%;
-        padding-bottom: 5.5%;
+        padding-bottom: 0;
     }
     &--chiffre {
         padding-bottom: 1.1%;
