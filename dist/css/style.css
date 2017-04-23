@@ -4495,6 +4495,11 @@ textarea {
   font-weight: 400;
   font-size: 1.4rem;
 }
+@media screen and (max-width: 1024px) {
+  .txt-2 {
+    font-size: 2.202rem;
+  }
+}
 .txt-3 {
   font-family: "Gotham A", "Gotham B";
   font-style: normal;
@@ -4856,6 +4861,11 @@ a {
   font-weight: 400;
   font-size: 1.4rem;
 }
+@media screen and (max-width: 1024px) {
+  .header__bourse .icon-chiffre-1 {
+    font-size: 2.202rem;
+  }
+}
 .header__bourse .icon-chiffre-1:before {
   display: inline-block;
   vertical-align: bottom;
@@ -5084,6 +5094,11 @@ a {
   color: #007eba;
   padding-top: 1%;
   padding-bottom: 2.5%;
+}
+@media screen and (max-width: 1024px) {
+  .footer__content {
+    font-size: 2.202rem;
+  }
 }
 .navFooter {
   margin-top: 0.2%;
@@ -6096,6 +6111,11 @@ a {
   html {
     font-size: 0.69vw;
   }
+  /**
+     *
+     * container
+     *
+     */
   .container--actionnaires {
     padding-top: 3.1%;
     padding-bottom: 8.5%;
@@ -6105,6 +6125,11 @@ a {
     padding: 0;
     overflow: hidden;
   }
+  /**
+     *
+     * post items
+     *
+     */
   .post__img {
     width: 106px;
   }
@@ -6114,6 +6139,11 @@ a {
   .post__footer {
     margin-top: 6%;
   }
+  /**
+     *
+     * actu doc
+     *
+     */
   .actuDoc__footer {
     text-align: center;
     margin-right: 0;
@@ -6210,11 +6240,21 @@ a {
     margin: 0;
     text-align: center;
   }
+  /**
+     *
+     * msg
+     *
+     */
   .msg {
     text-align: center;
     margin-left: 0;
     padding-top: 4%;
   }
+  /**
+     *
+     * cours
+     *
+     */
   .cours {
     margin: 0 auto;
     width: 100%;
@@ -6255,6 +6295,11 @@ a {
     letter-spacing: 0.6vw;
     margin: 3vw 0;
   }
+  /**
+     *
+     * actionnaires
+     *
+     */
   .actionnaires__title:before {
     left: 0;
     right: 0;
@@ -6262,6 +6307,11 @@ a {
   .actionnaires__content {
     padding-top: 6%;
   }
+  /**
+     *
+     * talents
+     *
+     */
   .talents__content {
     padding: 3% 0 0% 22%;
     height: 29.39vw;
@@ -6283,12 +6333,22 @@ a {
     height: 5.59vw;
     letter-spacing: 0.1vw;
   }
+  /**
+     *
+     * activities
+     *
+     */
   .activites__article {
     padding-top: 3.4%;
   }
   .activites__content {
     padding: 6% 0;
   }
+  /**
+     *
+     * capsule
+     *
+     */
   .capsule__head {
     height: 17.9vw;
     min-height: none;
@@ -6297,6 +6357,11 @@ a {
   .capsule__link {
     padding: 4.2% 5%;
   }
+  /**
+     *
+     * chiffre
+     *
+     */
   .chiffre__keyFigure {
     text-align: center;
   }
@@ -6312,6 +6377,11 @@ a {
   .chiffre__bloc {
     padding: 0 15%;
   }
+  /**
+     *
+     * groupe
+     *
+     */
   .groupe__content {
     padding-top: 1%;
     padding-bottom: 2%;
@@ -6328,6 +6398,11 @@ a {
   .groupe__footer {
     text-align: center;
   }
+  /**
+     *
+     * slider
+     *
+     */
   .slider__link {
     position: absolute;
     right: 0;
@@ -6408,6 +6483,11 @@ a {
     padding-top: 6.5%;
     padding-right: 0;
   }
+  /**
+     *
+     * header
+     *
+     */
   .header__top {
     padding-left: 0;
     padding-right: 0;
@@ -6431,6 +6511,19 @@ a {
     display: none !important;
     visibility: hidden;
   }
+  .footer .navFooter {
+    margin-top: 4%;
+  }
+  .footer__content {
+    padding-top: 4%;
+    padding-bottom: 7%;
+    text-align: center;
+  }
+  /**
+     *
+     * search
+     *
+     */
   .search__form {
     text-align: right;
   }
