@@ -40,7 +40,7 @@ class Slider {
         let _marginLeft = this.itemsElem.style.marginLeft == undefined ? 0 : this.itemsElem.style.marginLeft;
         let _width = this.itemsElem.offsetWidth + this.itemsElem.style.marginLeft;
         // _ul.style.marginLeft = `calc(-46.5vw - (${_width}px +  3.4vw))`;
-       // this.ulContainer.style.marginLeft = '-40.5vw';
+        // this.ulContainer.style.marginLeft = '-40.5vw';
         let _newItem = this.getItem('next');
         this.addCurent(_newItem);
         this.addItem(_newItem, 'next');
@@ -144,26 +144,198 @@ class Bollore {
 
     init() {
         this.mediaTabletLarge = '1024px';
+        this.content = document.querySelector('.content');
+        this.overlay = '<div class="overlay"></div>';
         this.scrollTopDocument = null;
         this._sliderElem = document.querySelector('.slider__content');
         this._slider = null;
-        //  this.setOnEventScrollTopMenuSticky();
+        this.header = document.querySelector('.header');
+
         this.setInitDevice();
         this.setSlider();
         this.setOnClickMenuEvent();
         this.setOnClickMenuClose();
         this.setResize();
 
+
+
     }
     setResize() {
         this.setContentMenuResize();
         this.setBlocSliderFooter();
+        this.setSearch();
+        this.setBurger();
+        this.setMenuNavFirst();
+        this.setOnEventScrollTopMenuSticky();
+    }
+    setMenuNavFirst() {
+        let _liArray = document.querySelectorAll('.menu__li');
+        if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
+
+
+            //Clic Menu Nav First en Mode tablette  / Mobile
+            if (_liArray != null && _liArray.length > 0)
+                this.addEventListenerAll(_liArray, 'click', (args) => {
+                    //tous les LI non cliqué à cacher
+                    let _liElems = document.querySelectorAll('.menu__li:not(.menu__li--on)');
+                    let _elemOn = document.querySelector('.menu__li--on');
+
+                    if (_liElems != null) {
+                        let elem = null;
+                        Array.from(_liElems).forEach((elem, index) => {
+                            elem.classList.add('menu__li--off');
+                        });
+
+                    }
+
+                    _elemOn.classList.add('menu__li--active');
+
+
+                });
+
+        } else {
+            if (_liArray != null && _liArray.length > 0) {
+                this.removeEventListenerAll(_liArray, 'click', (args) => {
+
+                });
+            }
+
+        }
+
+    }
+    setBurger() {
+        let _burger = document.querySelector('.burger');
+        let _search = document.querySelector('.header__bloc--tablette .header__search');
+        let _langue = document.querySelector('.header__bloc--tablette .header__langue');
+        let _close = document.querySelector('.header__bloc--tablette .close');
+
+        let _navSecond = document.querySelector('.header__middle');
+        let _navFirst = document.querySelector('.header__menu');
+        let _navItem = document.querySelectorAll('.secondMenu__item--off');
+
+
+        if (_close != null) {
+            _close.addEventListener('click', (args) => {
+                _search.classList.remove('header__search--off');
+                _burger.classList.remove('burger--off');
+                _close.classList.add('close--off');
+                _langue.classList.add('header__langue--off');
+                _navFirst.classList.add('header__menu--off');
+
+                // add sticky menu
+                // this.header.classList.remove('sticky');
+                //    remove overlay
+                if (document.querySelector('.overlay') != null) {
+
+
+                    document.querySelector('.overlay').remove();
+
+                }
+                _navSecond.classList.add('header__middle--off');
+
+                let _liArray = document.querySelectorAll('.menu__li');
+
+                Array.from(_liArray).forEach((elem, index) => {
+                    elem.classList.remove('menu__li--active');
+                    elem.classList.remove('menu__li--off');
+                });
+
+
+            });
+        }
+
+        if (_burger != null && _search != null && _langue != null) {
+            _burger.addEventListener('click', (event) => {
+
+                // add sticky menu
+                this.header.classList.add('sticky');
+
+                //set overlay 
+                if (this.content != null) {
+                    this.content.insertAdjacentHTML('afterend', this.overlay);
+                }
+                // Affiche la nav level 1
+
+                if (_navFirst != null) {
+                    _navFirst.classList.remove('header__menu--off');
+                }
+                // affiche le second menu tablette et mobile
+                // if (_navSecond != null) {
+                //     _navSecond.classList.remove('header__middle--off');
+
+                //     if (_navItem != null && _navItem.length > 0) {
+                //         for (let _item in _navItem) {
+                //             _navItem[_item].classList.remove('secondMenu__item--off');
+                //         }
+                //     }
+                // }
+                // Click sur le burger
+
+                _burger.classList.add('burger--off');
+                _close.classList.remove('close--off');
+
+                _search.classList.add('header__search--off');
+                _langue.classList.remove('header__langue--off');
+
+
+
+
+            });
+        }
+    }
+    setSearch() {
+        let elemBtn = document.querySelector('.header__bloc--tablette .search__btn');
+        let elemSearchInput = document.querySelector('.header__bloc--tablette .search__input');
+        let _search = document.querySelector('.header__bloc--tablette .header__search');
+        let _langue = document.querySelector('.header__bloc--tablette .header__langue');
+
+
+
+        if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
+
+            if (elemBtn != null && _search != null && _langue != null) {
+
+
+
+                _langue.classList.add('header__langue--off');
+
+                elemBtn.setAttribute('type', 'button');
+                elemBtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    if (elemSearchInput != null) {
+
+
+                        if (!elemSearchInput.classList.contains('search__input--off')) {
+                            elemBtn.form.submit();
+                        }
+                        elemSearchInput.classList.remove('search__input--off');
+
+
+                    }
+                });
+
+            }
+
+
+        }
+        //desktop
+        else {
+            if (_search != null) {
+                _search.classList.remove('header__search--off');
+
+
+
+            }
+        }
     }
     setBlocSliderFooter() {
         // if (window.matchMedia("(min-width: 768px) and (max-width: 1024px)").matches)
+
+
         if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
             let elemPushSlider = document.querySelectorAll('.slider__push');
             let elemSldierTitle = document.querySelectorAll('.slider__sTitle');
+
             if (elemPushSlider != null) {
                 for (let i = 0; i < elemPushSlider.length; i++) {
                     if (elemPushSlider[i] != null) {
@@ -183,6 +355,9 @@ class Bollore {
                     }
 
                 }
+
+
+
             }
 
             //remise bloc par defaut
@@ -212,6 +387,7 @@ class Bollore {
 
                     }
                 }
+
             }
 
         }
@@ -220,6 +396,11 @@ class Bollore {
     setContentMenuResize() {
 
         let elemMenuTablet = document.querySelector('.header__bloc--tablette');
+        let search_input = document.querySelector('.header__bloc--desktop .search__input');
+        let elemLangue = document.querySelector('.header__bloc--desktop .header__langue');
+        let elemNavFirst = document.querySelector('.header__bloc--desktop .header__menu');
+        let elemHeadertop = document.querySelector('.header__top');
+        let elemMenuContainer = document.querySelector('.header__menuContainer');
         if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
 
             if (elemMenuTablet != null) {
@@ -227,27 +408,46 @@ class Bollore {
 
                 let elemHeaderLogo = document.querySelector('.header__bloc--desktop .header__logo');
                 let elemSearch = document.querySelector('.header__bloc--desktop .header__search');
-                let search_input = document.querySelector('.header__bloc--desktop .search__input');
+
                 if (elemHeaderLogo != null && elemSearch != null && search_input != null) {
                     let logoHtml = elemHeaderLogo.outerHTML;
 
                     search_input.classList.add('search__input--off');
 
                     let searchHtml = elemSearch.outerHTML;
+                    let elemLangueHtml = elemLangue.outerHTML;
+
+                    elemNavFirst.classList.add('header__menu--off');
+                    let elemNavHtml = elemNavFirst.outerHTML;
+
+                    if (elemHeadertop != null) {
+                        elemHeadertop.insertAdjacentElement('beforeend', elemNavFirst);
+
+                    }
+
                     let tplMenu =
                         `
                                 <div class="gridCR --VgridBottom">
                             
                                     <div class="gridCR-col-50">
                                         <span class="burger icon-burger "></span>
+                                        <div class="close close--off">
+                                             <div class="close__left"></div>
+                                             <div class="close__right"></div>
+                                         </div>
                                     </div>
                                     <div class="gridCR-col-50">
                                     ${logoHtml}
                                     </div>
                                     <div class="gridCR-col-50">
+                                        ${elemLangueHtml}
                                         ${searchHtml}
                                     </div>
+                                  
                                 </div>
+                                
+                              
+                              
                             `;
 
                     elemMenuTablet.innerHTML = tplMenu;
@@ -256,8 +456,30 @@ class Bollore {
 
             }
         } else {
+            elemNavFirst = document.querySelector('.header__menu');
             if (elemMenuTablet != null) {
                 elemMenuTablet.innerHTML = "";
+                if (search_input != null) {
+
+
+                    search_input.classList.remove('search__input--off');
+                }
+                if (elemNavFirst != null && elemMenuContainer != null) {
+
+                    elemNavFirst.classList.remove('header__menu--off');
+
+
+                    elemMenuContainer.insertAdjacentElement('afterbegin', elemNavFirst);
+
+                }
+
+                if (document.querySelector('.overlay') != null) {
+
+
+                    document.querySelector('.overlay').remove();
+
+                }
+
             }
         }
     }
@@ -334,24 +556,35 @@ class Bollore {
     }
     setOnEventScrollTopMenuSticky() {
         this.scrollTopDocument = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-        window.addEventListener('scroll', (arg) => {
-            this.scrollTopDocument = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-            let _logo = document.querySelector('.header__logo');
-            let _headertop = document.querySelector('.header__top');
-            if (_logo != null && _headertop != null) {
-                let _logoTGop = this.getOffset(_logo);
-                if (_logoTGop.top > 0 && this.scrollTopDocument > _logoTGop.top) {
+        if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
+            this.header.classList.remove('sticky');
+            this.header.classList.add('sticky');
+        } else
 
-                    _headertop.classList.add('header__bloc--sticky');
+        {
+
+            window.addEventListener('scroll', (arg) => {
+                this.scrollTopDocument = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+                let _token = document.querySelector('.slider__head');
+
+                if (_token != null && this.header != null) {
+                    let _tokenTop = this.getOffset(_token);
+                    if (_tokenTop.top > 0 && this.scrollTopDocument > _tokenTop.top) {
+                        if (!this.header.classList.contains('sticky')) {
+                            this.header.classList.add('sticky');
+                        }
 
 
-                } else {
-                    _headertop.classList.remove('header__bloc--sticky');
 
+                    } else {
+                        this.header.classList.remove('sticky');
+
+
+                    }
                 }
-            }
 
-        })
+            });
+        }
 
     }
     getOffset(el) {
@@ -473,6 +706,17 @@ class Bollore {
             Array.from(selectors).forEach((selector, index) => {
 
                 selector.addEventListener(event, callback);
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    removeEventListenerAll(selectors, event, callback) {
+        try {
+            let selector = null;
+            Array.from(selectors).forEach((selector, index) => {
+
+                selector.removeEventListener(event, callback);
             });
         } catch (e) {
             console.log(e);

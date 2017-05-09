@@ -5,6 +5,7 @@
             "request": "launch",
             "name": "Launch Chrome against localhost",
             "url": "http://bollore.local",
+            "port": 9222,
             "webRoot": "${workspaceRoot}/dist/index.html"
         },
         {

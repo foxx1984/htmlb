@@ -62,6 +62,17 @@
     top: 0.6vw;
 }
 
+.trait(@color) {
+    &:after {
+        width: 100%;
+        background: @color;
+        height: 1px;
+        display: block;
+        content: '';
+        margin-top: 1px;
+    }
+}
+
 .\--linkPlus {
     &:after {
         width: 100%;

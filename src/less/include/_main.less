@@ -68,11 +68,14 @@ a {
 
 .close {
     width: 25px;
-    height:25px; //1.4vw;
+    height: 25px; //1.4vw;
     position: absolute;
     top: 0;
     right: 2%;
     cursor: pointer;
+    &--off {
+        .hidden;
+    }
     &__left,
     &__right {
         cursor: pointer;
@@ -91,11 +94,36 @@ a {
     }
 }
 
+.overlay {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+}
+
 .header {
+    &__menuContainer {
+        margin-top: 4.0%;
+    }
+    z-index: 1000;
+    overflow: hidden;
+    background: @white-3;
+    &.sticky {
+        position: fixed;
+        max-width: 1680px;
+        margin:0 auto;
+        top: 0;
+        width: 100%;
+        box-shadow:0px 8px 6px 0px rgba(14, 14, 14, 0.25);
+    }
     &__top,
     &__middle {
         .padLR;
     }
+    &__top {}
     &__middle {
         &--off {
             .hidden;
@@ -105,6 +133,11 @@ a {
         padding-bottom: 4.0%;
     }
     &__bottom {
+        &--off {
+            .hidden;
+        }
+    }
+    &__menu {
         &--off {
             .hidden;
         }
@@ -146,6 +179,9 @@ a {
         .dispI;
         .txtR;
         white-space: nowrap;
+        &--off {
+            .hidden;
+        }
     }
     &__dataBourseEuro {
         vertical-align: text-bottom;
@@ -169,7 +205,7 @@ a {
         width: 100%;
     }
     &__spanL {
-        .txt-1;
+        .txt-27;
         text-transform: uppercase;
         .dispI;
         position: relative;
@@ -204,11 +240,9 @@ a {
         outline: none;
         vertical-align: middle;
         background: transparent;
-
         &--on {
             display: block;
         }
-
         &--off {
             visibility: hidden;
         }
@@ -233,8 +267,10 @@ a {
             .hidden;
         }
     }
-    &__li {
+    &__title {
         .txt-6;
+    }
+    &__li {
         .txtC;
         .curP;
         padding: 1% 1% 0.9% 1%;
@@ -243,6 +279,12 @@ a {
         &--on {
             color: @blue-9;
             border-bottom: 0.6vw solid @blue-9;
+        }
+       
+        &.icon-fleche-1 {
+            &:before {
+                .hidden;
+            }
         }
     }
     &__ul {
@@ -335,7 +377,7 @@ a {
             padding: 8% 0;
             width: 100%;
             .secondMenu__title {
-                line-height:normal;
+                line-height: normal;
                 .ft-gotham-book;
                 padding: 0;
                 border: none;
@@ -360,7 +402,7 @@ a {
     &__content {
         border-top: 1px solid @blue-8;
         .txt-2;
-        margin-left: 7%;
+        padding-left: 7%;
         color: @blue-4;
         padding-top: 1%;
         padding-bottom: 2.5%;
@@ -395,10 +437,12 @@ a {
 /*=============================================
 =            burger            =
 =============================================*/
+
 .burger {
     .\--titleBlue4;
-    font-size:7.4rem;
+    font-size: 7.4rem;
     cursor: pointer;
+    &--off {
+        .hidden;
+    }
 }
-
-
