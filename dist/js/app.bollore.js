@@ -168,36 +168,98 @@ class Bollore {
         this.setMenuNavFirst();
         this.setOnEventScrollTopMenuSticky();
     }
-    setMenuNavFirst() {
-        let _liArray = document.querySelectorAll('.menu__li');
+    backNavMenu({
+        _liArray,
+        _liBacknav = document.querySelectorAll('.menu__li--active')
+    }) {
+        let handlerBack = function (args) {
+            console.log('back nav !!');
+            this.showMenuNavAll();
+            this.showMenuSecondHideAll();
+
+            args.currentTarget.classList.remove('menu__li--active');
+            this.removeEventListenerAll(_liBacknav, 'click', (args) => {
+
+                //On appelle la fonction clic nav menu niveau 1;
+                this.onClickMenuNav();
+
+            });
+
+
+
+        }
+
+        if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
+            if (_liBacknav != null && _liBacknav.length > 0) {
+
+                if (_liArray != null && _liArray.length > 0) {
+                    //On retire  l'event clic sur tous les li de niveau 1
+
+                    this.removeEventListenerAll(_liArray, 'click', this._handlerNav.bind(this));
+
+
+                }
+                //On ecoute le clic sur les li menu__li--active
+                this.addEventListenerAll(_liBacknav, 'click', handlerBack.bind(this));
+
+
+
+            }
+
+        } else {
+            this.removeEventListenerAll(_liBacknav, 'click', handlerBack.bind(this));
+        }
+
+    }
+    onClickMenuNav(_liArray = document.querySelectorAll('.menu__li')) {
+        //Clic Menu Nav First en Mode tablette  / Mobile
+
+        if (_liArray != null && _liArray.length > 0)
+
+            this.addEventListenerAll(_liArray, 'click', this._handlerNav.bind(this));
+
+
+
+
+    }
+    setMenuNavFirst(_liArray = document.querySelectorAll('.menu__li')) {
+
+        //clic sur un lien niveau 1
+        this._handlerNav = function () {
+            //récupère tous les LI non sélectionnés à cacher
+            let _liElems = document.querySelectorAll('.menu__li:not(.menu__li--on)');
+            let _elemOn = document.querySelector('.menu__li--on');
+
+            if (_liElems != null) {
+                let elem = null;
+                Array.from(_liElems).forEach((elem, index) => {
+                    elem.classList.add('menu__li--off');
+                });
+
+            }
+
+            _elemOn.classList.add('menu__li--active');
+
+            //Listener Click back niveau 1
+            this.backNavMenu({
+                _liArray
+            });
+
+
+        };
+
+
+
         if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
 
-
-            //Clic Menu Nav First en Mode tablette  / Mobile
-            if (_liArray != null && _liArray.length > 0)
-                this.addEventListenerAll(_liArray, 'click', (args) => {
-                    //tous les LI non cliqué à cacher
-                    let _liElems = document.querySelectorAll('.menu__li:not(.menu__li--on)');
-                    let _elemOn = document.querySelector('.menu__li--on');
-
-                    if (_liElems != null) {
-                        let elem = null;
-                        Array.from(_liElems).forEach((elem, index) => {
-                            elem.classList.add('menu__li--off');
-                        });
-
-                    }
-
-                    _elemOn.classList.add('menu__li--active');
+            this.onClickMenuNav(_liArray);
 
 
-                });
+
 
         } else {
             if (_liArray != null && _liArray.length > 0) {
-                this.removeEventListenerAll(_liArray, 'click', (args) => {
-
-                });
+                this.removeEventListenerAll(_liArray, 'click', this._handlerNav.bind(this));
             }
 
         }
@@ -245,6 +307,7 @@ class Bollore {
         }
 
         if (_burger != null && _search != null && _langue != null) {
+            // Click sur le burger
             _burger.addEventListener('click', (event) => {
 
                 // add sticky menu
@@ -259,17 +322,8 @@ class Bollore {
                 if (_navFirst != null) {
                     _navFirst.classList.remove('header__menu--off');
                 }
-                // affiche le second menu tablette et mobile
-                // if (_navSecond != null) {
-                //     _navSecond.classList.remove('header__middle--off');
 
-                //     if (_navItem != null && _navItem.length > 0) {
-                //         for (let _item in _navItem) {
-                //             _navItem[_item].classList.remove('secondMenu__item--off');
-                //         }
-                //     }
-                // }
-                // Click sur le burger
+
 
                 _burger.classList.add('burger--off');
                 _close.classList.remove('close--off');
@@ -403,8 +457,8 @@ class Bollore {
         let elemMenuContainer = document.querySelector('.header__menuContainer');
         if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
 
-            if (elemMenuTablet != null) {
-
+            if (elemMenuTablet != null && elemNavFirst != null) {
+                elemNavFirst = document.querySelector('.header__bloc--desktop .header__menu');
 
                 let elemHeaderLogo = document.querySelector('.header__bloc--desktop .header__logo');
                 let elemSearch = document.querySelector('.header__bloc--desktop .header__search');
@@ -661,6 +715,35 @@ class Bollore {
 
 
     }
+    showMenuNavAll() {
+        let _elems = document.querySelectorAll('.menu__li:not(.menu__li--active)');
+        if (_elems != null && _elems.length > 0) {
+            let elem = null;
+            Array.from(_elems).forEach((elem, index) => {
+                if (elem.classList.contains('menu__li--off')) {
+                    elem.classList.remove('menu__li--off');
+                    elem.classList.add('menu__li--on');
+                }
+
+            });
+        }
+
+
+    }
+    showMenuSecondHideAll() {
+        let _elems = document.querySelectorAll(`.secondMenu__item`);
+        if (_elems != null && _elems.length > 0) {
+            let elem = null;
+            Array.from(_elems).forEach((elem, index) => {
+                if (!elem.classList.contains('secondMenu__item--off')) {
+                    elem.classList.add('secondMenu__item--off');
+
+                }
+
+            });
+
+        }
+    }
     showMenuSecond(token) {
 
         let _smenu = document.querySelector(`.secondMenu__item[data-menu='${token.id}']`);
@@ -703,9 +786,14 @@ class Bollore {
     addEventListenerAll(selectors, event, callback) {
         try {
             let selector = null;
+            var mycallback = function (args) {
+                callback(args);
+            }
             Array.from(selectors).forEach((selector, index) => {
-
-                selector.addEventListener(event, callback);
+                let mycallback = function (args) {
+                    callback(args);
+                }
+                selector.addEventListener(event, mycallback, true);
             });
         } catch (e) {
             console.log(e);
@@ -714,9 +802,13 @@ class Bollore {
     removeEventListenerAll(selectors, event, callback) {
         try {
             let selector = null;
-            Array.from(selectors).forEach((selector, index) => {
 
-                selector.removeEventListener(event, callback);
+            Array.from(selectors).forEach((selector, index) => {
+                let mycallback = function (args) {
+                    callback(args);
+                }
+
+                selector.removeEventListener(event, mycallback, true);
             });
         } catch (e) {
             console.log(e);

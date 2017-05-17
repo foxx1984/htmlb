@@ -4731,6 +4731,17 @@ textarea {
     font-size: 4.0rem;
   }
 }
+.txt-28 {
+  font-family: "Gotham A", "Gotham B";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+@media screen and (max-width: 1024px) {
+  .txt-28 {
+    font-size: 4.0rem;
+  }
+}
 .title-1 {
   font-size: 5.0rem;
   font-family: "Gotham A", "Gotham B";
@@ -4847,6 +4858,11 @@ a {
   right: 0;
   background: rgba(0, 0, 0, 0.7);
 }
+/**
+ *
+ * Header site
+ *
+ */
 .header {
   z-index: 1000;
   overflow: hidden;
