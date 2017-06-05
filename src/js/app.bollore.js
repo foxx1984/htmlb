@@ -168,46 +168,52 @@ class Bollore {
         this.setMenuNavFirst();
         this.setOnEventScrollTopMenuSticky();
     }
-    backNavMenu({
+    MenuWithBtnBack({
         _liArray,
+      
         _liBacknav = document.querySelectorAll('.menu__li--active')
     }) {
-        let handlerBack = function (args) {
-            console.log('back nav !!');
-            this.showMenuNavAll();
-            this.showMenuSecondHideAll();
-
-            args.currentTarget.classList.remove('menu__li--active');
-            this.removeEventListenerAll(_liBacknav, 'click', (args) => {
-
-                //On appelle la fonction clic nav menu niveau 1;
+        let _onclickBtnBack = function (args) {
+            args.preventDefault();
+             
+            //on retire l'event _onclickBtnBack sur le lenu actif
+            this.removeEventListenerAll(_liBacknav, 'click', _onclickBtnBack,()=> {
+                // On affiche le menu par defaut
+                this.showMenuNavAll();
+                // on cache le second menu
+                this.showMenuSecondHideAll();
+                args.currentTarget.classList.remove('menu__li--active');
+                // on bind  sur le menu de niveau 1 l'event _onClickNav sur tous les menus de niveau 1
                 this.onClickMenuNav();
-
             });
+
+           
 
 
 
         }
+        _onclickBtnBack = _onclickBtnBack.bind(this);
 
         if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
             if (_liBacknav != null && _liBacknav.length > 0) {
 
                 if (_liArray != null && _liArray.length > 0) {
-                    //On retire  l'event clic sur tous les li de niveau 1
+                    //On retire  l'event _onClickNav   sur tous les li de niveau 1
 
-                    this.removeEventListenerAll(_liArray, 'click', this._handlerNav.bind(this));
+                    this.removeEventListenerAll(_liArray, 'click', this._onClickNav,() => {
+                        //On ecoute le clic sur les li menu__li--active bouton retour
+                        this.addEventListenerAll(_liBacknav, 'click', _onclickBtnBack);
+                    });
 
 
                 }
-                //On ecoute le clic sur les li menu__li--active
-                this.addEventListenerAll(_liBacknav, 'click', handlerBack.bind(this));
 
 
 
             }
 
         } else {
-            this.removeEventListenerAll(_liBacknav, 'click', handlerBack.bind(this));
+            this.removeEventListenerAll(_liBacknav, 'click', _onclickBtnBack);
         }
 
     }
@@ -216,7 +222,7 @@ class Bollore {
 
         if (_liArray != null && _liArray.length > 0)
 
-            this.addEventListenerAll(_liArray, 'click', this._handlerNav.bind(this));
+            this.addEventListenerAll(_liArray, 'click', this._onClickNav);
 
 
 
@@ -225,10 +231,12 @@ class Bollore {
     setMenuNavFirst(_liArray = document.querySelectorAll('.menu__li')) {
 
         //clic sur un lien niveau 1
-        this._handlerNav = function () {
+        this._onClickNav = function (args) {
+            args.preventDefault();
+
             //récupère tous les LI non sélectionnés à cacher
             let _liElems = document.querySelectorAll('.menu__li:not(.menu__li--on)');
-            let _elemOn = document.querySelector('.menu__li--on');
+            let _elemOn = args.currentTarget;
 
             if (_liElems != null) {
                 let elem = null;
@@ -240,14 +248,15 @@ class Bollore {
 
             _elemOn.classList.add('menu__li--active');
 
-            //Listener Click back niveau 1
-            this.backNavMenu({
+            //Affiche le menu avec le bouton retour
+            this.MenuWithBtnBack({
+               
                 _liArray
             });
 
 
         };
-
+        this._onClickNav = this._onClickNav.bind(this);
 
 
         if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
@@ -259,7 +268,7 @@ class Bollore {
 
         } else {
             if (_liArray != null && _liArray.length > 0) {
-                this.removeEventListenerAll(_liArray, 'click', this._handlerNav.bind(this));
+                this.removeEventListenerAll(_liArray, 'click', this._onClickNav );
             }
 
         }
@@ -786,30 +795,36 @@ class Bollore {
     addEventListenerAll(selectors, event, callback) {
         try {
             let selector = null;
-            var mycallback = function (args) {
-                callback(args);
-            }
+            // var mycallback = function (args) {
+            //     callback(args);
+            // }
             Array.from(selectors).forEach((selector, index) => {
-                let mycallback = function (args) {
-                    callback(args);
-                }
-                selector.addEventListener(event, mycallback, true);
+             
+                selector.addEventListener(event, callback, false);
             });
         } catch (e) {
             console.log(e);
         }
     }
-    removeEventListenerAll(selectors, event, callback) {
+    removeEventListenerAll(selectors, event, callback, endCallBack) {
         try {
             let selector = null;
-
+            let itemsCount = 0;
             Array.from(selectors).forEach((selector, index) => {
-                let mycallback = function (args) {
-                    callback(args);
+               
+
+                selector.removeEventListener(event, callback, false);
+                itemsCount++;
+                if (selectors.length == itemsCount) {
+                    if (endCallBack != undefined) {
+                        endCallBack();
+                    }
+
                 }
 
-                selector.removeEventListener(event, mycallback, true);
+
             });
+
         } catch (e) {
             console.log(e);
         }

@@ -15,7 +15,8 @@ module.exports = function (grunt) {
         sprite: 'grunt-spritesmith',
         image: 'grunt-image',
         tinypng: 'grunt-tinypng',
-        focus: 'grunt-focus'
+        focus: 'grunt-focus',
+        browserSync:'grunt-browser-sync'
 
 
     });
@@ -52,7 +53,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         //gestion de la config wordpress pour dploiement
         wordpress: grunt.file.readJSON('wordpress.json'),
-        //tâche tinypng 
+       
         focus: {
             dev: {
                 exclude: ['less', 'js', 'includehtml']
@@ -62,10 +63,35 @@ module.exports = function (grunt) {
             },
 
         },
+
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src: [
+                        'dist/css/**/*.css',
+                        'dist/js/**/*.js',
+                        'dist/img/**/*.*',
+                        'dist/*.html'
+                    ]
+                },
+                options: {
+                    watchTask: true,
+                    server: './dist',
+                    debugInfo: true,
+                    logConnections: true,
+                    notify: true
+                  
+                  
+                   
+                  
+                }
+            }
+        },
+
         //tâche de surveillance de tous les fichiers *.less *.js *.html
         watch: {
             options: {
-                livereload: false
+                livereload: true
             },
 
             less: {
@@ -621,7 +647,9 @@ module.exports = function (grunt) {
         /* 'prettify',*/
 
         'clean:tmp',
-        'focus:dev'
+        'browserSync',
+        'focus:dev',
+        
 
     ]);
 
@@ -644,5 +672,5 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['clean:dist', 'dev']);
 
     //mode prod dist
-    grunt.registerTask('prod', ['clean:dist', 'dist']);
+    grunt.registerTask('build', ['clean:dist',   'dist']);
 };
