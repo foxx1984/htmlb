@@ -1,0 +1,205 @@
+/**
+ *
+ * Mobile
+ *
+ */
+
+@media screen and (max-width: @mobileLarge) {
+    // .\--linkPlus {
+    //     padding: 6.1% 5%;
+    // }
+    .\--linkN {
+        padding: 4.7% 5%;
+    }
+    
+    .activites {
+            padding-top: 5%;
+            &__content {
+               padding: 0 12%;
+        }
+    }
+    .capsule {
+        &__item {
+              padding-top: 20%;
+              padding-bottom: 13%;
+                border-bottom: 1px solid black;
+
+               
+        }
+        &__titleTxt{
+            margin-top: 6%;
+        }
+        &__footer {
+
+            margin-top: 32%;
+
+        }
+    }
+    .chiffre {
+        &__bloc {
+            padding: 9% 15%;
+        }
+
+        &__keyFigure {
+            padding-bottom: 14%;
+        }
+    }
+    .groupe {
+
+        &__content {
+            padding-bottom: 8%;
+        }
+        &__txt {
+            padding: 8% 9%;
+            line-height: 156%;
+        }
+    }
+    .secondMenu__li--item {
+        padding: 4.9% 12%;
+    }
+    .secondMenu__li--active {
+        padding: 6% 11% !important;
+        &:before {
+            top: 12.5vw;
+            left: 8%;
+        }
+    }
+    .menu__ul--level1 .menu__li--active {
+        padding: 6% 11% !important;
+        &:before {
+            top: 12.5vw;
+            left: 8%;
+        }
+    }
+    .menu__ul--level1 .menu__li:first-child {
+        padding: 6% 6%;
+    }
+    .menu__ul--level1 .menu__li,
+    .secondMenu__li {
+        padding: 6% 6%;
+        &:before {
+            right: 5%;
+            font-size: 6vw;
+        }
+    }
+    .secondMenu__li {}
+    .header__bloc--tablette .close,
+    .header__bloc--mobile .close {
+        bottom: 3vw;
+        width: 9.26vw;
+    }
+    .header__bloc--tablette .close__left,
+    .header__bloc--tablette .close__right {
+        height: 1.4vw;
+    }
+    .\--titleHead {
+        bottom: -3.2vw;
+    }
+    .header {
+        &.sticky {
+            padding-bottom: 0;
+        }
+        padding-top: 10%;
+        padding-bottom: 3%;
+        &__imgLogoBollore {
+            max-width: 344.75vw;
+            margin-top: 2vw;
+            position: relative;
+        }
+        &__top {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        &__middle {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        &__bloc--desktop {
+            .hiddenLS;
+        }
+    }
+    .slider__item:not(.slider__item--current) {
+        display: none;
+    }
+    .slider {
+        &__pagination {
+            margin: auto;
+            width: 100%;
+        }
+        &__txt {
+            .txtL;
+            width: auto;
+            padding-left: 11%;
+            left: 9vw;
+            padding-bottom: 3%;
+            &:before {
+                left: 4%;
+            }
+        }
+        &__link {
+            width: 45.2vw;
+            .dispB;
+            position: relative;
+            display: block;
+            left: 16vw;
+            bottom: 0.4vw;
+            padding: 6.1% 5%;
+        }
+        &__content {
+            .txtC;
+        }
+        &__push {
+            overflow: hidden;
+            height: auto;
+            padding-left: 9%;
+            padding-top: 11%;
+        }
+        .picto() {
+            position: absolute;
+            font-size: 15vw;
+            top: -23vw;
+            left: -6vw;
+        }
+        .icon-noPicto {
+            &:before {
+                .picto();
+            }
+        }
+        &__title2 {
+            &:before {
+                .picto();
+            }
+        }
+        &__next {
+            right: 0;
+            top: 29.2%;
+            font-size: 7vw;
+        }
+        &__prev {
+            left: 0;
+            font-size: 7vw;
+            top: 26%;
+        }
+        &__ul {
+            .dispI;
+            width: auto;
+            margin: auto;
+        }
+        &__item {
+          max-width: 78vw;
+         
+            width: auto;
+            margin: auto;
+        }
+    }
+    .burger {
+        position: relative;
+        top: 3vw;
+    }
+    .search {
+        &__btn {
+            font-size: 10.5rem;
+            position: relative;
+        }
+    }
+}

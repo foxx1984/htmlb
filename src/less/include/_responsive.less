@@ -21,6 +21,11 @@
     html {
         font-size: 0.69vw;
     }
+    .header {
+        &__menuFooter {
+            padding: 4% 6%;
+        }
+    }
     /**
      *
      * container
@@ -456,7 +461,19 @@
             vertical-align: middle;
             height: 100%;
             position: absolute;
-            right: 7.5vw;
+            right: 6%;
+        }
+    }
+    .secondMenu__ul--level1,
+    .secondMenu__ul--level2 {
+        display: none;
+        &.secondMenu__ul--off {
+            display: none;
+        }
+        .icon-fleche-1 {
+            &:before {
+                display: inline-block;
+            }
         }
     }
     .secondMenu__ul--level1 {
@@ -466,10 +483,8 @@
         .secondMenu__li {
             margin: 0;
             width: 100%;
+            cursor: pointer;
         }
-    }
-    .secondMenu__ul--level2 {
-        display: none;
     }
     .secondMenu {
         padding: 0;
@@ -481,6 +496,20 @@
         &__ul {
             padding: 0;
             display: block;
+            &--on {
+                display: block;
+                background-color: @blue-9;
+                 margin-bottom: -6%;
+             
+                padding: 0;
+            
+                 width: 106vw;
+                 left: -23%;
+                position: relative; 
+                .secondMenu__title {
+                    color: @white-3;
+                }
+            }
         }
         &__li {
             .communMenu;
@@ -494,6 +523,68 @@
      * menu
      *
      */
+
+     
+    .secondMenu__li {
+      
+        &:last-child {
+            border-bottom: 1px solid transparent;
+        }
+        .secondMenu__title {
+            vertical-align: middle;
+            width: auto;
+           font-weight: bold;
+            .dispI;
+        }
+          &--havas {
+              background-color: @color-havas;
+          }
+         &--direct-matin {
+             background-color: @color-direct-matin;
+         }
+        &--item {
+           
+             padding:3.4% 12%;
+           border-bottom:1px solid @white-3;
+           .txt-33;
+        }
+        &:before {
+            .dispI;
+            font-size: 5.0rem;
+            vertical-align: middle;
+            height: 100%;
+            position: absolute;
+            right: 8%;
+        }
+        &--active {
+             
+            & > .secondMenu__title {
+                padding-bottom: 5.5%;
+                color: @blue-9;
+                .trait(@blue-9)
+            }
+            background-color: @white-3;
+            color: @blue-9;
+            border-top: 1px solid @blue-9;
+            padding: 4% 11%;
+            .menu__title {
+                .trait(@blue-9)
+            }
+            &:first-child {
+                padding: 4% 11%;
+            }
+            &:before {
+                left: 8.5vw;
+                transform-origin: 0 0;
+                color: @blue-9;
+                right: auto;
+                right: auto;
+                top: 6.8vw;
+                transform-style: preserve-3d;
+                transform: rotate(180deg);
+            }
+        }
+    }
     .menu__ul--level1 {
         .menu__li {
             position: relative;
@@ -521,7 +612,7 @@
                 vertical-align: middle;
                 height: 100%;
                 position: absolute;
-                right: 7.5vw;
+                right: 8%;
             }
             &--active {
                 background-color: @white-3;
@@ -534,8 +625,6 @@
                 &:first-child {
                     padding: 4% 11%;
                 }
-            }
-            &.menu__li--active {
                 &:before {
                     left: 8.5vw;
                     transform-origin: 0 0;
@@ -547,6 +636,7 @@
                     transform: rotate(180deg);
                 }
             }
+            &.menu__li--active {}
         }
     }
     /**
@@ -666,29 +756,6 @@
             .hiddenLS;
         }
         &__bloc--mobile {
-            .hiddenLS;
-        }
-    }
-}
-
-
-/**
- *
- * Mobile
- *
- */
-
-@media screen and (max-width: @mobileLarge) {
-    .header {
-        &__top {
-            padding-left: 0;
-            padding-right: 0;
-        }
-        &__middle {
-            padding-left: 0;
-            padding-right: 0;
-        }
-        &__bloc--desktop {
             .hiddenLS;
         }
     }

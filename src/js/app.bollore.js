@@ -144,69 +144,180 @@ class Bollore {
 
     init() {
         this.mediaTabletLarge = '1024px';
+        this.mobile = '767px';
         this.content = document.querySelector('.content');
         this.overlay = '<div class="overlay"></div>';
         this.scrollTopDocument = null;
         this._sliderElem = document.querySelector('.slider__content');
         this._slider = null;
         this.header = document.querySelector('.header');
+        this.levelAction = [];
 
         this.setInitDevice();
         this.setSlider();
-        this.setOnClickMenuEvent();
-        this.setOnClickMenuClose();
+
         this.setResize();
 
 
 
+    }
+    setMenu() {
+        //Scrolling affiche menu en top
+
+        this.setOnEventScrollTopMenuSticky();
+
+        //2eme niveau
+        this.setOnClickLevelMenu('menu__li', '.menu__ul--level1 .menu__li', {
+            on: 'menu__li--on',
+            off: 'menu__li--off',
+            active: 'menu__li--active'
+
+        }, {
+            _selector: '.menu__ul--level1 .menu__li--on:not(.menu__li--active)',
+            _li: {
+
+                on: 'menu__li--on',
+                off: 'menu__li--off'
+
+            }
+        });
+
+        //3eme niveau
+        this.setOnClickLevelMenu('secondMenu__li', '.secondMenu__li .secondMenu__title', {
+            on: 'secondMenu__li--on',
+            off: 'secondMenu__li--off',
+            active: 'secondMenu__li--active'
+
+        }, {
+            _selector: '.secondMenu__ul--level1 .secondMenu__li:not(.secondMenu__li--active)',
+            _li: {
+
+                on: 'secondMenu__li--on',
+                off: 'secondMenu__li--off'
+
+            }
+        });
+
+        this.setOnClickMenuClose();
     }
     setResize() {
         this.setContentMenuResize();
         this.setBlocSliderFooter();
         this.setSearch();
         this.setBurger();
-        this.setMenuNavFirst();
-        this.setOnEventScrollTopMenuSticky();
+        this.setMenu();
+
+
     }
-    MenuWithBtnBack({
-        _liArray,
-      
-        _liBacknav = document.querySelectorAll('.menu__li--active')
+    menuWithBtnBack({
+
+        _level = 1,
+        _liBacknav = [],
+        _handler,
+        _liArray = document.querySelectorAll('.menu__ul--level1 .menu__li')
     }) {
-        let _onclickBtnBack = function (args) {
+        let _onclickBtnBack = function (liBacknav,myHandler, myliArray, args) {
+
+            let _prevent = true;
+            let _target = args.target;
+            if ((_target.classList.contains('secondMenu__title') && _target.closest('.secondMenu__link')) || _target.classList.contains('secondMenu__link')) {
+                _prevent = false;
+            }
+
+            if (!_prevent) {
+                return;
+            }
             args.preventDefault();
-             
+
             //on retire l'event _onclickBtnBack sur le lenu actif
-            this.removeEventListenerAll(_liBacknav, 'click', _onclickBtnBack,()=> {
-                // On affiche le menu par defaut
-                this.showMenuNavAll();
-                // on cache le second menu
-                this.showMenuSecondHideAll();
-                args.currentTarget.classList.remove('menu__li--active');
-                // on bind  sur le menu de niveau 1 l'event _onClickNav sur tous les menus de niveau 1
-                this.onClickMenuNav();
-            });
+            this.removeEventListenerAll(_liBacknav, 'click', _onclickBtnBack,
+                /*callback fonction à appeler après le remove listener*/
+                () => {
 
-           
+                    //hide link all
+                    let _nbreLevel = 0;
+                    let _data = {};
+                    for (let _level in this.levelAction) {
+                        this.levelAction[_level];
+                        _nbreLevel++;
+                        _data[_nbreLevel + ""] = _level;
+
+                    }
+
+                    this.setBaseCloseMenu();
+                    //Retour niveau 1er niveau
+                    if (_level - 1 == 0) {
+
+                        let _actionBack = this.levelAction[_data[_level + ""]];
+
+
+                        // let _handler = _actionBack.handler.bind(this, _actionBack.liArray);
+                        this.onClickMenuNav({
+
+                            _liArray: _actionBack.liArray,
+                            _handler: _actionBack.handler
+                        });
+
+                        this.showMenuNavAll();
+
+                    } else {
+
+
+                        let _actionBack = this.levelAction[_data[_level - 1 + ""]];
+                        let _elemback = [];
+                        _elemback.push(_actionBack.target);
 
 
 
-        }
-        _onclickBtnBack = _onclickBtnBack.bind(this);
+                        this.removeEventListenerAll(_elemback, 'click', _onclickBtnBack, () => {
+                            // let _handler = _actionBack.handler.bind(this, _actionBack.liArray);
+                            this.onClickMenuNav({
+
+                                _liArray: _actionBack.liArray,
+                                _handler: _actionBack.handler
+                            });
+
+
+                            this.onClickMenuNav({
+
+                                _liArray: myliArray,
+                                _handler: myHandler
+                            });
+
+
+                            _actionBack.target.click();
+
+                        });
+
+
+
+
+
+                    }
+
+
+
+
+                });
+
+
+
+
+
+ }
+
+        _onclickBtnBack = _onclickBtnBack.bind(this, _liBacknav, _handler,_liArray);
 
         if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
             if (_liBacknav != null && _liBacknav.length > 0) {
 
-                if (_liArray != null && _liArray.length > 0) {
-                    //On retire  l'event _onClickNav   sur tous les li de niveau 1
 
-                    this.removeEventListenerAll(_liArray, 'click', this._onClickNav,() => {
-                        //On ecoute le clic sur les li menu__li--active bouton retour
-                        this.addEventListenerAll(_liBacknav, 'click', _onclickBtnBack);
-                    });
+                //On retire  l'event click _handler   sur le li en cours
 
-
-                }
+                this.removeEventListenerAll(_liBacknav, 'click', _handler, () => {
+                    //On ecoute le clic sur le li en cours avec la classe XXXXXX--active bouton retour
+                    this.addEventListenerAll(_liBacknav, 'click', _onclickBtnBack);
+                });
 
 
 
@@ -217,62 +328,39 @@ class Bollore {
         }
 
     }
-    onClickMenuNav(_liArray = document.querySelectorAll('.menu__li')) {
+    onClickMenuNav({
+        _liArray = document.querySelectorAll('.menu__ul--level1 .menu__li'),
+        _handler
+    }) {
         //Clic Menu Nav First en Mode tablette  / Mobile
 
         if (_liArray != null && _liArray.length > 0)
 
-            this.addEventListenerAll(_liArray, 'click', this._onClickNav);
+            this.addEventListenerAll(_liArray, 'click', _handler);
 
 
 
 
     }
-    setMenuNavFirst(_liArray = document.querySelectorAll('.menu__li')) {
+    removeSticky() {
 
-        //clic sur un lien niveau 1
-        this._onClickNav = function (args) {
-            args.preventDefault();
-
-            //récupère tous les LI non sélectionnés à cacher
-            let _liElems = document.querySelectorAll('.menu__li:not(.menu__li--on)');
-            let _elemOn = args.currentTarget;
-
-            if (_liElems != null) {
-                let elem = null;
-                Array.from(_liElems).forEach((elem, index) => {
-                    elem.classList.add('menu__li--off');
-                });
-
-            }
-
-            _elemOn.classList.add('menu__li--active');
-
-            //Affiche le menu avec le bouton retour
-            this.MenuWithBtnBack({
-               
-                _liArray
-            });
+        this.header.classList.remove('sticky');
+        //    remove overlay
+        if (document.querySelector('.overlay') != null) {
 
 
-        };
-        this._onClickNav = this._onClickNav.bind(this);
+            document.querySelector('.overlay').remove();
 
-
-        if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
-
-            this.onClickMenuNav(_liArray);
-
-
-
-
-        } else {
-            if (_liArray != null && _liArray.length > 0) {
-                this.removeEventListenerAll(_liArray, 'click', this._onClickNav );
+        }
+    }
+    addOverlay() {
+        this.header.classList.add('sticky');
+        if (this.content != null) {
+            if (document.querySelector('.overlay') == null) {
+                this.content.insertAdjacentHTML('afterend', this.overlay);
             }
 
         }
-
     }
     setBurger() {
         let _burger = document.querySelector('.burger');
@@ -293,23 +381,21 @@ class Bollore {
                 _langue.classList.add('header__langue--off');
                 _navFirst.classList.add('header__menu--off');
 
-                // add sticky menu
-                // this.header.classList.remove('sticky');
-                //    remove overlay
-                if (document.querySelector('.overlay') != null) {
+
+                this.removeSticky();
 
 
-                    document.querySelector('.overlay').remove();
+                this.setBaseCloseMenu();
+                // _navSecond.classList.add('header__middle--off');
 
-                }
-                _navSecond.classList.add('header__middle--off');
+                // let _liArray = document.querySelectorAll('.menu__li');
 
-                let _liArray = document.querySelectorAll('.menu__li');
+                // Array.from(_liArray).forEach((elem, index) => {
+                //     elem.classList.remove('menu__li--active');
+                //     elem.classList.remove('menu__li--off');
+                // });
 
-                Array.from(_liArray).forEach((elem, index) => {
-                    elem.classList.remove('menu__li--active');
-                    elem.classList.remove('menu__li--off');
-                });
+                // this.closeMenu();
 
 
             });
@@ -317,17 +403,21 @@ class Bollore {
 
         if (_burger != null && _search != null && _langue != null) {
             // Click sur le burger
-            _burger.addEventListener('click', (event) => {
+            let _handler = function (args) {
+
+                args.preventDefault();
+
+                //clean menu nav1 et nav2
+                this.setBaseCloseMenu();
 
                 // add sticky menu
-                this.header.classList.add('sticky');
+
+
 
                 //set overlay 
-                if (this.content != null) {
-                    this.content.insertAdjacentHTML('afterend', this.overlay);
-                }
+                this.addOverlay();
                 // Affiche la nav level 1
-
+                this.showMenuNavAll();
                 if (_navFirst != null) {
                     _navFirst.classList.remove('header__menu--off');
                 }
@@ -343,7 +433,9 @@ class Bollore {
 
 
 
-            });
+            }
+            _handler = _handler.bind(this);
+            _burger.addEventListener('click', _handler);
         }
     }
     setSearch() {
@@ -464,9 +556,15 @@ class Bollore {
         let elemNavFirst = document.querySelector('.header__bloc--desktop .header__menu');
         let elemHeadertop = document.querySelector('.header__top');
         let elemMenuContainer = document.querySelector('.header__menuContainer');
+
         if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
 
+
+
             if (elemMenuTablet != null && elemNavFirst != null) {
+
+
+
                 elemNavFirst = document.querySelector('.header__bloc--desktop .header__menu');
 
                 let elemHeaderLogo = document.querySelector('.header__bloc--desktop .header__logo');
@@ -515,10 +613,13 @@ class Bollore {
 
                     elemMenuTablet.innerHTML = tplMenu;
 
+                    this.addOverlay();
+
                 }
 
             }
         } else {
+            this.setBaseCloseMenu();
             elemNavFirst = document.querySelector('.header__menu');
             if (elemMenuTablet != null) {
                 elemMenuTablet.innerHTML = "";
@@ -536,12 +637,9 @@ class Bollore {
 
                 }
 
-                if (document.querySelector('.overlay') != null) {
+                this.removeSticky();
 
 
-                    document.querySelector('.overlay').remove();
-
-                }
 
             }
         }
@@ -619,34 +717,54 @@ class Bollore {
     }
     setOnEventScrollTopMenuSticky() {
         this.scrollTopDocument = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+
+
+
+        window.addEventListener('scroll', (args) => {
+
+            args.preventDefault();
+            let _burger = document.querySelector('.burger');
+            this.scrollTopDocument = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+            let _token = document.querySelector('.slider__head');
+
+            if (_token != null && this.header != null) {
+                let _tokenTop = this.getOffset(_token);
+                if (_tokenTop.top > 0 && this.scrollTopDocument > _tokenTop.top) {
+                    if (!this.header.classList.contains('sticky')) {
+                        this.header.classList.add('sticky');
+                    }
+
+
+
+                } else {
+                    //burger open
+                    if (_burger != null && !_burger.classList.contains('burger--off')) {
+                        this.removeSticky();
+
+                    } else {
+                        if (!window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
+                            this.removeSticky();
+
+                        }
+                    }
+
+
+                }
+            }
+
+        });
         if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
-            this.header.classList.remove('sticky');
-            this.header.classList.add('sticky');
+
+
+            this.removeSticky();
+
+
+
         } else
 
         {
 
-            window.addEventListener('scroll', (arg) => {
-                this.scrollTopDocument = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-                let _token = document.querySelector('.slider__head');
 
-                if (_token != null && this.header != null) {
-                    let _tokenTop = this.getOffset(_token);
-                    if (_tokenTop.top > 0 && this.scrollTopDocument > _tokenTop.top) {
-                        if (!this.header.classList.contains('sticky')) {
-                            this.header.classList.add('sticky');
-                        }
-
-
-
-                    } else {
-                        this.header.classList.remove('sticky');
-
-
-                    }
-                }
-
-            });
         }
 
     }
@@ -660,51 +778,230 @@ class Bollore {
     }
     setOnClickMenuClose() {
         let _close = document.querySelector('.close');
-        _close.addEventListener('click', (arg) => {
-
-            this.closeMenu();
-            this.hideHoverMenuItem();
+        _close.addEventListener('click', (args) => {
+            args.preventDefault();
+            this.setBaseCloseMenu();
         });
     }
-    setOnClickMenuEvent() {
-        let _arrayMenuLevel1 = document.querySelectorAll('.menu__ul--level1 .menu__li');
+    setBaseCloseMenu() {
 
-        this.addEventListenerAll(_arrayMenuLevel1, 'click', (args) => {
-            args.stopPropagation();
-            this.cleanHideMenu();
+
+
+        this.closeMenu();
+        this.closeFooter();
+        this.hideFirstMenu();
+
+        this.hideSecondMenu();
+        this.hideThirdMenu();
+    }
+    showLevel(_target, {
+        off = '',
+        on = '',
+        active = ''
+    }) {
+        _target.classList.remove(off);
+        _target.classList.add(on);
+        _target.classList.add(active);
+    }
+    setOnClickLevelMenu(_elm = 'menu__li', _selector = '.menu__ul--level1 .menu__li', _li = {
+
+
+            on: 'menu__li--on',
+            off: 'menu__li--off',
+            active: 'menu__li--active'
+
+        },
+        _hoverhide = {
+            _selector: '.menu__ul--level1 .menu__li--on:not(.menu__li--active)',
+            _li: {
+
+                on: 'menu__li--on',
+                off: 'menu__li--off'
+
+            }
+        }) {
+
+
+
+
+        let _arrayMenuLevel1 = [];
+        let _level3 = false;
+        let _liArray = [];
+        let _objMenu = {
+
+        };
+        let _handler = function (_liArray, args) {
+
             let _target = args.currentTarget;
+            let _prevent = true;
+            let _targetElem = args.target;
+
+            if (_targetElem != null) {
+
+
+                if (_targetElem.classList.contains('secondMenu__li')) {
+
+                    let _result = _targetElem.querySelector(':first-child');
+                    if (_result.classList.contains('secondMenu__link')) {
+                        _prevent = false;
+                        _result.click();
+                    }
+
+
+                } else if (_targetElem.classList.contains('menu__li')) {
+
+                    let _result = _targetElem.querySelector(':first-child');
+                    if (_result.classList.contains('menu__link')) {
+                        _prevent = false;
+                        _result.click();
+                    }
+
+
+                } else if (_targetElem.classList.contains('menu__link') || (_targetElem.classList.contains('menu__title') && _targetElem.closest('.menu__link'))) {
+                    _prevent = false;
+                } else if ((_targetElem.classList.contains('secondMenu__title') && _targetElem.closest('.secondMenu__link')) || _targetElem.classList.contains('secondMenu__link')) {
+                    _prevent = false;
+                }
+            }
+
+            if (!_prevent) {
+                return;
+            }
+            args.preventDefault();
+
+
 
             let _smenu = _target.dataset.menu;
             let _link = _target.dataset.footerHref;
             let _txt = _target.dataset.footerTxt;
-            this.hideHoverMenuItem();
-            this.closeMenu();
-            _target.classList.add('menu__li--on');
+            let _level = 1;
+
+
+
+            this.setBaseCloseMenu();
+
+            this.showLevel(_target, _li);
+            _objMenu = {
+                target: _target,
+                liArray: _liArray,
+                handler: _handler
+            }
+
+            // mode level 1 et level 2
             if (_smenu != null) {
+                _level = 1;
+
+                if (this.levelAction[_target.classList.value] == null) {
+
+                    this.levelAction[_target.classList.value] = _objMenu;
+
+                }
+
 
                 let _obj = {
                     id: _smenu,
                     href: _link,
                     lbl: _txt
                 }
+                this.hideHoverMenu(_hoverhide._selector, _hoverhide._li);
 
                 this.showMenuSecond(_obj);
             }
+            // mode level 3
+            if (_level3) {
+                _level = 2;
+                if (this.levelAction[_target.classList.value] == null) {
+
+                    this.levelAction[_target.classList.value] = _objMenu;
+
+                }
+                this.hideHoverMenu(_hoverhide._selector, _hoverhide._li);
+                this.showMenuThird(args.currentTarget);
+
+            }
+
+
+            let _liBacknav = [];
+            _liBacknav.push(_target);
+
+            //Bouton Back set handler
+
+            this.menuWithBtnBack({
+                _level,
+
+                _liBacknav,
+                _handler,
+                _liArray
+            });
+
+        }
+
+
+        if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
 
 
 
-        });
+            if (_selector.indexOf('.secondMenu__li .secondMenu__title') > -1) {
+                _level3 = true;
+                let _arrayMenuLevel2title = document.querySelectorAll(_selector);
+
+                Array.from(_arrayMenuLevel2title).forEach((elem, index) => {
+                    let _secondeMenuLi = elem.closest('.secondMenu__li');
+                    _arrayMenuLevel1.push(_secondeMenuLi);
+
+
+
+
+                });
+
+            } else {
+                _arrayMenuLevel1 = document.querySelectorAll(_selector);
+
+            }
+            _liArray = _arrayMenuLevel1;
+            _handler = _handler.bind(this, _liArray);
+            this.onClickMenuNav({
+                _liArray,
+                _handler
+            });
+
+
+
+
+        } else {
+            if (_elm.indexOf('menu__li') > -1) {
+                _liArray = document.querySelectorAll(_selector);
+                _handler = _handler.bind(this, _liArray);
+                this.onClickMenuNav({
+                    _liArray,
+                    _handler
+                });
+            }
+
+
+        }
+        //   this.setMenuNav(_elm);
+
     }
-    hideHoverMenuItem() {
 
 
 
-        let _items = document.querySelectorAll('.menu__ul--level1 .menu__li--on');
-        let _li = null;
+    hideHoverMenu(_selector = '.menu__ul--level1 .menu__li--on:not(.menu__li--active)', _li = {
+
+        on: '',
+        off: ''
+
+    }) {
+
+
+
+        let _items = document.querySelectorAll(_selector);
+
         _items = [].slice.call(_items || []);
         for (let i = 0; i < _items.length; i++) {
-
-            _items[i].classList.remove('menu__li--on');
+            _items[i].classList.remove(_li.off);
+            _items[i].classList.add(_li.off);
+            _items[i].classList.remove(_li.on);
 
         }
     }
@@ -718,9 +1015,22 @@ class Bollore {
 
 
     }
+    closeFooter() {
+        let _footer = document.querySelector('.header__bottom');
+        if (_footer != null && !_footer.classList.contains('header__bottom--off')) {
+            _footer.classList.add('header__bottom--off');
+
+        }
+
+
+
+    }
     closeMenu() {
         document.querySelector('.header__middle').classList.add('header__middle--off');
         document.querySelector('.header__bottom').classList.add('header__bottom--off');
+
+
+
 
 
     }
@@ -736,6 +1046,8 @@ class Bollore {
 
             });
         }
+
+        this.levelAction= {};
 
 
     }
@@ -753,11 +1065,25 @@ class Bollore {
 
         }
     }
+    showMenuThird(args) {
+
+        let _menuThird = args.querySelector('.secondMenu__ul--level2');
+
+        _menuThird.classList.add('secondMenu__ul--on');
+        this.showMiddleMenu();
+        args.closest('.secondMenu__item').classList.remove('secondMenu__item--off');
+
+
+
+    }
+    showMiddleMenu() {
+        document.querySelector('.header__middle').classList.remove('header__middle--off');
+    }
     showMenuSecond(token) {
 
         let _smenu = document.querySelector(`.secondMenu__item[data-menu='${token.id}']`);
         if (_smenu != null) {
-            document.querySelector('.header__middle').classList.remove('header__middle--off');
+            this.showMiddleMenu();
             _smenu.classList.remove('secondMenu__item--off');
 
 
@@ -770,14 +1096,46 @@ class Bollore {
 
 
     }
-    cleanHideMenu() {
+    hideFirstMenu() {
+        let _arrayMenu = document.querySelectorAll('.menu__li');
+        let ul = null;
+        _arrayMenu = [].slice.call(_arrayMenu || []);
+        for (let i = 0; i < _arrayMenu.length; i++) {
+            _arrayMenu[i].classList.remove('menu__li--active');
+            _arrayMenu[i].classList.remove('menu__li--off');
+            _arrayMenu[i].classList.add('menu__li--off');
+            _arrayMenu[i].classList.remove('menu__li--on');
+        }
+    }
+    hideThirdMenu() {
+        let _arrayMenu = document.querySelectorAll('.secondMenu__li');
+        let ul = null;
+        _arrayMenu = [].slice.call(_arrayMenu || []);
+        for (let i = 0; i < _arrayMenu.length; i++) {
+            _arrayMenu[i].classList.remove('secondMenu__li--active');
+            _arrayMenu[i].classList.remove('secondMenu__li--off');
+            _arrayMenu[i].classList.remove('secondMenu__li--on');
+            _arrayMenu[i].classList.remove('secondMenu__item--on');
+
+        }
+        let _arrayMenuUl = document.querySelectorAll('.secondMenu__ul,.secondMenu__ul--level2');
+        for (let i = 0; i < _arrayMenuUl.length; i++) {
+            _arrayMenuUl[i].classList.remove('secondMenu__ul--on');
+            _arrayMenuUl[i].classList.remove('secondMenu__ul--active');
+
+
+        }
+
+    }
+    hideSecondMenu() {
         let _arrayMenu = document.querySelectorAll('.secondMenu__item');
         let ul = null;
         _arrayMenu = [].slice.call(_arrayMenu || []);
         for (let i = 0; i < _arrayMenu.length; i++) {
-
+            _arrayMenu[i].classList.remove('secondMenu__item--active');
             _arrayMenu[i].classList.remove('secondMenu__item--off');
             _arrayMenu[i].classList.add('secondMenu__item--off');
+            _arrayMenu[i].classList.remove('secondMenu__item--on');
         }
     }
     closest(el, selector) {
@@ -799,7 +1157,7 @@ class Bollore {
             //     callback(args);
             // }
             Array.from(selectors).forEach((selector, index) => {
-             
+
                 selector.addEventListener(event, callback, false);
             });
         } catch (e) {
@@ -811,7 +1169,7 @@ class Bollore {
             let selector = null;
             let itemsCount = 0;
             Array.from(selectors).forEach((selector, index) => {
-               
+
 
                 selector.removeEventListener(event, callback, false);
                 itemsCount++;
