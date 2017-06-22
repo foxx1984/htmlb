@@ -1,0 +1,43 @@
+.content--chiffreKey .mainChapeau+.bloc {
+    padding-top: 0;
+}
+
+.content {
+    &--chiffreKey {
+        &>.mainChapeau {
+            &+.bloc {
+             
+            }
+        }
+        .chiffreKey {
+            &__content {
+                border-bottom: 1px solid @grey-1;
+            }
+            padding-top: 3.5%;
+            &__pushChiffre {
+                .gridCR {
+                    &>div {
+                        .chiffre__data {
+                            text-align: center;
+                        }
+                        .chiffre__keyFigure {
+                            &:before {
+                                visibility: hidden;
+                                display: none;
+                            }
+                        }
+                    }
+                    &>div:first-child {
+                        .chiffre__data {}
+                        .chiffre__keyFigure {
+                            &:before {
+                                visibility: visible;
+                                display: inline-block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

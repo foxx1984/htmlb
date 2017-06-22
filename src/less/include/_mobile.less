@@ -11,41 +11,370 @@
     .\--linkN {
         padding: 4.7% 5%;
     }
-    
-    .activites {
-            padding-top: 5%;
+    .linkG {
+        margin: 0 7%;
+        padding: 4% 0;
+    }
+    .breadcrumb {
+        display: none;
+    }
+    .contenu {
+        .mainChapeau {
+            background: transparent;
+            margin: 13.8em 0 -4.6em 0;
+        }
+    }
+    .mainTitle {
+        &--blue {
+            bottom: -2.56vw !important;
+        }
+    }
+    .footer {
+        &__content {
+            padding-top: 10%;
+            padding-bottom: 5%;
+        }
+    }
+    .bloc {
+        padding: 8% 10.7% 0;
+        img {
+            padding-bottom: 8%;
+        }
+        p {
+            padding-bottom: 6%;
+        }
+    }
+    .mainTitle__text {
+        &.mainTitle--multiline {
+            top: 0.75em;
+        }
+    }
+    .mainTitle {
+        &__sub {
+            letter-spacing: normal
+        }
+    }
+    .headerGenerique {
+        max-height: 61.5vw;
+        overflow: hidden;
+        &--content {
+            max-height: none;
+            .headerGenerique__img {
+                height: auto;
+                max-height: none;
+            }
+        }
+    }
+    .pushData__euros {
+        left: auto;
+        margin-bottom: 5%;
+        .pushData__sup {
+            left: -0.5em;
+            top: -0.7em;
+        }
+    }
+    .pushData {
+        height: 117.9em;
+        width: 112.20em;
+        max-height: none;
+        max-width: none;
+        min-height: auto;
+        padding: 6% 5%;
+        margin-bottom: 12%;
+        &__item {
+            height: 85em;
+        }
+        &--generic {
+            .pushData__txt {
+                margin-bottom: 0.9em;
+            }
+        }
+        &__title {
+            margin-bottom: 9%;
+        }
+        &__txt {
+            margin-bottom: 4%;
+            sup {}
+        }
+        &__pourcentage {
+            margin-top: auto;
+            font-size: 10.5em;
+        }
+    }
+    .content--chiffre {
+        .actuDoc--publications {
+            .actuDoc__head {
+                margin-bottom: 0;
+            }
+            .post {
+                &__item {
+                    margin-left: 8%;
+                }
+            }
+        }
+        .post {
+            &__img {
+                width: 48.2em;
+            }
             &__content {
-               padding: 0 12%;
+                width: auto;
+                width: 9em;
+            }
+            &__item {}
+        }
+        .actuDoc {
+            &__bloc {
+                margin-bottom: 5%;
+            }
+            &__ul {
+                overflow: visible;
+            }
+            &__item {
+                display: none;
+                width: 100%;
+                &--current {
+                    display: block;
+                }
+            }
+        }
+        .chiffre {
+            &__keyFigure {
+                padding-bottom: 0;
+                margin-bottom: -21%;
+            }
+        }
+        .chiffreKey {
+            padding-top: 14%;
+            &__pushData {
+                margin-top: 30%;
+            }
+            &__pushDataContent {
+                padding: 10% 3% 0%;
+            }
+            &__pushChiffre {
+                .gridCR {
+                    &>div {
+                        .chiffre__keyFigure {
+                            &:before {
+                                visibility: hidden;
+                                display: block;
+                            }
+                        }
+                    }
+                    &>div:first-child {
+                        .chiffre__keyFigure {
+                            &:before {
+                                visibility: visible;
+                            }
+                        }
+                    }
+                    &>div:nth-child(2) {
+                        .chiffre__keyFigure {
+                            &:before {
+                                visibility: hidden;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .headerGenerique--content {
+            .headerGenerique__title {
+                .trait(@white-3);
+            }
+            .headerGenerique__bloc {
+                &--msg {
+                    .headerGenerique__content {
+                        width: auto;
+                    }
+                    margin: 12.7em 0 7.4em 0;
+                    padding: 12.6em 6em;
+                }
+            }
+        }
+    }
+    .post {
+        &__date {}
+        &__content {
+            margin: 3.8% 0;
+        }
+        &__img {
+            width: 35vw;
+        }
+    }
+    .msg {
+        padding-top: 9%;
+        &__txt {
+            width: 75%;
+            margin: 5% auto;
+        }
+    }
+    .margTop12() {
+        margin-top: 12%;
+    }
+    .navFooter {
+        &__item {
+            margin: 8% 0;
+            .dispB;
+            &:after {
+                content: none;
+            }
+        }
+    }
+    .actuDoc {
+        &__all {
+            margin-top: -2.5%;
+            margin-bottom: 6%;
+        }
+        &__faqLink {
+            padding: 4% 5.05%;
+            .fa-comments-o {
+                left: -3%;
+                top: 0;
+            }
+        }
+        &__bloc {
+            .dispI;
+            .txtL;
+        }
+        &__content {
+            text-align: center;
+        }
+        &__ul {}
+        &__item {
+            border-bottom: 1px solid black;
+            padding: 5% 0;
+        }
+        &__item:last-child {
+            border-bottom: 1px solid transparent;
+        }
+        &--publications {
+            .post__content {
+                margin: 10% 0;
+                line-height: 143%;
+            }
+            .post__item {
+                margin-left: 26%;
+            }
+            .actuDoc__head {
+                margin-bottom: -5%;
+            }
+            .actuDoc__all {
+                .margTop12();
+            }
+            .actuDoc__item {
+                border: transparent;
+            }
+        }
+        &--documents {
+            .actuDoc__all {
+                .margTop12();
+            }
+            .actuDoc__head {
+                margin-bottom: 17%;
+            }
+            .actuDoc__bloc {
+                margin-left: auto;
+            }
+        }
+        &--actualite {
+            .actuDoc__all {
+                margin-top: -2.5%;
+                margin-bottom: 6%;
+            }
+            .actuDoc__item {
+                .dispB;
+                padding: 13% 0 !important;
+            }
+            .actuDoc__item {
+                border-bottom: 1px solid black;
+            }
+            .actuDoc__item:last-child {
+                border-bottom: 1px solid transparent;
+            }
+        }
+    }
+    .cours {
+        padding: 5% 4%;
+        &__euros {
+            line-height: 171%;
+        }
+        &__title {
+            margin-bottom: 4%;
+            &:before {
+                font-size: 14.4vw;
+            }
+        }
+        &__txt {
+            width: 74%;
+            line-height: 133%;
+        }
+    }
+    .actionnaires {
+        &__content {
+            padding-top: 11%;
+        }
+    }
+    .talents {
+        &__linkOffres {
+            &:before {
+                line-height: 12.5vw;
+                font-size: 4vw;
+            }
+        }
+        &__title {
+            margin-bottom: 10.8%;
+        }
+        &__button {
+            width: 67.2vw;
+            height: 11.9vw;
+            &--offres {
+                margin-bottom: 3%;
+            }
+        }
+        &__content {
+            padding: 8% 0 0% 9%;
+            height: 65.1vw;
+            background-size: cover;
+            background-image: url('../img/img-talents-bg-mobile.jpg');
+        }
+    }
+    .activites {
+        padding-top: 5%;
+        &__content {
+            padding: 0 12%;
+            .gridCR-col-100--mob:last-child {
+                .capsule__item {
+                    border: transparent;
+                }
+            }
         }
     }
     .capsule {
         &__item {
-              padding-top: 20%;
-              padding-bottom: 13%;
-                border-bottom: 1px solid black;
-
-               
+            padding-top: 20%;
+            padding-bottom: 13%;
+            border-bottom: 1px solid black;
         }
-        &__titleTxt{
+        &__titleTxt {
             margin-top: 6%;
         }
         &__footer {
-
             margin-top: 32%;
-
         }
     }
     .chiffre {
+        &__content {
+            margin-bottom:-11%;
+        }
         &__bloc {
             padding: 9% 15%;
         }
-
         &__keyFigure {
-            padding-bottom: 14%;
+            padding-bottom: 14% !important;
         }
     }
     .groupe {
-
         &__content {
             padding-bottom: 8%;
         }
@@ -131,9 +460,13 @@
             width: auto;
             padding-left: 11%;
             left: 9vw;
-            padding-bottom: 3%;
+            padding-bottom: 9%;
             &:before {
                 left: 4%;
+                top: 3.3vw;
+            }
+            p {
+                width: 14.4em;
             }
         }
         &__link {
@@ -146,13 +479,13 @@
             padding: 6.1% 5%;
         }
         &__content {
+            padding-bottom: 4%;
             .txtC;
         }
         &__push {
             overflow: hidden;
             height: auto;
-            padding-left: 9%;
-            padding-top: 11%;
+            padding-left: 9%; // padding-top: 11%;
         }
         .picto() {
             position: absolute;
@@ -160,12 +493,13 @@
             top: -23vw;
             left: -6vw;
         }
-        .icon-noPicto {
+        &__title2.icon-noPicto {
             &:before {
                 .picto();
             }
         }
         &__title2 {
+            top: -5.3vw;
             &:before {
                 .picto();
             }
@@ -186,8 +520,7 @@
             margin: auto;
         }
         &__item {
-          max-width: 78vw;
-         
+            max-width: 78vw;
             width: auto;
             margin: auto;
         }

@@ -196,6 +196,10 @@ a {
         .dispI;
     }
     &__bloc {
+        &--fix {
+            z-index: 1;
+            overflow: visible;
+        }
         &--sticky {
             position: fixed;
         }
@@ -484,3 +488,145 @@ a {
         .hidden;
     }
 }
+
+
+/**
+ *
+ * content
+ *
+ */
+
+.trait(@color, @positon: 0, @height :1px) {
+    &:after {
+        background-color: @color;
+        position: absolute;
+        bottom: @positon;
+        left: 0;
+        right: 0;
+        height: @height;
+        .dispI;
+        content: '';
+    }
+}
+
+.link {
+    &--blue {
+        color: @blue-1;
+    }
+}
+
+.faqRight {
+    margin-left: 67%;
+}
+
+.isTablette,
+.isMobile {
+    display: none !important;
+}
+
+.linkT {
+    .dispI;
+    padding: 0% 5%;
+    text-decoration: underline;
+}
+
+.linkG {
+    color: @blue-1;
+    .txt-56;
+    .dispB;
+    padding: 4% 0;
+    border: 2px solid @blue-1;
+    position: absolute;
+    bottom: 7%;
+    left: 0;
+    right: 0;
+    margin: 0 12%;
+    text-decoration: underline;
+}
+
+.mainTitle__text {
+    &.mainTitle--red {
+        color: @red-5;
+        .txt-65;
+        top: 0.4em;
+    }
+}
+
+.mainTitle {
+    &__sub {
+        .dispB;
+        .txt-49;
+    }
+    &--blue {
+        color: @blue-9;
+        .txt-42;
+        .center();
+    }
+    &--red {
+        color: @red-5;
+        .txt-65;
+    }
+    &--grey {
+        .\--titleGrey1;
+        .txt-61;
+    }
+}
+
+.mainTitle__text {
+    &.mainTitle--multiline {
+        top: 1.45vw;
+    }
+}
+
+.headerGenerique--content {
+    .headerGenerique__bloc {
+        bottom: auto;
+    }
+    .headerGenerique__rubrique {
+        .txt-63;
+    }
+    .headerGenerique__title {
+        .txt-63;
+        position: relative; // .trait(@white-3);
+    }
+}
+
+.headerGenerique {
+    margin-top: 3em;
+    &__img {
+        height: 37vw;
+        position: relative;
+    }
+    &__bloc {
+        &--msg {
+            .headerGenerique__rubrique {
+                .txt-46;
+            }
+            .headerGenerique__title {
+                .txt-47;
+                padding: 5% 0;
+                &:after {
+                    content: none;
+                }
+            }
+            .headerGenerique__stitle {
+                color: @white-3;
+                .txt-48;
+            }
+            .headerGenerique__content {
+                position: absolute;
+                right: -3%;
+                width: 60em;
+            }
+        }
+    }
+}
+
+.mainChapeau__content {
+    &.mainChapeau__content--red {
+        .\--titleRed5;
+    }
+}
+
+
+

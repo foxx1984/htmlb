@@ -206,7 +206,30 @@ class Bollore {
         this.setSearch();
         this.setBurger();
         this.setMenu();
+        this.setFixRefresh();
 
+
+
+    }
+    setFixRefresh() {
+        let _bloc = document.querySelector('.header__bloc');
+        if (_bloc != null) {
+
+            if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
+                _bloc.classList.remove('header__bloc--fix');
+
+            } else {
+                setTimeout(function () {
+                    _bloc.classList.remove('header__bloc--fix');
+                    _bloc.classList.add('header__bloc--fix');
+                    _bloc.classList.remove('header__bloc--fix');
+                    console.log("Add fix menu");
+                }, 1500);
+
+
+            }
+
+        }
 
     }
     menuWithBtnBack({
@@ -216,7 +239,7 @@ class Bollore {
         _handler,
         _liArray = document.querySelectorAll('.menu__ul--level1 .menu__li')
     }) {
-        let _onclickBtnBack = function (liBacknav,myHandler, myliArray, args) {
+        let _onclickBtnBack = function (liBacknav, myHandler, myliArray, args) {
 
             let _prevent = true;
             let _target = args.target;
@@ -304,9 +327,9 @@ class Bollore {
 
 
 
- }
+        }
 
-        _onclickBtnBack = _onclickBtnBack.bind(this, _liBacknav, _handler,_liArray);
+        _onclickBtnBack = _onclickBtnBack.bind(this, _liBacknav, _handler, _liArray);
 
         if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
             if (_liBacknav != null && _liBacknav.length > 0) {
@@ -725,7 +748,7 @@ class Bollore {
             args.preventDefault();
             let _burger = document.querySelector('.burger');
             this.scrollTopDocument = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-            let _token = document.querySelector('.slider__head');
+            let _token = document.querySelector('.content');
 
             if (_token != null && this.header != null) {
                 let _tokenTop = this.getOffset(_token);
@@ -1047,7 +1070,7 @@ class Bollore {
             });
         }
 
-        this.levelAction= {};
+        this.levelAction = {};
 
 
     }
