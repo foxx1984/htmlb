@@ -119,7 +119,7 @@
     }
     .headerGenerique--content {
         .headerGenerique__title {
-            .dispI;
+            .dispB;
         }
     }
     .mainTitle__text {
@@ -133,6 +133,47 @@
         }
     }
     .content--chiffre {
+        &.content--chiffreKey {
+            .mainChapeau {
+                margin: 6.6em 0 3.5em 0;
+            }
+            .chiffreKey {
+                &__data {
+                    padding-bottom: 14%;
+                }
+                &__pushChiffre {
+                    .gridCR {
+                        &>div {
+                            .chiffre__keyFigure {
+                                padding-bottom: 0;
+                                margin-bottom: -24%;
+                                &:before {
+                                    visibility: hidden;
+                                    display: block;
+                                }
+                            }
+                        }
+                        &>div:nth-child(2) {
+                            .chiffre__keyFigure {
+                                &:before {
+                                    visibility: hidden;
+                                    display: block;
+                                }
+                            }
+                        }
+                        &>div:first-child {
+                            .chiffre__keyFigure {
+                                &:before {
+                                    width: 86vw;
+                                    visibility: visible;
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         .gridCR--colonne {
             flex-direction: row;
         }
@@ -391,6 +432,9 @@
             .actuDoc__bloc {
                 margin-left: 13.5vw;
             }
+            .actuDoc__title {
+                width: 100vw;
+            }
         }
         &--publications {
             .actuDoc__bloc {
@@ -630,7 +674,42 @@
      * slider
      *
      */
+    .slider {}
     .slider {
+        &--custom {
+            .icon-fleche-1 {}
+            .slider__prev {}
+            .slider__next {}
+            .slider__title2 {
+                margin-right: 0;
+            }
+            .slider__ul {
+                margin-left: -38.6vw;
+            }
+            .slider__item {
+                width: 55.5vw;
+            }
+            .slider__push {
+                &:before {
+                    content: none;
+                }
+            }
+            .slider__pagination {
+                width: 67.3vw;
+                bottom: 36.4%;
+                margin-left: 16.9vw;
+            }
+            .slider__txt {
+                padding: 0;
+                width: auto;
+                &:before {
+                    content: none;
+                }
+            }
+            .slider__title2 {
+                position: static;
+            }
+        }
         &__title {}
         &__link {
             position: absolute;
@@ -682,13 +761,13 @@
             padding: 0 4%;
         }
         &__item {
-        &--current{
-               .icon-information {
-                &:before{
-                    color:@blue-9;
+            &--current {
+                .icon-information {
+                    &:before {
+                        color: @blue-9;
+                    }
                 }
             }
-         }
             margin-right: 5.8vw;
         }
         &__ul {
@@ -697,11 +776,11 @@
         &__pagination {
             width: 68.999vw;
             margin-left: 15.8vw;
+            bottom: 36%;
         }
         &__next,
         &__prev {
             font-size: 2.75vw;
-            top: 18vw;
         }
         &__next {
             right: 1.4vw;

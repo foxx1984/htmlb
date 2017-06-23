@@ -42,6 +42,7 @@
         }
         p {
             padding-bottom: 6%;
+            line-height: 1.48em;
         }
     }
     .mainTitle__text {
@@ -101,7 +102,28 @@
             font-size: 10.5em;
         }
     }
+    .content--chiffreKey {
+        .chiffreKey {
+            .chiffreKey__pushChiffre .gridCR {
+                .chiffre__keyFigure {
+                    margin-bottom: -28%;
+                    &:before {
+                        padding-bottom: 5%;
+                        width: auto;
+                    }
+                }
+                .chiffre__data {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
     .content--chiffre {
+        .content--chiffreKey {
+            .chiffreKey__data {
+                padding-bottom: 20%;
+            }
+        }
         .actuDoc--publications {
             .actuDoc__head {
                 margin-bottom: 0;
@@ -180,7 +202,7 @@
         }
         .headerGenerique--content {
             .headerGenerique__title {
-                .trait(@white-3);
+                .dispI; // .trait(@white-3);
             }
             .headerGenerique__bloc {
                 &--msg {
@@ -365,7 +387,7 @@
     }
     .chiffre {
         &__content {
-            margin-bottom:-11%;
+            margin-bottom: -11%;
         }
         &__bloc {
             padding: 9% 15%;
@@ -426,10 +448,10 @@
     }
     .header {
         &.sticky {
-            padding-bottom: 0;
+            padding-bottom: 7%;
         }
         padding-top: 10%;
-        padding-bottom: 3%;
+        padding-bottom: 4.5%;
         &__imgLogoBollore {
             max-width: 344.75vw;
             margin-top: 2vw;
@@ -451,7 +473,45 @@
         display: none;
     }
     .slider {
+        &--custom {
+            .icon-fleche-1 {
+                &:before {
+                    font-size: 0.7em;
+                }
+            }
+            .slider__txt {
+                position: static;
+                width: 15em;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .slider__next {
+                top: 50%;
+            }
+            .slider__push {
+                padding-left: 0;
+            }
+            .slider__prev {
+                top: 50%;
+            }
+            .slider__item {
+                display: inline-block;
+                width: 77.85vw;
+                margin-right: 2%;
+            }
+            .slider__ul {
+                margin-left: -72.6vw;
+                display: inline-block;
+                width: 250vw;
+            }
+            .slider__pagination {
+                bottom: 18.4%;
+                width: 88.0vw;
+                margin-left: 5.9vw;
+            }
+        }
         &__pagination {
+            bottom: 50%;
             margin: auto;
             width: 100%;
         }
@@ -506,13 +566,11 @@
         }
         &__next {
             right: 0;
-            top: 29.2%;
             font-size: 7vw;
         }
         &__prev {
             left: 0;
             font-size: 7vw;
-            top: 26%;
         }
         &__ul {
             .dispI;

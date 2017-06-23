@@ -544,6 +544,13 @@ a {
     text-decoration: underline;
 }
 
+
+/**
+ *
+ * main title
+ *
+ */
+
 .mainTitle__text {
     &.mainTitle--red {
         color: @red-5;
@@ -577,6 +584,13 @@ a {
         top: 1.45vw;
     }
 }
+
+
+/**
+ *
+ * header genrique
+ *
+ */
 
 .headerGenerique--content {
     .headerGenerique__bloc {
@@ -629,4 +643,183 @@ a {
 }
 
 
+/**
+ *
+ * slider
+ *
+ */
 
+.slider {
+    /**
+ *
+ * slider custom
+ *
+ */
+    &--custom {
+        .slider__title2 {
+            .txt-66;
+            color: @grey-3;
+            margin-left: 2%;
+            .dispI;
+        }
+        .slider__next {}
+        .slider__prev {}
+        .slider__txt {
+            .txt-67;
+            color: @grey-3;
+        }
+        .slider__push {
+            .txtC;
+            width: auto;
+            position: static;
+            padding-top: 2.2%;
+        }
+        .slider__pagination {
+            bottom: 7.9%;
+            width: 43.9vw;
+            margin-left: 22.3vw;
+        }
+        .slider__ul {
+            margin-left: -14.78vw;
+        }
+        .slider__item {
+            width: 37.05vw;
+        }
+    }
+    margin-top: 1.2%;
+    &__content {
+        overflow: hidden;
+        position: relative;
+    }
+    &__article {
+        position: relative;
+        z-index: 100;
+    }
+    &__sTitle {
+        .title-2;
+        position: relative;
+        top: 0.35em;
+        color: @white-3;
+        margin-bottom: 7%;
+        display: inline-block;
+        margin-top: 3%;
+    }
+    &__head {
+        .slider__title {}
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        .txtC;
+        &:before {
+            vertical-align: middle;
+            .dispI;
+            height: 100%;
+            content: '';
+        }
+    }
+    &__title {
+        .dispI;
+        vertical-align: middle;
+        .title-1;
+        color: @white-3;
+        position: relative;
+        &:after {
+            border: 1px solid @white-3;
+            position: absolute;
+            bottom: -4%;
+            left: 0;
+            right: 0;
+            .dispI;
+            content: '';
+        }
+    }
+    &__title2 {
+        color: @white-3;
+    }
+    &__txt {
+        .txt-9;
+        color: @white-3;
+        line-height: normal;
+    }
+    &__push {
+        .icon-noPicto {
+            .txt-8;
+            &:before {
+                position: absolute;
+                top: -1.4vw;
+                .txt-8;
+                left: -0.5vw;
+                content: "\e920";
+                visibility: hidden;
+            }
+        }
+        &:before {
+            content: '';
+            .dispI;
+            height: 100%;
+            position: absolute;
+            top: 2.7vw;
+            left: -0.6vw;
+            bottom: 0;
+            background: @white-3;
+            width: 1px;
+        }
+        width: 26.628629%;
+        position: absolute;
+        bottom: 1.2vw;
+        right: 0%;
+        padding-right: 5%;
+    }
+    &__pagination {
+        &--red {
+            .icon-fleche-1 {
+                &:before {
+                    color: @red-5;
+                }
+            }
+        }
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: transparent;
+        width: 64.25vw;
+        margin-left: 16.7vw;
+    }
+    &__next,
+    &__prev {
+        cursor: pointer;
+        position: absolute;
+        font-size: 1.75vw;
+        color: @blue-9;
+        top: 50%;
+        transform-style: preserve-3d;
+        transform: translateY(-50%);
+    }
+    &__next {
+        right: 0.8vw;
+    }
+    &__prev {
+        transform: translateY(-50%) scale(-1, 1);
+        left: 0.8vw;
+    }
+    &__item {
+        .icon-information {
+            &:before {
+                color: @white-3;
+            }
+        }
+        &--white {}
+        width: 57.25vw;
+        height: auto;
+        display: inline-block;
+        margin-right: 3.4vw;
+    }
+    &__ul {
+        width: 5000px;
+        margin-left: -40.5vw;
+    }
+}
