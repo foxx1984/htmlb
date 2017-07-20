@@ -11,6 +11,14 @@ if (window.Element && !Element.prototype.closest) {
             return el;
         };
 }
+if (window.NodeList && !NodeList.prototype.forEach) {
+    NodeList.prototype.forEach = function (callback, argument) {
+        argument = argument || window;
+        for (var i = 0; i < this.length; i++) {
+            callback.call(argument, this[i], i, this);
+        }
+    };
+}
 
 // https://tc39.github.io/ecma262/#sec-array.prototype.includes
 if (!Array.prototype.includes) {

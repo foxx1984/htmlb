@@ -1,10 +1,10 @@
 {
   "env": {
 
-    "pathCss": "D:\\WORKSPACE\\htdocs\\alpine\\alp-content\\plugins\\alp-liveshowroom\\css",
-    "pathJs": "D:\\WORKSPACE\\htdocs\\alpine\\alp-content\\plugins\\alp-liveshowroom\\js",
+    "pathCss": "D:\\WORKSPACE\\htdocs\\bollore\\bollo-content\\themes\\bollore\\css",
+    "pathJs": "D:\\WORKSPACE\\htdocs\\bollore\\bollo-content\\themes\\bollore\\js",
     "pathAjax": "",
-    "pathHtml": "",
-    "pathImg": "D:\\WORKSPACE\\htdocs\\alpine\\alp-content\\plugins\\alp-liveshowroom\\img"
+    "pathHtml": "D:\\WORKSPACE\\htdocs\\bollore\\html",
+    "pathImg": "D:\\WORKSPACE\\htdocs\\bollore\\bollo-content\\themes\\bollore\\img"
   }
 }

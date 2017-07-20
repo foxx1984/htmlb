@@ -14,10 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6432154/6221972/css/fonts.css" />
 
-    <!-- build:css css/app.bollore.bundle.min.css -->
-    <link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
-    <!-- endbuild -->
+    <link rel="stylesheet" href="css/app.bollore.bundle.min.css">
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -41,79 +38,82 @@
 <div class="header__bloc header__bloc--desktop">
     <h1 class="header__tilte hideText">Groupe Bolloré</h1>
     <div class="gridCR pad2">
-        <div class="--gridBottom gridCR-col-68--desk gridCR-col-64--tab">
+        <div class="--gridBottom gridCR-col-20--desk gridCR-col-64--tab">
             <div class="header__logo">
 
                 <a href="index.html" class="header__link" title="Accueil"><img class="header__imgLogoBollore resp" alt="Bolloré" src="img/logo.svg" /></a>
             </div>
         </div>
-        <div class="gridCR-col-100 --gridBottom">
-            <div class="gridCR">
-                <div class="gridCR-col-auto">
+        <div class="gridCR-col-80--desk --gridBottom">
+            <div class="header__contentTop">
+                <div class="gridCR">
+                    <div class="gridCR-col-50--desk">
+                        <div class="header__wrapperLeft">
+                            <div class="header__infoLeft">
+                                <div class="header__bourse --titleGrey1">
 
-                    <div class="header__infoLeft">
-                        <div class="header__bourse --titleGrey1">
-
-                            <span class="icon-chiffre-1 --titleBlue4"></span>
-                            <span class="header__dataBourseEuro --titleGrey1">2,93</span>
+                                    <span class="icon-chiffre-1 --titleBlue4"></span>
+                                    <span class="header__dataBourseEuro --titleGrey1">2,93</span>
 
 
-                            <span class="header__euros">euros</span> /
-                            <span class="header__dataBoursePourcent">+1,45%</span>
-                        </div>
-                        <div class="header__search">
-                            <form class="search__form" method="get" action="/recherche.html" enctype="application/x-www-form-urlencoded">
-                                <button type="submit" name="btn_go" class="search__btn bt icon-loupe --titleBlue4"><span class="hideText">rechercher</span></button>
-                                <input type="text" name="txt_search" autocomplete="off" class="search__input" placeholder="Votre recherche" />
+                                    <span class="header__euros">euros</span> /
+                                    <span class="header__dataBoursePourcent">+1,45%</span>
+                                </div>
+                                <div class="header__search">
+                                    <form class="search__form" name="search_engine" method="get" action="/recherche.html" enctype="application/x-www-form-urlencoded">
+                                        <button type="submit" name="btn_go" class="search__btn bt icon-loupe --titleBlue4"><span class="hideText">rechercher</span></button>
+                                        <input type="text" name="txt_search" autocomplete="off" class="search__input" placeholder="Votre recherche" />
 
-                            </form>
+                                    </form>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="gridCR-col-auto --full100 txtR">
-                    <div class="header__infoRight">
-                        <div class="header__langue">
-                            <span class="header__spanL header__spanL--on" data-culure="fr"> <a href="/index.html" title="fr">fr</a> </span>
-                            <span class="header__spanL" data-culure="en"> <a href="/index.html" title="en">en</a> </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="gridCR-col-100 txtR">
+                    <div class="gridCR-col-50--desk txtR">
+                        <div class="header__infoRight">
+                            <div class="header__langue">
+                                <span class="header__spanL header__spanL--on" data-culure="fr"> <a href="/index.html" title="fr">fr</a> </span>
+                                <span class="header__spanL" data-culure="en"> <a href="/index.html" title="en">en</a> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gridCR-col-100--desk txtR">
 
-                    <div class="header__menuContainer">
+                        <div class="header__menuContainer">
 
-                        <nav class="nav--item-first header__menu">
-                            <!--Debut Niveau 1 menu nav-->
-                            <ul class="menu__ul--level1" data-level="1">
-                                <li class="menu__li icon-fleche-1" data-menu="smenu1">
-                               <span class="menu__title">Le groupe</span>
-                                </li>
+                            <nav class="nav--item-first header__menu">
+                                <!--Debut Niveau 1 menu nav-->
+                                <ul class="menu__ul--level1" data-level="1">
+                                    <li class="menu__li icon-fleche-1" data-menu="smenu1">
+                                        <span class="menu__title">Le groupe</span>
+                                    </li>
 
-                                <li class="menu__li icon-fleche-1" data-menu="smenu2" data-footer-href="all-activities.html" data-footer-txt="Toutes les activités">
-                                    <span class="menu__title">Activités et participations</span>
-                                </li>
+                                    <li class="menu__li icon-fleche-1" data-menu="smenu2" data-footer-href="all-activities.html" data-footer-txt="Toutes les activités">
+                                        <span class="menu__title">Activités et participations</span>
+                                    </li>
 
-                                <li class="menu__li  icon-fleche-1" data-menu="smenu3">
-                                    <span class="menu__title">Talents</span>
+                                    <li class="menu__li  icon-fleche-1" data-menu="smenu3">
+                                        <span class="menu__title">Talents</span>
 
-                                </li>
-                                <li class="menu__li   icon-fleche-1" data-menu="smenu4">
-                                    <span class="menu__title">Actionnaires</span>
+                                    </li>
+                                    <li class="menu__li   icon-fleche-1" data-menu="smenu4">
+                                        <span class="menu__title">Actionnaires</span>
 
-                                </li>
-                                <li class="menu__li  icon-fleche-1" data-menu="smenu5">
-                                    <span class="menu__title">RSE</span>
+                                    </li>
+                                    <li class="menu__li  icon-fleche-1" data-menu="smenu5">
+                                        <span class="menu__title">RSE</span>
 
-                                </li>
-                                <li class="menu__li icon-fleche-1" data-menu="smenu6">
-                                    <span class="menu__title ">Publications &amp; Presse</span>
+                                    </li>
+                                    <li class="menu__li icon-fleche-1" data-menu="smenu6">
+                                        <span class="menu__title ">Publications &amp; Presse</span>
 
-                                </li>
-                            </ul>
-                            <!--Fin Niveau 1 menu nav-->
+                                    </li>
+                                </ul>
+                                <!--Fin Niveau 1 menu nav-->
 
-                        </nav>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -150,28 +150,28 @@
                 <span class="secondMenu__title">En bref</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="histoire.html" class="secondMenu__link" title="Histoire"> <span class="secondMenu__title">Histoire</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Histoire"> <span class="secondMenu__title">Histoire</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="film-instutionnel.html" class="secondMenu__link" title="Film Institutionnel"><span class="secondMenu__title">Film Institutionnel</span></a>
+                        <a href="05-contenu2.html" class="secondMenu__link" title="Film Institutionnel"><span class="secondMenu__title">Film Institutionnel</span></a>
                     </li>
 
                 </ul>
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a class="secondMenu__link" href="presence-internationale.html" title="Présence internationale"> <span class="secondMenu__title">Présence internationale</span> </a>
+                <a class="secondMenu__link" href="10-presence-internationale.html" title="Présence internationale"> <span class="secondMenu__title">Présence internationale</span> </a>
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a class="secondMenu__link" href="gouvernance.html"> <span class="secondMenu__title">Gouvernance</span></a>
+                <a class="secondMenu__link" href="05-contenu.html"> <span class="secondMenu__title">Gouvernance</span></a>
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
                 <span class="secondMenu__title">Philanthropie</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="fondation.html" class="secondMenu__link" title="Fondation / Earth / Foyer Jean Bosco"> <span class="secondMenu__title">Fondation / Earth / Foyer Jean Bosco</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Fondation / Earth / Foyer Jean Bosco"> <span class="secondMenu__title">Fondation / Earth / Foyer Jean Bosco</span></a>
                     </li>
 
                 </ul>
@@ -186,13 +186,13 @@
                 <span class="secondMenu__title">Transport et logistique</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="bollore-logistics.html" class="secondMenu__link" title="Bolloré Logistics"> <span class="secondMenu__title">Bolloré Logistics</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Bolloré Logistics"> <span class="secondMenu__title">Bolloré Logistics</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="bollore-africa.html" class="secondMenu__link" title="Bolloré Africa Logistics"><span class="secondMenu__title">Bolloré Africa Logistics</span></a>
+                        <a href="05-contenu2.html" class="secondMenu__link" title="Bolloré Africa Logistics"><span class="secondMenu__title">Bolloré Africa Logistics</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="bollore-energy.html" class="secondMenu__link" title="Bolloré Energy"><span class="secondMenu__title">Bolloré Energy</span></a>
+                        <a href="05-contenu2.html" class="secondMenu__link" title="Bolloré Energy"><span class="secondMenu__title">Bolloré Energy</span></a>
                     </li>
 
                 </ul>
@@ -202,12 +202,12 @@
             <li class="icon-fleche-1 secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
                 <span class="secondMenu__title">Communication</span>
                 <ul class="secondMenu__ul--level2">
-                    <li class="secondMenu__li--item secondMenu__li--havas"><a href="havas.html" class="secondMenu__link" title="Havas"><span class="secondMenu__title">Havas</span></a></li>
+                    <li class="secondMenu__li--item secondMenu__li--havas"><a href="07-information-reglementee.html" class="secondMenu__link" title="Havas"><span class="secondMenu__title">Havas</span></a></li>
                     <li class="secondMenu__li--item secondMenu__li--direct-matin">
-                        <a href="direct-matin.html" class="secondMenu__link" title="Bolloré Africa Logistics"><span class="secondMenu__title">Direct Matin</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Bolloré Africa Logistics"><span class="secondMenu__title">Direct Matin</span></a>
                     </li>
-                    <li class="secondMenu__li--item"><a href="telecoms.html" class="secondMenu__link" title="Télécoms"><span class="secondMenu__title">Télécoms</span></a></li>
-                    <li class="secondMenu__li--item"><a href="telecoms.html" class="secondMenu__link" title="Autres activités"><span class="secondMenu__title">Autres activités</span></a></li>
+                    <li class="secondMenu__li--item"><a href="05-contenu.html" class="secondMenu__link" title="Télécoms"><span class="secondMenu__title">Télécoms</span></a></li>
+                    <li class="secondMenu__li--item"><a href="09-activites-et-participations.html" class="secondMenu__link" title="Autres activités"><span class="secondMenu__title">Autres activités</span></a></li>
 
                 </ul>
 
@@ -217,17 +217,17 @@
                 <span class="secondMenu__title">Stockage d'électricité <br /> et solutions</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="blue-solutions.html" class="secondMenu__link" title="Blue Solutions, Films plastiques"><span class="secondMenu__title">Blue Solutions, Films plastiques</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Blue Solutions, Films plastiques"><span class="secondMenu__title">Blue Solutions, Films plastiques</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="vehicule-electrique.html" class="secondMenu__link" title="Véhicules électriques, Solutions"><span class="secondMenu__title">Véhicules électriques, Solutions</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Véhicules électriques, Solutions"><span class="secondMenu__title">Véhicules électriques, Solutions</span></a>
                     </li>
 
 
                 </ul>
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a class="secondMenu__link" href="autres-actifs.html"><span class="secondMenu__title">Autres actifs</span></a>
+                <a class="secondMenu__link" href="05-contenu.html"><span class="secondMenu__title">Autres actifs</span></a>
 
             </li>
 
@@ -241,11 +241,11 @@
                 <span class="secondMenu__title">Nous rejoindre</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="consulter-les-offres.html" class="secondMenu__link" title="Consulter les offres"> <span class="secondMenu__title">Consulter les offres</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Consulter les offres"> <span class="secondMenu__title">Consulter les offres</span></a>
                     </li>
 
                     <li class="secondMenu__li--item">
-                        <a href="deposer-ma-candidature.html" class="secondMenu__link" title="Déposer ma candidature"><span class="secondMenu__title">Déposer ma candidature</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Déposer ma candidature"><span class="secondMenu__title">Déposer ma candidature</span></a>
                     </li>
 
                 </ul>
@@ -263,14 +263,14 @@
                 <span class="secondMenu__title">En bref</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="message-du-president.html" class="secondMenu__link" title="Message du président"> <span class="secondMenu__title">Message du président</span></a>
+                        <a href="03-chiffre-cles.html" class="secondMenu__link" title="Message du président"> <span class="secondMenu__title">Message du président</span></a>
                     </li>
 
                     <li class="secondMenu__li--item">
-                        <a href="chiffres-cles.html" class="secondMenu__link" title="Chiffres clés"><span class="secondMenu__title">Chiffres clés</span></a>
+                        <a href="04-chiffre-cles.html" class="secondMenu__link" title="Chiffres clés"><span class="secondMenu__title">Chiffres clés</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="organigrame.html" class="secondMenu__link" title="Organigrame économiques / Structure Actionnariat"><span class="secondMenu__title">Organigrame économiques / Structure Actionnariat</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Organigrame économiques / Structure Actionnariat"><span class="secondMenu__title">Organigrame économiques / Structure Actionnariat</span></a>
                     </li>
                 </ul>
 
@@ -280,27 +280,27 @@
                 <span class="secondMenu__title">Calendrier financier</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="agenda-financier.html" class="secondMenu__link" title="Agenda financier (annonces CA,Résultats,AG,autres)"> <span class="secondMenu__title">Agenda financier (annonces CA,Résultats,AG,autres)</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Agenda financier (annonces CA,Résultats,AG,autres)"> <span class="secondMenu__title">Agenda financier (annonces CA,Résultats,AG,autres)</span></a>
                     </li>
 
 
                 </ul>
             </li>
             <li class="secondMenu__li gridCR-col-20--desk --topLi gridCR-col-100--tab">
-                <a href="information-reglementee.html" class="secondMenu__link" title="Information réglementée / Publications"> <span class="secondMenu__title">Information réglementée / Publications</span></a>
+                <a href="07-information-reglementee.html" class="secondMenu__link" title="Information réglementée / Publications"> <span class="secondMenu__title">Information réglementée / Publications</span></a>
 
             </li>
             <li class="icon-fleche-1 secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
                 <span class="secondMenu__title">Actionnaire individuel</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="devenir-actionnaire.html" class="secondMenu__link" title="Devenir actionnaire"> <span class="secondMenu__title">Devenir actionnaire</span></a>
+                        <a href="03-chiffre-cles.html" class="secondMenu__link" title="Devenir actionnaire"> <span class="secondMenu__title">Devenir actionnaire</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="action.html" class="secondMenu__link" title="Mode de détention des actions"> <span class="secondMenu__title">Mode de détention des actions</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Mode de détention des actions"> <span class="secondMenu__title">Mode de détention des actions</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="contacts.html" class="secondMenu__link" title="Mode de détention des actions"> <span class="secondMenu__title">Contacts</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Mode de détention des actions"> <span class="secondMenu__title">Contacts</span></a>
                     </li>
                 </ul>
             </li>
@@ -308,22 +308,22 @@
                 <span class="secondMenu__title">Bolloré en bourse</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="fiche-signaletique.html" class="secondMenu__link" title="Fiche signalétique"> <span class="secondMenu__title">Fiche signalétique</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Fiche signalétique"> <span class="secondMenu__title">Fiche signalétique</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="cours.html" class="secondMenu__link" title="Cours en direct et historique"> <span class="secondMenu__title">Cours en direct et historique</span></a>
+                        <a href="08-bourse.html" class="secondMenu__link" title="Cours en direct et historique"> <span class="secondMenu__title">Cours en direct et historique</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="dividende-et-cours-isf.html" class="secondMenu__link" title="Dividendes et cours ISF"> <span class="secondMenu__title">Dividendes et cours ISF</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Dividendes et cours ISF"> <span class="secondMenu__title">Dividendes et cours ISF</span></a>
                     </li>
                 </ul>
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a href="assemblee-generale.html" class="secondMenu__link" title="Assemblée génrale"><span class="secondMenu__title">Assemblée génrale</span></a>
+                <a href="05-contenu.html" class="secondMenu__link" title="Assemblée génrale"><span class="secondMenu__title">Assemblée génrale</span></a>
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk">
-                <a href="faq.html" class="secondMenu__link" title="Assemblée génrale"><span class="secondMenu__title">FAQ</span></a>
+                <a href="11-faq.html" class="secondMenu__link" title="Assemblée génrale"><span class="secondMenu__title">FAQ</span></a>
 
             </li>
 
@@ -334,7 +334,7 @@
         <ul data-level="2" class="secondMenu__ul secondMenu__ul--level1 gridCR --VgridTop">
             <li class="secondMenu__li secondMenu__li--1 gridCR-col-20--desk gridCR-col-100--tab">
 
-                <a href="actualites-et-communiques.html" class="secondMenu__link" title="Actualités et Communiqués"> <span class="secondMenu__title">RSE</span></a>
+                <a href="06-liste-de-documents.html" class="secondMenu__link" title="Actualités et Communiqués"> <span class="secondMenu__title">RSE</span></a>
 
 
             </li>
@@ -347,20 +347,20 @@
         <ul data-level="2" class="secondMenu__ul secondMenu__ul--level1 gridCR --VgridTop">
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
 
-                <a href="actualites-et-communiques.html" class="secondMenu__link" title="Actualités et Communiqués"> <span class="secondMenu__title">Actualités et Communiqués</span></a>
+                <a href="07-information-reglementee.html" class="secondMenu__link" title="Actualités et Communiqués"> <span class="secondMenu__title">Actualités et Communiqués</span></a>
 
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a href="publications.html" class="secondMenu__link" title="Publications"> <span class="secondMenu__title">Publications</span></a>
+                <a href="06-liste-de-documents.html" class="secondMenu__link" title="Publications"> <span class="secondMenu__title">Publications</span></a>
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a href="contact-presse.html" class="secondMenu__link" title="Contact presse"> <span class="secondMenu__title">Contact presse</span></a>
+                <a href="05-contenu.html" class="secondMenu__link" title="Contact presse"> <span class="secondMenu__title">Contact presse</span></a>
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a href="mediatheque.html" class="secondMenu__link" title="Accès Médiathèque"> <span class="secondMenu__title">Accès Médiathèque</span></a>
+                <a href="06-liste-de-documents.html" class="secondMenu__link" title="Accès Médiathèque"> <span class="secondMenu__title">Accès Médiathèque</span></a>
 
             </li> 
 
@@ -409,13 +409,10 @@
         </span>
     </div>
 
-
-
     <h2 class="mainTitle"><span class="mainTitle__text --titleHead mainTitle--grey">Chiffre clés</span>
     </h2>
-
-
     <div class="chiffreKey">
+
         <div class="chiffreKey__data">
             <div class="chiffreKey__pushChiffre chiffreKey__pushChiffre--red">
                 <div class="gridCR --VgridTop">
@@ -466,144 +463,304 @@
                 </div>
             </div>
         </div>
-        <div class="mainChapeau">
-            <div class="mainChapeau__content mainChapeau__content--red">
-                <p>Au 31 décembre 2015, le Groupe détient <strong>60 % du capital d’Havas,</strong> l’un des plus grands groupes
-                    mondiaux de conseil en communication réalisant un revenu annuel de près de 2,2 milliards d’euros.<strong> Havas s’est donné pour mission
+    </div>
+    <div class="mainChapeau">
+        <div class="mainChapeau__content mainChapeau__content--red">
+            <p>Au 31 décembre 2015, le Groupe détient <strong>60 % du capital d’Havas,</strong> l’un des plus grands groupes
+                mondiaux de conseil en communication réalisant un revenu annuel de près de 2,2 milliards d’euros.<strong> Havas s’est donné pour mission
                 d’être le groupe de communication le plus avancé dans la mise en relation des marques et des consommateurs
                 via la créativité, l’expertise médias et l’innovation.</strong> Il est le groupe le plus intégré du secteur
-                    et regroupant la plupart de ses équipes créatives et médias dans les mêmes locaux : <strong>les Havas Villages,</strong>                    afin de proposer l’offre et l’organisation la plus génératrice de valeur pour ses clients.</p>
-            </div>
+                et regroupant la plupart de ses équipes créatives et médias dans les mêmes locaux : <strong>les Havas Villages,</strong>                afin de proposer l’offre et l’organisation la plus génératrice de valeur pour ses clients.</p>
         </div>
-        <div class="bloc">
-            <div class="bloc__txt">
-                <p>
+    </div>
+    <div class="bloc">
+        <div class="bloc__txt">
+            <p>
 
-                    Havas développe ses activités autour de ses deux principales divisions, Havas Creative Group et Havas Media Group.
-                </p>
-                <p>
-                    <strong> Havas est présent dans plus de 100 pays</strong> au travers de ses agences et ses accords d'affiliation.
-                    Le Groupe offre une large gamme de services de conseil en communication, comprenant <strong>la publicité créative, l'achat média, le digital,
+                Havas développe ses activités autour de ses deux principales divisions, Havas Creative Group et Havas Media Group.
+            </p>
+            <p>
+                <strong> Havas est présent dans plus de 100 pays</strong> au travers de ses agences et ses accords d'affiliation.
+                Le Groupe offre une large gamme de services de conseil en communication, comprenant <strong>la publicité créative, l'achat média, le digital,
                     le marketing direct, la communication d'entreprise, la promotion des ventes, la conception, les ressources
                     humaines, le marketing sportif, la communication interactive multimédia et les relations publiques. Havas
                     dispose d'un effectif de plus de 18 000 collaborateurs.</strong>
-                </p>
-            </div>
+            </p>
         </div>
-        <h3 class="mainTitle"><span class="mainTitle__text --titleHead mainTitle--red">Havas media Group</span>
-        </h3>
-        <div class="bloc">
-            <div class="bloc__txt">
-                <p>
+    </div>
+    <h3 class="mainTitle"><span class="mainTitle__text --titleHead mainTitle--red">Havas media Group</span>
+    </h3>
+    <div class="bloc">
+        <div class="bloc__txt">
+            <p>
 
-                    Havas Media Group intègre quatre grandes marques :<strong> Havas Media, Arena Media,
+                Havas Media Group intègre quatre grandes marques :<strong> Havas Media, Arena Media,
                     Forward Media et Havas Sports &amp; Entertainment.</strong> Ces marques principales sont en mesure de
-                    <strong>bénéficier de l'expertise des autres outils 
+                <strong>bénéficier de l'expertise des autres outils 
                     et marques d'Havas Media Group</strong> : Artemis (système d'agrégation et de gestion
-                    des données développé par le Groupe), Mobext (expertise mobile), Socialyse (réseaux sociaux), AdCity
-                    (geomarketing) et Affiperf (la plateforme de trading d'Havas).
-                </p>
+                des données développé par le Groupe), Mobext (expertise mobile), Socialyse (réseaux sociaux), AdCity (geomarketing)
+                et Affiperf (la plateforme de trading d'Havas).
+            </p>
+        </div>
+    </div>
+    <h3 class="mainTitle"><span class="mainTitle__text --titleHead mainTitle--red">Havas creative Group</span>
+    </h3>
+    <div class="bloc">
+        <div class="bloc__txt">
+            <p>
+
+                <strong> Havas Creative Group englobe le réseau Havas Worldwide,</strong> qui couvre l'ensemble des disciplines
+                de la communication et du marketing, le microréseau Arnold Wordwide, qui propose des
+                <strong>stratégies marketing</strong> (publicité, digital, médias sociaux,
+                <strong>conception d'applications, promotion, événementiel, contenu de marque, gestion de relation client...et
+                                des agences de communication à forte identité locale</strong> comme les Gaulois
+                ou W&amp;Cie, Host...
+            </p>
+        </div>
+    </div>
+
+    <section class="slider slider--custom">
+        <div class="container--slider">
+            <div class="slider__content">
+                <ul class="slider__ul">
+                    <li class="slider__item">
+
+                        <article class="slider__article">
+
+                            <div class="slider__image">
+                                <picture>
+                                    <source media="(max-width: 640px)" srcset="img/img-slider-chiffre-01-mob.jpg">
+                                    <source media="(max-width:1024px)" srcset="img/img-slider-chiffre-01-tab.jpg">
+                                    <img alt="Bolloré logistics" class="slider__img resp" src="img/img-slider-chiffre-01.jpg" />
+
+                                </picture>
+                            </div>
+                            <div class="slider__push">
+                                <span class="slider__txt">
+                                   <span class="slider__title2 txtU">
+                                 Campagne
+                                </span> Air France, France is in the Air / BETC
+                                </span>
+
+                            </div>
+                        </article>
+                    </li>
+                    <li class="slider__item">
+                        <article class="slider__article">
+
+                            <div class="slider__image">
+                                <picture>
+                                    <source media="(max-width: 640px)" srcset="img/img-slider-chiffre-02-mob.jpg">
+                                    <source media="(max-width:1024px)" srcset="img/img-slider-chiffre-02-tab.jpg">
+                                    <img alt="Communication" class="slider__img resp" src="img/img-slider-chiffre-02.jpg" />
+                                </picture>
+                            </div>
+                            <div class="slider__push">
+
+                                <span class="slider__txt">
+                                   <span class="slider__title2 txtU">
+                                 Campagne
+                                </span> Air France, France is in the Air / BETC
+                                </span>
+
+                            </div>
+                        </article>
+
+
+                    </li>
+
+                    <li class="slider__item">
+
+                        <article class="slider__article">
+
+                            <div class="slider__image">
+                                <picture>
+                                    <source media="(max-width: 640px)" srcset="img/img-slider-chiffre-03-mob.jpg">
+                                    <source media="(max-width:1024px)" srcset="img/img-slider-chiffre-03-tab.jpg">
+                                    <img alt="image 3" class="slider__img resp" src="img/img-slider-chiffre-03.jpg" />
+                                </picture>
+                            </div>
+                            <div class="slider__push">
+                                <span class="slider__txt">
+                                   <span class="slider__title2 txtU">
+                                 Campagne
+                                </span> Air France, France is in the Air / BETC
+                                </span>
+
+                            </div>
+                        </article>
+                    </li>
+
+                </ul>
+                <div class="slider__pagination slider__pagination--red">
+                    <span class="slider__next icon-fleche-1"></span>
+                    <span class="slider__prev icon-fleche-1"></span>
+                </div>
             </div>
         </div>
-        <h3 class="mainTitle"><span class="mainTitle__text --titleHead mainTitle--red">Havas creative Group</span>
-        </h3>
-        <div class="bloc">
-            <div class="bloc__txt">
-                <p>
+    </section>
 
-                    <strong> Havas Creative Group englobe le réseau Havas Worldwide,</strong> qui couvre l'ensemble des disciplines
-                    de la communication et du marketing, le microréseau Arnold Wordwide, qui propose des
-                    <strong>stratégies marketing</strong> (publicité, digital, médias sociaux,
-                    <strong>conception d'applications, promotion, événementiel, contenu de marque, gestion de relation client...et
-                                des agences de communication à forte identité locale</strong> comme les
-                    Gaulois ou W&amp;Cie, Host...
-                </p>
+    <div class="havasBloc">
+        <div class="havasBloc__content">
+            <div class="gridCR gridCR--center">
+                <div class="gridCR-col-50--desk gridCR-col-100--mob">
+                    <div class="havasBloc__left">
+                        <div class="havasBloc__imgContainer">
+                            <img alt="havas" class="resp havasBloc__img" src="img/img-havas-logo.png" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="gridCR-col-50--desk gridCR-col-100--mob">
+                    <div class="havasBloc__right">
+                        <span class="havasBloc__txt">Havas en ligne :</span>
+                        <a href="http://havas.com/" target="_blank" class="havasBloc__link linkN"> Voir le site internet d'Havas</a>
+                        <span class="havasBloc__txt">Suivez l'actualité d'havas sur :</span>
+                        <ul class="socialLink">
+                            <li class="socialLink__item socialLink__item--facebook">
+                                <a href="https://www.facebook.com/havasworldwide/" target="_blank" title="facebook" class="socialLink__lnk icon-facebook"><span class="socialLink__txt hideText">facebook</span></a>
+                            </li>
+                            <li class="socialLink__item socialLink__item--twitter">
+                                <a href="https://twitter.com/havas" target="_blank" title="twitter" class="socialLink__lnk icon-twitter"><span class="socialLink__txt hideText">twitter</span></a>
+                            </li>
+                            <li class="socialLink__item socialLink__item--instagram">
+                                <a href="https://www.linkedin.com/company/havas" target="_blank" class="socialLink__lnk icon-instagram" title="instagram"><span class="socialLink__txt hideText">instagram</span></a>
+                            </li>
+                            <li class="socialLink__item socialLink__item--youtube">
+                                <a href="https://www.youtube.com/user/havasworldwide" target="_blank" class="socialLink__lnk icon-youtube" title="youtube"><span class="socialLink__txt hideText">youtube</span></a>
+                            </li>
+                            <li class="socialLink__item socialLink__item--snapchat">
+                                <a href="javascript:void(0)" target="_blank" class="socialLink__lnk icon-snapchat" title="snapchat"><span class="socialLink__txt hideText">snapchat</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+
+
         </div>
 
-        <section class="slider slider--custom">
-            <div class="container--slider">
-                <div class="slider__content">
-                    <ul class="slider__ul">
-                        <li class="slider__item">
+    </div>
 
-                            <article class="slider__article">
+    <div class="filialeWrapper">
 
-                                <div class="slider__image">
-                                    <picture>
-                                        <source media="(max-width: 640px)" srcset="img/img-slider-chiffre-01-mob.jpg">
-                                        <source media="(max-width:1024px)" srcset="img/img-slider-chiffre-01-tab.jpg">
-                                        <img alt="Bolloré logistics" class="slider__img resp" src="img/img-slider-chiffre-01.jpg" />
+        <div class="filiale">
 
-                                    </picture>
-                                </div>
-                                <div class="slider__push">
-                                    <span class="slider__txt">
-                                   <span class="slider__title2 txtU">
-                                 Campagne
-                                </span> Air France, France is in the Air / BETC
-                                    </span>
+            <h2 class="mainTitle"><span class="mainTitle__text --titleHead mainTitle--grey">Toutes nos filiales</span>
+            </h2>
+            <section class="slider slider--filiale slider--pagination">
+                <div class="container--slider">
+                    <div class="slider__content">
+                        <ul class="slider__ul">
+                            <li class="slider__item">
 
-                                </div>
-                            </article>
-                        </li>
-                        <li class="slider__item">
-                            <article class="slider__article">
+                                <article class="slider__article">
 
-                                <div class="slider__image">
-                                    <picture>
-                                        <source media="(max-width: 640px)" srcset="img/img-slider-chiffre-02-mob.jpg">
-                                        <source media="(max-width:1024px)" srcset="img/img-slider-chiffre-02-tab.jpg">
-                                        <img alt="Communication" class="slider__img resp" src="img/img-slider-chiffre-02.jpg" />
-                                    </picture>
-                                </div>
-                                <div class="slider__push">
-
-                                    <span class="slider__txt">
-                                   <span class="slider__title2 txtU">
-                                 Campagne
-                                </span> Air France, France is in the Air / BETC
-                                    </span>
-
-                                </div>
-                            </article>
+                                    <div class="slider__image">
 
 
-                        </li>
+                                        <a class="slider__lnk" title="Direct Matin" href="http://www.cnewsmatin.fr/" target="_blank">
+                                            <picture>
+                                                <source media="(max-width: 640px)" srcset="img/img-filiale-direct-matin-logo-mob.jpg">
+                                                <source media="(max-width:1024px)" srcset="img/img-filiale-direct-matin-logo-tab.jpg">
+                                                <img alt="Direct Matin" class="slider__img resp" src="img/img-filiale-direct-matin-logo.jpg" />
+                                            </picture>
 
-                        <li class="slider__item">
+                                        </a>
 
-                            <article class="slider__article">
 
-                                <div class="slider__image">
-                                    <picture>
-                                        <source media="(max-width: 640px)" srcset="img/img-slider-chiffre-03-mob.jpg">
-                                        <source media="(max-width:1024px)" srcset="img/img-slider-chiffre-03-tab.jpg">
-                                        <img alt="image 3" class="slider__img resp" src="img/img-slider-chiffre-03.jpg" />
-                                    </picture>
-                                </div>
-                                <div class="slider__push">
-                                      <span class="slider__txt">
-                                   <span class="slider__title2 txtU">
-                                 Campagne
-                                </span> Air France, France is in the Air / BETC
-                                    </span>
+                                    </div>
 
-                                </div>
-                            </article>
-                        </li>
+                                </article>
+                            </li>
+                            <li class="slider__item">
+                                <article class="slider__article">
 
-                    </ul>
-                    <div class="slider__pagination slider__pagination--red">
+                                    <div class="slider__image">
+
+                                        <a class="slider__lnk" title="Bolloré Logistics" href="http://www.bollore-logistics.com/fr" target="_blank">
+                                            <picture>
+                                                <source media="(max-width: 640px)" srcset="img/img-filiale-bolore-logistics-mob.jpg">
+                                                <source media="(max-width:1024px)" srcset="img/img-filiale-bolore-logistics-tab.jpg">
+                                                <img alt="Bolloré Logistics" class="slider__img resp" src="img/img-filiale-bolore-logistics.jpg" />
+                                            </picture>
+                                        </a>
+
+                                    </div>
+
+                                </article>
+
+
+                            </li>
+
+                            <li class="slider__item">
+
+                                <article class="slider__article">
+
+                                    <div class="slider__image">
+
+                                        <a class="slider__lnk" title="Bolloré Africa Logistics" href="http://www.bollore-transport-logistics.com/" target="_blank">
+                                            <picture>
+                                                <source media="(max-width: 640px)" srcset="img/img-filiale-bollore-logo-mob.jpg">
+                                                <source media="(max-width:1024px)" srcset="img/img-filiale-bollore-logo-tab.jpg">
+                                                <img alt="Bolloré Africa Logistics" class="slider__img resp" src="img/img-filiale-bollore-logo.jpg" />
+                                            </picture>
+                                        </a>
+
+                                    </div>
+
+                                </article>
+                            </li>
+
+                            <li class="slider__item">
+
+                                <article class="slider__article">
+
+                                    <div class="slider__image">
+
+                                        <a class="slider__lnk" title="Bolloré Energy" href="http://www.bollore-energie.fr/" target="_blank">
+                                            <picture>
+                                                <source media="(max-width: 640px)" srcset="img/img-filiale-bollore-energy-mob.jpg">
+                                                <source media="(max-width:1024px)" srcset="img/img-filiale-bollore-energy-tab.jpg">
+                                                <img alt="Bolloré Energy" class="slider__img resp" src="img/img-filiale-bollore-energy.jpg" />
+                                            </picture>
+                                        </a>
+
+                                    </div>
+
+                                </article>
+                            </li>
+                            <li class="slider__item">
+
+                                <article class="slider__article">
+
+                                    <div class="slider__image">
+
+                                        <a class="slider__lnk" title="Blue Solutions" href="https://www.blue-solutions.com/" target="_blank">
+                                            <picture>
+                                                <source media="(max-width: 640px)" srcset="img/img-filiale-blue-solutions-mob.jpg">
+                                                <source media="(max-width:1024px)" srcset="img/img-filiale-blue-solutions-tab.jpg">
+                                                <img alt="Blue Solutions" class="slider__img resp" src="img/img-filiale-blue-solutions.jpg" />
+                                            </picture>
+                                        </a>
+
+                                    </div>
+
+                                </article>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                    <div class="slider__pagination">
                         <span class="slider__next icon-fleche-1"></span>
                         <span class="slider__prev icon-fleche-1"></span>
                     </div>
                 </div>
-            </div>
-        </section>
 
+            </section>
+        </div>
     </div>
-
 
 
     <div class="actuDoc__footer actuDoc__footer--generic">
@@ -618,12 +775,12 @@
         © Bolloré Group, all rights reserved
     </span>
     <ul class="navFooter">
-        <li class="navFooter__item"><a href="plan-du-site.html" class="navFooter__link">Plan du site</a></li>
-        <li class="navFooter__item"><a href="contact.html" class="navFooter__link">Contacts</a></li>
-            <li class="navFooter__item"><a href="glossaire.html" class="navFooter__link">Glossaire</a></li>
-        <li class="navFooter__item"><a href="credit.html" class="navFooter__link">Crédits</a></li>
+        <li class="navFooter__item"><a href="05-contenu.html" class="navFooter__link">Plan du site</a></li>
+        <li class="navFooter__item"><a href="05-contenu.html" class="navFooter__link">Contacts</a></li>
+            <li class="navFooter__item"><a href="05-contenu.html" class="navFooter__link">Glossaire</a></li>
+        <li class="navFooter__item"><a href="05-contenu.html" class="navFooter__link">Crédits</a></li>
      
-        <li class="navFooter__item"><a href="mentions-legales.html" class="navFooter__link">Mentions légales</a></li>
+        <li class="navFooter__item"><a href="05-contenu.html" class="navFooter__link">Mentions légales</a></li>
     </ul>
 </div>
                 </footer>
@@ -635,14 +792,7 @@
         <!-- END Main Bloc-->
 
     </div>
-    <!-- build:js js/app.bollore.bundle.min.js -->
-    <script src="js/app.bollore.js"></script>
-<script src="js/app.bollore.rth.js"></script>
-<script src="js/plugins.js"></script>
-<script src="components/picturefill/dist/picturefill.js"></script>
-
-<!--<script src="js/vendors/swipe.js"></script>-->
-    <!-- endbuild -->
+    <script src="js/app.bollore.bundle.min.js"></script>
 </body>
 
 </html>

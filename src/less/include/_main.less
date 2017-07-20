@@ -112,8 +112,17 @@ a {
  */
 
 .header {
+    &__wrapperLeft {
+        padding-left: 43%;
+        white-space: nowrap;
+        .txtL;
+    }
+    &__contentTop {
+        position: relative;
+        left: 13%;
+    }
     &__menuContainer {
-        margin-top: 4.0%;
+        margin-top: 2.0%;
     }
     z-index: 1000;
     overflow: hidden;
@@ -214,6 +223,8 @@ a {
     &__logo {
         max-width: 112px;
         width: 100%;
+        position: relative;
+        left: 12%;
     }
     &__spanL {
         .txt-28;
@@ -296,6 +307,7 @@ a {
         }
         &.icon-fleche-1 {
             &:before {
+                color: @white-3;
                 .hidden;
             }
         }
@@ -317,7 +329,7 @@ a {
             }
         }
         &--level1 {
-            white-space: nowrap;
+            // white-space: nowrap;
             &>.menu__li {
                 &:last-child {
                     padding-right: 0;
@@ -338,6 +350,16 @@ a {
 /*=============================================
 =            second nav menu            =
 =============================================*/
+
+.secondMenu__li {
+    &.secondMenu__li--active {
+        &.icon-fleche-1 {
+            &:before {
+                color: @blue-9;
+            }
+        }
+    }
+}
 
 .secondMenu {
     position: relative;
@@ -364,6 +386,18 @@ a {
         width: 100%;
     }
     &__li {
+        &--active {
+            &.icon-fleche-1 {
+                &:before {
+                    color: @blue-9;
+                }
+            }
+        }
+        &.icon-fleche-1 {
+            &:before {
+                color: @white-3;
+            }
+        }
         &--off {
             display: none;
         }
@@ -557,6 +591,11 @@ a {
         .txt-65;
         top: 0.4em;
     }
+    &.mainTitle--blue {
+        color: @blue-9;
+        .txt-65;
+        top: 0.4em;
+    }
 }
 
 .mainTitle {
@@ -591,6 +630,24 @@ a {
  * header genrique
  *
  */
+
+.headerGenerique__bloc {
+    &--blue {
+        .headerGenerique__rubrique,
+        .headerGenerique__title,
+        .headerGenerique__stitle {
+            color: @blue-9;
+        }
+        .headerGenerique__rubrique {
+            &:after {
+                color: @blue-9;
+                background-color: @blue-9;
+            }
+        }
+        .headerGenerique__title {}
+        .headerGenerique__stitle {}
+    }
+}
 
 .headerGenerique--content {
     .headerGenerique__bloc {
@@ -655,6 +712,72 @@ a {
  * slider custom
  *
  */
+    &--filiale {
+        padding-bottom: 2.8%;
+        .slider__title2 {
+            .txt-66;
+            color: @grey-3;
+            margin-left: 2%;
+            .dispI;
+        }
+        .slider__next {}
+        .slider__prev {}
+        .slider__txt {
+            .txt-67;
+            color: @grey-3;
+        }
+        .slider__content {
+            .txtC;
+            padding: 2% 0 4.4%;
+            width: 99.7em;
+            margin: 0 auto;
+        }
+        .container--slider {
+            position: relative;
+            border-bottom: 1px solid @grey-3;
+        }
+        .slider__push {
+            .txtC;
+            width: auto;
+            position: static;
+            padding-top: 2.2%;
+        }
+        .slider__pagination {
+            bottom: 7.9%;
+            width: 112em;
+            margin: 0 auto;
+        }
+        .slider__image {
+            border: 1px solid @grey-3;
+            width: 18.1em;
+            height: 18.1em;
+            position: relative;
+        }
+        .slider__lnk {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .slider__img {
+            .dispI;
+            padding: 5%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .slider__ul {
+            margin-left: 0;
+            .txtL;
+            .dispI;
+        }
+        .slider__item {
+            width: auto;
+            margin-right: 0.4%;
+        }
+    }
     &--custom {
         .slider__title2 {
             .txt-66;
@@ -676,8 +799,9 @@ a {
         }
         .slider__pagination {
             bottom: 7.9%;
-            width: 43.9vw;
-            margin-left: 22.3vw;
+            width: 43.3vw;
+            margin-left: 22vw;
+            z-index: 666;
         }
         .slider__ul {
             margin-left: -14.78vw;
@@ -786,8 +910,8 @@ a {
         left: 0;
         right: 0;
         background: transparent;
-        width: 64.25vw;
-        margin-left: 16.7vw;
+        width: 63.7vw;
+        margin-left: 16.45vw;
     }
     &__next,
     &__prev {
@@ -816,10 +940,102 @@ a {
         width: 57.25vw;
         height: auto;
         display: inline-block;
-        margin-right: 3.4vw;
+        margin-right: 2.8vw;
     }
     &__ul {
         width: 5000px;
         margin-left: -40.5vw;
     }
+}
+
+
+/**
+ *
+ * Block Havas
+ *
+ */
+
+.havasBloc {
+    margin: 3% 0;
+    border-top: 1px solid @red-5;
+    border-bottom: 1px solid @red-5;
+    &__link {
+        background-color: @red-5;
+        color: @white-3;
+        margin-bottom: 5%;
+        &.linkN {
+            padding: 4% 10%;
+        }
+    }
+    &__left {
+        .txtL;
+        padding-left: 3%;
+    }
+    &__right {
+        margin-left: -30%;
+    }
+    &__content {
+        padding: 3% 0;
+        width: 71.136em;
+        margin: 0 auto;
+    }
+    &__imgContainer {
+        width: 18.4em;
+        .dispI;
+    }
+    &__txt {
+        margin-bottom: 4%;
+        .dispB;
+        color: @red-5;
+        .txt-68;
+    }
+}
+
+
+/**
+ *
+ * filiale
+ *
+ */
+
+.filiale {
+    background: @white-1;
+    .mainTitle__text {
+        background: @white-1;
+    }
+}
+
+
+/**
+ *
+ * Icon social link
+ *
+ */
+
+.socialLink {
+    margin-left: -2%;
+    &__item {
+        .dispI;
+        position: relative;
+        padding: 8.5% 6%;
+        background-color: @red-5;
+        margin: 0 2%;
+    }
+    &__lnk {
+        .txtC;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        &:before {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            .txt-69;
+            color: @white-3;
+        }
+    }
+    &__txt {}
 }

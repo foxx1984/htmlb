@@ -1,12 +1,14 @@
 class Slider {
     constructor(id, obj = {
-        container: '.slider__ul',
-        items: '.slider__item',
+        container: id + ' .slider__ul',
+        items: id + ' .slider__item',
         startSlide: 0,
-        speed: 400,
-        next: '.slider__next',
-        prev: '.slider__prev'
+        speed: 5000,
+        isAuto: true,
+        next: id + ' .slider__next',
+        prev: id + ' .slider__prev'
     }) {
+        this.sliderInterval = null;
         this.options = obj;
         this.id = id;
         this.currentItem = null;
@@ -18,17 +20,41 @@ class Slider {
 
 
     }
+
+
     addItem(elem, type) {
-        let _token = type == 'next' ? '.slider__item:first-child' : '.slider__item:last-child';
-        let _first = document.querySelector(_token);
-        if (_first != null) {
-            let _cloneFirst = _first;
-            _first.remove();
+
+        let _token = type == 'next' ? `${this.id} .slider__item:first-child` : `${this.id} .slider__item:last-child`;
+        if (this.options.isPaginationNormal) {
+
+            _token = type == 'next' ? `${this.id} .slider__item:last-child` : `${this.id} .slider__item:first-child`;
+        }
+        let _item = document.querySelector(_token);
+        let _cloneItem = null;
+        if (_item != null) {
+
+
             if (type == 'next') {
-                elem.after(_cloneFirst);
+                _cloneItem = _item;
+
+                if (this.options.isPaginationNormal) {
+                    _cloneItem = elem;
+                    _item.after(_cloneItem);
+                } else {
+                    _item.remove();
+                    elem.after(_cloneItem);
+                }
             }
             if (type == 'prev') {
-                elem.before(_cloneFirst);
+
+                if (this.options.isPaginationNormal) {
+                    _cloneItem = elem;
+                    _item.before(_cloneItem);
+                } else {
+                    _cloneItem = _item;
+                    elem.before(_cloneItem);
+                }
+
             }
         }
 
@@ -42,8 +68,12 @@ class Slider {
         // _ul.style.marginLeft = `calc(-46.5vw - (${_width}px +  3.4vw))`;
         // this.ulContainer.style.marginLeft = '-40.5vw';
         let _newItem = this.getItem('next');
-        this.addCurent(_newItem);
-        this.addItem(_newItem, 'next');
+        if (_newItem != null) {
+
+
+            this.addCurent(_newItem);
+            this.addItem(_newItem, 'next');
+        }
 
 
     }
@@ -51,13 +81,24 @@ class Slider {
         let _li = null;
 
         if (type == 'next') {
-            if (this.currentItem != null)
+            if (this.currentItem != null) {
                 _li = this.currentItem.nextElementSibling;
+                if (this.options.isPaginationNormal) {
+                    _li = document.querySelector(`${this.id} .slider__item:first-child`);
+                }
+
+            }
+
+
 
 
         }
         if (type == 'prev') {
             _li = this.currentItem.previousElementSibling;
+            if (this.options.isPaginationNormal) {
+                _li = document.querySelector(`${this.id} .slider__item:last-child`);
+
+            }
 
         }
         return _li;
@@ -67,9 +108,13 @@ class Slider {
 
         //this.ulContainer.style.marginLeft = '-40.5vw';
         let _newItem = this.getItem('prev');
-        this.addCurent(_newItem);
+        if (_newItem != null) {
 
-        this.addItem(_newItem, 'prev');
+
+            this.addCurent(_newItem);
+
+            this.addItem(_newItem, 'prev');
+        }
 
 
     }
@@ -78,12 +123,20 @@ class Slider {
 
         if (this.next != null) {
             this.next.addEventListener('click', (args) => {
+                if (this.sliderInterval != null) {
+                    clearInterval(this.sliderInterval);
+                    this.slideAuto();
+                }
                 this.onNextClick(args);
 
             });
         }
         if (this.prev != null) {
             this.prev.addEventListener('click', (args) => {
+                if (this.sliderInterval != null) {
+                    clearInterval(this.sliderInterval);
+                    this.slideAuto();
+                }
                 this.onPrevClick(args);
 
             });
@@ -93,7 +146,7 @@ class Slider {
 
     }
     addCurent(elem) {
-        let _items = document.querySelectorAll(`.slider__item--current`);
+        let _items = document.querySelectorAll(`${this.id} .slider__item--current`);
         _items = [].slice.call(_items || []);
         for (let i = 0; i < _items.length; i++) {
             _items[i].classList.remove('slider__item--current');
@@ -103,23 +156,49 @@ class Slider {
         this.currentItem = elem;
 
     }
-    init() {
-
-        this._sliderElem = this.id;
-        let _items = document.querySelectorAll(`${this.options.container} ${this.options.items}`);
+    setMoveItem() {
+        let _items = document.querySelectorAll(`${this.options.items}`);
         _items = [].slice.call(_items || []);
         if (_items != null && _items.length > 1) {
 
             let _elemClone1 = _items[0];
+            if (!this.options.isPaginationNormal) {
+                _items[0].remove();
+                _items[1].after(_elemClone1);
+            } else {
+                _elemClone1 = _items[_items.length - 1];
+            }
 
-            _items[0].remove();
-            _items[1].after(_elemClone1);
+
+
             this.addCurent(_elemClone1);
 
 
 
         }
+    }
+    slideAuto() {
+        if (this.options.isAuto) {
+            this.sliderInterval = setInterval(() => {
+                this.onNextClick();
+
+            }, this.options.speed);
+        }
+
+
+
+
+    }
+    init() {
+        //Move item Show Middle slider--custom ou slider normal
+
+        this.setMoveItem();
+
+        //Set events pagination
+
         this.onPagination();
+
+        this.slideAuto();
 
 
     }
@@ -145,11 +224,14 @@ class Bollore {
     init() {
         this.mediaTabletLarge = '1024px';
         this.mobile = '767px';
+        this.closeMenuPrincipal=  document.querySelector('.close');
         this.content = document.querySelector('.content');
         this.overlay = '<div class="overlay"></div>';
         this.scrollTopDocument = null;
-        this._sliderElem = document.querySelector('.slider__content');
-        this._slider = null;
+        this._sliderElem = document.querySelectorAll('.slider');
+        this._sliderElemArray = Array.prototype.slice.call(this._sliderElem);
+        this._sliderElemArray2 = [].slice.call(this._sliderElem);
+        this._slider = [];
         this.header = document.querySelector('.header');
         this.levelAction = [];
 
@@ -161,9 +243,13 @@ class Bollore {
 
 
     }
+    setMenuOpen(tag) {
+        localStorage.setItem('menuOpen', tag);
+    }
     setMenu() {
-        //Scrolling affiche menu en top
 
+        this.setMenuOpen('0');
+        //Scrolling affiche menu en top
         this.setOnEventScrollTopMenuSticky();
 
         //2eme niveau
@@ -206,7 +292,7 @@ class Bollore {
         this.setSearch();
         this.setBurger();
         this.setMenu();
-        this.setFixRefresh();
+        //this.setFixRefresh();
 
 
 
@@ -432,6 +518,7 @@ class Bollore {
 
                 //clean menu nav1 et nav2
                 this.setBaseCloseMenu();
+                this.setMenuOpen('1');
 
                 // add sticky menu
 
@@ -581,8 +668,9 @@ class Bollore {
         let elemMenuContainer = document.querySelector('.header__menuContainer');
 
         if (window.matchMedia(`(max-width: ${this.mediaTabletLarge})`).matches) {
+            this.setBaseCloseMenu();
 
-
+ 
 
             if (elemMenuTablet != null && elemNavFirst != null) {
 
@@ -677,31 +765,31 @@ class Bollore {
             isTouch: false,
             isIOS: false,
             isChrome: false,
-            resize: function (_this, arg) {
+            resize: function (arg) {
                 Device.check();
-                _this.setResize();
+                _Bollore.setResize();
 
             },
             init: function (_this) {
-                window.addEventListener('resize', this.resize.bind(null, _this));
+                window.addEventListener('resize', this.resize.bind(_this));
 
                 Device.check();
             },
             check: function () {
 
-                Device.isTouch = ('ontouchstart' in window);
-                Device.isPaysage = (window.innerWidth > window.innerHeight);
-                Device.isPortrait = (window.innerWidth < window.innerHeight);
-                Device.isMobile = (window.innerWidth < 768);
-                Device.isTablette = (window.innerWidth >= 768 && window.innerWidth < 940);
-                Device.isDesktop = (window.innerWidth >= 940);
-                Device.isIOS = (navigator.userAgent.indexOf("iPad") != -1) || (navigator.userAgent.indexOf("iPhone") != -1) || (navigator.userAgent.indexOf("iPod") != -1);
-                Device.isChrome = !!window.chrome;
+                this.isTouch = ('ontouchstart' in window);
+                this.isPaysage = (window.innerWidth > window.innerHeight);
+                this.isPortrait = (window.innerWidth < window.innerHeight);
+                this.isMobile = (window.innerWidth < 768);
+                this.isTablette = (window.innerWidth >= 768 && window.innerWidth < 940);
+                this.isDesktop = (window.innerWidth >= 940);
+                this.isIOS = (navigator.userAgent.indexOf("iPad") != -1) || (navigator.userAgent.indexOf("iPhone") != -1) || (navigator.userAgent.indexOf("iPod") != -1);
+                this.isChrome = !!window.chrome;
 
 
-                document.querySelector('html').classList.toggle('mobile', Device.isMobile);
-                document.querySelector('html').classList.toggle('tablet', Device.isTablette);
-                document.querySelector('html').classList.toggle('desktop', Device.isDesktop);
+                document.querySelector('html').classList.toggle('mobile', this.isMobile);
+                document.querySelector('html').classList.toggle('tablet', this.isTablette);
+                document.querySelector('html').classList.toggle('desktop', this.isDesktop);
 
 
 
@@ -712,31 +800,43 @@ class Bollore {
 
     }
     setSlider() {
-        let _obj = {
-            container: '.slider__ul',
-            items: '.slider__item',
-            startSlide: 0,
-            speed: 400,
-            next: '.slider__next',
-            prev: '.slider__prev'
+
+        if (this._sliderElem.length > 0) {
+
+
+
+
+
+
+            for (var j = 0; j < this._sliderElem.length; j++) {
+
+                let elem = this._sliderElem[j];
+
+                let _joinData = elem.className.split(' ').join('.');
+                let _classSlider = `.${_joinData}`;
+                let isPaginationNormal = elem.classList.contains('slider--pagination');
+                let _objInstance = {
+                    isPaginationNormal: isPaginationNormal,
+                    container: `${_classSlider} .slider__ul`,
+                    items: `${_classSlider} .slider__item`,
+                    startSlide: 0,
+                    isAuto: true,
+                    speed: 5000,
+                    next: `${_classSlider} .slider__next`,
+                    prev: `${_classSlider} .slider__prev`
+
+                };
+
+
+                let _mySlider = new Slider(_classSlider, _objInstance);
+
+                this._slider.push(_mySlider);
+
+            }
 
         }
-        this._slider = new Slider(this._sliderElem, _obj);
-        // this._slider = new Swipe(this._sliderElem, {
-        //     startSlide: 0,
-        //     speed: 400,
-        //     auto: 3000,
-        //     continuous: true,
-        //     disableScroll: false,
-        //     stopPropagation: false,
-        //     callback: function (index, elem) {
-        //         console.log(`callback : ${elem}`);
 
-        //     },
-        //     transitionEnd: function (index, elem) {
-        //         console.log(`transitionEnd : ${elem}`);
-        //     }
-        // });
+
     }
     setOnEventScrollTopMenuSticky() {
         this.scrollTopDocument = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
@@ -800,7 +900,7 @@ class Bollore {
         }
     }
     setOnClickMenuClose() {
-        let _close = document.querySelector('.close');
+        let _close = this.closeMenuPrincipal;
         _close.addEventListener('click', (args) => {
             args.preventDefault();
             this.setBaseCloseMenu();
@@ -809,6 +909,7 @@ class Bollore {
     setBaseCloseMenu() {
 
 
+        this.setMenuOpen(0);
 
         this.closeMenu();
         this.closeFooter();
@@ -853,12 +954,14 @@ class Bollore {
         let _objMenu = {
 
         };
+
+        
         let _handler = function (_liArray, args) {
 
             let _target = args.currentTarget;
             let _prevent = true;
             let _targetElem = args.target;
-
+           
             if (_targetElem != null) {
 
 
@@ -902,6 +1005,7 @@ class Bollore {
 
 
             this.setBaseCloseMenu();
+             this.setMenuOpen('1');
 
             this.showLevel(_target, _li);
             _objMenu = {
@@ -914,9 +1018,9 @@ class Bollore {
             if (_smenu != null) {
                 _level = 1;
 
-                if (this.levelAction[_target.classList.value] == null) {
+                if (this.levelAction[_target.className] == null) {
 
-                    this.levelAction[_target.classList.value] = _objMenu;
+                    this.levelAction[_target.className] = _objMenu;
 
                 }
 
@@ -933,9 +1037,9 @@ class Bollore {
             // mode level 3
             if (_level3) {
                 _level = 2;
-                if (this.levelAction[_target.classList.value] == null) {
+                if (this.levelAction[_target.className] == null) {
 
-                    this.levelAction[_target.classList.value] = _objMenu;
+                    this.levelAction[_target.className] = _objMenu;
 
                 }
                 this.hideHoverMenu(_hoverhide._selector, _hoverhide._li);

@@ -14,10 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6432154/6221972/css/fonts.css" />
 
-    <!-- build:css css/app.bollore.bundle.min.css -->
-    <link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
-    <!-- endbuild -->
+    <link rel="stylesheet" href="css/app.bollore.bundle.min.css">
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -41,79 +38,82 @@
 <div class="header__bloc header__bloc--desktop">
     <h1 class="header__tilte hideText">Groupe Bolloré</h1>
     <div class="gridCR pad2">
-        <div class="--gridBottom gridCR-col-68--desk gridCR-col-64--tab">
+        <div class="--gridBottom gridCR-col-20--desk gridCR-col-64--tab">
             <div class="header__logo">
 
                 <a href="index.html" class="header__link" title="Accueil"><img class="header__imgLogoBollore resp" alt="Bolloré" src="img/logo.svg" /></a>
             </div>
         </div>
-        <div class="gridCR-col-100 --gridBottom">
-            <div class="gridCR">
-                <div class="gridCR-col-auto">
+        <div class="gridCR-col-80--desk --gridBottom">
+            <div class="header__contentTop">
+                <div class="gridCR">
+                    <div class="gridCR-col-50--desk">
+                        <div class="header__wrapperLeft">
+                            <div class="header__infoLeft">
+                                <div class="header__bourse --titleGrey1">
 
-                    <div class="header__infoLeft">
-                        <div class="header__bourse --titleGrey1">
-
-                            <span class="icon-chiffre-1 --titleBlue4"></span>
-                            <span class="header__dataBourseEuro --titleGrey1">2,93</span>
+                                    <span class="icon-chiffre-1 --titleBlue4"></span>
+                                    <span class="header__dataBourseEuro --titleGrey1">2,93</span>
 
 
-                            <span class="header__euros">euros</span> /
-                            <span class="header__dataBoursePourcent">+1,45%</span>
-                        </div>
-                        <div class="header__search">
-                            <form class="search__form" method="get" action="/recherche.html" enctype="application/x-www-form-urlencoded">
-                                <button type="submit" name="btn_go" class="search__btn bt icon-loupe --titleBlue4"><span class="hideText">rechercher</span></button>
-                                <input type="text" name="txt_search" autocomplete="off" class="search__input" placeholder="Votre recherche" />
+                                    <span class="header__euros">euros</span> /
+                                    <span class="header__dataBoursePourcent">+1,45%</span>
+                                </div>
+                                <div class="header__search">
+                                    <form class="search__form" name="search_engine" method="get" action="/recherche.html" enctype="application/x-www-form-urlencoded">
+                                        <button type="submit" name="btn_go" class="search__btn bt icon-loupe --titleBlue4"><span class="hideText">rechercher</span></button>
+                                        <input type="text" name="txt_search" autocomplete="off" class="search__input" placeholder="Votre recherche" />
 
-                            </form>
+                                    </form>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="gridCR-col-auto --full100 txtR">
-                    <div class="header__infoRight">
-                        <div class="header__langue">
-                            <span class="header__spanL header__spanL--on" data-culure="fr"> <a href="/index.html" title="fr">fr</a> </span>
-                            <span class="header__spanL" data-culure="en"> <a href="/index.html" title="en">en</a> </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="gridCR-col-100 txtR">
+                    <div class="gridCR-col-50--desk txtR">
+                        <div class="header__infoRight">
+                            <div class="header__langue">
+                                <span class="header__spanL header__spanL--on" data-culure="fr"> <a href="/index.html" title="fr">fr</a> </span>
+                                <span class="header__spanL" data-culure="en"> <a href="/index.html" title="en">en</a> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gridCR-col-100--desk txtR">
 
-                    <div class="header__menuContainer">
+                        <div class="header__menuContainer">
 
-                        <nav class="nav--item-first header__menu">
-                            <!--Debut Niveau 1 menu nav-->
-                            <ul class="menu__ul--level1" data-level="1">
-                                <li class="menu__li icon-fleche-1" data-menu="smenu1">
-                               <span class="menu__title">Le groupe</span>
-                                </li>
+                            <nav class="nav--item-first header__menu">
+                                <!--Debut Niveau 1 menu nav-->
+                                <ul class="menu__ul--level1" data-level="1">
+                                    <li class="menu__li icon-fleche-1" data-menu="smenu1">
+                                        <span class="menu__title">Le groupe</span>
+                                    </li>
 
-                                <li class="menu__li icon-fleche-1" data-menu="smenu2" data-footer-href="all-activities.html" data-footer-txt="Toutes les activités">
-                                    <span class="menu__title">Activités et participations</span>
-                                </li>
+                                    <li class="menu__li icon-fleche-1" data-menu="smenu2" data-footer-href="all-activities.html" data-footer-txt="Toutes les activités">
+                                        <span class="menu__title">Activités et participations</span>
+                                    </li>
 
-                                <li class="menu__li  icon-fleche-1" data-menu="smenu3">
-                                    <span class="menu__title">Talents</span>
+                                    <li class="menu__li  icon-fleche-1" data-menu="smenu3">
+                                        <span class="menu__title">Talents</span>
 
-                                </li>
-                                <li class="menu__li   icon-fleche-1" data-menu="smenu4">
-                                    <span class="menu__title">Actionnaires</span>
+                                    </li>
+                                    <li class="menu__li   icon-fleche-1" data-menu="smenu4">
+                                        <span class="menu__title">Actionnaires</span>
 
-                                </li>
-                                <li class="menu__li  icon-fleche-1" data-menu="smenu5">
-                                    <span class="menu__title">RSE</span>
+                                    </li>
+                                    <li class="menu__li  icon-fleche-1" data-menu="smenu5">
+                                        <span class="menu__title">RSE</span>
 
-                                </li>
-                                <li class="menu__li icon-fleche-1" data-menu="smenu6">
-                                    <span class="menu__title ">Publications &amp; Presse</span>
+                                    </li>
+                                    <li class="menu__li icon-fleche-1" data-menu="smenu6">
+                                        <span class="menu__title ">Publications &amp; Presse</span>
 
-                                </li>
-                            </ul>
-                            <!--Fin Niveau 1 menu nav-->
+                                    </li>
+                                </ul>
+                                <!--Fin Niveau 1 menu nav-->
 
-                        </nav>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -150,28 +150,28 @@
                 <span class="secondMenu__title">En bref</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="histoire.html" class="secondMenu__link" title="Histoire"> <span class="secondMenu__title">Histoire</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Histoire"> <span class="secondMenu__title">Histoire</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="film-instutionnel.html" class="secondMenu__link" title="Film Institutionnel"><span class="secondMenu__title">Film Institutionnel</span></a>
+                        <a href="05-contenu2.html" class="secondMenu__link" title="Film Institutionnel"><span class="secondMenu__title">Film Institutionnel</span></a>
                     </li>
 
                 </ul>
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a class="secondMenu__link" href="presence-internationale.html" title="Présence internationale"> <span class="secondMenu__title">Présence internationale</span> </a>
+                <a class="secondMenu__link" href="10-presence-internationale.html" title="Présence internationale"> <span class="secondMenu__title">Présence internationale</span> </a>
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a class="secondMenu__link" href="gouvernance.html"> <span class="secondMenu__title">Gouvernance</span></a>
+                <a class="secondMenu__link" href="05-contenu.html"> <span class="secondMenu__title">Gouvernance</span></a>
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
                 <span class="secondMenu__title">Philanthropie</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="fondation.html" class="secondMenu__link" title="Fondation / Earth / Foyer Jean Bosco"> <span class="secondMenu__title">Fondation / Earth / Foyer Jean Bosco</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Fondation / Earth / Foyer Jean Bosco"> <span class="secondMenu__title">Fondation / Earth / Foyer Jean Bosco</span></a>
                     </li>
 
                 </ul>
@@ -186,13 +186,13 @@
                 <span class="secondMenu__title">Transport et logistique</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="bollore-logistics.html" class="secondMenu__link" title="Bolloré Logistics"> <span class="secondMenu__title">Bolloré Logistics</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Bolloré Logistics"> <span class="secondMenu__title">Bolloré Logistics</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="bollore-africa.html" class="secondMenu__link" title="Bolloré Africa Logistics"><span class="secondMenu__title">Bolloré Africa Logistics</span></a>
+                        <a href="05-contenu2.html" class="secondMenu__link" title="Bolloré Africa Logistics"><span class="secondMenu__title">Bolloré Africa Logistics</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="bollore-energy.html" class="secondMenu__link" title="Bolloré Energy"><span class="secondMenu__title">Bolloré Energy</span></a>
+                        <a href="05-contenu2.html" class="secondMenu__link" title="Bolloré Energy"><span class="secondMenu__title">Bolloré Energy</span></a>
                     </li>
 
                 </ul>
@@ -202,12 +202,12 @@
             <li class="icon-fleche-1 secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
                 <span class="secondMenu__title">Communication</span>
                 <ul class="secondMenu__ul--level2">
-                    <li class="secondMenu__li--item secondMenu__li--havas"><a href="havas.html" class="secondMenu__link" title="Havas"><span class="secondMenu__title">Havas</span></a></li>
+                    <li class="secondMenu__li--item secondMenu__li--havas"><a href="07-information-reglementee.html" class="secondMenu__link" title="Havas"><span class="secondMenu__title">Havas</span></a></li>
                     <li class="secondMenu__li--item secondMenu__li--direct-matin">
-                        <a href="direct-matin.html" class="secondMenu__link" title="Bolloré Africa Logistics"><span class="secondMenu__title">Direct Matin</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Bolloré Africa Logistics"><span class="secondMenu__title">Direct Matin</span></a>
                     </li>
-                    <li class="secondMenu__li--item"><a href="telecoms.html" class="secondMenu__link" title="Télécoms"><span class="secondMenu__title">Télécoms</span></a></li>
-                    <li class="secondMenu__li--item"><a href="telecoms.html" class="secondMenu__link" title="Autres activités"><span class="secondMenu__title">Autres activités</span></a></li>
+                    <li class="secondMenu__li--item"><a href="05-contenu.html" class="secondMenu__link" title="Télécoms"><span class="secondMenu__title">Télécoms</span></a></li>
+                    <li class="secondMenu__li--item"><a href="09-activites-et-participations.html" class="secondMenu__link" title="Autres activités"><span class="secondMenu__title">Autres activités</span></a></li>
 
                 </ul>
 
@@ -217,17 +217,17 @@
                 <span class="secondMenu__title">Stockage d'électricité <br /> et solutions</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="blue-solutions.html" class="secondMenu__link" title="Blue Solutions, Films plastiques"><span class="secondMenu__title">Blue Solutions, Films plastiques</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Blue Solutions, Films plastiques"><span class="secondMenu__title">Blue Solutions, Films plastiques</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="vehicule-electrique.html" class="secondMenu__link" title="Véhicules électriques, Solutions"><span class="secondMenu__title">Véhicules électriques, Solutions</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Véhicules électriques, Solutions"><span class="secondMenu__title">Véhicules électriques, Solutions</span></a>
                     </li>
 
 
                 </ul>
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a class="secondMenu__link" href="autres-actifs.html"><span class="secondMenu__title">Autres actifs</span></a>
+                <a class="secondMenu__link" href="05-contenu.html"><span class="secondMenu__title">Autres actifs</span></a>
 
             </li>
 
@@ -241,11 +241,11 @@
                 <span class="secondMenu__title">Nous rejoindre</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="consulter-les-offres.html" class="secondMenu__link" title="Consulter les offres"> <span class="secondMenu__title">Consulter les offres</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Consulter les offres"> <span class="secondMenu__title">Consulter les offres</span></a>
                     </li>
 
                     <li class="secondMenu__li--item">
-                        <a href="deposer-ma-candidature.html" class="secondMenu__link" title="Déposer ma candidature"><span class="secondMenu__title">Déposer ma candidature</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Déposer ma candidature"><span class="secondMenu__title">Déposer ma candidature</span></a>
                     </li>
 
                 </ul>
@@ -263,14 +263,14 @@
                 <span class="secondMenu__title">En bref</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="message-du-president.html" class="secondMenu__link" title="Message du président"> <span class="secondMenu__title">Message du président</span></a>
+                        <a href="03-chiffre-cles.html" class="secondMenu__link" title="Message du président"> <span class="secondMenu__title">Message du président</span></a>
                     </li>
 
                     <li class="secondMenu__li--item">
-                        <a href="chiffres-cles.html" class="secondMenu__link" title="Chiffres clés"><span class="secondMenu__title">Chiffres clés</span></a>
+                        <a href="04-chiffre-cles.html" class="secondMenu__link" title="Chiffres clés"><span class="secondMenu__title">Chiffres clés</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="organigrame.html" class="secondMenu__link" title="Organigrame économiques / Structure Actionnariat"><span class="secondMenu__title">Organigrame économiques / Structure Actionnariat</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Organigrame économiques / Structure Actionnariat"><span class="secondMenu__title">Organigrame économiques / Structure Actionnariat</span></a>
                     </li>
                 </ul>
 
@@ -280,27 +280,27 @@
                 <span class="secondMenu__title">Calendrier financier</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="agenda-financier.html" class="secondMenu__link" title="Agenda financier (annonces CA,Résultats,AG,autres)"> <span class="secondMenu__title">Agenda financier (annonces CA,Résultats,AG,autres)</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Agenda financier (annonces CA,Résultats,AG,autres)"> <span class="secondMenu__title">Agenda financier (annonces CA,Résultats,AG,autres)</span></a>
                     </li>
 
 
                 </ul>
             </li>
             <li class="secondMenu__li gridCR-col-20--desk --topLi gridCR-col-100--tab">
-                <a href="information-reglementee.html" class="secondMenu__link" title="Information réglementée / Publications"> <span class="secondMenu__title">Information réglementée / Publications</span></a>
+                <a href="07-information-reglementee.html" class="secondMenu__link" title="Information réglementée / Publications"> <span class="secondMenu__title">Information réglementée / Publications</span></a>
 
             </li>
             <li class="icon-fleche-1 secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
                 <span class="secondMenu__title">Actionnaire individuel</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="devenir-actionnaire.html" class="secondMenu__link" title="Devenir actionnaire"> <span class="secondMenu__title">Devenir actionnaire</span></a>
+                        <a href="03-chiffre-cles.html" class="secondMenu__link" title="Devenir actionnaire"> <span class="secondMenu__title">Devenir actionnaire</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="action.html" class="secondMenu__link" title="Mode de détention des actions"> <span class="secondMenu__title">Mode de détention des actions</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Mode de détention des actions"> <span class="secondMenu__title">Mode de détention des actions</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="contacts.html" class="secondMenu__link" title="Mode de détention des actions"> <span class="secondMenu__title">Contacts</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Mode de détention des actions"> <span class="secondMenu__title">Contacts</span></a>
                     </li>
                 </ul>
             </li>
@@ -308,22 +308,22 @@
                 <span class="secondMenu__title">Bolloré en bourse</span>
                 <ul class="secondMenu__ul--level2">
                     <li class="secondMenu__li--item">
-                        <a href="fiche-signaletique.html" class="secondMenu__link" title="Fiche signalétique"> <span class="secondMenu__title">Fiche signalétique</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Fiche signalétique"> <span class="secondMenu__title">Fiche signalétique</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="cours.html" class="secondMenu__link" title="Cours en direct et historique"> <span class="secondMenu__title">Cours en direct et historique</span></a>
+                        <a href="08-bourse.html" class="secondMenu__link" title="Cours en direct et historique"> <span class="secondMenu__title">Cours en direct et historique</span></a>
                     </li>
                     <li class="secondMenu__li--item">
-                        <a href="dividende-et-cours-isf.html" class="secondMenu__link" title="Dividendes et cours ISF"> <span class="secondMenu__title">Dividendes et cours ISF</span></a>
+                        <a href="05-contenu.html" class="secondMenu__link" title="Dividendes et cours ISF"> <span class="secondMenu__title">Dividendes et cours ISF</span></a>
                     </li>
                 </ul>
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a href="assemblee-generale.html" class="secondMenu__link" title="Assemblée génrale"><span class="secondMenu__title">Assemblée génrale</span></a>
+                <a href="05-contenu.html" class="secondMenu__link" title="Assemblée génrale"><span class="secondMenu__title">Assemblée génrale</span></a>
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk">
-                <a href="faq.html" class="secondMenu__link" title="Assemblée génrale"><span class="secondMenu__title">FAQ</span></a>
+                <a href="11-faq.html" class="secondMenu__link" title="Assemblée génrale"><span class="secondMenu__title">FAQ</span></a>
 
             </li>
 
@@ -334,7 +334,7 @@
         <ul data-level="2" class="secondMenu__ul secondMenu__ul--level1 gridCR --VgridTop">
             <li class="secondMenu__li secondMenu__li--1 gridCR-col-20--desk gridCR-col-100--tab">
 
-                <a href="actualites-et-communiques.html" class="secondMenu__link" title="Actualités et Communiqués"> <span class="secondMenu__title">RSE</span></a>
+                <a href="06-liste-de-documents.html" class="secondMenu__link" title="Actualités et Communiqués"> <span class="secondMenu__title">RSE</span></a>
 
 
             </li>
@@ -347,20 +347,20 @@
         <ul data-level="2" class="secondMenu__ul secondMenu__ul--level1 gridCR --VgridTop">
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
 
-                <a href="actualites-et-communiques.html" class="secondMenu__link" title="Actualités et Communiqués"> <span class="secondMenu__title">Actualités et Communiqués</span></a>
+                <a href="07-information-reglementee.html" class="secondMenu__link" title="Actualités et Communiqués"> <span class="secondMenu__title">Actualités et Communiqués</span></a>
 
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a href="publications.html" class="secondMenu__link" title="Publications"> <span class="secondMenu__title">Publications</span></a>
+                <a href="06-liste-de-documents.html" class="secondMenu__link" title="Publications"> <span class="secondMenu__title">Publications</span></a>
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a href="contact-presse.html" class="secondMenu__link" title="Contact presse"> <span class="secondMenu__title">Contact presse</span></a>
+                <a href="05-contenu.html" class="secondMenu__link" title="Contact presse"> <span class="secondMenu__title">Contact presse</span></a>
 
             </li>
             <li class="secondMenu__li gridCR-col-20--desk gridCR-col-100--tab">
-                <a href="mediatheque.html" class="secondMenu__link" title="Accès Médiathèque"> <span class="secondMenu__title">Accès Médiathèque</span></a>
+                <a href="06-liste-de-documents.html" class="secondMenu__link" title="Accès Médiathèque"> <span class="secondMenu__title">Accès Médiathèque</span></a>
 
             </li> 
 
@@ -524,12 +524,12 @@
         © Bolloré Group, all rights reserved
     </span>
     <ul class="navFooter">
-        <li class="navFooter__item"><a href="plan-du-site.html" class="navFooter__link">Plan du site</a></li>
-        <li class="navFooter__item"><a href="contact.html" class="navFooter__link">Contacts</a></li>
-            <li class="navFooter__item"><a href="glossaire.html" class="navFooter__link">Glossaire</a></li>
-        <li class="navFooter__item"><a href="credit.html" class="navFooter__link">Crédits</a></li>
+        <li class="navFooter__item"><a href="05-contenu.html" class="navFooter__link">Plan du site</a></li>
+        <li class="navFooter__item"><a href="05-contenu.html" class="navFooter__link">Contacts</a></li>
+            <li class="navFooter__item"><a href="05-contenu.html" class="navFooter__link">Glossaire</a></li>
+        <li class="navFooter__item"><a href="05-contenu.html" class="navFooter__link">Crédits</a></li>
      
-        <li class="navFooter__item"><a href="mentions-legales.html" class="navFooter__link">Mentions légales</a></li>
+        <li class="navFooter__item"><a href="05-contenu.html" class="navFooter__link">Mentions légales</a></li>
     </ul>
 </div>
                 </footer>
@@ -541,14 +541,7 @@
         <!-- END Main Bloc-->
 
     </div>
-    <!-- build:js js/app.bollore.bundle.min.js -->
-    <script src="js/app.bollore.js"></script>
-<script src="js/app.bollore.rth.js"></script>
-<script src="js/plugins.js"></script>
-<script src="components/picturefill/dist/picturefill.js"></script>
-
-<!--<script src="js/vendors/swipe.js"></script>-->
-    <!-- endbuild -->
+    <script src="js/app.bollore.bundle.min.js"></script>
 </body>
 
 </html>

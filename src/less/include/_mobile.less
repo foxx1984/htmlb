@@ -55,6 +55,45 @@
             letter-spacing: normal
         }
     }
+    .socialLink {
+        margin-left: 0;
+        &__item {
+            padding: 12% 8.6%;
+            margin: 0 1%;
+        }
+    }
+    .search {
+        &__input {
+            font-size: 5.0rem;
+            width: 101%;
+        }
+    }
+    .havasBloc {
+        &__link {
+            white-space: nowrap;
+        }
+        &__content {
+            width: 106.136em;
+            padding: 10% 0 14%;
+        }
+        &__right {
+            position: static;
+            margin: 0;
+            left: auto;
+            .txtC;
+        }
+        &__imgContainer {
+            width: 41.8em;
+        }
+        &__left {
+            .txtC;
+            padding: 0;
+            margin-bottom: 14%;
+        }
+        &__txt {
+            margin-bottom: 9%;
+        }
+    }
     .headerGenerique {
         max-height: 61.5vw;
         overflow: hidden;
@@ -340,7 +379,7 @@
     .talents {
         &__linkOffres {
             &:before {
-                line-height: 12.5vw;
+                line-height: 12.5vw !important;
                 font-size: 4vw;
             }
         }
@@ -382,7 +421,7 @@
             margin-top: 6%;
         }
         &__footer {
-            margin-top: 32%;
+            margin-top: 38%;
         }
     }
     .chiffre {
@@ -460,6 +499,7 @@
         &__top {
             padding-left: 0;
             padding-right: 0;
+            margin-bottom: -7%;
         }
         &__middle {
             padding-left: 0;
@@ -472,7 +512,63 @@
     .slider__item:not(.slider__item--current) {
         display: none;
     }
+    .filialeWrapper {
+        padding: 0;
+        margin-bottom: 14%;
+    }
     .slider {
+        .container--slider {
+            overflow: hidden;
+        }
+        &--filiale {
+            .icon-fleche-1 {
+                &:before {
+                    font-size: 0.7em;
+                }
+            }
+            .slider__content {
+                padding: 8% 0 7.4%;
+                width: 145.2em;
+            }
+            .slider__image {
+                width: 80.8em;
+                height: 83.2em;
+            }
+            .slider__txt {
+                position: static;
+                width: 15em;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .slider__next {
+                top: 50%;
+            }
+            .slider__push {
+                padding-left: 0;
+            }
+            .slider__prev {
+                top: 50%;
+            }
+            .slider__item {
+                display: inline-block;
+                width: 79vw;
+                margin-right: -2.4%;
+            }
+            .slider__ul {
+                margin-left: -112vw;
+                display: inline-block;
+                width: 442vw;
+            }
+            .slider__pagination {
+                bottom: -2%;
+                width: 105.5em;
+                margin-left: 21.5em;
+            }
+            .slider__next,
+            .slider__prev {
+                z-index: 666;
+            }
+        }
         &--custom {
             .icon-fleche-1 {
                 &:before {

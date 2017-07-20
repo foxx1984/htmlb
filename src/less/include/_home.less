@@ -36,6 +36,20 @@
     .txt-14;
 }
 
+.linkN {
+    &:after {
+        .dispB;
+        background-color: @white-3;
+        height: 1px;
+        width: 100%;
+        content: '';
+        margin-top: 2px;
+    }
+    .dispI;
+    padding: 0.85% 1.7%;
+    .txt-14;
+}
+
 .icon-information {
     .txt-8;
     &:before {
@@ -93,7 +107,6 @@
     margin-top: 5%;
 }
 
-
 .swipe {
     overflow: hidden;
     visibility: hidden;
@@ -146,6 +159,11 @@
         color: @grey-3;
         line-height: normal;
         .txtR;
+        line-height: 1.8em;
+        padding-left: 15em;
+        p {
+            .txtR;
+        }
     }
     &__title {
         .dispI;
@@ -208,7 +226,7 @@
     }
     &__content {
         padding-top: 5%;
-        padding-left: 12.5%;
+        padding-left: 11%;
     }
     &__head {
         margin-bottom: 5.5%;
@@ -274,6 +292,11 @@
     &__head {}
     &--blue1 {
         color: @blue-2;
+        .capsule__title {
+            &:before {
+                color: @blue-2;
+            }
+        }
         .capsule__link {
             color: @blue-2;
             border: 1px solid @blue-2;
@@ -284,6 +307,11 @@
     }
     &--blue2 {
         color: @blue-10;
+        .capsule__title {
+            &:before {
+                color: @blue-10;
+            }
+        }
         .capsule__link {
             color: @blue-10;
             border: 1px solid @blue-10;
@@ -301,6 +329,11 @@
     }
     &--red {
         color: @red-3;
+        .capsule__title {
+            &:before {
+                color: @red-3;
+            }
+        }
         .capsule__link {
             color: @red-3;
             border: 1px solid @red-3;
@@ -388,7 +421,7 @@
             .dispI;
             text-align: center;
             height: 100%;
-            line-height: 4.5vw;
+            line-height: 4.5vw !important;
         }
         position: absolute;
         top:0;
@@ -442,11 +475,15 @@
  *
  */
 
+.CoursWrapper {
+    .txtR;
+}
+
 .cours {
+    .dispI;
     width: 24.8vw;
     padding: 4% 4%;
     border: 1px solid @blue-7;
-    margin-left: 35%;
     &__title {
         color: @blue-7;
         position: relative;
@@ -466,6 +503,7 @@
     }
     &__euros {
         .dispB;
+        .txtL;
     }
     &__pourcent {
         .dispB;
@@ -726,7 +764,8 @@
         padding-bottom: 1.1%;
     }
     &--actionnaires {
-        padding-top: 1.1%;
+        padding-top: 0;
+        margin-top: 0%;
         overflow: hidden;
         padding-bottom: 3.5%;
         border-bottom: 1px solid @grey-3;

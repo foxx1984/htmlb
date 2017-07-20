@@ -1,0 +1,23 @@
+
+
+.videoWrapper {
+    height: 0;
+    padding-bottom: 62.306610407876230661040787623066%;
+    position: relative;
+    overflow: hidden;
+    &--iframe {
+        iframe {
+            .blocRespVideo();
+        }
+    }
+    &--video {
+        .video {
+            .blocRespVideo();
+            object-fit: cover;
+        }
+    }
+}
+
+.videoWrapper + .videoWrapper {
+    margin-top: 7%;
+}

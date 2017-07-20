@@ -85,6 +85,27 @@ module.exports = function (grunt) {
                    
                   
                 }
+            },
+             dist: {
+                bsFiles: {
+                    src: [
+                        'dist/css/**/*.css',
+                        'dist/js/**/*.js',
+                        'dist/img/**/*.*',
+                        'dist/*.html'
+                    ]
+                },
+                options: {
+                    watchTask: false,
+                    server: './dist',
+                    debugInfo: true,
+                    logConnections: true,
+                    notify: true
+                  
+                  
+                   
+                  
+                }
             }
         },
 
@@ -240,15 +261,15 @@ module.exports = function (grunt) {
         },
         //tâche de cleanage de dossier
         clean: {
-
-            delJsBabel: ['dist/js/app.bollore.js', 'dist/js/app.bollore.js.map'],
+          
+            delJsBabel: ['dist/js/app.bollore.js', 'dist/js/app.bollore.js.map','dist/js/app.bollore.rth.js','dist/js/plugins.js','dist/js/vendors/'],
             tmp: ['.tmp'], //je clean mon dossier temp à la fin
             partials: ['dist/partials/'], //je clean mon dossier partials à la fin
             devwordpress: ['devwordpress'],
             dist: ['dist'],
             delCss: ['!dist/css/app.bollore.bundle.*', 'dist/css/ico*.css', 'dist/css/style*']
 
-
+ 
 
         },
         //tâche lecture des commentaires de build pour automatiser la fusion  des fichiers css et js en un seul
@@ -270,7 +291,7 @@ module.exports = function (grunt) {
             dist: {
                 expand: true,
                 cwd: 'src',
-                src: ['*.html', 'css/**/*.*', 'img/**/*.*', '!partials/', 'ajax/**/*.*', '*.png', '*.ico', '*.json', '!file_sigs.json'],
+                src: ['*.html', 'css/**/*.*', 'img/**/*.*', '!partials/', 'ajax/**/*.*', '*.png', '*.ico', '*.json', '!file_sigs.json','js/**/*.*','medias/**/*.*'],
                 dest: 'dist'
             },
             csstmp: {
@@ -308,45 +329,36 @@ module.exports = function (grunt) {
             },
 
             //copie le contenu du dossier dist dans le dossier 
-            wordpress: {
+         
+             wordpressdistStatic: {
                 expand: true,
                 cwd: 'dist',
                 src: ['**/*.*'],
-                dest: 'devwordpress'
-            },
-
-
-            wordpressdevHtml: {
-                expand: true,
-                cwd: 'devwordpress',
-                src: ['*.html', 'css/**/*.*', 'img/**/*.*', 'js/**/*.*', 'ajax/**/*.*'],
                 dest: '<%= wordpress.env.pathHtml %>'
             },
-            wordpressdevCss: {
+            wordpressdistJs: {
                 expand: true,
-                cwd: 'devwordpress/css',
-                src: ['app*.*'],
-                dest: '<%= wordpress.env.pathCss %>'
-            },
-
-            wordpressdevJs: {
-                expand: true,
-                cwd: 'devwordpress/js',
-                src: ['app*.*'],
+                cwd: 'dist/js',
+                src: ['**/*.*'],
                 dest: '<%= wordpress.env.pathJs %>'
             },
-            wordpressdevImg: {
+           
+            wordpressdistCss: {
                 expand: true,
-                cwd: 'devwordpress/img',
+                cwd: 'dist/css',
                 src: ['**/*.*'],
-                dest: '<%= wordpress.env.pathImg %>'
+                dest:  '<%= wordpress.env.pathCss %>'
             },
-            wordpressdevAjax: {
+            wordpressdistImg: {
                 expand: true,
-                cwd: 'devwordpress/ajax',
-                src: ['**/*.*'],
-                dest: '<%= wordpress.env.pathAjax %>'
+                cwd: 'dist/img',
+                src: [ '**/*.*'],
+                dest: '<%= wordpress.env.pathImg %>'
             }
+
+
+
+
         },
         //tâche de transpilation de fichier .less en .css
         less: {
@@ -615,7 +627,12 @@ module.exports = function (grunt) {
         /* 'prettify',*/
 
         'clean:tmp',
-        'focus:dist'
+        'copy:wordpressdistStatic',
+        'copy:wordpressdistJs',
+        'copy:wordpressdistCss',
+        'copy:wordpressdistImg'
+        //,'browserSync:dist'
+        // 'focus:dist'
     ]);
 
     grunt.registerTask('dev', [
@@ -643,11 +660,9 @@ module.exports = function (grunt) {
         'copy:csstmp',
         'copy:jsrc',
 
-
         /* 'prettify',*/
-
         'clean:tmp',
-        'browserSync',
+        'browserSync:dev',
         'focus:dev',
         
 
