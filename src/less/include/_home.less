@@ -23,6 +23,16 @@
 }
 
 .\--linkN {
+    border: 1px solid transparent;
+  
+    overflow: hidden;
+    position: relative;
+    &:hover {
+        &::after {
+            z-index: 100;
+            position: relative;
+        }
+    }
     &:after {
         .dispB;
         background-color: @white-3;

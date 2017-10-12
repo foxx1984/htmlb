@@ -1,0 +1,173 @@
+/*animations*/
+
+.trait2(@color, @percent) {
+    &:after {
+        transition: all linear 0.2s;
+        width: @percent;
+        background: @color;
+        height: 1px;
+        display: block;
+        content: '';
+        margin-top: 1px;
+    }
+}
+
+.\--linkC {
+    display: inline-block;
+    position: relative;
+}
+
+.\--link {
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+}
+
+.linkTxtAnim,
+.capsule__color,
+.msg__linkTxt {
+    position: relative;
+    z-index: 10;
+}
+
+
+/* @blue-4*/
+
+.animButton(@color, @background, @speed) {
+    &.\--linkN {
+        transition: all @speed ease;
+        .linkTxtAnim,
+        .capsule__color,
+        .msg__linkTxt {
+            transition: all @speed ease;
+        }
+        &:hover {
+            &::after {
+                background-color: @color;
+            }
+            border: 1px solid @color;
+            .linkTxtAnim,
+            .capsule__color,
+            .msg__linkTxt {
+                color: @color;
+            }
+            &::before {
+                border: 1px solid @color;
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(10, 2);
+                background-color: @background;
+            }
+        }
+        &::after {
+            transition: all @speed ease;
+        }
+        &::before {
+            content: '';
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0, 0);
+            transform-origin: 50% 50% 0;
+            transition: all @speed ease;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            padding: 11px;
+        }
+    }
+}
+
+.animButton2(@color, @background, @speed) {
+    &.\--linkC {
+        transition: all @speed ease;
+        padding: 8px 8px;
+        .linkTxtAnim,
+        .capsule__color,
+        .msg__linkTxt {
+            transition: all @speed ease;
+        }
+        &:hover {
+            // border: 1px solid @color;
+            .linkTxtAnim,
+            .capsule__color,
+            .msg__linkTxt {
+                color: @color;
+            }
+            &::before {
+                border: 1px solid @color;
+                opacity: 1;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        &::before {
+            content: '';
+            opacity: 0;
+            border: 1px solid @color;
+            transform: translate(-50%, -50%);
+            transform-origin: 50% 50% 0;
+            transition: all 0.6s ease;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50%;
+            margin: 0 auto;
+            height: 50%;
+            padding: 0;
+        }
+    }
+}
+
+.animationLink (@color) {
+    .\--link {
+        .trait2(@blue-8, 0%);
+        &:hover {
+            .trait2(@blue-8, 100%);
+        }
+    }
+}
+
+.animationCapsule() {
+    .capsule--blue1 {
+        .capsule__link {
+            .animButton(white, @blue-4, 0.6s);
+        }
+    }
+    
+    .capsule--red {
+        .capsule__link {
+            .animButton(white, @red-3, 0.6s);
+        }
+    }
+    
+    .capsule--blue2 {
+        .capsule__link {
+            .animButton(white, @blue-10, 0.6s);
+        }
+    }
+}
+
+.animationBorderPost() {
+    .post__img {
+        border: 1px solid transparent;
+        transition: all 0.5s ease .1s;
+        &--on {
+            border: 1px solid @blue-8;
+        }
+    }
+}
+
+//anim --linkC
+.animButton2(@blue-4, transparent, 0.6s);
+
+//anim --linkN
+.animButton(@blue-4, white, 0.6s);
+
+//anim --link
+.animationLink(@blue-8);
+.animationBorderPost();
+
+//capsule--blue1 capsule--blue2 capsule--red
+.animationCapsule();
+
+
+
+

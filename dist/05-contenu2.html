@@ -14,7 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6432154/6221972/css/fonts.css" />
 
-    <link rel="stylesheet" href="css/app.bollore.bundle.min.css">
+    <!-- build:css css/app.bollore.bundle.min.css -->
+    <link rel="stylesheet" href="css/icomoon.css">
+<link rel="stylesheet" href="css/style.css">
+    <!-- endbuild -->
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -137,9 +140,11 @@
 <!--FIN HEADER MOBILE -->
 </div>
 <!-- END Header top-->
-<!-- START Header middle second niveau Menu -->
-<div class="header__middle header__middle--off">
-    <nav class="nav--item nav--item-second secondMenu pad2">
+<div class="header__blocSousNav">
+    <div class="header__blocWrapperNav">
+        <!-- START Header middle second niveau Menu -->
+        <div class="header__middle header__middle--off">
+            <nav class="nav--item nav--item-second secondMenu pad2">
     <div class="close">
         <div class="close__left"></div>
         <div class="close__right"></div>
@@ -368,14 +373,16 @@
 
     </div>
 </nav>
-</div>
-<!-- END Header middle second niveau Menu -->
-<!-- START Header bottom -->
-<div class="header__bottom header__bottom--off">
-    <div class="header__menuFooter">
+        </div>
+        <!-- END Header middle second niveau Menu -->
+        <!-- START Header bottom -->
+        <div class="header__bottom header__bottom--off">
+            <div class="header__menuFooter">
     <a class="menuFooter--link" href="#"><span class="menuFooter__span"></span></a>
 
 </div>
+        </div>
+    </div>
 </div>
 <!-- END Header bottom -->
                 </header>
@@ -537,7 +544,13 @@
         <!-- END Main Bloc-->
 
     </div>
-    <script src="js/app.bollore.bundle.min.js"></script>
+    <!-- build:js js/app.bollore.bundle.min.js -->
+    <script src="js/app.bollore.js"></script>
+<script src="js/app.bollore.rth.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/vendors/picturefill.js"></script>
+
+    <!-- endbuild -->
 </body>
 
 </html>
