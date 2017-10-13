@@ -472,6 +472,128 @@ class Bollore {
         this.setResize();
         this.hoverPublication();
 
+        //bloc home chiffre key
+        this.animkeyfigure('.chiffre__bloc .chiffre__keyFigure', '.GroupeChiffres');
+
+        //bloc chiffre cles /bloc chiffre red
+        this.animkeyfigure('.chiffreKey__pushChiffre .chiffre__keyFigure', '.chiffreKey');
+
+       
+        
+                
+        this.setScrolltop();
+
+
+
+    }
+    setScrolltop() {
+        document.scrollTop = 0;
+        window.scrollTo(0, 0);
+        window.scroll(0, 0);
+    }
+    animkeyfigure(selectorKey, declencheur) {
+        let keyfigureitems = document.querySelectorAll(selectorKey);
+        let keyfigureitemsTmp = [].slice.call(keyfigureitems);
+
+        let declenchement = document.querySelector(declencheur);
+        let delta = 500;
+
+        //check position to activate anim
+
+
+
+        window.addEventListener('scroll', (args) => {
+            if (declenchement != null) {
+
+
+                let declenchementBound = declenchement.getBoundingClientRect();
+                if (declenchementBound != null) {
+                    let scrolling = declenchementBound.top;
+
+                    if (this.scrollTopDocument + delta > scrolling) {
+                        animItem();
+
+                    }
+                }
+            }
+        });
+
+
+
+
+        var animItem = function () {
+
+            if (keyfigureitemsTmp != null && keyfigureitemsTmp.length > 0) {
+
+
+
+
+                for (let i = 0; i < keyfigureitemsTmp.length; i++) {
+                    let elem = keyfigureitemsTmp[i];
+
+                    if (elem != null) {
+                        elem.classList.remove('chiffre__keyFigure--off');
+                        let chifreH3 = elem.querySelector('.chiffre__h3');
+                        if (chifreH3 != null) {
+
+                            let max = chifreH3.dataset["max"];
+                            let separator = $.animateNumber.numberStepFactories.separator(',')
+
+                            var decimal_places = 1;
+                            var decimal_factor = decimal_places === 0 ? 1 : Math.pow(10, decimal_places);
+                            if (max != null && max != "") {
+                                var options = {
+                                    number: max
+                                }
+
+                                if (max.indexOf('.') > -1) {
+                                    options = {
+                                        number: max * decimal_factor,
+                                        numberStep: function (now, tween) {
+                                            var floored_number = Math.floor(now) / decimal_factor,
+                                                target = $(tween.elem);
+
+                                            if (decimal_places > 0) {
+                                                // force decimal places even if they are 0
+                                                floored_number = floored_number.toFixed(decimal_places);
+
+                                                // replace '.' separator with ','
+                                                floored_number = floored_number.toString().replace('.', ',');
+                                            }
+
+                                            target.text(floored_number);
+                                        }
+
+                                    }
+                                }
+                                $(chifreH3).animateNumber(options);
+                            }
+                            keyfigureitemsTmp.splice(i, 1);
+                        }
+
+
+
+                    }
+                    break;
+                }
+
+                setTimeout(() => {
+                    animItem();
+                }, 650);
+
+
+
+
+
+
+
+
+
+            }
+
+
+        }
+
 
 
     }
@@ -1131,9 +1253,11 @@ class Bollore {
             this.scrollTopDocument = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
             let _token = document.querySelector('.content');
 
+            let tokenOffsetheight = _token.offsetHeight;
+
             if (_token != null && this.header != null) {
-                let _tokenTop = this.getOffset(_token);
-                if (_tokenTop.top > 0 && this.scrollTopDocument > _tokenTop.top) {
+                let _tokenTop = this.getOffset(_token).top;
+                if (this.scrollTopDocument > _tokenTop) {
                     if (!this.header.classList.contains('sticky')) {
                         this.header.classList.add('sticky');
                     }
@@ -1173,12 +1297,22 @@ class Bollore {
 
     }
     getOffset(el) {
-        const box = el.getBoundingClientRect();
 
-        return {
-            top: box.top + window.pageYOffset - document.documentElement.clientTop,
-            left: box.left + window.pageXOffset - document.documentElement.clientLeft
-        }
+        var rect = el.getBoundingClientRect(),
+            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        var obj = {
+            top: rect.top + scrollTop,
+            left: rect.left + scrollLeft
+        };
+        return obj;
+
+        // const box = el.getBoundingClientRect();
+
+        // return {
+        //     top: box.top + window.pageYOffset - document.documentElement.clientTop,
+        //     left: box.left + window.pageXOffset - document.documentElement.clientLeft
+        // }
     }
     setOnClickMenuClose() {
         let _close = this.closeMenuPrincipal;

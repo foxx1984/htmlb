@@ -515,8 +515,8 @@
 
 
     </div>
-    <div class="actuDoc__footer actuDoc__footer--generic">
-        <a href="faq.html" class="actuDoc__faqLink faqRight"><i class="fa fa-comments-o" aria-hidden="true"></i> <span class="actuDoc__faqtxt"> Accédez à notre FAQ</span></a>
+    <div class="actuDoc__footer actuDoc__footer--generic --linkF">
+        <a href="faq.html" class="actuDoc__faqLink faqRight"><i class="fa fa-comments-o linkTxtAnim" aria-hidden="true"></i> <span class="actuDoc__faqtxt linkTxtAnim"> Accédez à notre FAQ</span></a>
     </div>
 </div>
 
@@ -545,7 +545,13 @@
 
     </div>
     <!-- build:js js/app.bollore.bundle.min.js -->
-    <script src="js/app.bollore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+   window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>');
+</script>
+<script src="js/jquery.animateNumber.min.js"></script>
+
+<script src="js/app.bollore.js"></script>
 <script src="js/app.bollore.rth.js"></script>
 <script src="js/plugins.js"></script>
 <script src="js/vendors/picturefill.js"></script>
