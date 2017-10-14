@@ -21,7 +21,7 @@ class Slider {
         this.delta = 60;
         this.marginLeft = -60 //* translate : -60vw ou merginleft  -40.5 ;
         this.marginDefautLeft = 0; //* translate : -60vw ou merginleft  -40.5 ;
-        this.elemLast = document.querySelector(`${this.id} .slider__item:last-child`);
+        this.c = document.querySelector(`${this.id} .slider__item:last-child`);
         this.elemFirst = document.querySelector(`${this.id} .slider__item:first-child`);
 
 
@@ -30,7 +30,29 @@ class Slider {
 
 
     }
+    getPositionItem() {
+        let currentItem = this.getCurrent();
 
+        //test first child
+        let firstchild = document.querySelector(`${this.id} .slider__item:first-child`);
+        let lastchild = document.querySelector(`${this.id} .slider__item:last-child`);
+
+        //check current item not null
+        if (currentItem != null) {
+
+            //test first child ?
+            if (currentItem.previousElementSibling == firstchild) {
+                this.elemFirst = currentItem.previousElementSibling;
+            }
+
+            //test last child ?
+            if (currentItem.nextElementSibling == lastchild) {
+                this.elemLast = currentItem.nextElementSibling;
+            }
+
+
+        }
+    }
     addItem(elem, type) {
 
         let _token = type == 'next' ? this.elemFirst : this.elemLast;
@@ -89,51 +111,42 @@ class Slider {
 
                 //mode translate
                 if (this.options.modeTranslate) {
-                    // translateX = -delta + translateX;
-                    // this.ulContainer.style['transform'] = `translateX(${translateX}vw)`;
 
                     this.marginLeft = -this.delta + this.marginLeft;
 
 
-                    this.setSlide(this.marginLeft, 'translate')
+                    //set position element
+                    this.getPositionItem();
+                    let delta = this.posElement(this.elemLast, this.elemFirst, this.marginLeft, type);
 
-                    translateX = 0;
-                    let slideItems = this.ulContainer.querySelectorAll('.slider__item');
+                    this.setSlide(delta, 'translate');
+                    //set item current
+                    this.addCurent(elem);
+                    setTimeout(() => {
+                        this.setSlide(delta + this.delta, 'translate', 'transition:none;');
+                        this.ulContainer.insertBefore( /*elem add*/ this.elemFirst, /*context*/ null);
 
-                    if (slideItems.length > 3) {
-                        //First remove first
-                        let precNode = elem.previousElementSibling.previousElementSibling;
-                        if (precNode != null) {
-                            let cloneNode = precNode.cloneNode(true);
-                            //check node value
-                            if (cloneNode)
-                                this.ulContainer.appendChild(cloneNode, null);
-
-                        }
+                    }, 500);
 
 
+
+
+                } else {
+                    //pagination normal
+                    if (this.options.isPaginationNormal) {
+                        _cloneItem = elem;
+                        _item.after(_cloneItem);
                     } else {
 
 
-                        this.ulContainer.appendChild(_cloneItem, null);
+                        _item.remove();
+                        elem.after(_cloneItem);
+
+
+
                     }
-
-                    return;
-
                 }
-                //pagination normal
-                if (this.options.isPaginationNormal) {
-                    _cloneItem = elem;
-                    _item.after(_cloneItem);
-                } else {
 
-
-                    _item.remove();
-                    elem.after(_cloneItem);
-
-
-
-                }
 
 
             }
@@ -144,54 +157,35 @@ class Slider {
                 //element dernier de la liste à copier
                 _cloneItem = _item.cloneNode(true);
                 if (this.options.modeTranslate) {
-                    // translateX = delta + translateX;
-                    // this.ulContainer.style['transform'] = `translateX(${translateX}vw)`;
-
                     this.marginLeft = this.delta + this.marginLeft;
 
-                    //add element before elem current
-                    // this.ulContainer.insertBefore( /*elem add*/ _cloneItem, /*context*/ elem);
 
-                    this.posElement(this.elemLast, this.elemFirst, this.marginLeft, type);
-                    // this.posElement( this.marginLeft);
-                    //  this.setSlide(this.marginLeft)
-                    return;
+                    //set position element
+                    this.getPositionItem();
+                    let delta = this.posElement(this.elemLast, this.elemFirst, this.marginLeft, type);
 
-                }
-                if (this.options.isPaginationNormal) {
-                    _cloneItem = elem;
-                    _item.before(_cloneItem);
-                    return;
+                    this.setSlide(delta, 'translate');
+                    //set item current
+                    this.addCurent(elem);
+                    setTimeout(() => {
+                        this.setSlide(delta - this.delta, 'translate', 'transition:none;');
+                        this.ulContainer.insertBefore( /*elem add*/ this.elemLast, /*context*/ this.elemFirst);
+
+                    }, 500);
+
+
                 } else {
-
-                    //mode translate
-                    if (this.options.modeTranslate) {
-
-                        let slideItems = this.ulContainer.querySelectorAll('.slider__item');
-                        if (slideItems.length > 3) {
-                            //First remove first
-                            let nextElem = elem.nextElementSibling.nextElementSibling;
-                            if (nextElem != null) {
-                                let cloneNode = nextElem.cloneNode(true);
-
-                                //check node value
-                                if (cloneNode != null)
-                                    this.ulContainer.appendChild(cloneNode, null);
-
-                            }
-
-
-                        } else {
-
-                        }
-
+                    if (this.options.isPaginationNormal) {
+                        _cloneItem = elem;
+                        _item.before(_cloneItem);
+                        return;
                     } else {
-
 
                         _cloneItem = _item;
                         elem.before(_cloneItem);
                     }
                 }
+
 
             }
         }
@@ -201,27 +195,19 @@ class Slider {
     onNextClick(args) {
 
 
-        let _marginLeft = this.itemsElem.style.marginLeft == undefined ? 0 : this.itemsElem.style.marginLeft;
-        let _width = this.itemsElem.offsetWidth + this.itemsElem.style.marginLeft;
-        // _ul.style.marginLeft = `calc(-46.5vw - (${_width}px +  3.4vw))`;
-        // this.ulContainer.style.marginLeft = '-40.5vw';
+
         let _newItem = this.getItem('next');
         if (_newItem != null) {
 
 
-            this.addCurent(_newItem);
+
             this.addItem(_newItem, 'next');
+
         }
 
 
     }
-    getPositionItem() {
-        let elemCurrent = this.getCurrent();
-        this.elemLast = document.querySelector(`${this.id} .slider__item:last-child`);
-        this.elemFirst = document.querySelector(`${this.id} .slider__item:first-child`);
 
-
-    }
     getItem(type) {
         let _li = null;
 
@@ -251,14 +237,14 @@ class Slider {
     }
     onPrevClick(args) {
 
-        //this.ulContainer.style.marginLeft = '-40.5vw';
         let _newItem = this.getItem('prev');
         if (_newItem != null) {
 
 
-            this.addCurent(_newItem);
 
+            //slide prev
             this.addItem(_newItem, 'prev');
+
         }
 
 
@@ -338,14 +324,18 @@ class Slider {
 
 
     }
-    setSlide(delta, type = 'margin') {
+    setSlide(delta, type = 'margin', transition = '') {
         if (type == 'translate') {
-            this.ulContainer.style['transform'] = `translateX(calc(${delta}vw))`;
+            this.ulContainer.setAttribute('style', `${transition}transform:translateX(calc(${delta}vw))`);
+            if (delta == 0) {
+                this.ulContainer.setAttribute('style', `${transition}`);
+
+            }
 
         } else if (type = 'margin') {
-            this.ulContainer.style['marginLeft'] = `calc(${delta}vw)`;
+            this.ulContainer.setAttribute('style', `${transition}margin-left:calc(${delta}vw)`);
         } else {
-            this.ulContainer.style['marginLeft'] = `calc(${delta}vw)`;
+            this.ulContainer.setAttribute('style', `${transition}margin-left:calc(${delta}vw)`);
 
         }
     }
@@ -369,18 +359,8 @@ class Slider {
                     delta = mydelta;
 
                 }
+                return delta;
 
-                this.setSlide(delta, 'translate');
-
-                this.ulContainer.addEventListener('transitionend', (args) => {
-                    console.log(args);
-
-                });
-                setTimeout(() => {
-                    this.setSlide(delta - this.delta, 'translate');
-                    this.ulContainer.insertBefore( /*elem add*/ elemCloneLast, /*context*/ elemFirst);
-
-                }, 500);
 
             }
 
@@ -393,9 +373,9 @@ class Slider {
                     delta = mydelta;
 
                 }
-
-                this.setSlide(delta, 'translate');
-                this.ulContainer.insertBefore( /*elem add*/ elemCloneLast, /*context*/ elemFirst);
+                return delta;
+                // this.setSlide(delta, 'translate');
+                // this.ulContainer.insertBefore( /*elem add*/ elemCloneLast, /*context*/ elemFirst);
 
             }
             //this.setSlide(delta);
@@ -478,9 +458,9 @@ class Bollore {
         //bloc chiffre cles /bloc chiffre red
         this.animkeyfigure('.chiffreKey__pushChiffre .chiffre__keyFigure', '.chiffreKey');
 
-       
-        
-                
+
+
+
         this.setScrolltop();
 
 
@@ -521,7 +501,7 @@ class Bollore {
 
 
 
-        var animItem = function () {
+        var animItem = function() {
 
             if (keyfigureitemsTmp != null && keyfigureitemsTmp.length > 0) {
 
@@ -549,7 +529,7 @@ class Bollore {
                                 if (max.indexOf('.') > -1) {
                                     options = {
                                         number: max * decimal_factor,
-                                        numberStep: function (now, tween) {
+                                        numberStep: function(now, tween) {
                                             var floored_number = Math.floor(now) / decimal_factor,
                                                 target = $(tween.elem);
 
@@ -705,7 +685,7 @@ class Bollore {
                 _bloc.classList.remove('header__bloc--fix');
 
             } else {
-                setTimeout(function () {
+                setTimeout(function() {
                     _bloc.classList.remove('header__bloc--fix');
                     _bloc.classList.add('header__bloc--fix');
                     _bloc.classList.remove('header__bloc--fix');
@@ -725,7 +705,7 @@ class Bollore {
         _handler,
         _liArray = document.querySelectorAll('.menu__ul--level1 .menu__li')
     }) {
-        let _onclickBtnBack = function (liBacknav, myHandler, myliArray, args) {
+        let _onclickBtnBack = function(liBacknav, myHandler, myliArray, args) {
 
             let _prevent = true;
             let _target = args.target;
@@ -912,7 +892,7 @@ class Bollore {
 
         if (_burger != null && _search != null && _langue != null) {
             // Click sur le burger
-            let _handler = function (args) {
+            let _handler = function(args) {
 
                 args.preventDefault();
 
@@ -1165,17 +1145,17 @@ class Bollore {
             isTouch: false,
             isIOS: false,
             isChrome: false,
-            resize: function (arg) {
+            resize: function(arg) {
                 Device.check();
                 _Bollore.setResize();
 
             },
-            init: function (_this) {
+            init: function(_this) {
                 window.addEventListener('resize', this.resize.bind(_this));
 
                 Device.check();
             },
-            check: function () {
+            check: function() {
 
                 this.isTouch = ('ontouchstart' in window);
                 this.isPaysage = (window.innerWidth > window.innerHeight);
@@ -1382,7 +1362,7 @@ class Bollore {
         };
         //Check Animation
 
-        let AnimateFunctionSlideMenu = function (target) {
+        let AnimateFunctionSlideMenu = function(target) {
             console.log(target);
 
             //Mode Desktop
@@ -1422,7 +1402,7 @@ class Bollore {
             }
         }
 
-        let _handler = function (_liArray, args) {
+        let _handler = function(_liArray, args) {
 
             let _target = args.currentTarget;
             let _prevent = true;
@@ -1747,7 +1727,7 @@ class Bollore {
         const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
 
         while (el) {
-            if (matchesSelector != null && typeof (matchesSelector.call) != undefined && matchesSelector.call(el, selector)) {
+            if (matchesSelector != null && typeof(matchesSelector.call) != undefined && matchesSelector.call(el, selector)) {
                 return el;
             } else {
                 el = el.parentElement;
@@ -1796,6 +1776,6 @@ class Bollore {
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     window._Bollore = new Bollore();
 });
