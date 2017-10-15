@@ -6751,7 +6751,6 @@ a {
   width: 100%;
 }
 .\--linkN {
-  border: 1px solid transparent;
   overflow: hidden;
   position: relative;
   display: inline-block;
@@ -9608,9 +9607,10 @@ a {
 }
 .\--linkN {
   transition: all 0.6s ease;
+  border: 1px solid #007eba;
 }
 .\--linkN:hover {
-  border: 1px solid #007eba;
+  background: white;
 }
 .\--linkN:hover::after {
   background-color: #007eba;
@@ -9619,11 +9619,10 @@ a {
   color: #007eba;
 }
 .\--linkN:hover::before {
-  border: 1px solid #007eba;
   opacity: 1;
-  -webkit-transform: translate(-50%, -50%) scale(10, 2);
-          transform: translate(-50%, -50%) scale(10, 2);
-  background-color: white;
+  width: 100%;
+  height: 100%;
+  background: white;
 }
 .\--linkN::after {
   transition: all 0.6s ease;
@@ -9631,15 +9630,18 @@ a {
 .\--linkN::before {
   content: '';
   opacity: 0;
-  -webkit-transform: translate(-50%, -50%) scale(0, 0);
-          transform: translate(-50%, -50%) scale(0, 0);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   -webkit-transform-origin: 50% 50% 0;
           transform-origin: 50% 50% 0;
   transition: all 0.6s ease;
   position: absolute;
   top: 50%;
   left: 50%;
-  padding: 11px;
+  width: 50%;
+  margin: 0 auto;
+  height: 50%;
+  padding: 0;
 }
 .\--link:after {
   transition: all linear 0.2s;
@@ -9668,9 +9670,7 @@ a {
 }
 .capsule--blue1 .capsule__link.\--linkN {
   transition: all 0.6s ease;
-}
-.capsule--blue1 .capsule__link.\--linkN:hover {
-  border: 1px solid white;
+  border: 1px solid transparent;
 }
 .capsule--blue1 .capsule__link.\--linkN:hover::after {
   background-color: white;
@@ -9679,11 +9679,10 @@ a {
   color: white;
 }
 .capsule--blue1 .capsule__link.\--linkN:hover::before {
-  border: 1px solid white;
   opacity: 1;
-  -webkit-transform: translate(-50%, -50%) scale(10, 2);
-          transform: translate(-50%, -50%) scale(10, 2);
-  background-color: #007eba;
+  width: 100%;
+  height: 100%;
+  background: #007eba;
 }
 .capsule--blue1 .capsule__link.\--linkN::after {
   transition: all 0.6s ease;
@@ -9691,21 +9690,22 @@ a {
 .capsule--blue1 .capsule__link.\--linkN::before {
   content: '';
   opacity: 0;
-  -webkit-transform: translate(-50%, -50%) scale(0, 0);
-          transform: translate(-50%, -50%) scale(0, 0);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   -webkit-transform-origin: 50% 50% 0;
           transform-origin: 50% 50% 0;
   transition: all 0.6s ease;
   position: absolute;
   top: 50%;
   left: 50%;
-  padding: 11px;
+  width: 50%;
+  margin: 0 auto;
+  height: 50%;
+  padding: 0;
 }
 .capsule--red .capsule__link.\--linkN {
   transition: all 0.6s ease;
-}
-.capsule--red .capsule__link.\--linkN:hover {
-  border: 1px solid white;
+  border: 1px solid transparent;
 }
 .capsule--red .capsule__link.\--linkN:hover::after {
   background-color: white;
@@ -9714,11 +9714,10 @@ a {
   color: white;
 }
 .capsule--red .capsule__link.\--linkN:hover::before {
-  border: 1px solid white;
   opacity: 1;
-  -webkit-transform: translate(-50%, -50%) scale(10, 2);
-          transform: translate(-50%, -50%) scale(10, 2);
-  background-color: #ef153e;
+  width: 100%;
+  height: 100%;
+  background: #ef153e;
 }
 .capsule--red .capsule__link.\--linkN::after {
   transition: all 0.6s ease;
@@ -9726,21 +9725,22 @@ a {
 .capsule--red .capsule__link.\--linkN::before {
   content: '';
   opacity: 0;
-  -webkit-transform: translate(-50%, -50%) scale(0, 0);
-          transform: translate(-50%, -50%) scale(0, 0);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   -webkit-transform-origin: 50% 50% 0;
           transform-origin: 50% 50% 0;
   transition: all 0.6s ease;
   position: absolute;
   top: 50%;
   left: 50%;
-  padding: 11px;
+  width: 50%;
+  margin: 0 auto;
+  height: 50%;
+  padding: 0;
 }
 .capsule--blue2 .capsule__link.\--linkN {
   transition: all 0.6s ease;
-}
-.capsule--blue2 .capsule__link.\--linkN:hover {
-  border: 1px solid white;
+  border: 1px solid transparent;
 }
 .capsule--blue2 .capsule__link.\--linkN:hover::after {
   background-color: white;
@@ -9749,11 +9749,10 @@ a {
   color: white;
 }
 .capsule--blue2 .capsule__link.\--linkN:hover::before {
-  border: 1px solid white;
   opacity: 1;
-  -webkit-transform: translate(-50%, -50%) scale(10, 2);
-          transform: translate(-50%, -50%) scale(10, 2);
-  background-color: #0095db;
+  width: 100%;
+  height: 100%;
+  background: #0095db;
 }
 .capsule--blue2 .capsule__link.\--linkN::after {
   transition: all 0.6s ease;
@@ -9761,15 +9760,18 @@ a {
 .capsule--blue2 .capsule__link.\--linkN::before {
   content: '';
   opacity: 0;
-  -webkit-transform: translate(-50%, -50%) scale(0, 0);
-          transform: translate(-50%, -50%) scale(0, 0);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   -webkit-transform-origin: 50% 50% 0;
           transform-origin: 50% 50% 0;
   transition: all 0.6s ease;
   position: absolute;
   top: 50%;
   left: 50%;
-  padding: 11px;
+  width: 50%;
+  margin: 0 auto;
+  height: 50%;
+  padding: 0;
 }
 .\--linkF {
   transition: all 0.6s ease;
