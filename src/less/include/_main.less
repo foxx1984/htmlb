@@ -854,88 +854,11 @@ a {
         }
         .slider__link {
             overflow: hidden;
-           
-            // &::before{
-            //     content: '';
-            //     opacity: 0;
-            //     transform: translate(-50%,-50%) scale(0,0);
-            //     transition: all 0.3s ease;  
-            //     background-color: @blue-4;
-            //     position: absolute;
-            //     top:50%;
-            //     left: 50%;
-            //     padding: 11px;
-            // }
+    
         }
-        .\--linkPlus{
-          
-          //  transition:  background-color 0.8s ease;  
-            &::before{
-                content: '';
-                opacity: 0;
-                transform: translate(-50%,-50%) scale(0,0);
-                transition: all 0.3s ease;  
-                background-color: @blue-4;
-                position: absolute;
-                top:50%;
-                left: 50%;
-                padding: 11px;
-            }
-           
-          
-        }
-        &:hover {
-            .slider__linkTxt {
-              
-            }
-            .\--linkPlus{
-                color: white;
-               background-color: @blue-4;
-               transition: all 0.6s ease;  
-                &::before{
-                    
-                      opacity: 1;
-                      transform: translate(-50%,-50%) scale(10,2);
-                     
-  
-                  }
-              
-            }
-            .\--linkPlus:after{
-                background:white;
-                position: relative;
-            }
-            .slider__link {
-                // color: white;
-                // &::before{
-                  
-                //     opacity: 1;
-                //     transform: translate(-50%,-50%) scale(10,2);
-                   
+    
+     
 
-                // }
-                
-            }
-            &::before {
-            
-             
-                transform: translate(-50%, -50%) scale(1.8);
-            }
-        }
-        &::before {
-            content: '';
-            height: 0;
-            width: 61.3%;
-            top: 50%;
-            left: 50%;
-            position: absolute;
-            transform: translate(-50%, -50%) scale(0);
-            display: block;
-            padding: 42.444444% 0 0 0;
-            transition: all 0.6s ease;            
-           
-            background-color: rgba(0, 126, 186,0.1); //rgba(115, 148, 159,0.3);
-        }
     }
     &__sTitle {
         .title-2;

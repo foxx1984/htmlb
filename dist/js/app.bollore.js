@@ -42,13 +42,16 @@ class Slider {
 
             //test first child ?
             if (currentItem.previousElementSibling == firstchild) {
+                this.elemFirst = firstchild;
+            } else
                 this.elemFirst = currentItem.previousElementSibling;
-            }
+
 
             //test last child ?
             if (currentItem.nextElementSibling == lastchild) {
+                this.elemLast = lastchild;
+            } else
                 this.elemLast = currentItem.nextElementSibling;
-            }
 
 
         }
@@ -74,15 +77,15 @@ class Slider {
                 this.marginLeft = 0;
             }
 
-            //Get marginLeftg par defaut
-            if (this.ulContainer.style['marginLeft'] != null && this.ulContainer.style['marginLeft'] != "") {
-                let _marginLeft = this.ulContainer.style['marginLeft'].replace('vw)', '').replace('calc(', '');
+            // //Get marginLeftg par defaut
+            // if (this.ulContainer.style['marginLeft'] != null && this.ulContainer.style['marginLeft'] != "") {
+            //     let _marginLeft = this.ulContainer.style['marginLeft'].replace('vw)', '').replace('calc(', '');
 
-                this.marginLeft = parseFloat(_marginLeft);
+            //     this.marginLeft = parseFloat(_marginLeft);
 
-            } else {
-                this.marginLeft = 0;
-            }
+            // } else {
+            //     this.marginLeft = 0;
+            // }
 
 
 

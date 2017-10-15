@@ -6390,50 +6390,6 @@ a {
 .slider__article .slider__link {
   overflow: hidden;
 }
-.slider__article .\--linkPlus::before {
-  content: '';
-  opacity: 0;
-  -webkit-transform: translate(-50%, -50%) scale(0, 0);
-          transform: translate(-50%, -50%) scale(0, 0);
-  transition: all 0.3s ease;
-  background-color: #007eba;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  padding: 11px;
-}
-.slider__article:hover .\--linkPlus {
-  color: white;
-  background-color: #007eba;
-  transition: all 0.6s ease;
-}
-.slider__article:hover .\--linkPlus::before {
-  opacity: 1;
-  -webkit-transform: translate(-50%, -50%) scale(10, 2);
-          transform: translate(-50%, -50%) scale(10, 2);
-}
-.slider__article:hover .\--linkPlus:after {
-  background: white;
-  position: relative;
-}
-.slider__article:hover::before {
-  -webkit-transform: translate(-50%, -50%) scale(1.8);
-          transform: translate(-50%, -50%) scale(1.8);
-}
-.slider__article::before {
-  content: '';
-  height: 0;
-  width: 61.3%;
-  top: 50%;
-  left: 50%;
-  position: absolute;
-  -webkit-transform: translate(-50%, -50%) scale(0);
-          transform: translate(-50%, -50%) scale(0);
-  display: block;
-  padding: 42.444444% 0 0 0;
-  transition: all 0.6s ease;
-  background-color: rgba(0, 126, 186, 0.1);
-}
 .slider__sTitle {
   font-size: 1.9rem;
   font-family: "Gotham A", "Gotham B";
@@ -9853,6 +9809,47 @@ a {
   margin: 0 auto;
   height: 50%;
   padding: 0;
+}
+.slider__article .\--linkPlus {
+  transition: all 0.1s linear;
+}
+.slider__article .\--linkPlus::before {
+  content: '';
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%) scale(0, 0);
+          transform: translate(-50%, -50%) scale(0, 0);
+  transition: all 0.6s ease;
+  background-color: #007eba;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 11px;
+}
+.slider__article:hover .\--linkPlus {
+  color: white;
+  background-color: #007eba;
+}
+.slider__article:hover::before {
+  -webkit-transform: translate(-50%, -50%) scale(1.8);
+          transform: translate(-50%, -50%) scale(1.8);
+}
+.slider__article:hover .\--linkPlus:after {
+  background: white;
+  position: relative;
+}
+.slider__article::before {
+  content: '';
+  height: 0;
+  width: 61.3%;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%) scale(0);
+          transform: translate(-50%, -50%) scale(0);
+  display: block;
+  padding: 42.444444% 0 0 0;
+  transition: all 0.6s ease;
+  background-color: rgba(0, 126, 186, 0.1);
 }
 /**
  *
