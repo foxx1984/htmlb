@@ -447,6 +447,7 @@ class Bollore {
         this._sliderElemArray2 = [].slice.call(this._sliderElem);
         this._slider = [];
         this.header = document.querySelector('.header');
+        this.keyfigureitemsTmp = [];
         this.levelAction = [];
 
         this.setInitDevice();
@@ -456,46 +457,60 @@ class Bollore {
         this.hoverPublication();
 
         //bloc home chiffre key
-        this.animkeyfigure('.chiffre__bloc .chiffre__keyFigure', '.GroupeChiffres');
+        this.animkeyfigure('.chiffre__bloc', '.chiffre__bloc .chiffre__keyFigure', '.GroupeChiffres', 500);
 
         //bloc chiffre cles /bloc chiffre red
-        this.animkeyfigure('.chiffreKey__pushChiffre .chiffre__keyFigure', '.chiffreKey');
+        this.animkeyfigure('.chiffreKey__pushChiffre', '.chiffreKey__pushChiffre .chiffre__keyFigure', '.chiffreKey', 500);
+
+        //bloc boruse
+        this.animkeyfigure('.cours__footer', '.cours__footer .animcours', '.cours__footer', -600);
 
 
-
-
+        //set scroll to the top doc on reload
         this.setScrolltop();
 
 
 
     }
     setScrolltop() {
-        document.scrollTop = 0;
-        window.scrollTo(0, 0);
+
         window.scroll(0, 0);
     }
-    animkeyfigure(selectorKey, declencheur) {
-        let keyfigureitems = document.querySelectorAll(selectorKey);
-        let keyfigureitemsTmp = [].slice.call(keyfigureitems);
+    animeKeyBourse() {
+
+    }
+    animkeyfigure(parent, selectorKey, declencheur, sensibility) {
+
+
 
         let declenchement = document.querySelector(declencheur);
-        let delta = 500;
+        let delta = sensibility;
 
         //check position to activate anim
 
 
 
         window.addEventListener('scroll', (args) => {
-            if (declenchement != null) {
+            let _parent = document.querySelector(parent);
+
+            if (_parent != null && !_parent.classList.contains('end')) {
 
 
-                let declenchementBound = declenchement.getBoundingClientRect();
-                if (declenchementBound != null) {
-                    let scrolling = declenchementBound.top;
+                let keyfigureitems = document.querySelectorAll(selectorKey);
 
-                    if (this.scrollTopDocument + delta > scrolling) {
-                        animItem();
+                let keyfigureitemsTmp = [].slice.call(keyfigureitems);
 
+                if (declenchement != null) {
+
+
+                    let declenchementBound = declenchement.getBoundingClientRect();
+                    if (declenchementBound != null) {
+                        let scrolling = declenchementBound.top;
+
+                        if (this.scrollTopDocument + delta > scrolling) {
+                            animItem.call(this, keyfigureitemsTmp, _parent);
+
+                        }
                     }
                 }
             }
@@ -504,7 +519,8 @@ class Bollore {
 
 
 
-        var animItem = function() {
+        var animItem = function (keyfigureitemsTmp, parent) {
+            this.isRunning = true;
 
             if (keyfigureitemsTmp != null && keyfigureitemsTmp.length > 0) {
 
@@ -517,12 +533,23 @@ class Bollore {
                     if (elem != null) {
                         elem.classList.remove('chiffre__keyFigure--off');
                         let chifreH3 = elem.querySelector('.chiffre__h3');
+                        if (elem.classList.contains('animcours')) {
+                            chifreH3 = elem;
+                        }
                         if (chifreH3 != null) {
 
                             let max = chifreH3.dataset["max"];
-                            let separator = $.animateNumber.numberStepFactories.separator(',')
+                            let suffixe = chifreH3.dataset["suffixe"] == undefined ? "" : chifreH3.dataset["suffixe"];
+                            let prefixe = chifreH3.dataset["prefixe"] == undefined ? "" : chifreH3.dataset["prefixe"];
+                            let separator = $.animateNumber.numberStepFactories.separator(',');
+                            let index = 0;
+                            let _decimal_place = 1;
+                            if (max.indexOf('.') > -1) {
+                                index = max.indexOf('.') + 1;
+                                _decimal_place = parseInt(max.substr(index).length, 10);
 
-                            var decimal_places = 1;
+                            }
+                            var decimal_places = _decimal_place;
                             var decimal_factor = decimal_places === 0 ? 1 : Math.pow(10, decimal_places);
                             if (max != null && max != "") {
                                 var options = {
@@ -532,7 +559,7 @@ class Bollore {
                                 if (max.indexOf('.') > -1) {
                                     options = {
                                         number: max * decimal_factor,
-                                        numberStep: function(now, tween) {
+                                        numberStep: function (now, tween) {
                                             var floored_number = Math.floor(now) / decimal_factor,
                                                 target = $(tween.elem);
 
@@ -544,7 +571,7 @@ class Bollore {
                                                 floored_number = floored_number.toString().replace('.', ',');
                                             }
 
-                                            target.text(floored_number);
+                                            target.text(`${prefixe}${floored_number} ${suffixe}`);
                                         }
 
                                     }
@@ -561,7 +588,11 @@ class Bollore {
                 }
 
                 setTimeout(() => {
-                    animItem();
+                    let ret = animItem.call(this, keyfigureitemsTmp, parent);
+                    if (keyfigureitemsTmp != null && keyfigureitemsTmp.length == 0) {
+                        return;
+                    }
+
                 }, 650);
 
 
@@ -571,6 +602,13 @@ class Bollore {
 
 
 
+
+            } else {
+                this.isRunning = false;
+
+                parent.classList.add('end');
+                return this.isRunning;
+               
 
             }
 
@@ -688,7 +726,7 @@ class Bollore {
                 _bloc.classList.remove('header__bloc--fix');
 
             } else {
-                setTimeout(function() {
+                setTimeout(function () {
                     _bloc.classList.remove('header__bloc--fix');
                     _bloc.classList.add('header__bloc--fix');
                     _bloc.classList.remove('header__bloc--fix');
@@ -708,7 +746,7 @@ class Bollore {
         _handler,
         _liArray = document.querySelectorAll('.menu__ul--level1 .menu__li')
     }) {
-        let _onclickBtnBack = function(liBacknav, myHandler, myliArray, args) {
+        let _onclickBtnBack = function (liBacknav, myHandler, myliArray, args) {
 
             let _prevent = true;
             let _target = args.target;
@@ -895,7 +933,7 @@ class Bollore {
 
         if (_burger != null && _search != null && _langue != null) {
             // Click sur le burger
-            let _handler = function(args) {
+            let _handler = function (args) {
 
                 args.preventDefault();
 
@@ -1148,17 +1186,17 @@ class Bollore {
             isTouch: false,
             isIOS: false,
             isChrome: false,
-            resize: function(arg) {
+            resize: function (arg) {
                 Device.check();
                 _Bollore.setResize();
 
             },
-            init: function(_this) {
+            init: function (_this) {
                 window.addEventListener('resize', this.resize.bind(_this));
 
                 Device.check();
             },
-            check: function() {
+            check: function () {
 
                 this.isTouch = ('ontouchstart' in window);
                 this.isPaysage = (window.innerWidth > window.innerHeight);
@@ -1365,7 +1403,7 @@ class Bollore {
         };
         //Check Animation
 
-        let AnimateFunctionSlideMenu = function(target) {
+        let AnimateFunctionSlideMenu = function (target) {
             console.log(target);
 
             //Mode Desktop
@@ -1405,7 +1443,7 @@ class Bollore {
             }
         }
 
-        let _handler = function(_liArray, args) {
+        let _handler = function (_liArray, args) {
 
             let _target = args.currentTarget;
             let _prevent = true;
@@ -1730,7 +1768,7 @@ class Bollore {
         const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
 
         while (el) {
-            if (matchesSelector != null && typeof(matchesSelector.call) != undefined && matchesSelector.call(el, selector)) {
+            if (matchesSelector != null && typeof (matchesSelector.call) != undefined && matchesSelector.call(el, selector)) {
                 return el;
             } else {
                 el = el.parentElement;
@@ -1779,6 +1817,6 @@ class Bollore {
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     window._Bollore = new Bollore();
 });
