@@ -21,7 +21,7 @@ class Slider {
         this.delta = 60;
         this.marginLeft = -60 //* translate : -60vw ou merginleft  -40.5 ;
         this.marginDefautLeft = 0; //* translate : -60vw ou merginleft  -40.5 ;
-        this.c = document.querySelector(`${this.id} .slider__item:last-child`);
+        this.elemLast = document.querySelector(`${this.id} .slider__item:last-child`);
         this.elemFirst = document.querySelector(`${this.id} .slider__item:first-child`);
 
 
@@ -449,7 +449,7 @@ class Bollore {
         this.header = document.querySelector('.header');
         this.keyfigureitemsTmp = [];
         this.levelAction = [];
-
+        this.isRunning = false;
         this.setInitDevice();
         this.setSlider();
 
@@ -462,12 +462,18 @@ class Bollore {
         //bloc chiffre cles /bloc chiffre red
         this.animkeyfigure('.chiffreKey__pushChiffre', '.chiffreKey__pushChiffre .chiffre__keyFigure', '.chiffreKey', 500);
 
-        //bloc boruse
-        this.animkeyfigure('.cours__footer', '.cours__footer .animcours', '.cours__footer', -600);
+        //bloc bourse
+        this.animkeyfigure('.cours__footer', '.cours__footer .animcours', '.cours__footer', -700);
 
 
         //set scroll to the top doc on reload
         this.setScrolltop();
+
+        //anim reglemente
+
+        //hide button more if <= 3  
+        this.scanAnimReglemente(3);
+        this.animReglemente();
 
 
 
@@ -477,6 +483,66 @@ class Bollore {
         window.scroll(0, 0);
     }
     animeKeyBourse() {
+
+    }
+    scanAnimReglemente(sueil) {
+        let elemLinkPlus = document.querySelectorAll('.link__plus');
+        if (elemLinkPlus != null && elemLinkPlus.length > 0) {
+
+            elemLinkPlus.forEach((link, index, datas) => {
+                let list = link.closest('.listeDocs');
+                let elemUl = list.querySelector('.listeDocs__bloc');
+                if (elemUl != null) {
+                    let items = elemUl.querySelectorAll('.listeDocs__item');
+                    if (items != null && items.length > 0) {
+
+                        let height = 0;
+
+                        let nbreLigne = Math.floor(items.length / 3);
+
+                        if (nbreLigne <= sueil) {
+                            link.classList.add('link__plus--off');
+                        }
+
+                    }
+                }
+            });
+        }
+
+
+    }
+    animReglemente() {
+        let elemLinkPlus = document.querySelectorAll('.link__plus');
+        if (elemLinkPlus != null && elemLinkPlus.length > 0) {
+
+
+
+            this.addEventListenerAll(elemLinkPlus, 'click', (args) => {
+                args.preventDefault();
+                args.currentTarget.classList.add('link__plus--off');
+
+                let elemParent = args.currentTarget.closest('.listeDocs');
+                if (elemParent != null) {
+                    let elemUl = elemParent.querySelector('.listeDocs__bloc');
+                    if (elemUl != null) {
+                        let items = elemUl.querySelectorAll('.listeDocs__item');
+                        let height = 0;
+                        if (items != null && items.length > 0) {
+                            let nbreLigne = Math.floor(items.length / 3);
+
+                            height = items[0].offsetHeight * nbreLigne;
+                            height += 200;
+                        }
+                        elemUl.setAttribute('style', `max-height:${height}px;overflow:visible`);
+
+
+
+
+                    }
+                }
+            });
+
+        }
 
     }
     animkeyfigure(parent, selectorKey, declencheur, sensibility) {
@@ -491,25 +557,29 @@ class Bollore {
 
 
         window.addEventListener('scroll', (args) => {
-            let _parent = document.querySelector(parent);
-
-            if (_parent != null && !_parent.classList.contains('end')) {
+            if (!this.isRunning) {
 
 
-                let keyfigureitems = document.querySelectorAll(selectorKey);
+                let _parent = document.querySelector(parent);
 
-                let keyfigureitemsTmp = [].slice.call(keyfigureitems);
-
-                if (declenchement != null) {
+                if (_parent != null && !_parent.classList.contains('end')) {
 
 
-                    let declenchementBound = declenchement.getBoundingClientRect();
-                    if (declenchementBound != null) {
-                        let scrolling = declenchementBound.top;
+                    let keyfigureitems = document.querySelectorAll(selectorKey);
 
-                        if (this.scrollTopDocument + delta > scrolling) {
-                            animItem.call(this, keyfigureitemsTmp, _parent);
+                    let keyfigureitemsTmp = [].slice.call(keyfigureitems);
 
+                    if (declenchement != null) {
+
+
+                        let declenchementBound = declenchement.getBoundingClientRect();
+                        if (declenchementBound != null) {
+                            let scrolling = declenchementBound.top;
+
+                            if (this.scrollTopDocument + delta > scrolling) {
+                                animItem.call(this, keyfigureitemsTmp, _parent);
+
+                            }
                         }
                     }
                 }
@@ -519,7 +589,7 @@ class Bollore {
 
 
 
-        var animItem = function (keyfigureitemsTmp, parent) {
+        var animItem = function(keyfigureitemsTmp, parent) {
             this.isRunning = true;
 
             if (keyfigureitemsTmp != null && keyfigureitemsTmp.length > 0) {
@@ -559,7 +629,7 @@ class Bollore {
                                 if (max.indexOf('.') > -1) {
                                     options = {
                                         number: max * decimal_factor,
-                                        numberStep: function (now, tween) {
+                                        numberStep: function(now, tween) {
                                             var floored_number = Math.floor(now) / decimal_factor,
                                                 target = $(tween.elem);
 
@@ -588,27 +658,18 @@ class Bollore {
                 }
 
                 setTimeout(() => {
-                    let ret = animItem.call(this, keyfigureitemsTmp, parent);
-                    if (keyfigureitemsTmp != null && keyfigureitemsTmp.length == 0) {
-                        return;
-                    }
-
-                }, 650);
+                    animItem.call(this, keyfigureitemsTmp, parent);
 
 
-
-
-
-
-
+                }, 300);
 
 
             } else {
                 this.isRunning = false;
 
                 parent.classList.add('end');
-                return this.isRunning;
-               
+
+
 
             }
 
@@ -625,12 +686,26 @@ class Bollore {
 
                 let link = args.currentTarget;
                 if (link != null) {
-                    let post = link.closest('.post');
-                    if (post != null) {
+                    let post = null;
+                    if (link.classList.contains('listeDocs__lien')) {
+                        post = link.closest('.listeDocs__item');
+                    } else
 
-                        let postImg = post.querySelector('.post__img');
+                        post = link.closest('.post');
+
+                    if (post != null) {
+                        let postImg = null;
+                        if (post.classList.contains('listeDocs__item')) {
+                            postImg = post.querySelector('.listeDocs__visuel');
+                        } else
+                            postImg = post.querySelector('.post__img');
+
+
                         if (postImg != null) {
-                            postImg.classList.toggle('post__img--on')
+                            if (postImg.classList.contains('listeDocs__visuel')) {
+                                postImg.classList.toggle('listeDocs__visuel--on');
+                            } else
+                                postImg.classList.toggle('post__img--on');
                         }
 
 
@@ -645,12 +720,27 @@ class Bollore {
             this.addEventListenerAll(links, 'mouseout', (args) => {
                 let link = args.currentTarget;
                 if (link != null) {
-                    let post = link.closest('.post');
+
+                    let post = null;
+                    if (link.classList.contains('listeDocs__lien')) {
+                        post = link.closest('.listeDocs__item');
+                    } else
+
+                        post = link.closest('.post');
+
                     if (post != null) {
 
-                        let postImg = post.querySelector('.post__img');
+                        let postImg = null;
+                        if (post.classList.contains('listeDocs__item')) {
+                            postImg = post.querySelector('.listeDocs__visuel');
+                        } else
+                            postImg = post.querySelector('.post__img');
+
                         if (postImg != null) {
-                            postImg.classList.toggle('post__img--on')
+                            if (postImg.classList.contains('listeDocs__visuel')) {
+                                postImg.classList.toggle('listeDocs__visuel--on');
+                            } else
+                                postImg.classList.toggle('post__img--on');
                         }
 
 
@@ -726,7 +816,7 @@ class Bollore {
                 _bloc.classList.remove('header__bloc--fix');
 
             } else {
-                setTimeout(function () {
+                setTimeout(function() {
                     _bloc.classList.remove('header__bloc--fix');
                     _bloc.classList.add('header__bloc--fix');
                     _bloc.classList.remove('header__bloc--fix');
@@ -746,7 +836,7 @@ class Bollore {
         _handler,
         _liArray = document.querySelectorAll('.menu__ul--level1 .menu__li')
     }) {
-        let _onclickBtnBack = function (liBacknav, myHandler, myliArray, args) {
+        let _onclickBtnBack = function(liBacknav, myHandler, myliArray, args) {
 
             let _prevent = true;
             let _target = args.target;
@@ -933,7 +1023,7 @@ class Bollore {
 
         if (_burger != null && _search != null && _langue != null) {
             // Click sur le burger
-            let _handler = function (args) {
+            let _handler = function(args) {
 
                 args.preventDefault();
 
@@ -1186,17 +1276,17 @@ class Bollore {
             isTouch: false,
             isIOS: false,
             isChrome: false,
-            resize: function (arg) {
+            resize: function(arg) {
                 Device.check();
                 _Bollore.setResize();
 
             },
-            init: function (_this) {
+            init: function(_this) {
                 window.addEventListener('resize', this.resize.bind(_this));
 
                 Device.check();
             },
-            check: function () {
+            check: function() {
 
                 this.isTouch = ('ontouchstart' in window);
                 this.isPaysage = (window.innerWidth > window.innerHeight);
@@ -1403,7 +1493,7 @@ class Bollore {
         };
         //Check Animation
 
-        let AnimateFunctionSlideMenu = function (target) {
+        let AnimateFunctionSlideMenu = function(target) {
             console.log(target);
 
             //Mode Desktop
@@ -1443,7 +1533,7 @@ class Bollore {
             }
         }
 
-        let _handler = function (_liArray, args) {
+        let _handler = function(_liArray, args) {
 
             let _target = args.currentTarget;
             let _prevent = true;
@@ -1768,7 +1858,7 @@ class Bollore {
         const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
 
         while (el) {
-            if (matchesSelector != null && typeof (matchesSelector.call) != undefined && matchesSelector.call(el, selector)) {
+            if (matchesSelector != null && typeof(matchesSelector.call) != undefined && matchesSelector.call(el, selector)) {
                 return el;
             } else {
                 el = el.parentElement;
@@ -1817,6 +1907,6 @@ class Bollore {
 }
 
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     window._Bollore = new Bollore();
 });
