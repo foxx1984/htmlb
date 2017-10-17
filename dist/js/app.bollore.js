@@ -499,9 +499,14 @@ class Bollore {
                         let height = 0;
 
                         let nbreLigne = Math.floor(items.length / 3);
+                        height = items[0].offsetHeight * nbreLigne;
+                        height += 150;
 
                         if (nbreLigne <= sueil) {
                             link.classList.add('link__plus--off');
+                            elemUl.setAttribute('style', `height:${height}px;`);
+                        } else {
+
                         }
 
                     }
@@ -531,9 +536,9 @@ class Bollore {
                             let nbreLigne = Math.floor(items.length / 3);
 
                             height = items[0].offsetHeight * nbreLigne;
-                            height += 200;
+                            height += 220;
                         }
-                        elemUl.setAttribute('style', `max-height:${height}px;overflow:visible`);
+                        elemUl.setAttribute('style', `height:${height}px;`);
 
 
 
