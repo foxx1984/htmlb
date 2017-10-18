@@ -479,7 +479,8 @@ class Bollore {
 
     }
     setScrolltop() {
-
+        
+        window.scrollTo(0,0);
         window.scroll(0, 0);
     }
     animeKeyBourse() {
@@ -500,7 +501,7 @@ class Bollore {
 
                         let nbreLigne = Math.floor(items.length / 3);
                         height = items[0].offsetHeight * nbreLigne;
-                        height += 150;
+                        height += 200;
 
                         if (nbreLigne <= sueil) {
                             link.classList.add('link__plus--off');
