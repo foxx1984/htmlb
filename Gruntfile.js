@@ -262,7 +262,7 @@ module.exports = function (grunt) {
         //tâche de cleanage de dossier
         clean: {
           
-            delJsBabel: ['dist/js/app.bollore.js', 'dist/js/app.bollore.js.map','dist/js/app.bollore.rth.js','dist/js/plugins.js','dist/js/vendors/'],
+            delJsBabel: ['dist/js/app.bollore.js', 'dist/js/app.bollore.js.map','dist/js/app.bollore.rth.js','dist/js/app.bollore.disclaimer.js', 'dist/js/plugins.js','dist/js/vendors/'],
             tmp: ['.tmp'], //je clean mon dossier temp à la fin
             partials: ['dist/partials/'], //je clean mon dossier partials à la fin
             devwordpress: ['devwordpress'],

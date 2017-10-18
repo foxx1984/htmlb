@@ -1,168 +1,417 @@
-class Disclairmer {
+class SliderRCA {
+    constructor(id, obj = {
+        container: id + ' .slider__ul',
+        items: id + ' .slider__item',
+        startSlide: 0,
+        speed: 5000,
+        isAuto: true,
+        next: id + ' .slider__next',
+        prev: id + ' .slider__prev',
+        modeTranslate: false
+    }) {
+        this.sliderInterval = null;
+        this.options = obj;
+        this.id = id;
+        this.currentItem = this.getCurrent();
+        this.itemsElem = document.querySelector(`${this.options.items}`);
+        this.ulContainer = document.querySelector(`${this.options.container}`);
+        this.next = document.querySelector(`${this.options.next}`);
+        this.prev = document.querySelector(`${this.options.prev}`);
 
-    constructor() {
-      
-        this.elemClosePopin = null;
-        this.overlay = null;
-        this.content = document.querySelector('.content');
-        this.popinDisclaimer = null;
+        this.delta = 60;
+        this.marginLeft = -60 //* translate : -60vw ou merginleft  -40.5 ;
+        this.marginDefautLeft = 0; //* translate : -60vw ou merginleft  -40.5 ;
+        this.elemLast = document.querySelector(`${this.id} .slider__item:last-child`);
+        this.elemFirst = document.querySelector(`${this.id} .slider__item:first-child`);
+
 
         this.init();
 
+
+
     }
-    initClosePopin(){
-        this.elemClosePopin = document.querySelector('.closePopin');
-        this.overlay = document.querySelector('.overlayDislaimer');
-        this.popinDisclaimer = document.querySelector('.popin--disclaimer');
-       if(this.elemClosePopin !=null){
+    getPositionItem() {
+        let currentItem = this.getCurrent();
 
-        this.elemClosePopin.addEventListener('click',(args)=>{
+        //test first child
+        let firstchild = document.querySelector(`${this.id} .slider__item:first-child`);
+        let lastchild = document.querySelector(`${this.id} .slider__item:last-child`);
 
-            args.preventDefault();
-            this.closePopin();
+        //check current item not null
+        if (currentItem != null) {
 
-        })
-
-       }
-    }
-    closePopin() {
-        if (this.overlay != null) {
+            //test first child ?
+            if (currentItem.previousElementSibling == firstchild) {
+                this.elemFirst = firstchild;
+            } else
+                this.elemFirst = currentItem.previousElementSibling;
 
 
-            this.overlay.remove();
-        }
+            //test last child ?
+            if (currentItem.nextElementSibling == lastchild) {
+                this.elemLast = lastchild;
+            } else
+                this.elemLast = currentItem.nextElementSibling;
 
-        if( this.popinDisclaimer!=null){
-            this.popinDisclaimer.remove();
-        }
-    }
-    openUrl() {
 
-        var parsedUrl = new URL(window.location.href);
-        let popinId = parsedUrl.searchParams.get("popin-id") + "";
-        let headerTxt = parsedUrl.searchParams.get("headerTxt") + "";
-        let url = parsedUrl.searchParams.get("url") + "";
-        let txt = parsedUrl.searchParams.get("txt") + "";
-        let btnTxt = parsedUrl.searchParams.get("btnTxt") + "";
-        if (popinId != "" && headerTxt != "" && txt != "") {
-            open(true, popinId, headerTxt, txt,btnTxturl,url);
         }
     }
-    open(flag, popinId, headerTxt, txt,btnTxt,url) {
+    addItem(elem, type) {
 
-        if (flag) {
-            //chceck si overlay else remove and add
+        let _token = type == 'next' ? this.elemFirst : this.elemLast;
 
-            this.closePopin();
-            if (this.content != null) {
-             
-                this.content.insertAdjacentHTML('afterend',`
-                <div class="overlayDislaimer">
-                </div>
-                <div class='popin popin--disclaimer'>
-                    <div class="closePopin">
-                        <div class="close__left closeElement"></div>
-                        <div class="close__right closeElement"></div>
-                    </div>
-                    <article class="popin__wrapper">
-                        <header><h1 class="popin__title"><span class="popin__spanTitle --titleHead"> ${headerTxt}</span></h1></header>
-                        <div class="popin__content">
-                            <div class="popin_wysiwyg">
-                            ${txt}
-                            </div>
-                        </div>
-                        <footer>
-                            <a class="popin__link linkG--blue" href="#"> <span class="linkT linkTxtAnim">${btnTxt}</span></a>
-                        </footer>
-                    </article>
-                </div>
-                `);
+        //Get Transform TranslateX
+        let translateX = 0;
+
+
+
+
+        //Mode Get translateX
+        if (this.options.modeTranslate) {
+            if (this.ulContainer.style['transform'] != null && this.ulContainer.style['transform'] != "") {
+                let _translateXString = this.ulContainer.style['transform'].replace('translateX(', '').replace('vw)', '').replace('calc(', '');
+
+                this.marginLeft = parseFloat(_translateXString);
+
+            } else {
+                this.marginLeft = 0;
+            }
+
+            // //Get marginLeftg par defaut
+            // if (this.ulContainer.style['marginLeft'] != null && this.ulContainer.style['marginLeft'] != "") {
+            //     let _marginLeft = this.ulContainer.style['marginLeft'].replace('vw)', '').replace('calc(', '');
+
+            //     this.marginLeft = parseFloat(_marginLeft);
+
+            // } else {
+            //     this.marginLeft = 0;
+            // }
+
+
+
+        }
+
+
+        if (this.options.isPaginationNormal) {
+
+            _token = type == 'next' ? this.elemLast : this.elemFirst;
+        }
+
+
+        let _item = _token;
+        let _cloneItem = null;
+
+
+        if (_item != null) {
+
+
+
+
+            //bouton suivant
+            if (type == 'next') {
+
+                _cloneItem = _item.cloneNode(true);
+
+                //mode translate
+                if (this.options.modeTranslate) {
+
+                    this.marginLeft = -this.delta + this.marginLeft;
+
+
+                    //set position element
+                    this.getPositionItem();
+                    let delta = this.posElement(this.elemLast, this.elemFirst, this.marginLeft, type);
+
+                    this.setSlide(delta, 'translate');
+                    //set item current
+                    this.addCurent(elem);
+                    setTimeout(() => {
+                        this.setSlide(delta + this.delta, 'translate', 'transition:none;');
+                        this.ulContainer.insertBefore( /*elem add*/ this.elemFirst, /*context*/ null);
+
+                    }, 500);
+
+
+
+
+                } else {
+                    //pagination normal
+                    if (this.options.isPaginationNormal) {
+                        _cloneItem = elem;
+                        _item.after(_cloneItem);
+                    } else {
+
+
+                        _item.remove();
+                        elem.after(_cloneItem);
+
+
+
+                    }
+                }
+
 
 
             }
 
+            //bouton précédent
+            if (type == 'prev') {
+
+                //element dernier de la liste à copier
+                _cloneItem = _item.cloneNode(true);
+                if (this.options.modeTranslate) {
+                    this.marginLeft = this.delta + this.marginLeft;
+
+
+                    //set position element
+                    this.getPositionItem();
+                    let delta = this.posElement(this.elemLast, this.elemFirst, this.marginLeft, type);
+
+                    this.setSlide(delta, 'translate');
+                    //set item current
+                    this.addCurent(elem);
+                    setTimeout(() => {
+                        this.setSlide(delta - this.delta, 'translate', 'transition:none;');
+                        this.ulContainer.insertBefore( /*elem add*/ this.elemLast, /*context*/ this.elemFirst);
+
+                    }, 500);
+
+
+                } else {
+                    if (this.options.isPaginationNormal) {
+                        _cloneItem = elem;
+                        _item.before(_cloneItem);
+                        return;
+                    } else {
+
+                        _cloneItem = _item;
+                        elem.before(_cloneItem);
+                    }
+                }
+
+
+            }
         }
+
+
+    }
+    onNextClick(args) {
+
+
+
+        let _newItem = this.getItem('next');
+        if (_newItem != null) {
+
+
+
+            this.addItem(_newItem, 'next');
+
+        }
+
+
+    }
+
+    getItem(type) {
+        let _li = null;
+
+        if (type == 'next') {
+            if (this.currentItem != null) {
+                _li = this.currentItem.nextElementSibling;
+                if (this.options.isPaginationNormal) {
+                    _li = document.querySelector(`${this.id} .slider__item:first-child`);
+                }
+
+            }
+
+
+
+
+        }
+        if (type == 'prev') {
+            _li = this.currentItem.previousElementSibling;
+            if (this.options.isPaginationNormal) {
+                _li = document.querySelector(`${this.id} .slider__item:last-child`);
+
+            }
+
+        }
+        return _li;
+
+    }
+    onPrevClick(args) {
+
+        let _newItem = this.getItem('prev');
+        if (_newItem != null) {
+
+
+
+            //slide prev
+            this.addItem(_newItem, 'prev');
+
+        }
+
+
+    }
+
+    onPagination() {
+
+        if (this.next != null) {
+            this.next.addEventListener('click', (args) => {
+                if (this.sliderInterval != null) {
+                    clearInterval(this.sliderInterval);
+                    this.slideAuto();
+                }
+                this.onNextClick(args);
+
+            });
+        }
+        if (this.prev != null) {
+            this.prev.addEventListener('click', (args) => {
+                if (this.sliderInterval != null) {
+                    clearInterval(this.sliderInterval);
+                    this.slideAuto();
+                }
+                this.onPrevClick(args);
+
+            });
+        }
+
+
+
+    }
+    getCurrent() {
+        let _items = document.querySelectorAll(`${this.id} .slider__item--current`);
+        return _items[0];
+    }
+    addCurent(elem) {
+        let _items = document.querySelectorAll(`${this.id} .slider__item--current`);
+        _items = [].slice.call(_items || []);
+        for (let i = 0; i < _items.length; i++) {
+            _items[i].classList.remove('slider__item--current');
+
+        }
+        elem.classList.add('slider__item--current');
+        this.currentItem = elem;
+
+    }
+    setMoveItem() {
+        let _items = document.querySelectorAll(`${this.options.items}`);
+        _items = [].slice.call(_items || []);
+        if (_items != null && _items.length > 1) {
+
+            let _elemClone1 = _items[0];
+            if (!this.options.isPaginationNormal) {
+                _items[0].remove();
+                _items[1].after(_elemClone1);
+            } else {
+                _elemClone1 = _items[_items.length - 1];
+            }
+
+
+
+            this.addCurent(_elemClone1);
+
+
+
+        }
+    }
+    slideAuto() {
+        if (this.options.isAuto) {
+            this.sliderInterval = setInterval(() => {
+                this.onNextClick();
+
+            }, this.options.speed);
+        }
+
+
+
+
+    }
+    setSlide(delta, type = 'margin', transition = '') {
+        if (type == 'translate') {
+            this.ulContainer.setAttribute('style', `${transition}transform:translateX(calc(${delta}vw))`);
+            if (delta == 0) {
+                this.ulContainer.setAttribute('style', `${transition}`);
+
+            }
+
+        } else if (type = 'margin') {
+            this.ulContainer.setAttribute('style', `${transition}margin-left:calc(${delta}vw)`);
+        } else {
+            this.ulContainer.setAttribute('style', `${transition}margin-left:calc(${delta}vw)`);
+
+        }
+    }
+    getLastFirst() {
+
+    }
+    posElement(elemLast, elemFirst, mydelta = null, type = null) {
+
+        let delta = 0;
+
+        if (elemLast != null && elemFirst != null) {
+
+            let elemCloneLast = elemLast.cloneNode(true);
+
+
+            if (type == 'prev') {
+                if (mydelta == null) {
+                    delta = this.marginDefautLeft - this.delta;
+
+                } else {
+                    delta = mydelta;
+
+                }
+                return delta;
+
+
+            }
+
+
+            if (type == 'next') {
+                if (mydelta == null) {
+                    delta = this.marginDefautLeft + this.delta;
+
+                } else {
+                    delta = mydelta;
+
+                }
+                return delta;
+                // this.setSlide(delta, 'translate');
+                // this.ulContainer.insertBefore( /*elem add*/ elemCloneLast, /*context*/ elemFirst);
+
+            }
+            //this.setSlide(delta);
+        }
+
+
+
+
     }
     init() {
-        this.setRules();
-       
-    }
+        //Move item Show Middle slider--custom ou slider normal
 
-    setRules() {
+        this.setMoveItem();
 
-        let rules = document.querySelectorAll('.slider__link');
+        //Set events pagination
 
-        //check if data
-        if (rules != null && rules.length > 0) {
-            this.addEventListenerAll(rules, 'click', (args) => {
-                args.preventDefault();
-              
-                let popinId = args.currentTarget.dataset['popinId'] + "";
-                let headerTxt = args.currentTarget.dataset['header'] + "";
-                let txt = args.currentTarget.dataset['txt'] + "";
-                let url = args.currentTarget.dataset['url'] + "";
-                let btnTxt = args.currentTarget.dataset['btnTxt'] + "";
-                if (popinId != "" && headerTxt != "" && txt != "" && url!="" && btnTxt !="") {
+        this.onPagination();
 
-                    this.open(true, popinId, headerTxt, txt,btnTxt,url);
-                    this.initClosePopin();
-
-                }
-
-            });
-        }
-    }
-
-    closest(el, selector) {
-        const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
-
-        while (el) {
-            if (matchesSelector != null && typeof (matchesSelector.call) != undefined && matchesSelector.call(el, selector)) {
-                return el;
-            } else {
-                el = el.parentElement;
-            }
-        }
-        return null;
-    }
-    addEventListenerAll(selectors, event, callback) {
-        try {
-            let selector = null;
-            // var mycallback = function (args) {
-            //     callback(args);
-            // }
-            Array.from(selectors).forEach((selector, index) => {
-
-                selector.addEventListener(event, callback, false);
-            });
-        } catch (e) {
-            console.log(e);
-        }
-    }
-    removeEventListenerAll(selectors, event, callback, endCallBack) {
-        try {
-            let selector = null;
-            let itemsCount = 0;
-            Array.from(selectors).forEach((selector, index) => {
+        //fix position item
+        this.elemLast = document.querySelector(`${this.id} .slider__item:last-child`);
+        this.elemFirst = document.querySelector(`${this.id} .slider__item:first-child`);
 
 
-                selector.removeEventListener(event, callback, false);
-                itemsCount++;
-                if (selectors.length == itemsCount) {
-                    if (endCallBack != undefined) {
-                        endCallBack();
-                    }
+        // //activate en mode translate
+        // if (this.options.modeTranslate) {
 
-                }
+        //     this.posElement(this.elemLast, this.elemFirst);
+
+        // }
+
+        //this.slideAuto();
 
 
-            });
-
-        } catch (e) {
-            console.log(e);
-        }
     }
 
 }
-
-let disclaimer = new Disclairmer();
