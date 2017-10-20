@@ -2157,7 +2157,7 @@ class ManageInfo {
 
     init() {
         this.ApiInfoReglemente = 'json/get-infos-reglementees.json'; //apiConfig.ajaxUrlGetInfosReglementees;
-        this.filterAdd();
+        //this.filterAdd();
         this.infoReglemente(this.ApiInfoReglemente);
     }
     filterAdd() {
@@ -2168,8 +2168,9 @@ class ManageInfo {
     infoReglemente(urlApi) {
 
         let vm = new Vue({
-            el: '#appTest',
+            el: '#appfiltre',
             data: {
+              
                 json: {},
                 currentYear: '',
                 urlApi: urlApi,
@@ -2179,17 +2180,14 @@ class ManageInfo {
 
             },
             beforeCreate: function () {
+                console.log('creation module vue');
 
             },
             mounted: function () {
 
-                this.$nextTick(function () {
-                    // Ce code va être exécuté seulement
-                    // une fois le rendu de la vue entière terminé
-                    //charge tous le JS
-
-
-                })
+                this.$nextTick(()=> {
+                  this.requestDataByYear();
+                });
             },
             created: function () {
 
@@ -2214,33 +2212,33 @@ class ManageInfo {
                     params = {
                         "annee": year
                     }
-                    let vm = this;
+                  
                     this.$nextTick(function () {
                         // Ce code va être exécuté seulement
                         // une fois le rendu de la vue entière terminé
                         //charge tous le JS
-
+                   
 
                     })
                     $.post(this.urlApi, params, (json) => {
                         if (json.code == "ok" && json.data.status == "200") {
-                            vm.currentYear = params.annee;
-                            vm.json = json;
+                            this.currentYear = params.annee;
+                            this.json = json;
 
 
                             // this.$set(this.$data,'json', json);
                             if (json.data[year] != null) {
 
                                 // this.$set(this.$data,'jsonYear',  json.data[year]);
-                                vm.jsonYear = json.data[year];
+                                this.jsonYear = json.data[year];
 
                             }
-                            console.log('jsonYear', vm.jsonYear);
-                            console.log('json', vm.json);
+                            console.log('jsonYear', this.jsonYear);
+                            console.log('json', this.json);
                         } else {
 
-                            console.log('no data stream json !', vm.json);
-                            console.log('no data stream jsonYear !', vm.jsonYear);
+                            console.log('no data stream json !', this.json);
+                            console.log('no data stream jsonYear !', this.jsonYear);
                         }
 
 
@@ -2250,7 +2248,7 @@ class ManageInfo {
             }
         });
 
-        vm.requestDataByYear();
+      
 
 
     }

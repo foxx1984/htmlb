@@ -17,24 +17,20 @@
         </div>
     </div>
 
-    <div id="appTest" class="sousContent sousContent__informations">
-        <ul class="filtreAnnee" >
-            <li class="filtreAnnee__item">
-                <a href="javascript:void(0)"  class="filtreAnnee__lien">
-                    <span class="linkTxtAnim">Toutes</span>
-                </a>
-            </li>
-
-            <li v-for="item in json.data.years" track-by="item.slug" class="filtreAnnee__item">
-                <a @click.prevent="loadDataYear($event,item)"  href="javascript:void(0)" class="filtreAnnee__lien">
+    <div id="appfiltre" class="sousContent sousContent__informations">
+       
+        <ul class="filtreAnnee" v-if="json.data !=null">
+           
+            <li v-for="item in json.data.years" class="filtreAnnee__item">
+                <a @click.prevent="loadDataYear($event,item)" href="javascript:void(0)" class="filtreAnnee__lien">
                     <span class="linkTxtAnim">{{item.label}}</span>
                 </a>
             </li>
 
         </ul>
 
-        <div class="filtreDocumentsBox">
-            <div class="filtreDocuments filtreDocuments--mobile">
+       <div class="filtreDocumentsBox">
+            <div class="filtreDocuments filtreDocuments--mobile" v-if="json.data !=null">
                 <span class="selectWrapper icon-fleche-2">
                     <select class="select--reset" >
                         <option value="0">Années</option>
@@ -44,7 +40,7 @@
                 </span>
             </div>
 
-            <div class="filtreDocuments filtreDocuments--mobile">
+            <div class="filtreDocuments filtreDocuments--mobile" v-if="json.data !=null">
                 <span class="selectWrapper icon-fleche-2">
                     <select class="select--reset">
                         <option value="0">Types de documents</option>
@@ -54,28 +50,29 @@
                 </span>
             </div>
         </div>
-      
-        <div class="containerListeDocs" >
-            <div class="listeDocs"  v-for="item in json.data.thematique"  >
-                <h2 class="mainTitle">
-                    <span class="mainTitle__text --titleHead mainTitle--blue"> {{item.thematique_name}}</span>
+     
+        <div class="containerListeDocs" v-if="json.data !=null"  >
+            <div class="listeDocs" v-if="item !=null &&  json.data[currentYear][item.thematique_id] !=null "   v-for="item in json.data.thematique">
+                <h2 class="mainTitle" v-if="item.thematique_name!= ''">
+                    <span class="mainTitle__text --titleHead mainTitle--blue"> {{item.thematique_name}} </span>
                 </h2>
     
-                <ul class="listeDocs__bloc">
-                    <li class="listeDocs__item"  v-for="var item in json.data[currentYear]">
+                 <ul class="listeDocs__bloc" v-if="json.data !=null">
+                    
+                    <li class="listeDocs__item" v-for="p in json.data[currentYear][item.thematique_id]">
                         <div class="listeDocs__visuelBloc">
-                            <img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel">
+                            <img v-bind:src="p.image_url" v-bind:alt="p.description" class="listeDocs__visuel">
                         </div>
-                        <div class="listeDocs__content">
-                            <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                            <p class="listeDocs__titre">Résultats du 1er trimestre 2016</p>
+                       <div class="listeDocs__content">
+                            <datetime class="listeDocs__time">{{p.date_label}}</datetime>
+                            <p class="listeDocs__titre">{{p.description}}</p>
                             <p>
-                                <a href="#" class="listeDocs__lien --link">Télécharger</a>
+                                <a v-bind:href="p.link_url" class="listeDocs__lien --link">{{p.link_title}}</a>
                             </p>
                         </div>
                     </li>
                     
-                </ul>
+                </ul> 
     
                 <p class="listeDocs__voirPlus">
                     <a class="link__plus" href="javascript:void(0)">
@@ -85,88 +82,7 @@
             </div>
     
         </div>
-      
-
-        <!-- <!-- <div class="listeDocs">
-            <h2 class="mainTitle">
-                <span class="mainTitle__text --titleHead mainTitle--blue">Présentations des comptes</span>
-            </h2>
-
-            <ul class="listeDocs__bloc">
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc">
-                        <img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel">
-                    </div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p>
-                            <a href="#" class="listeDocs__lien --link">Télécharger</a>
-                        </p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc">
-                        <img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel">
-                    </div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p>
-                            <a href="#" class="listeDocs__lien --link">Télécharger</a>
-                        </p>
-                    </div>
-                </li>
-            </ul>
-
-            <p class="listeDocs__voirPlus">
-                <a class="link__plus" href="javascript:void(0)">
-                    <span class="linkTxtAnim">Voir +</span>
-                </a>
-            </p>
-        </div> 
-
-
-        <div class="listeDocs">
-            <h2 class="mainTitle">
-                <span class="mainTitle__text --titleHead mainTitle--blue">Déclarations d'opérations sur titres</span>
-            </h2>
-
-            <ul class="listeDocs__bloc">
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc">
-                        <img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel">
-                    </div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p>
-                            <a href="#" class="listeDocs__lien --link">Télécharger</a>
-                        </p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc">
-                        <img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel">
-                    </div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p>
-                            <a href="#" class="listeDocs__lien --link">Télécharger</a>
-                        </p>
-                    </div>
-                </li>
-
-            </ul>
-
-            <p class="listeDocs__voirPlus">
-                <a class="link__plus" href="javascript:void(0)">
-                    <span class="linkTxtAnim">Voir +</span>
-                </a>
-            </p>
-        </div> -->
-
+     
         <div class="listeDocs listeDocs--noTitle">
             <div class="listeDocs__subBloc">
                 <div class="listeDocs__detailDoc">
