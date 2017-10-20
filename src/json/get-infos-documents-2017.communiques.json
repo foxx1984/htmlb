@@ -1,0 +1,48 @@
+{
+    "code": "ok",
+    "data": {
+        "status": 200,
+        "years": [
+            {
+                "slug": 2017,
+                "label": "2017"
+            }
+        ],
+        "types": [
+            {
+                "slug": "actualites",
+                "label": "Actualités"
+            },
+            {
+                "slug": "communiques",
+                "label": "Communiqués"
+            },
+            {
+                "slug": "publications",
+                "label": "Publications"
+            }
+        ],
+        "items": [
+            {
+                "post_type": "communiques",
+                "ID": 286,
+                "type": "communiques",
+                "date_timestamp": 1507819038,
+                "date_label": "12 octobre 2017",
+                "description": "Information financière du troisième trimestre 2017.",
+                "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                "link_title": "Télécharger"
+            },
+            {
+                "post_type": "communiques",
+                "ID": 283,
+                "type": "communiques",
+                "date_timestamp": 1507819021,
+                "date_label": "12 octobre 2017",
+                "description": "Le groupe Bolloré franchit le seuil du capital 15% de Vivendi.",
+                "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                "link_title": "Télécharger"
+            }
+        ]
+    }
+}

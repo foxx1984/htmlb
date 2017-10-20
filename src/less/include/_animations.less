@@ -377,7 +377,7 @@
         position: relative;
         overflow: hidden;
         background: white;
-        &:hover{
+        &:hover,&--on{
             background: transparent;
            border: 1px solid transparent;
            transition: border 0.5s ease 0.3s;
@@ -417,7 +417,7 @@
    
     .listeDocs__bloc {
         overflow: hidden;
-        height: 450px;
+        height: 445px;
         transition: all 0.8s linear;
 
         // &--on{
@@ -425,6 +425,12 @@
         //     overflow: visible;
         //     transition:  max-height 0.5s ease,overflow 0.5s ease;
         // }
+    }
+    .listeDocs--noTitle {
+        .listeDocs__bloc {
+            height: auto;
+        }
+       
     }
 }
 //anim --linkC
