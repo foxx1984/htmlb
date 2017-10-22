@@ -1,0 +1,105 @@
+{
+    "code": "ok",
+    "data": {
+        "status": 200,
+        "years": [{
+                "slug": 0,
+                "label": "Année"
+            },
+            {
+                "slug": 2017,
+                "label": "2017"
+            },
+            {
+                "slug": 2016,
+                "label": "2016"
+            },
+            {
+                "slug": 2015,
+                "label": "2015"
+            }
+        ],
+        "types": [{
+                "slug": "0",
+                "label": "Types de documents"
+            },
+            {
+                "slug": "actualites",
+                "label": "Actualités"
+            },
+            {
+                "slug": "communiques",
+                "label": "Communiqués"
+            },
+            {
+                "slug": "publications",
+                "label": "Publications"
+            }
+        ],
+        "items": [{
+                "post_type": "publications",
+                "ID": 292,
+                "type": "",
+                "date_timestamp": 1507819123,
+                "date_label": "12 octobre 2017",
+                "description": "Document de référence 2016.",
+                "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                "link_title": "Télécharger",
+                "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+            },
+            {
+                "post_type": "publications",
+                "ID": 289,
+                "type": "",
+                "date_timestamp": 1507819104,
+                "date_label": "12 octobre 2017",
+                "description": "Rapport d’activité 2016.",
+                "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                "link_title": "Télécharger",
+                "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+            },
+            {
+                "post_type": "communiques",
+                "ID": 286,
+                "type": "communiques",
+                "date_timestamp": 1507819038,
+                "date_label": "12 octobre 2017",
+                "description": "Information financière du troisième trimestre 2017.",
+                "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                "link_title": "Télécharger"
+            },
+            {
+                "post_type": "communiques",
+                "ID": 283,
+                "type": "communiques",
+                "date_timestamp": 1507819021,
+                "date_label": "12 octobre 2017",
+                "description": "Le groupe Bolloré franchit le seuil du capital 15% de Vivendi.",
+                "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                "link_title": "Télécharger"
+            },
+            {
+                "post_type": "actualites",
+                "ID": 280,
+                "type": "actualites",
+                "date_timestamp": 1507818919,
+                "date_label": "12 octobre 2017",
+                "description": "Le groupe Bolloré renforce sa participation dans Vivendi.",
+                "link_url": "https://refonte2017.bollore.intranet/fr/page-faq/",
+                "link_title": "En savoir plus",
+                "link_target": "_self"
+            },
+            {
+                "post_type": "actualites",
+                "ID": 278,
+                "type": "actualites",
+                "date_timestamp": 1507818886,
+                "date_label": "12 octobre 2017",
+                "description": "Blue Solution acquiert la start-up américaine Capacitor Sciences et renforce son programme R&D.",
+                "link_url": "https://www.havasgroup.fr/",
+                "link_title": "En savoir plus",
+                "link_target": "_blank"
+            }
+        ]
+    }
+}

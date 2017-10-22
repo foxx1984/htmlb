@@ -291,7 +291,7 @@ module.exports = function (grunt) {
             dist: {
                 expand: true,
                 cwd: 'src',
-                src: ['*.html', 'css/**/*.*', 'img/**/*.*', '!partials/', 'ajax/**/*.*', '*.png', '*.ico', '*.json', '!file_sigs.json','js/**/*.*','medias/**/*.*'],
+                src: ['*.html','json/**/*.*', 'css/**/*.*', 'img/**/*.*', '!partials/', 'ajax/**/*.*', '*.png', '*.ico', '*.json', '!file_sigs.json','js/**/*.*','medias/**/*.*','*.config'],
                 dest: 'dist'
             },
             csstmp: {

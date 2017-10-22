@@ -14,7 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6432154/6221972/css/fonts.css" />
 
-    <link rel="stylesheet" href="css/app.bollore.bundle.min.css">
+    <!-- build:css css/app.bollore.bundle.min.css -->
+    <link rel="stylesheet" href="css/icomoon.css">
+<link rel="stylesheet" href="css/style.css">
+    <!-- endbuild -->
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -401,7 +404,9 @@
     </span>
 </div>
 
-    <h1 class="mainTitle"><span class="mainTitle__text --titleHead">Lorem ipsum</span></h1>
+    <h1 class="mainTitle">
+        <span class="mainTitle__text --titleHead">Lorem ipsum</span>
+    </h1>
     <div class="mainChapeau">
         <div class="mainChapeau__content">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae massa id ex laoreet consectetur eget sit amet lacus. Sed at iaculis erat. Maecenas erat quam, cursus eget molestie vel, hendrerit in mauris. Phasellus eu orci vitae turpis
@@ -409,274 +414,78 @@
         </div>
     </div>
 
-    <div class="sousContent sousContent__informations">
-        <ul class="filtreAnnee">
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">Toutes</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2017</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2016</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2015</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2014</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2013</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2012</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2011</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2010</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2009</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2008</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2007</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2006</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2005</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2004</span></a></li>
-            <li class="filtreAnnee__item"><a href="javascript:void(0)" class="filtreAnnee__lien"><span class="linkTxtAnim">2003</span></a></li>
+    <div id="appfiltre" class="sousContent sousContent__informations">
+
+        <ul class="filtreAnnee" v-if="json.data !=null">
+
+            <li v-for="item in json.data.years" class="filtreAnnee__item">
+                <a v-bind:class="[item.selected ? 'filtreAnnee__lien--on' : '']" @click.prevent="loadDataYear($event,item)" href="javascript:void(0)" class="filtreAnnee__lien">
+                    <span class="linkTxtAnim">{{item.label}}</span>
+                </a>
+            </li>
+
         </ul>
 
         <div class="filtreDocumentsBox">
-            <div class="filtreDocuments filtreDocuments--mobile">
+            <div class="filtreDocuments filtreDocuments--mobile" v-if="json.data !=null">
                 <span class="selectWrapper icon-fleche-2">
-                    <select class="select--reset">
-                        <option value="0">Années</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                        <option value="2014">2014</option>
-                        <option value="2013">2013</option>
-                        <option value="2012">2012</option>
-                        <option value="2011">2011</option>
-                        <option value="2010">2010</option>
-                        <option value="2009">2009</option>
-                        <option value="2008">2008</option>
+                    <select class="select--reset" v-model="currentYear"  v-if="json.data !=null" v-on:change="loadDataYear($event)" >
+                      
+                        <option v-for="item in json.data.years" v-bind:value="item.slug">{{item.label}}</option>
+                      
                     </select>
                 </span>
             </div>
 
-            <div class="filtreDocuments filtreDocuments--mobile">
+            <div class="filtreDocuments filtreDocuments--mobile" v-if="json.data !=null">
                 <span class="selectWrapper icon-fleche-2">
-                    <select class="select--reset">
-                        <option value="0">Types de documents</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                        <option value="2014">2014</option>
-                        <option value="2013">2013</option>
-                        <option value="2012">2012</option>
-                        <option value="2011">2011</option>
-                        <option value="2010">2010</option>
-                        <option value="2009">2009</option>
-                        <option value="2008">2008</option>
+                    <select class="select--reset" v-if="json.data !=null" v-on:change="loadDataYear($event)" >
+                       
+                    
+                        <option  v-for="item in json.data.thematique" v-bind:value="item.thematique_id">{{item.thematique_name}}</option>
                     </select>
                 </span>
             </div>
         </div>
 
-        <div class="listeDocs">
-            <h2 class="mainTitle"><span class="mainTitle__text --titleHead mainTitle--blue">Informations périodiques</span></h2>
+        <div class="containerListeDocs" v-if="json.data !=null">
+            <div class="listeDocs" v-if="item !=null &&  json.data[currentYear][item.thematique_id] !=null " v-for="item in json.data.thematique">
+                <h2 class="mainTitle" v-if="item.thematique_name!= ''">
+                    <span class="mainTitle__text --titleHead mainTitle--blue"> {{item.thematique_name}} </span>
+                </h2>
 
-            <ul class="listeDocs__bloc">
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Résultats du 1er trimestre 2016</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
+                <ul class="listeDocs__bloc" v-if="json.data !=null">
 
-            </ul>
+                    <li class="listeDocs__item" v-bind:class="[animBloc ? 'listeDocs__item--anim' : '']" v-for="p in json.data[currentYear][item.thematique_id]">
+                        <div class="listeDocs__visuelBloc">
+                            <img v-bind:src="p.image_url" v-bind:alt="p.description" class="listeDocs__visuel">
+                        </div>
+                        <div class="listeDocs__content">
+                            <datetime class="listeDocs__time">{{p.date_label}}</datetime>
+                            <p class="listeDocs__titre">{{p.description}}</p>
+                            <p>
+                                <a v-bind:href="p.link_url" class="listeDocs__lien --link">{{p.link_title}}</a>
+                            </p>
+                        </div>
+                    </li>
 
-            <p class="listeDocs__voirPlus"><a class="link__plus" href="javascript:void(0)"><span class="linkTxtAnim">Voir +</span></a></p>
-        </div>
+                </ul>
 
-        <div class="listeDocs">
-            <h2 class="mainTitle"><span class="mainTitle__text --titleHead mainTitle--blue">Présentations des comptes</span></h2>
+                <p class="listeDocs__voirPlus">
+                    <a class="link__plus" href="javascript:void(0)">
+                        <span class="linkTxtAnim">Voir +</span>
+                    </a>
+                </p>
+            </div>
 
-            <ul class="listeDocs__bloc">
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-            </ul>
-
-            <p class="listeDocs__voirPlus"><a class="link__plus" href="javascript:void(0)"><span class="linkTxtAnim">Voir +</span></a></p>
-        </div>
-
-
-        <div class="listeDocs">
-            <h2 class="mainTitle"><span class="mainTitle__text --titleHead mainTitle--blue">Déclarations d'opérations sur titres</span></h2>
-
-            <ul class="listeDocs__bloc">
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-                <li class="listeDocs__item">
-                    <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                    <div class="listeDocs__content">
-                        <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                        <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                        <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                    </div>
-                </li>
-
-            </ul>
-
-            <p class="listeDocs__voirPlus"><a class="link__plus" href="javascript:void(0)"><span class="linkTxtAnim">Voir +</span></a></p>
         </div>
 
         <div class="listeDocs listeDocs--noTitle">
             <div class="listeDocs__subBloc">
                 <div class="listeDocs__detailDoc">
-                    <h2 class="actuDoc__title listeDocs__mainTitre"><span class="actuDoc__titleTxt --titleGrey1 --titleHead">Assemblées générales</span></h2>
+                    <h2 class="actuDoc__title listeDocs__mainTitre">
+                        <span class="actuDoc__titleTxt --titleGrey1 --titleHead">Assemblées générales</span>
+                    </h2>
                     <div class="listeDocs__flexTablette">
                         <div class="listeDocs__video">
                             <iframe width="560" height="315" src="https://www.youtube.com/embed/jG2m07xRkrg" frameborder="0" allowfullscreen></iframe>
@@ -684,47 +493,69 @@
                         <div class="listeDocs__content">
                             <datetime class="listeDocs__time">10 Octobre 2017</datetime>
                             <p class="listeDocs__titre">Le Groupe Bolloré renforce sa participation dans Vivendi</p>
-                            <p><a href="#" class="listeDocs__lien --link">En savoir plus</a></p>
+                            <p>
+                                <a href="#" class="listeDocs__lien --link">En savoir plus</a>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="listeDocs__documents listeDocs__slideshowmobile" data-slideitem="listeDocs__item">
-                    <h2 class="actuDoc__title listeDocs__mainTitre"><span class="actuDoc__titleTxt --titleGrey1 --titleHead">Publications</span></h2>
+                    <h2 class="actuDoc__title listeDocs__mainTitre">
+                        <span class="actuDoc__titleTxt --titleGrey1 --titleHead">Publications</span>
+                    </h2>
                     <ul class="listeDocs__bloc">
                         <li class="listeDocs__item">
-                            <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
+                            <div class="listeDocs__visuelBloc">
+                                <img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel">
+                            </div>
                             <div class="listeDocs__content">
                                 <datetime class="listeDocs__time">10 Avril 2017</datetime>
                                 <p class="listeDocs__titre">Rapport d'activité 2016.1</p>
-                                <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
+                                <p>
+                                    <a href="#" class="listeDocs__lien --link">Télécharger</a>
+                                </p>
                             </div>
                         </li>
                         <li class="listeDocs__item">
-                            <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
+                            <div class="listeDocs__visuelBloc">
+                                <img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel">
+                            </div>
                             <div class="listeDocs__content">
                                 <datetime class="listeDocs__time">11 Avril 2017</datetime>
                                 <p class="listeDocs__titre">Rapport d'activité 2016.2</p>
-                                <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
+                                <p>
+                                    <a href="#" class="listeDocs__lien --link">Télécharger</a>
+                                </p>
                             </div>
                         </li>
                         <li class="listeDocs__item">
-                            <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
+                            <div class="listeDocs__visuelBloc">
+                                <img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel">
+                            </div>
                             <div class="listeDocs__content">
                                 <datetime class="listeDocs__time">12 Avril 2017</datetime>
                                 <p class="listeDocs__titre">Rapport d'activité 2016.3</p>
-                                <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
+                                <p>
+                                    <a href="#" class="listeDocs__lien --link">Télécharger</a>
+                                </p>
                             </div>
                         </li>
                         <li class="listeDocs__item">
-                            <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
+                            <div class="listeDocs__visuelBloc">
+                                <img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel">
+                            </div>
                             <div class="listeDocs__content">
                                 <datetime class="listeDocs__time">13 Avril 2017</datetime>
                                 <p class="listeDocs__titre">Rapport d'activité 2016.4</p>
-                                <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
+                                <p>
+                                    <a href="#" class="listeDocs__lien --link">Télécharger</a>
+                                </p>
                             </div>
                         </li>
                     </ul>
-                    <p><a class="listeDocs__lien --link" href="#">Toutes les publications</a></p>
+                    <p>
+                        <a class="listeDocs__lien --link" href="#">Toutes les publications</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -732,7 +563,10 @@
     </div>
 
     <div class="actuDoc__footer actuDoc__footer--generic">
-        <a href="faq.html" class="actuDoc__faqLink --linkF"><i class="fa fa-comments-o linkTxtAnim" aria-hidden="true"></i> <span class="actuDoc__faqtxt linkTxtAnim"> Accédez à notre FAQ</span></a>
+        <a href="faq.html" class="actuDoc__faqLink --linkF">
+            <i class="fa fa-comments-o linkTxtAnim" aria-hidden="true"></i>
+            <span class="actuDoc__faqtxt linkTxtAnim"> Accédez à notre FAQ</span>
+        </a>
     </div>
 </div>
 
@@ -760,7 +594,28 @@
         <!-- END Main Bloc-->
 
     </div>
-    <script src="js/app.bollore.bundle.min.js"></script>
+    <!-- build:js js/app.bollore.bundle.min.js -->
+    
+<script type='text/javascript'>
+/* <![CDATA[ */
+var apiConfig = {"ajaxUrlGetDocuments":"https:\/\/refonte2017.bollore.intranet\/fr\/wp-json\/api-hdf\/v1\/get-documents\/","ajaxUrlGetInfosReglementees":"https:\/\/refonte2017.bollore.intranet\/fr\/wp-json\/api-hdf\/v1\/get-infos-reglementees\/","ajaxUrlSendContact":"https:\/\/refonte2017.bollore.intranet\/fr\/wp-json\/api-hdf\/v1\/send-contact\/"};
+/* ]]> */
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+   window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>');
+</script>
+<script src="js/jquery.animateNumber.min.js"></script>
+
+<script src="js/app.bollore.js"></script>
+<script src="js/app.bollore.rth.js"></script>
+
+<script src="js/plugins.js"></script>
+<script src="js/vendors/picturefill.js"></script>
+<script src="js/vendors/vue.min.js"></script>
+
+
+    <!-- endbuild -->
 </body>
 
 </html>

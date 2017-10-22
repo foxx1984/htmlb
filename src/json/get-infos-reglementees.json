@@ -1,0 +1,358 @@
+{
+    "code": "ok",
+    "data": {
+        "0": {
+            "7": [{
+                "ID": 435,
+                "date_timestamp": 1445269945,
+                "date_label": "19 octobre 2015",
+                "description": "Rapport d'activité 2014",
+                "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                "link_title": "Télécharger",
+                "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+            }],
+            "8": [{
+                "ID": 430,
+                "date_timestamp": 1508428258,
+                "date_label": "19 octobre 2017",
+                "description": "Rapport d'activité 2016 2ème trimestre",
+                "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                "link_title": "Télécharger",
+                "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+            }],
+            "9": [{
+                    "ID": 433,
+                    "date_timestamp": 1476892306,
+                    "date_label": "19 octobre 2016",
+                    "description": "Rapport d'activité 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 425,
+                    "date_timestamp": 1508428190,
+                    "date_label": "19 octobre 2017",
+                    "description": "Rapport d'activité 2016",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 423,
+                    "date_timestamp": 1508428151,
+                    "date_label": "19 octobre 2017",
+                    "description": "Résultats du 1er trimestre 2016",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                }
+            ]
+        },
+        "2015": {
+            "7": [{
+                    "ID": 435,
+                    "date_timestamp": 1445269945,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 427,
+                    "date_timestamp": 1508428218,
+                    "date_label": "19 octobre 2015",
+                    "description": "Rapport d'activité 1er trimestre 2015",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                }
+            ]
+        },
+        "2016": {
+            "9": [{
+                "ID": 433,
+                "date_timestamp": 1476892306,
+                "date_label": "19 octobre 2016",
+                "description": "Rapport d'activité 2015",
+                "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                "link_title": "Télécharger",
+                "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+            }]
+        },
+        "2017": {
+            "7": [{
+                "ID": 427,
+                "date_timestamp": 1508428218,
+                "date_label": "19 octobre 2017",
+                "description": "Rapport d'activité 1er trimestre 2016",
+                "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                "link_title": "Télécharger",
+                "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+            }],
+            "8": [{
+                "ID": 430,
+                "date_timestamp": 1508428258,
+                "date_label": "19 octobre 2017",
+                "description": "Rapport d'activité 2016 2ème trimestre",
+                "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                "link_title": "Télécharger",
+                "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+            }],
+            "9": [{
+                    "ID": 425,
+                    "date_timestamp": 1508428190,
+                    "date_label": "19 octobre 2017",
+                    "description": "Rapport d'activité 2016",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                },
+                {
+                    "ID": 423,
+                    "date_timestamp": 1508428151,
+                    "date_label": "19 octobre 2017",
+                    "description": "Résultats du 1er trimestre 2016",
+                    "link_url": "https://refonte2017.bollore.intranet/bollo-content/uploads/2017/10/test-doc.pdf",
+                    "link_title": "Télécharger",
+                    "image_url": "https://refonte2017.bollore.intranet/bollo-content/themes/bollore/img/pub_0.jpg"
+                }
+            ]
+        },
+        "status": 200,
+        "years": [{
+                "slug": 0,
+                "label": "Année"
+            },
+            {
+                "slug": 2015,
+                "label": "2015"
+            },
+            {
+                "slug": 2016,
+                "label": "2016"
+            },
+            {
+                "slug": 2017,
+                "label": "2017"
+            }
+        ],
+        "thematique": [{
+                "thematique_id": 0,
+                "thematique_name": "Tous les thèmes"
+            },
+            {
+
+                "thematique_id": 7,
+                "thematique_name": "Informations périodiques"
+            },
+            {
+                "thematique_id": 8,
+                "thematique_name": "Présentations des comptes"
+            },
+            {
+                "thematique_id": 9,
+                "thematique_name": "Déclarations d'opérations sur titres"
+            }
+        ]
+    }
+}
