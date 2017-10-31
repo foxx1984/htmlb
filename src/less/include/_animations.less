@@ -377,7 +377,13 @@
         position: relative;
         overflow: hidden;
         background: white;
-        &:hover,&--on{
+        &--on {
+            pointer-events: none;
+            background-color: #007bc0;
+            border: 1px solid transparent;
+            transition: border 0.5s ease 0.3s;
+        }
+        &:hover{
             background: transparent;
            border: 1px solid transparent;
            transition: border 0.5s ease 0.3s;
@@ -408,6 +414,9 @@
 
 .animationslideChiffre(){
     .listeDocs__voirPlus {
+        &--off {
+            display:none;
+        }
         .link__plus {
             &--off{
                 opacity: 0;
@@ -417,8 +426,9 @@
    
     .listeDocs__bloc {
         overflow: hidden;
-        height: 445px;
-        transition: all 0.8s linear;
+        //height: 445px;
+        height: auto;
+        transition: all 0.8s ease 0.2s;
 
         // &--on{
         //     max-height: none;
@@ -433,6 +443,19 @@
        
     }
 }
+
+.animationInfoReglementeAnim() {
+    .listeDocs__item {
+        transition: all 0.6s ease;
+        &--anim {
+            opacity: 0;
+            transform: scale(0.4);
+        }
+    }
+
+   
+}
+
 //anim --linkC
 .animButton2(@blue-4, transparent, 0.6s);
 //anim --linkN
@@ -458,3 +481,7 @@
 
 //informtion reglementée
 .animationslideChiffre();
+
+
+//anim items
+.animationInfoReglementeAnim();

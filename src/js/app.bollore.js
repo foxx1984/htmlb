@@ -435,7 +435,9 @@ class Bollore {
     init() {
         this.mediaDesktop = '1025px';
         this.elemAnim = document.querySelector('.header__blocSousNav');
-
+        this.DELTA = 200;
+        this.MAX_SEUL = 3;
+        this.MaxHeight = '445px';
         this.mediaTabletLarge = '1024px';
         this.mobile = '767px';
         this.closeMenuPrincipal = document.querySelector('.close');
@@ -472,8 +474,8 @@ class Bollore {
         //anim reglemente
 
         //hide button more if <= 3  
-        this.scanAnimReglemente(3);
-        this.animReglemente();
+        this.scanAnimReglemente(this.MAX_SEUL);
+
 
 
 
@@ -486,65 +488,121 @@ class Bollore {
     animeKeyBourse() {
 
     }
-    scanAnimReglemente(sueil) {
+    scanAnimReglemente(seuil) {
+
+        //events bind btn voir plus
+        this.eventsbuttonVoirPlus(seuil);
+
+        //check elem voir plus if exist
         let elemLinkPlus = document.querySelectorAll('.link__plus');
-        if (elemLinkPlus != null && elemLinkPlus.length > 0) {
 
-            elemLinkPlus.forEach((link, index, datas) => {
-                let list = link.closest('.listeDocs');
-                let elemUl = list.querySelector('.listeDocs__bloc');
-                if (elemUl != null) {
-                    let items = elemUl.querySelectorAll('.listeDocs__item');
-                    if (items != null && items.length > 0) {
 
-                        let height = 0;
 
-                        let nbreLigne = Math.floor(items.length / 3);
-                        height = items[0].offsetHeight * nbreLigne;
-                        height += 200;
 
-                        if (nbreLigne <= sueil) {
-                            link.classList.add('link__plus--off');
-                            elemUl.setAttribute('style', `height:${height}px;`);
+        //boucle every listdoc
+        elemLinkPlus.forEach((link, index, datas) => {
+            let list = link.closest('.listeDocs');
+            let elemUl = list.querySelector('.listeDocs__bloc');
+            let elemVoirPlus = link.closest('.listeDocs__voirPlus');
+
+            this.calculBlocList(elemUl, elemVoirPlus, seuil, false);
+
+        });
+
+
+
+    }
+    calculBlocList(elemUl, elemVoirPlus, seuil, clicked) {
+        let delta = this.DELTA;
+
+        if (elemUl != null) {
+
+            //check items
+            let items = elemUl.querySelectorAll('.listeDocs__item');
+
+            //check item if not null
+            if (items != null && items.length > 0) {
+
+                let height = 0;
+
+                //calcul nbre ligne
+                let nbreLigne = Math.floor(items.length / 3);
+
+                //calcul hauteur
+                height = items[0].offsetHeight * nbreLigne;
+
+                //default height auto
+                if (nbreLigne == 0 || nbreLigne == 1) {
+                    height = 'auto';
+                } else { //calcul height with delta
+
+                    height += delta;
+
+                }
+
+                //bloc elem voir plus if exist
+                if (elemVoirPlus != null) {
+
+                    //max seuil if <= maxseul
+                    if (nbreLigne <= seuil) {
+                        //hide bloc voir plus
+                        elemVoirPlus.classList.add('listeDocs__voirPlus--off');
+                        if (height != 'auto')
+                            height += 'px';
+
+                        elemUl.setAttribute('style', `height:${height};`);
+
+
+                    } else { // if > maxseuil
+
+
+
+                        //set style height
+                        if (!clicked) {
+                            elemUl.setAttribute('style', `height:${this.MaxHeight};`);
+                            //show button voir plus
+                            elemVoirPlus.classList.remove('listeDocs__voirPlus--off');
+
                         } else {
+                            height += delta;
+                            height += 'px';
+                            let _height = 'auto';
+                            elemVoirPlus.classList.add('listeDocs__voirPlus--off');
+                            elemUl.setAttribute('style', `height:${height};`);
+                            setTimeout(() => {
+                                elemUl.setAttribute('style', `height:${_height};`);
+                            }, 500);
+
+
 
                         }
 
                     }
+
                 }
-            });
+
+            }
         }
-
-
     }
-    animReglemente() {
+    eventsbuttonVoirPlus(seuil) {
         let elemLinkPlus = document.querySelectorAll('.link__plus');
         if (elemLinkPlus != null && elemLinkPlus.length > 0) {
 
 
 
-            this.addEventListenerAll(elemLinkPlus, 'click', (args) => {
+            addEventListenerAll(elemLinkPlus, 'click', (args) => {
                 args.preventDefault();
-                args.currentTarget.classList.add('link__plus--off');
+                // args.currentTarget.classList.add('link__plus--off');
+
+                let elemVoirPlus = args.currentTarget.closest('.listeDocs__voirPlus');
 
                 let elemParent = args.currentTarget.closest('.listeDocs');
                 if (elemParent != null) {
                     let elemUl = elemParent.querySelector('.listeDocs__bloc');
-                    if (elemUl != null) {
-                        let items = elemUl.querySelectorAll('.listeDocs__item');
-                        let height = 0;
-                        if (items != null && items.length > 0) {
-                            let nbreLigne = Math.floor(items.length / 3);
 
-                            height = items[0].offsetHeight * nbreLigne;
-                            height += 220;
-                        }
-                        elemUl.setAttribute('style', `height:${height}px;`);
+                    this.calculBlocList(elemUl, elemVoirPlus, seuil, true);
 
 
-
-
-                    }
                 }
             });
 
@@ -629,7 +687,12 @@ class Bollore {
                             var decimal_factor = decimal_places === 0 ? 1 : Math.pow(10, decimal_places);
                             if (max != null && max != "") {
                                 var options = {
-                                    number: max
+                                    number: max,
+                                    numberStep: function (now, tween) {
+                                        let target = $(tween.elem);
+                                        let chiffre = Math.ceil(now);
+                                        target.text(`${prefixe}${chiffre} ${suffixe}`);
+                                    }
                                 }
 
                                 if (max.indexOf('.') > -1) {
@@ -688,7 +751,7 @@ class Bollore {
     hoverPublication() {
         var links = document.querySelectorAll('.--link');
         if (links != null && links.length > 0) {
-            this.addEventListenerAll(links, 'mouseover', (args) => {
+            addEventListenerAll(links, 'mouseover', (args) => {
 
                 let link = args.currentTarget;
                 if (link != null) {
@@ -723,7 +786,7 @@ class Bollore {
 
             });
 
-            this.addEventListenerAll(links, 'mouseout', (args) => {
+            addEventListenerAll(links, 'mouseout', (args) => {
                 let link = args.currentTarget;
                 if (link != null) {
 
@@ -856,7 +919,7 @@ class Bollore {
             args.preventDefault();
 
             //on retire l'event _onclickBtnBack sur le lenu actif
-            this.removeEventListenerAll(_liBacknav, 'click', _onclickBtnBack,
+            removeEventListenerAll(_liBacknav, 'click', _onclickBtnBack,
                 /*callback fonction à appeler après le remove listener*/
                 () => {
 
@@ -895,7 +958,7 @@ class Bollore {
 
 
 
-                        this.removeEventListenerAll(_elemback, 'click', _onclickBtnBack, () => {
+                        removeEventListenerAll(_elemback, 'click', _onclickBtnBack, () => {
                             // let _handler = _actionBack.handler.bind(this, _actionBack.liArray);
                             this.onClickMenuNav({
 
@@ -940,9 +1003,9 @@ class Bollore {
 
                 //On retire  l'event click _handler   sur le li en cours
 
-                this.removeEventListenerAll(_liBacknav, 'click', _handler, () => {
+                removeEventListenerAll(_liBacknav, 'click', _handler, () => {
                     //On ecoute le clic sur le li en cours avec la classe XXXXXX--active bouton retour
-                    this.addEventListenerAll(_liBacknav, 'click', _onclickBtnBack);
+                    addEventListenerAll(_liBacknav, 'click', _onclickBtnBack);
                 });
 
 
@@ -950,7 +1013,7 @@ class Bollore {
             }
 
         } else {
-            this.removeEventListenerAll(_liBacknav, 'click', _onclickBtnBack);
+            removeEventListenerAll(_liBacknav, 'click', _onclickBtnBack);
         }
 
     }
@@ -962,7 +1025,7 @@ class Bollore {
 
         if (_liArray != null && _liArray.length > 0)
 
-            this.addEventListenerAll(_liArray, 'click', _handler);
+            addEventListenerAll(_liArray, 'click', _handler);
 
 
 
@@ -1122,7 +1185,7 @@ class Bollore {
                 for (let i = 0; i < elemPushSlider.length; i++) {
                     if (elemPushSlider[i] != null) {
 
-                        let parent = this.closest(elemPushSlider[i], 'article');
+                        let parent = elemPushSlider[i].closest('article');
                         if (parent != null) {
                             parent.insertAdjacentElement('afterend', elemPushSlider[i]);
                         }
@@ -1150,22 +1213,25 @@ class Bollore {
             if (elemSldierImage != null && elemSldierImage.length > 0 && elemSliderItem != null && elemSliderItem.length > 0) {
                 for (let elem in elemSldierImage) {
                     if (elemSldierImage[elem] != null) {
+                        if (elemSldierImage[elem] != null && elemSldierImage[elem].closest != undefined) {
 
-                        let parent = this.closest(elemSldierImage[elem], 'article');
-                        if (parent != null) {
-                            let elemPushSlider = elemSliderItem[elem].querySelector('.slider__push');
-                            if (elemPushSlider != null) {
-                                elemSldierImage[elem].insertAdjacentElement('afterend', elemPushSlider);
+                            let parent = elemSldierImage[elem].closest('article');
+                            if (parent != null) {
+                                let elemPushSlider = elemSliderItem[elem].querySelector('.slider__push');
+                                if (elemPushSlider != null) {
+                                    elemSldierImage[elem].insertAdjacentElement('afterend', elemPushSlider);
 
-                                let elemSTitle = elemSliderItem[elem].querySelector('.slider__sTitle');
-                                let elemTitle2 = elemSliderItem[elem].querySelector('.slider__title2 ');
-                                if (elemSTitle != null && elemTitle2 != null) {
-                                    elemTitle2.insertAdjacentElement('afterbegin', elemSTitle);
+                                    let elemSTitle = elemSliderItem[elem].querySelector('.slider__sTitle');
+                                    let elemTitle2 = elemSliderItem[elem].querySelector('.slider__title2 ');
+                                    if (elemSTitle != null && elemTitle2 != null) {
+                                        elemTitle2.insertAdjacentElement('afterbegin', elemSTitle);
 
+                                    }
                                 }
-                            }
 
+                            }
                         }
+
 
                     }
                 }
@@ -1433,17 +1499,20 @@ class Bollore {
     }
     setOnClickMenuClose() {
         let _close = this.closeMenuPrincipal;
-        _close.addEventListener('click', (args) => {
-            args.preventDefault();
+        if (_close != undefined) {
+            _close.addEventListener('click', (args) => {
+                args.preventDefault();
 
-            this.hideBlocSousNav();
+                this.hideBlocSousNav();
 
-            setTimeout(() => {
-                this.setBaseCloseMenu();
-            }, 200);
+                setTimeout(() => {
+                    this.setBaseCloseMenu();
+                }, 200);
 
 
-        });
+            });
+        }
+
     }
     hideBlocSousNav() {
         this.elemAnim.classList.remove('header__blocSousNav--on');
@@ -1860,55 +1929,8 @@ class Bollore {
             _arrayMenu[i].classList.remove('secondMenu__item--on');
         }
     }
-    closest(el, selector) {
-        const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
-
-        while (el) {
-            if (matchesSelector != null && typeof (matchesSelector.call) != undefined && matchesSelector.call(el, selector)) {
-                return el;
-            } else {
-                el = el.parentElement;
-            }
-        }
-        return null;
-    }
-    addEventListenerAll(selectors, event, callback) {
-        try {
-            let selector = null;
-            // var mycallback = function (args) {
-            //     callback(args);
-            // }
-            Array.from(selectors).forEach((selector, index) => {
-
-                selector.addEventListener(event, callback, false);
-            });
-        } catch (e) {
-            console.log(e);
-        }
-    }
-    removeEventListenerAll(selectors, event, callback, endCallBack) {
-        try {
-            let selector = null;
-            let itemsCount = 0;
-            Array.from(selectors).forEach((selector, index) => {
 
 
-                selector.removeEventListener(event, callback, false);
-                itemsCount++;
-                if (selectors.length == itemsCount) {
-                    if (endCallBack != undefined) {
-                        endCallBack();
-                    }
-
-                }
-
-
-            });
-
-        } catch (e) {
-            console.log(e);
-        }
-    }
 
 }
 
@@ -2066,28 +2088,42 @@ class Disclaimer {
     }
     setRules() {
 
-        let rules = document.querySelectorAll('.slider__link');
+        let rules = document.querySelectorAll('.slider__link--rule');
 
         //check if data
         if (rules != null && rules.length > 0) {
-            this.addEventListenerAll(rules, 'click', (args) => {
+            addEventListenerAll(rules, 'click', (args) => {
                 args.preventDefault();
 
+                //popinId
                 let popinId = args.currentTarget.dataset['popinId'] + "";
-                let headerPopin1 = args.currentTarget.dataset['headerPopin1'] + "";
-                let headerPopin2 = args.currentTarget.dataset['headerPopin2'] + "";
 
+                //txt1 header1 popin
+                let headerPopin1 = args.currentTarget.dataset['headerPopin1'] + "";
+                let txtPopin1 = args.currentTarget.dataset['txtPopin1'] + "";
                 let btnYes = args.currentTarget.dataset['btnYes'] + "";
                 let btnNo = args.currentTarget.dataset['btnNon'] + "";
-                let btnValidation = args.currentTarget.dataset['btnValidation'] + "";
-                let url = args.currentTarget.dataset['url'] + "";
-                let txtPopin2 = args.currentTarget.dataset['txtPopin2'] + "";
-                let txtPopin1 = args.currentTarget.dataset['txtPopin1'] + "";
 
-                let choix = "yes"
+
+                //txt2 heade2 popin
+                let txtPopin2 = args.currentTarget.dataset['txtPopin2'] + "";
+                let headerPopin2 = args.currentTarget.dataset['headerPopin2'] + "";
+                let btnValidation = args.currentTarget.dataset['btnValidation'] + "";
+
+                //get url popin
+                let url = args.currentTarget.dataset['url'] + "";
+
+                //choix default popin yes no
+                let choix = "yes";
+
+
+                //si popinId exist
                 if (popinId != "") {
 
+                    //open popin
                     this.open(true, popinId, headerPopin1, txtPopin1, btnValidation, headerPopin2, txtPopin2, btnYes, btnNo, url, choix);
+
+                    //init popin yes no
                     this.initYesNo(true, popinId, headerPopin1, txtPopin1, btnValidation, headerPopin2, txtPopin2, btnYes, btnNo, url, choix);
 
                 }
@@ -2096,55 +2132,8 @@ class Disclaimer {
         }
     }
 
-    closest(el, selector) {
-        const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
-
-        while (el) {
-            if (matchesSelector != null && typeof (matchesSelector.call) != undefined && matchesSelector.call(el, selector)) {
-                return el;
-            } else {
-                el = el.parentElement;
-            }
-        }
-        return null;
-    }
-    addEventListenerAll(selectors, event, callback) {
-        try {
-            let selector = null;
-            // var mycallback = function (args) {
-            //     callback(args);
-            // }
-            Array.from(selectors).forEach((selector, index) => {
-
-                selector.addEventListener(event, callback, false);
-            });
-        } catch (e) {
-            console.log(e);
-        }
-    }
-    removeEventListenerAll(selectors, event, callback, endCallBack) {
-        try {
-            let selector = null;
-            let itemsCount = 0;
-            Array.from(selectors).forEach((selector, index) => {
 
 
-                selector.removeEventListener(event, callback, false);
-                itemsCount++;
-                if (selectors.length == itemsCount) {
-                    if (endCallBack != undefined) {
-                        endCallBack();
-                    }
-
-                }
-
-
-            });
-
-        } catch (e) {
-            console.log(e);
-        }
-    }
 
 }
 
@@ -2156,25 +2145,49 @@ class ManageInfo {
     }
 
     init() {
-        this.ApiInfoReglemente = 'json/get-infos-reglementees.json'; //apiConfig.ajaxUrlGetInfosReglementees;
-        //this.filterAdd();
-        this.infoReglemente(this.ApiInfoReglemente);
+        if (window['apiConfig'] != undefined) {
+            this.ApiInfoReglemente = apiConfig.ajaxUrlGetInfosReglementees; //'json/get-infos-reglementees.json'; 
+            this.ApiDocument = apiConfig.ajaxUrlGetDocuments; //'json/get-infos-documents-2017.json';
+
+        } else {
+            this.ApiInfoReglemente = 'json/get-infos-reglementees.json';
+            this.ApiDocument = 'json/get-infos-documents-2017.json';
+
+        }
+        //vm publications
+        this.vm = null;
+
+        //containerBloc
+        this.containerListeDocs = document.querySelector('.containerListeDocs');
+
+        //filter data inforeglementées
+        //this.filterData(this.ApiInfoReglemente);
+        if (document.getElementById('appfiltre') != null)
+            this.filterDataDoc(this.ApiInfoReglemente, '#appfiltre', true);
+
+        //filter data document
+        if (document.getElementById('appfiltreDoc') != null)
+            this.filterDataDoc(this.ApiDocument, '#appfiltreDoc', false);
+
+
     }
+
     filterAdd() {
         Vue.filter('reverse', function (value) {
             return value.split('').reverse().join('')
         });
     }
-    infoReglemente(urlApi) {
 
-        let vm = new Vue({
-            el: '#appfiltre',
+    filterDataDoc(urlApi, elem, IsRegelemnte) {
+
+        this.vm = new Vue({
+            el: elem,
             data: {
-              
+                animBloc: true,
                 json: {},
                 currentYear: '',
-                urlApi: urlApi,
-                jsonYear: {}
+                currentType: '',
+                urlApi: urlApi
 
 
 
@@ -2185,62 +2198,193 @@ class ManageInfo {
             },
             mounted: function () {
 
-                this.$nextTick(()=> {
-                  this.requestDataByYear();
+                this.$nextTick(() => {
+                    this.requestDataByYear();
                 });
             },
             created: function () {
 
             },
 
-          
+
 
             methods: {
-                //charge By year
-                loadDataYear(event, item) {
-                    event.currentTarget.classList.toggle('filtreAnnee__lien--on');
-                    this.requestDataByYear(item.slug);
+                //Post data
+                postApi(urlApui, param, callback) {
+                    callback();
 
                 },
 
-                //by year
-                requestDataByYear(year = "all", type = "0") {
+                //charge By year
+                loadDataYear(event, item) {
+                    this.animBloc = true;
+                    let year = "";
+                    let type = "";
 
-                    // this.$set(this.$data,'currentYear', year);
-                    let params = {};
+                    if (item != null) {
+                        year = item.slug;
+                    } else {
+                        year = this.currentYear;
 
-                    params = {
-                        "annee": year
                     }
-                  
-                    this.$nextTick(function () {
-                        // Ce code va être exécuté seulement
-                        // une fois le rendu de la vue entière terminé
-                        //charge tous le JS
-                   
+                    if (this.currentType != undefined) {
+                        type = this.currentType;
+                    }
 
-                    })
+
+
+                    setTimeout(() => {
+                        this.requestDataByYear(year, type);
+                    }, 500);
+
+
+
+
+
+                },
+
+                //by year and by type
+                requestDataByYear(year = "0", type = "0") {
+                    year = String(year).toString().toLocaleLowerCase();
+                    let params = {};
+                    if (year == "0" && type == "0") {
+
+
+                        params = {
+
+                        }
+                    } else if (year != "" && type != "") {
+
+
+                        params = {
+                            "annee": year,
+                            "type": type
+                        }
+                    } else if (year == "" && type != "") {
+
+
+                        params = {
+
+                            "type": type
+                        }
+                    } else if (year != "" && type == "") {
+
+
+                        params = {
+                            "annee": year
+                        }
+                    }
+                    try {
+
+
+
+                    } catch (e) {
+
+                    }
+
+
+                    //request ajax 
+
                     $.post(this.urlApi, params, (json) => {
+
+                        //check json is OK and status 200
                         if (json.code == "ok" && json.data.status == "200") {
-                            this.currentYear = params.annee;
+
+
+
+                            //set the good class selected on click button
+
+                            json.data.years.forEach((item, index, list) => {
+
+                                //check item not null
+                                if (item != null) {
+
+                                    //selected item currentYear
+                                    if (String(item.slug).toLowerCase() === year) {
+                                        item.selected = true;
+
+                                    } else { //no slected default propriete false
+                                        item.selected = false;
+                                    }
+                                }
+
+
+
+                            });
+
+                            //check type
+                            if (json.data["types"] != undefined) {
+                                json.data.types.forEach((item, index, list) => {
+
+                                    //check item not null
+                                    if (item != null) {
+
+                                        //selected item currentType
+                                        if (String(item.slug).toLowerCase() === type) {
+                                            item.selected = true;
+
+                                        } else { //no slected default propriete false
+                                            item.selected = false;
+                                        }
+                                    }
+
+
+
+                                });
+                            }
+                            //check thematique
+                            if (json.data["thematique"] != undefined) {
+                                json.data.thematique.forEach((item, index, list) => {
+
+                                    //check item not null
+                                    if (item != null) {
+
+                                        //selected item currentType
+                                        if (String(item.slug).toLowerCase() === type) {
+                                            item.selected = true;
+
+                                        } else { //no slected default propriete false
+                                            item.selected = false;
+                                        }
+                                    }
+
+
+
+                                });
+                            }
+
+
+
+                            //set currentYear
+                            this.currentYear = year;
+                            //set type
+                            this.currentType = type;
+
+
+                            //set json
                             this.json = json;
 
-
-                            // this.$set(this.$data,'json', json);
-                            if (json.data[year] != null) {
-
-                                // this.$set(this.$data,'jsonYear',  json.data[year]);
-                                this.jsonYear = json.data[year];
-
-                            }
-                            console.log('jsonYear', this.jsonYear);
+                            console.log('request ajax =>', this.currentYear, this.currentType);
                             console.log('json', this.json);
                         } else {
 
+                            console.log('request fail ajax =>', this.currentYear, this.currentType);
                             console.log('no data stream json !', this.json);
-                            console.log('no data stream jsonYear !', this.jsonYear);
                         }
+                        this.$nextTick(() => {
+                            if (IsRegelemnte) {
+                                _Bollore.scanAnimReglemente(_Bollore.MAX_SEUL);
 
+                            }
+                            _Bollore.hoverPublication();
+
+                            this.animBloc = false;
+                            console.log("$maj data anim");
+
+
+
+
+                        })
 
                     }, "json");
                 }
@@ -2248,17 +2392,304 @@ class ManageInfo {
             }
         });
 
-      
+
+
+
+
+    }
+
+    filterData(urlApi) {
+
+        this.vm = new Vue({
+            el: '#appfiltre',
+            data: {
+                animBloc: true,
+                json: {},
+                currentYear: '',
+                urlApi: urlApi
+
+
+
+            },
+            beforeCreate: function () {
+                console.log('creation module vue');
+
+            },
+            mounted: function () {
+
+                this.$nextTick(() => {
+                    this.requestDataByYear();
+                });
+            },
+            created: function () {
+
+            },
+
+
+
+            methods: {
+                //Post data
+                postApi(urlApui, param, callback) {
+                    callback();
+
+                },
+
+                //charge By year
+                loadDataYear(event, item) {
+                    this.animBloc = true;
+
+                    setTimeout(() => {
+                        this.requestDataByYear(item.slug);
+                    }, 500);
+
+
+
+
+
+                },
+
+                //by year and by type
+                requestDataByYear(year = "all", type = "0") {
+                    year = String(year).toString().toLocaleLowerCase();
+                    let params = {};
+
+                    params = {
+                        "annee": year
+                    }
+
+
+
+                    //request ajax 
+
+                    $.post(this.urlApi, params, (json) => {
+
+                        //check json is OK and status 200
+                        if (json.code == "ok" && json.data.status == "200") {
+
+                            //set currentYear
+                            this.currentYear = params.annee;
+
+                            //set the good class selected on click button
+
+                            json.data.years.forEach((item, index, list) => {
+
+                                //check item not null
+                                if (item != null) {
+
+                                    //selected item currentYear
+                                    if (String(item.slug).toLowerCase() === this.currentYear) {
+                                        item.selected = true;
+
+                                    } else { //no slected default propriete false
+                                        item.selected = false;
+                                    }
+                                }
+
+
+
+                            });
+
+
+
+                            //set json
+                            this.json = json;
+
+
+                            console.log('json', this.json);
+                        } else {
+
+                            console.log('no data stream json !', this.json);
+                        }
+                        this.$nextTick(() => {
+                            _Bollore.scanAnimReglemente(_Bollore.MAX_SEUL);
+                            _Bollore.hoverPublication();
+
+                            this.animBloc = false;
+                            console.log("$maj data anim");
+
+
+
+
+                        })
+
+                    }, "json");
+                }
+
+            }
+        });
+        this.vm.$set(this.vm.$data, 'containerListeDocs', this.containerListeDocs);
+
+
 
 
     }
 }
+class FormBollore {
+    constructor() {
+        this.init();
 
+    }
+
+    init() {
+        this.UrlApiSendPostContact = null;
+        if(window.apiConfig != undefined)
+        this.UrlApiSendPostContact = window.apiConfig.ajaxUrlSendContact;
+        else
+        this.UrlApiSendPostContact ="https://refonte2017.bollore.intranet/fr/wp-json/api-hdf/v1/send-contact/";
+
+        this.iniForm();
+    }
+    postData (lastname,firstname,email,subject,message,contact_nonce) {
+        $.ajax({
+            type: 'POST',
+            url:  this.UrlApiSendPostContact ,
+
+            dataType: 'json',
+            data: {
+              
+                lastname: lastname,
+                firstname: firstname,
+                email: email,
+                subject:subject,
+                message: message,
+                contact_nonce : contact_nonce,
+                "g-recaptcha-response": grecaptchaResp,
+           
+
+
+            },
+            error: function(data) {
+                if(data.statusText != null ) {
+                    let elemCaptcha  = $('.g-recaptcha');
+                    if( $(elemCaptcha).parents('.formsBloc__line').find('label.error').length ==0){
+                        $(elemCaptcha).parents('.formsBloc__line').append('<label class="error">Requête ajax fail</label>');
+                        
+                    }
+                }
+                
+            },
+            complete: function(data) {
+                if (typeof(data.responseJSON) != "undefined") {
+
+
+                    if (data.status == 200) {
+                        if (data.responseJSON.Status == "OK") {
+                           
+                            let btnSubmit  = $('.formsBloc__submit');
+                            if( $(btnSubmit).parents('.formsBloc__line').find('label.good').length ==0){
+                                $(btnSubmit).parents('.formsBloc__line').append('<label class="good">'+btnSubmit.data("msg")+'</label>');
+                                
+                            }
+                        }
+                        //Pas ok
+                        else {
+
+                          
+                        }
+                    }
+
+                }
+               
+            }
+        });
+    }
+    iniForm() {
+        $('select[name="contact_sujet"]').on("change",function(args){
+            $("form[name='formsbollore']").valid();
+        });
+        
+        $('.formsBloc__submit').on('click',function(args) {
+           var isValid =  $("form[name='formsbollore']").valid();
+
+           if(isValid){
+            $("form[name='formsbollore']").submit();
+           }
+        })
+        $("form[name='formsbollore']").validate({
+         
+            rules: {
+                'contact_lastname': true,
+
+                'contact_firstname': true,
+                'contact_email': {
+                    // valueNotEquals: "default"
+                    required: true,
+                    email: true
+
+                },
+                'contact_txt': {
+                    required: function (args) {
+                     
+                       if ($(args).val() === "" &&  $(args).parents('.formsBloc__line').find('label.error').length == 0 ) {
+                        $(args).parents('.formsBloc__line').append('<label class="error">' + $(args).data('msg') + '</label>');
+                        return false;
+                       }
+                       else{
+                        $(args).parents('.formsBloc__line').find('label.error').remove();
+                        return true;
+                       }
+                    }
+                },
+                'contact_sujet': {
+                    //valueNotEquals: "default"
+                    required: function required(arg) {
+                       
+                        if ($('.formsBloc__select').val() === "default") {
+                            if(   $(arg).parents('.formsBloc__line').find('label.error').length == 0){
+
+                            
+                            $(arg).parents('.formsBloc__line').append('<label class="error">' + $(arg).data('msg') + '</label>');
+                            }
+                            return false;
+                        } else {
+                            $(arg).parents('.formsBloc__line').find('label.error').remove();
+                            return true;
+                        }
+                    }
+                }
+            },
+           
+            submitHandler: function (form) {
+                let elemCaptcha  = $('.g-recaptcha');
+                
+                if (grecaptcha.getResponse() == "") {
+                    $(elemCaptcha).parents('.formsBloc__line').append('<label class="error">' + $(elemCaptcha).data('msg') + '</label>');
+                    return;
+                } else {
+                    let lastname = $('input[name=contact_lastname]').val();
+                    let firstname  = $('input[name=contact_firstname]').val();
+                    let email = $('input[name=contact_email]').val(); 
+                    let subject = $('select[name=contact_sujet]').val(); 
+                    let message  = $('textarea[name=contact_txt]').val();
+                    let contact_nonce= $('input[name=contact_nonce]').val();
+                    $(elemCaptcha).parents('.formsBloc__line').find('label.error').remove();
+                    _FormBollore.postData(lastname,firstname,email,subject,message,contact_nonce);
+
+               
+                }
+
+            }
+        });
+
+    }
+ 
+}
+window.CaptchaCheck = function(args) {
+    let elemCaptcha  = $('.g-recaptcha');
+    window.grecaptchaResp =args;
+   
+    if(args !=""){
+      $(elemCaptcha).parents('.formsBloc__line').find('label.error').remove();
+   }
+}
 let _Disclaimer = null;
 let _ManageInfo = null;
+let _Bollore = null;
+let _FormBollore = null;
 document.addEventListener('DOMContentLoaded', function () {
-    window._Bollore = new Bollore();
+    _Bollore = new Bollore();
     _Disclaimer = new Disclaimer();
     _ManageInfo = new ManageInfo();
+    _FormBollore = new FormBollore();
 
 });

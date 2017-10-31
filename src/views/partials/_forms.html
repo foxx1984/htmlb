@@ -1,0 +1,89 @@
+<div class="content content--forms">
+    <section class="headerGenerique headerGenerique--content">
+        <div class="headerGenerique__img">
+            <img src="img/img-bourse.jpg" class="resp imgHeader" alt="">
+        </div>
+        <div class="headerGenerique__bloc headerGenerique__bloc--blue">
+            <div class="headerGenerique__content">
+
+                <p class="headerGenerique__title">Formulaire de contact</p>
+            </div>
+        </div>
+    </section>
+    <!-- core:include _ariane.html -->
+    <!-- /core -->
+
+    <h1 class="mainTitle">
+        <span class="mainTitle__text --titleHead">lorem ipsum</span>
+    </h1>
+
+
+    <div class="mainChapeau">
+        <div class="mainChapeau__content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae massa id ex laoreet consectetur eget
+                sit amet lacus. Sed at iaculis erat. Maecenas erat quam, cursus eget molestie vel, hendrerit in mauris. Phasellus
+                eu orci vitae turpis congue cursus at vel justo. Quisque non blandit odio, vitae tincidunt risus. Phasellus
+                commodo est a mi gravida, eu vulputate nibh auctor. </p>
+        </div>
+    </div>
+
+
+    <div class="bloc">
+
+
+        <div class="formsBlocWrapper">
+            <form name="formsbollore" class="formsBloc">
+                <div class="formsBloc__line">
+
+                    <input autofocus autocomplete="off" data-msg="Entrez votre nom" name="contact_lastname" maxlength="20" type="text" required class="formsBloc__input" placeholder="Nom" />
+                </div>
+                <div class="formsBloc__line">
+
+                    <input  autocomplete="off" name="contact_firstname" data-msg="Entrez votre prénom" type="text" maxlength="20" required class="formsBloc__input" placeholder="Prénom" />
+                </div>
+                <div class="formsBloc__line">
+
+                    <input  autocomplete="off" name="contact_email" data-msg="Entrez un email valide"  type="email" maxlength="20" required class="formsBloc__input" placeholder="Adresse mail" />
+                </div>
+                <div class="formsBloc__line formsBloc__line--select">
+                    <span class="formsBloc__selectWrapper icon-fleche-2">
+
+
+                        <select name="contact_sujet" data-msg="Entrez un sujet" required class="formsBloc__input formsBloc__select">
+                            <option selected value="default">Sujet</option>
+                            <option value="1">Sujet1</option>
+                            <option value="2">Sujet2</option>
+                            <option value="3">Sujet3</option>
+                            <option value="4">Sujet4</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="formsBloc__line">
+
+                    <textarea  autocomplete="off" name="contact_txt" data-msg="Entrez votre message" rows="6" cols="42" maxlength="200" placeholder="Message" required class="formsBloc__textarea"></textarea>
+                </div>
+                <div class="formsBloc__line">
+                        <input type="hidden" id="contact_nonce" name="contact_nonce" value="bd979acec3">
+                        <div class="g-recaptcha" data-callback="CaptchaCheck" data-msg="Captcha invalide !" data-sitekey="6LeOyjQUAAAAADJpNI55wFyLY4IFc6A83BpVRNTu"></div>
+                </div>
+                <div class="formsBloc__line">
+                        <a data-msg="formulaire validé !" href="javascript:void(0)" class="formsBloc__submit msg__link --linkN"><span class="linkTxtAnim">Envoyer</span></a>
+                  
+                </div>
+
+            </form>
+
+
+        </div>
+
+
+
+    </div>
+
+    <div class="actuDoc__footer actuDoc__footer--generic">
+        <a href="faq.html" class="actuDoc__faqLink --linkF">
+            <i class="fa fa-comments-o linkTxtAnim" aria-hidden="true"></i>
+            <span class="actuDoc__faqtxt linkTxtAnim"> Accédez à notre FAQ</span>
+        </a>
+    </div>
+</div>

@@ -11,13 +11,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Bolloré - Information réglementée / Publications</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1">
     <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6432154/6221972/css/fonts.css" />
 
-    <!-- build:css css/app.bollore.bundle.min.css -->
-    <link rel="stylesheet" href="css/icomoon.css">
-<link rel="stylesheet" href="css/style.css">
-    <!-- endbuild -->
+    <link rel="stylesheet" href="css/app.bollore.bundle.min.css">
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -406,117 +403,46 @@
 
     <h1 class="mainTitle"><span class="mainTitle__text --titleHead">Lorem ipsum</span></h1>
     <div class="mainChapeau">
-        <p class="mainChapeau__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae massa id ex laoreet consectetur eget sit amet
-            lacus. Sed at iaculis erat. Maecenas erat quam, cursus eget molestie vel, hendrerit in mauris. Phasellus eu orci
-            vitae turpis congue cursus at vel justo. Quisque non blandit odio, vitae tincidunt risus. Phasellus commodo est
-            a mi gravida, eu vulputate nibh auctor. </p>
+        <p class="mainChapeau__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae massa id ex laoreet consectetur eget sit amet lacus. Sed at iaculis erat. Maecenas erat quam, cursus eget molestie vel, hendrerit in mauris. Phasellus eu orci vitae turpis
+            congue cursus at vel justo. Quisque non blandit odio, vitae tincidunt risus. Phasellus commodo est a mi gravida, eu vulputate nibh auctor. </p>
     </div>
 
 
-    <div class="sousContent sousContent__documents">
+    <div id="appfiltreDoc" class="sousContent sousContent__documents">
 
         <div class="filtreDocumentsBox">
             <div class="filtreDocuments">
                 <span class="selectWrapper icon-fleche-2">
-                    <select class="select--reset">
-                        <option value="0">Années</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                        <option value="2014">2014</option>
-                        <option value="2013">2013</option>
-                        <option value="2012">2012</option>
-                        <option value="2011">2011</option>
-                        <option value="2010">2010</option>
-                        <option value="2009">2009</option>
-                        <option value="2008">2008</option>
+                    <select class="select--reset"  v-model="currentYear"  v-if="json.data !=null" v-on:change="loadDataYear($event)">
+                      
+                        <option v-for="item in json.data.years" v-bind:value="item.slug">{{item.label}}</option>
                     </select>
                 </span>
             </div>
 
             <div class="filtreDocuments">
                 <span class="selectWrapper icon-fleche-2">
-                    <select class="select--reset">
-                        <option value="0">Types de documents</option>
-                        <option value="2017">2017</option>
-                        <option value="2016">2016</option>
-                        <option value="2015">2015</option>
-                        <option value="2014">2014</option>
-                        <option value="2013">2013</option>
-                        <option value="2012">2012</option>
-                        <option value="2011">2011</option>
-                        <option value="2010">2010</option>
-                        <option value="2009">2009</option>
-                        <option value="2008">2008</option>
+                    <select class="select--reset" v-model="currentType" v-if="json.data !=null" v-on:change="loadDataYear($event)">
+                       
+                        <option v-for="item in json.data.types" v-bind:value="item.slug">{{item.label}}</option>
                     </select>
                 </span>
             </div>
         </div>
+        <div class="containerListeDocs">
+            <ul class="listeDocs__bloc listeDocs__bloc--smaller" v-if="json.data !=null">
+                <li class="listeDocs__item listeDocs__item--bigger" v-bind:class="[animBloc ? 'listeDocs__item--anim' : '']" v-for="p in json.data.items">
+                    <div class="listeDocs__visuelBloc"><img v-if="p.image_url != ''" v-bind:src="p.image_url" v-bind:alt="p.description" class="listeDocs__visuel"></div>
+                    <div class="listeDocs__content">
+                        <datetime class="listeDocs__time">{{p.date_label}}</datetime>
+                        <p class="listeDocs__titre">{{p.description}}</p>
+                        <p><a href="#" class="listeDocs__lien --link">{{p.link_title}}</a></p>
+                    </div>
+                </li>
 
-        <ul class="listeDocs__bloc listeDocs__bloc--smaller">
-            <li class="listeDocs__item listeDocs__item--bigger">
-                <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                <div class="listeDocs__content">
-                    <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                    <p class="listeDocs__titre">Résultats du 1er trimestre 2016</p>
-                    <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                </div>
-            </li>
-            <li class="listeDocs__item listeDocs__item--bigger">
-                <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                <div class="listeDocs__content">
-                    <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                    <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                    <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                </div>
-            </li>
-            <li class="listeDocs__item listeDocs__item--bigger">
-                <div class="listeDocs__content">
-                    <datetime class="listeDocs__time">28 Septembre 2017</datetime>
-                    <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                    <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                </div>
-            </li>
-            <li class="listeDocs__item listeDocs__item--bigger">
-                <div class="listeDocs__content">
-                    <datetime class="listeDocs__time">10 Octobre 2017</datetime>
-                    <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                    <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                </div>
-            </li>
-            <li class="listeDocs__item listeDocs__item--bigger">
-                <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                <div class="listeDocs__content">
-                    <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                    <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                    <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                </div>
-            </li>
-            <li class="listeDocs__item listeDocs__item--bigger">
-                <div class="listeDocs__content">
-                    <datetime class="listeDocs__time">28 Septembre 2017</datetime>
-                    <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                    <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                </div>
-            </li>
-            <li class="listeDocs__item listeDocs__item--bigger">
-                <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                <div class="listeDocs__content">
-                    <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                    <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                    <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                </div>
-            </li>
-            <li class="listeDocs__item listeDocs__item--bigger">
-                <div class="listeDocs__visuelBloc"><img src="img/exemple_document.jpg" alt="Télécharger le Rapport d'activité 2016" class="listeDocs__visuel"></div>
-                <div class="listeDocs__content">
-                    <datetime class="listeDocs__time">10 Avril 2017</datetime>
-                    <p class="listeDocs__titre">Rapport d'activité 2016.</p>
-                    <p><a href="#" class="listeDocs__lien --link">Télécharger</a></p>
-                </div>
-            </li>
 
-        </ul>
+            </ul>
+        </div>
     </div>
 
     <div class="actuDoc__footer actuDoc__footer--generic">
@@ -548,28 +474,7 @@
         <!-- END Main Bloc-->
 
     </div>
-    <!-- build:js js/app.bollore.bundle.min.js -->
-    
-<script type='text/javascript'>
-/* <![CDATA[ */
-var apiConfig = {"ajaxUrlGetDocuments":"https:\/\/refonte2017.bollore.intranet\/fr\/wp-json\/api-hdf\/v1\/get-documents\/","ajaxUrlGetInfosReglementees":"https:\/\/refonte2017.bollore.intranet\/fr\/wp-json\/api-hdf\/v1\/get-infos-reglementees\/","ajaxUrlSendContact":"https:\/\/refonte2017.bollore.intranet\/fr\/wp-json\/api-hdf\/v1\/send-contact\/"};
-/* ]]> */
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-   window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>');
-</script>
-<script src="js/jquery.animateNumber.min.js"></script>
-
-<script src="js/app.bollore.js"></script>
-<script src="js/app.bollore.rth.js"></script>
-
-<script src="js/plugins.js"></script>
-<script src="js/vendors/picturefill.js"></script>
-<script src="js/vendors/vue.min.js"></script>
-
-
-    <!-- endbuild -->
+    <script src="js/app.bollore.bundle.min.js"></script>
 </body>
 
 </html>

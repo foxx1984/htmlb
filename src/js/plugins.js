@@ -1,18 +1,18 @@
 if (window.Element && !Element.prototype.closest) {
     Element.prototype.closest =
-        function (s) {
+        function(s) {
             var matches = (this.document || this.ownerDocument).querySelectorAll(s),
                 i,
                 el = this;
             do {
                 i = matches.length;
-                while (--i >= 0 && matches.item(i) !== el) { };
+                while (--i >= 0 && matches.item(i) !== el) {};
             } while ((i < 0) && (el = el.parentElement));
             return el;
         };
 }
 if (window.NodeList && !NodeList.prototype.forEach) {
-    NodeList.prototype.forEach = function (callback, argument) {
+    NodeList.prototype.forEach = function(callback, argument) {
         argument = argument || window;
         for (var i = 0; i < this.length; i++) {
             callback.call(argument, this[i], i, this);
@@ -23,7 +23,7 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 // https://tc39.github.io/ecma262/#sec-array.prototype.includes
 if (!Array.prototype.includes) {
     Object.defineProperty(Array.prototype, 'includes', {
-        value: function (searchElement, fromIndex) {
+        value: function(searchElement, fromIndex) {
 
             // 1. Let O be ? ToObject(this value).
             if (this == null) {
@@ -67,4 +67,45 @@ if (!Array.prototype.includes) {
             return false;
         }
     });
+}
+
+function addEventListenerAll(selectors, event, callback) {
+    try {
+        var selector = null;
+        // var mycallback = function (args) {
+        //     callback(args);
+        // }
+
+
+        Array.from(selectors).forEach(function(selector, index) {
+
+            selector.addEventListener(event, callback, false);
+        });
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+function removeEventListenerAll(selectors, event, callback, endCallBack) {
+    try {
+        var selector = null;
+        var itemsCount = 0;
+        Array.from(selectors).forEach(function(selector, index) {
+
+
+            selector.removeEventListener(event, callback, false);
+            itemsCount++;
+            if (selectors.length == itemsCount) {
+                if (endCallBack != undefined) {
+                    endCallBack();
+                }
+
+            }
+
+
+        });
+
+    } catch (e) {
+        console.log(e);
+    }
 }

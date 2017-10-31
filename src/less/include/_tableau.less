@@ -1,0 +1,41 @@
+.sousContent--tableau {
+  
+    .secondTitle--type2 {
+        font-weight: bold !important;
+    }
+    .tableau.mobile {
+        display: none;
+    }
+    .tableau { 
+        display: block;
+        margin-top: 2.5%;
+        th,td {
+            padding: 8px 20px;
+        }
+        table { border-collapse: collapse; width: 100% !important;     border-left: 2px solid /*rgb(249, 249, 249)*/white !important;border-right: 2px solid /*rgb(249, 249, 249)*/ white !important;}
+        table,
+        th,
+        td {
+            width: 100% ;
+            border: 1px solid @blue-11;
+        }
+    }
+}
+.wrapperTableau {
+    background: rgb(249, 249, 249);
+    padding-top: 1px;
+}
+@media screen and (max-width: @mobileLarge) {
+    .sousContent--tableau {
+        width: 93%;
+        .commonText {
+            padding-left: 0;
+        }
+        .tableau {
+            display: none;
+        }
+        .tableau.mobile {
+            display: block;
+        }
+    }
+}

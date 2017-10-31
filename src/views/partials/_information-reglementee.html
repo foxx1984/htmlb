@@ -10,30 +10,28 @@
     </h1>
     <div class="mainChapeau">
         <div class="mainChapeau__content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae massa id ex laoreet consectetur eget sit
-                amet lacus. Sed at iaculis erat. Maecenas erat quam, cursus eget molestie vel, hendrerit in mauris. Phasellus
-                eu orci vitae turpis congue cursus at vel justo. Quisque non blandit odio, vitae tincidunt risus. Phasellus
-                commodo est a mi gravida, eu vulputate nibh auctor.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae massa id ex laoreet consectetur eget sit amet lacus. Sed at iaculis erat. Maecenas erat quam, cursus eget molestie vel, hendrerit in mauris. Phasellus eu orci vitae turpis
+                congue cursus at vel justo. Quisque non blandit odio, vitae tincidunt risus. Phasellus commodo est a mi gravida, eu vulputate nibh auctor.</p>
         </div>
     </div>
 
     <div id="appfiltre" class="sousContent sousContent__informations">
-       
+
         <ul class="filtreAnnee" v-if="json.data !=null">
-           
+
             <li v-for="item in json.data.years" class="filtreAnnee__item">
-                <a @click.prevent="loadDataYear($event,item)" href="javascript:void(0)" class="filtreAnnee__lien">
+                <a v-bind:class="[item.selected ? 'filtreAnnee__lien--on' : '']" @click.prevent="loadDataYear($event,item)" href="javascript:void(0)" class="filtreAnnee__lien">
                     <span class="linkTxtAnim">{{item.label}}</span>
                 </a>
             </li>
 
         </ul>
 
-       <div class="filtreDocumentsBox">
+        <div class="filtreDocumentsBox">
             <div class="filtreDocuments filtreDocuments--mobile" v-if="json.data !=null">
                 <span class="selectWrapper icon-fleche-2">
-                    <select class="select--reset" >
-                        <option value="0">Années</option>
+                    <select class="select--reset" v-model="currentYear"  v-if="json.data !=null" v-on:change="loadDataYear($event)" >
+                      
                         <option v-for="item in json.data.years" v-bind:value="item.slug">{{item.label}}</option>
                       
                     </select>
@@ -42,28 +40,28 @@
 
             <div class="filtreDocuments filtreDocuments--mobile" v-if="json.data !=null">
                 <span class="selectWrapper icon-fleche-2">
-                    <select class="select--reset">
-                        <option value="0">Types de documents</option>
+                    <select class="select--reset" v-if="json.data !=null" v-on:change="loadDataYear($event)" >
+                       
                     
                         <option  v-for="item in json.data.thematique" v-bind:value="item.thematique_id">{{item.thematique_name}}</option>
                     </select>
                 </span>
             </div>
         </div>
-     
-        <div class="containerListeDocs" v-if="json.data !=null"  >
-            <div class="listeDocs" v-if="item !=null &&  json.data[currentYear][item.thematique_id] !=null "   v-for="item in json.data.thematique">
+
+        <div class="containerListeDocs" v-if="json.data !=null">
+            <div class="listeDocs" v-if="item !=null &&  json.data[currentYear][item.thematique_id] !=null " v-for="item in json.data.thematique">
                 <h2 class="mainTitle" v-if="item.thematique_name!= ''">
                     <span class="mainTitle__text --titleHead mainTitle--blue"> {{item.thematique_name}} </span>
                 </h2>
-    
-                 <ul class="listeDocs__bloc" v-if="json.data !=null">
-                    
-                    <li class="listeDocs__item" v-for="p in json.data[currentYear][item.thematique_id]">
+
+                <ul class="listeDocs__bloc" v-if="json.data !=null">
+
+                    <li class="listeDocs__item" v-bind:class="[animBloc ? 'listeDocs__item--anim' : '']" v-for="p in json.data[currentYear][item.thematique_id]">
                         <div class="listeDocs__visuelBloc">
                             <img v-bind:src="p.image_url" v-bind:alt="p.description" class="listeDocs__visuel">
                         </div>
-                       <div class="listeDocs__content">
+                        <div class="listeDocs__content">
                             <datetime class="listeDocs__time">{{p.date_label}}</datetime>
                             <p class="listeDocs__titre">{{p.description}}</p>
                             <p>
@@ -71,18 +69,18 @@
                             </p>
                         </div>
                     </li>
-                    
-                </ul> 
-    
+
+                </ul>
+
                 <p class="listeDocs__voirPlus">
                     <a class="link__plus" href="javascript:void(0)">
                         <span class="linkTxtAnim">Voir +</span>
                     </a>
                 </p>
             </div>
-    
+
         </div>
-     
+
         <div class="listeDocs listeDocs--noTitle">
             <div class="listeDocs__subBloc">
                 <div class="listeDocs__detailDoc">

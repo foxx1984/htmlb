@@ -339,7 +339,7 @@ module.exports = function (grunt) {
             wordpressdistJs: {
                 expand: true,
                 cwd: 'dist/js',
-                src: ['**/*.*'],
+                src: ['**/*.*','!jquery.animateNumber.min.js','!app.bollore.bundle.min.js.map'],
                 dest: '<%= wordpress.env.pathJs %>'
             },
            
@@ -419,7 +419,10 @@ module.exports = function (grunt) {
         uglify: {
             generated: {
                 options: {
-                    sourceMap: true,
+                    beautify: false,
+                    mangle : false, 
+                    compress : false, 
+                    sourceMap: false,
                     banner: '/*! Copyright RC :) ' + new Date().toDateString() + '*/'
                 }
             }
@@ -613,12 +616,12 @@ module.exports = function (grunt) {
         'useminPrepare:html', //lecture des commentaires de build//lecture des commentaires de build
         'concat:generated', //concatener les 2 fichiers css
         'cssmin:generated', //minify css
-        'uglify:generated', //minify js 
+        'uglify:generated', //minify js   'uglify:generated',
         //copier html png ico json
         // 'rev:dist', //verionning fichiers
         'usemin:html', //remplace css et js minifier par la balise link ou script en un seul fichier
         //'htmlmin:dist', //minify html
-        'replace:dist', //remplacement cdn
+        //'replace:dist', //remplacement cdn
         'clean:partials',
         'copy:tmp',
         'copy:csstmp',

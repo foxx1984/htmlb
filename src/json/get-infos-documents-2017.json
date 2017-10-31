@@ -2,13 +2,27 @@
     "code": "ok",
     "data": {
         "status": 200,
-        "years": [
+        "years": [{
+                "slug": 0,
+                "label": "Année"
+            },
             {
                 "slug": 2017,
                 "label": "2017"
+            },
+            {
+                "slug": 2016,
+                "label": "2016"
+            },
+            {
+                "slug": 2015,
+                "label": "2015"
             }
         ],
-        "types": [
+        "types": [{
+                "slug": "0",
+                "label": "Types de documents"
+            },
             {
                 "slug": "actualites",
                 "label": "Actualités"
@@ -22,8 +36,7 @@
                 "label": "Publications"
             }
         ],
-        "items": [
-            {
+        "items": [{
                 "post_type": "publications",
                 "ID": 292,
                 "type": "",

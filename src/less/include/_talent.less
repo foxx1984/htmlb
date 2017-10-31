@@ -1,0 +1,101 @@
+.txt-title-talent {
+    font-size: 1.1vw;
+    .ft-gotham-black;
+    text-transform: uppercase;
+    color: @blue-1;
+    @media screen and (max-width: @tabletLarge) {
+        font-size: 2.7vw;
+    }
+    @media screen and (max-width: @mobileLarge) {
+        font-size: 5.5vw;
+    }
+}
+.txt-wysiwyg {
+    font-size: 1.05vw;
+    color: @grey-1;
+    line-height: 1.4em;
+    .ft-gotham-book;
+    @media screen and (max-width: @tabletLarge) {
+        font-size: 1.9vw;
+    }
+    @media screen and (max-width: @mobileLarge) {
+        font-size: 3.75vw;
+    }
+}
+.txt-footer {
+    font-size: 1.05vw;
+    color: @grey-1;
+    line-height: 1.4em;
+    .ft-gotham-medium;
+    @media screen and (max-width: @tabletLarge) {
+        font-size: 1.9vw;
+    }
+    @media screen and (max-width: @mobileLarge) {
+        font-size: 3.75vw;
+    }
+}
+.sousContent {
+    &--talent{
+        padding: 3.5% 33em 4em;
+        background: @white-1;
+        margin-top: 7em;
+        @media screen and (max-width: @tabletLarge) {
+            padding: 2em 5em 4em;
+        }
+    }
+}
+.content {
+    &--talent {
+
+        
+    }
+    .blocTalent {
+      
+      
+        margin: 2em auto 0;
+     
+        overflow: hidden;
+        &__foot {
+            
+            padding-top: 9%;
+        }
+        &__footer{
+            .txt-footer;
+        }
+        &__wysiwyg {
+            .txt-wysiwyg;
+            p {
+
+            }
+        }
+        height: 23vw;
+        overflow: hidden;
+        max-width: 491px;
+        width:99%;
+        padding:9% 8em 7em;
+        border: 1px solid  @blue-1;
+        &__title {
+            .txt-title-talent;
+            margin-bottom: 8%;
+            .txtC;
+        }
+        @media screen and (max-width: @tabletLarge) {
+            max-width: 662px;
+            width: 95%;
+            margin-top: 3em;
+            height: 40vw;
+           
+        }
+        @media screen and (max-width: @mobileLarge) {
+            max-width: 662px;
+            width: 95%;
+            margin-top: 3em;
+            height: 73vw;
+            margin-bottom: 10%;
+        }
+    }
+}
+
+.mainTitle {
+    margin-top: 2%;
+}

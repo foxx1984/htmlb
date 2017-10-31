@@ -1,0 +1,94 @@
+.placeholder(@color: @placeholderText) {
+    &:-moz-placeholder {
+        color: @color;
+    }
+    &:-ms-input-placeholder {
+        color: @color;
+    }
+    &::-webkit-input-placeholder {
+        color: @color;
+    }
+}
+.good {
+    color:green;
+}
+.error {
+    color :red;
+    .title-forms;
+    margin-top:2%;
+    display:inline-block;
+
+}
+.title-forms {
+    .ft-gotham-book;
+    font-size: 18px;
+    @media screen and (max-width: @tabletLarge) {
+        font-size:18px;
+    }
+    @media screen and (max-width: @mobileLarge) {
+        font-size: 18px;
+    }
+}
+
+.formsBloc__line+.formsBloc__line {
+    margin-top: 4%;
+}
+
+.formsBloc {
+    padding: 5% 10% 0;
+   
+    &__selectWrapper {
+        &.icon-fleche-2 {
+            &:before {
+                content: "\e910";
+                display: inline-block;
+                position: absolute;
+                right: 0.55em;
+                pointer-events: none;
+                top: 50%;
+                font-size: 28px;
+                line-height: 0;
+                transform: rotate(90deg);
+                transform-origin: center center;
+                color: @blue-1;
+            }
+        }
+    }
+    &__line {
+        &--select {
+            position: relative;
+        }
+    }
+    &__textarea {
+        padding-top: 4%;
+        height: 224px;
+        color: @blue-1;
+        border: 1px solid @blue-1;
+        width: 100%;
+        padding-left: 5%;
+      
+        line-height: 26px;
+    }
+    input,
+    select,
+    textarea {
+        .placeholder(@blue-1);
+        .title-forms;
+    }
+    &__input {
+        color: @blue-1;
+        border: 1px solid @blue-1;
+        width: 100%;
+        height: 76px;
+        padding-left: 5%;
+    }
+    &__submit {
+        padding: 1.4% 6%;
+    }
+    &__select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      
+    }
+}
